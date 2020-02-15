@@ -2,15 +2,14 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
-    "importHelpers": true,
     "forceConsistentCasingInFileNames": true,
     "removeComments": true,
+    "importHelpers": true,
     "strict": true
   },
   "exclude": [
     "node_modules",
     "**/node_modules/*",
-    ".yarn",
-    ".pnp.js"
+    "node_modules/"
   ]
 }
