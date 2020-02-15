@@ -11,7 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "@types/node": "^13.1.6",
-    "dotenv": "^8.2.0",
     "jackbot-discord": "^7.2.0"
   },
   "devDependencies": {
