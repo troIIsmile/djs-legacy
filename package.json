@@ -14,7 +14,6 @@
     "jackbot-discord": "^7.2.0"
   },
   "devDependencies": {
-    "@yarnpkg/pnpify": "^2.0.0-rc.16",
     "tslib": "^1.10.0",
     "typescript": "^3.7.4"
   }
