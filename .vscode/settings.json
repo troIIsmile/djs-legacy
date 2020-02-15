@@ -1,0 +1,6 @@
+{
+  "standard.enable": false,
+  "files.exclude": {
+    "**/*.js": true
+  }
+}
