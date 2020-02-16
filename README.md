@@ -1,6 +1,6 @@
 # jackbot-next
 
-The flagship JackBot. The reason `jackbot-discord` exists.
+The flagship JackBot. The reason [`jackbot-discord`](https://npm.im/jackbot-discord) exists.
 
 ## How to run
 
