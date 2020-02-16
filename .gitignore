@@ -108,3 +108,4 @@ dist
 
 # TS output
 *.js
+*.js.map

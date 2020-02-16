@@ -5,7 +5,8 @@
     "forceConsistentCasingInFileNames": true,
     "removeComments": true,
     "importHelpers": true,
-    "strict": true
+    "strict": true,
+    "sourceMap": true
   },
   "exclude": [
     "node_modules",

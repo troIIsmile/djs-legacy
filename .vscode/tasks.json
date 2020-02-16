@@ -18,6 +18,11 @@
       "problemMatcher": [
         "$tsc-watch"
       ],
+      "group": "build"
+    },
+    {
+      "type": "npm",
+      "script": "build",
       "group": {
         "kind": "build",
         "isDefault": true
