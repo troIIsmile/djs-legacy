@@ -1,5 +1,6 @@
 import { Message, RichEmbed } from 'discord.js'
 import fetch from 'node-fetch'
+
 export default async (message: Message, args: Array<string>) => {
   const req = await fetch('https://dogechain.info/api/v1/address/balance/' + encodeURIComponent(args.join(' ')))
 
