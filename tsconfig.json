@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es6",
+    "target": "esnext",
     "forceConsistentCasingInFileNames": true,
     "removeComments": true,
     "importHelpers": true,
     "strict": true,
-    "sourceMap": true
+    "alwaysStrict": true,
+    "inlineSourceMap": true
   },
   "exclude": [
     "node_modules",

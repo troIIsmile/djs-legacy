@@ -1,8 +1,9 @@
 {
   "standard.enable": false,
   "files.exclude": {
-    "**/*.js": true,
-    "**/*.js.map": true
+    "**/*.js": {
+      "when": "$(basename).ts"
+    }
   },
   "typescript.tsdk": "node_modules\\typescript\\lib"
 }
