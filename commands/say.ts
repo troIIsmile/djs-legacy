@@ -8,4 +8,4 @@ export default (message: Message, args: string[]) => {
   else message.channel.send('This is a DM, I can\'t delete your message.')
 }
 
-module.exports.nodm = true
+export const nodm = true
