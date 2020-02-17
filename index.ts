@@ -17,7 +17,7 @@ async function getCommandsFromFolder (folder: string): Promise<Commands> {
     return [ file, (await import(folder + file)).default ]
   }
 
-  return Object.fromEntries( // Object.fromEntries does this: [['hello', 2]] -> {hello:2}
+  return Object.fromEntries( // Object.fromEntries does this: [ ['hello', 2] ] -> { hello: 2 }
     await Promise.all(
       readdirSync(folder, 'utf-8') // get the file names of every command in the commands folder
         .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
