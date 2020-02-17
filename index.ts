@@ -15,7 +15,7 @@ interface Commands {
 }
 
 async function getCommandsFromFolder (folder: string): Promise<Commands> {
-  async function getCommand (file: string): Promise<[ string, Function ]> {
+  async function getCommand (file: string): Promise<[ string, (message: Message, args: string[], bot: Bot) => any ]> {
     return [ file, (await import(folder + file)).default ]
   }
 
