@@ -11,8 +11,9 @@
   "author": "Jack5079",
   "license": "ISC",
   "dependencies": {
+    "discord.js": "^11.5.1",
     "google-tts-api": "0.0.4",
-    "jackbot-discord": "^7.3.0",
+    "jackbot-discord": "^8.0.0",
     "node-fetch": "^2.6.0",
     "tslib": "^1.10.0"
   },
