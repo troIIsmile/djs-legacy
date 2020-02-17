@@ -1,4 +1,4 @@
-import { Message } from 'discord.js'
+import { Message } from 'jackbot-discord'
 import { hasFlag } from '../util'
 import tts = require('google-tts-api')
 

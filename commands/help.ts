@@ -1,5 +1,5 @@
-import { Message } from 'discord.js'
-import Bot from 'jackbot-discord'
+import { Message, Bot } from 'jackbot-discord'
+
 export default (message: Message, _: string[], bot: Bot) => {
   message.channel.send(
     Object.keys(bot.commands) // list of command names

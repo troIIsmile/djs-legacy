@@ -1,4 +1,4 @@
-import { Message } from 'discord.js'
+import { Message } from 'jackbot-discord'
 export default (message: Message, args: string[]) => {
   var dmu = message.mentions.users.first() // grabbing the user mention
   args.shift()

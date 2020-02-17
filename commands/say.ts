@@ -1,4 +1,4 @@
-import { Message } from 'discord.js'
+import { Message } from 'jackbot-discord'
 
 export default (message: Message, args: string[]) => {
   if (message.guild && message.guild.me.hasPermission('MANAGE_MESSAGES')) {

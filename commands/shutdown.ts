@@ -1,5 +1,4 @@
-import Bot from 'jackbot-discord'
-import { Message } from 'discord.js'
+import { Bot, Message } from 'jackbot-discord'
 async function command (message: Message, _: string[], bot: Bot) {
   if (message.author.id === '173589391560802306') {
     bot.user.setActivity('windows xp shutdown sound', { type: 'PLAYING' })

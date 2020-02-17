@@ -1,4 +1,6 @@
-import { Message, RichEmbed } from 'discord.js'
+import { RichEmbed } from 'discord.js'
+import { Message } from 'jackbot-discord'
+
 import fetch from 'node-fetch'
 
 export default async (message: Message, args: string[]) => {
