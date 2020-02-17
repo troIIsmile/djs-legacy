@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "eslint .",
-    "build": "eslint **/**.ts --fix && tsc",
+    "test": "echo no",
+    "build": "tsc",
     "start": "node ."
   },
   "author": "Jack5079",
