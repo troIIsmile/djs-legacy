@@ -1,5 +1,5 @@
-import {Message} from 'discord.js'
-export default (message: Message, args: Array<String>) => {
+import { Message } from 'discord.js'
+export default (message: Message, args: string[]) => {
   if (message.guild) {
     message.channel.send(args.join(' '))
     message.delete()

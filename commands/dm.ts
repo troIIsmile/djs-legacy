@@ -1,5 +1,5 @@
-import {Message} from 'discord.js'
-export default (message: Message, args: Array<String>) => {
+import { Message } from 'discord.js'
+export default (message: Message, args: string[]) => {
   var dmu = message.mentions.users.first() // grabbing the user mention
   args.shift()
   if (dmu) { dmu.send(args.join(' ')) } else {

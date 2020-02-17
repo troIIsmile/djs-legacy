@@ -1,6 +1,6 @@
 import tts = require('google-tts-api')
 import { Message } from 'discord.js'
-export default async (message: Message, args: Array<string>) => {
+export default async (message: Message, args: string[]) => {
   try {
     message.channel.send({
       files: [ {

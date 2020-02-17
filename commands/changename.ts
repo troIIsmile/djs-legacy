@@ -1,5 +1,5 @@
-import {Message} from 'discord.js'
-export default (message: Message, args: Array<String>) => {
+import { Message } from 'discord.js'
+export default (message: Message, args: string[]) => {
   if (message.guild) {
     if (!message.guild.me.hasPermission('MANAGE_NICKNAMES')) {
       return message.channel.send(

@@ -1,6 +1,6 @@
 import { Message } from 'discord.js'
 import Bot from 'jackbot-discord'
-export default (message: Message, _: Array<String>, bot: Bot) => {
+export default (message: Message, _: string[], bot: Bot) => {
   message.channel.send(
     Object.keys(bot.commands) // list of command names
       .map(e => '-' + e) // add "-" to the start
