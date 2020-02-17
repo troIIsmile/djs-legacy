@@ -6,5 +6,3 @@ export default (message: Message, args: string[]) => {
     message.channel.send('person not found')
   }
 }
-
-

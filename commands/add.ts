@@ -1,4 +1,4 @@
-export default new Function
+export default new Function()
 // add (message, args, bot) {
 //   // Lets users create a new command within the bot
 //   if (args.length) {

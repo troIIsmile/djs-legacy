@@ -8,5 +8,3 @@ export default (message: Message, _: string[], bot: Bot) => {
     ,
     { code: '' })
 }
-
-

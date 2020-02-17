@@ -2,11 +2,9 @@ import Bot from 'jackbot-discord'
 import { readdirSync } from 'fs'
 import env from './env'
 
-
 async function getCommand (file: string): Promise<[ string, Function ]> {
-  return [ file, (await import('./commands/' + file)).default ]
+  return [file, (await import('./commands/' + file)).default]
 }
-
 
 const bot = new Bot({}, {
   prefix: '-'
