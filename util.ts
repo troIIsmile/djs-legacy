@@ -10,7 +10,10 @@ interface Env {
   [ key: string ]: string
 }
 
-export const env: Env = Object.fromEntries(readFileSync('./.env', 'utf-8')
-  .split('\n') // split the file into lines
-  .map(line => line.split('=')) // split the lines into key:value pairs
+export const env: Env = Object.fromEntries(
+  readFileSync('./.env', 'utf-8')
+    .split('\n') // split the file into lines
+    .filter(line => !line.startsWith('#')) // remove comments
+    .filter(Boolean) // remove spacing
+    .map(line => line.split('=')) // split the lines into key:value pairs
 )
