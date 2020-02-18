@@ -1,5 +1,4 @@
 {
-  "standard.enable": false,
   "files.exclude": {
     "**/*.js": {
       "when": "$(basename).ts"
