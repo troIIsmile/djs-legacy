@@ -15,6 +15,15 @@ export default (message: Message) => {
   const formatted = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0')
 
   message.channel.send(`
+  // How long the bot has been on for
   Uptime: ${formatted}
-  `.split('\n').map(line => line.trim()).join('\n'), { code: true })
+
+  // Put more stats, please! -Jack
+  `.split('\n')
+    .map(line => line.trim()) // Remove whitespace
+    .filter(Boolean) // Remove empty lines
+    .filter(line => !line.startsWith('//')) // Remove comments
+    .join('\n'), {
+    code: true
+  })
 }
