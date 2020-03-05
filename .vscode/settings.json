@@ -3,5 +3,6 @@
     "**/*.js": {
       "when": "$(basename).ts"
     }
-  }
+  },
+  "liveServer.settings.showOnStatusbar": false
 }
