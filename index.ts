@@ -1,4 +1,4 @@
-import { Bot, Message, Commands } from 'jackbot-discord'
+import { Bot, Commands, Command } from 'jackbot-discord'
 import { readdirSync } from 'fs'
 import { env } from './util'
 
@@ -9,7 +9,7 @@ const bot = new Bot({}, {
 bot.login(env.TOKEN) // login using the token from .env
 
 async function getCommandsFromFolder (folder: string): Promise<Commands> {
-  async function getCommand (file: string): Promise<[ string, (message: Message, args: string[], bot: Bot) => any ]> {
+  async function getCommand (file: string): Promise<[ string, Command ]> {
     return [ file, (await import(folder + file)).default ]
   }
 
