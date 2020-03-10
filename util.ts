@@ -34,10 +34,10 @@ export async function clean (client: Bot, text: any): Promise<String> {
 }
 
 if (!existsSync('./data.json')) writeFileSync('./data.json', '{}')
-type JSONTypes = string | number | boolean | null | PersistStorage
+type JSONTypes = string | number | boolean | null | PersistStorage | JSONTypes[]
 
 interface PersistStorage {
-  [ key: string ]: JSONTypes | JSONTypes[]
+  [ key: string ]: JSONTypes
 }
 export const persist: PersistStorage = new Proxy({}, {
   get (_, name) {
