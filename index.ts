@@ -18,7 +18,7 @@ async function getCommandsFromFolder (folder: string): Promise<Commands> {
       readdirSync(folder, 'utf-8') // get the file names of every command in the commands folder
         .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
         .map(filename => filename.replace('.js', '')) // remove `.js` from those
-        .map(file => getCommand(file))
+        .map(getCommand) // convert filenames to commands
     )
   )
 }

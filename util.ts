@@ -1,4 +1,5 @@
 import { readFileSync } from 'fs'
+import { Bot } from 'jackbot-discord'
 
 export function hasFlag (args: string[], flag: string): boolean {
   return args
@@ -17,3 +18,17 @@ export const env: Env = Object.fromEntries(
     .filter(Boolean) // remove spacing
     .map(line => line.split('=')) // split the lines into key:value pairs
 )
+
+export async function clean (client: Bot, text: any): Promise<String> {
+  if (text && text.constructor.name == "Promise")
+    text = await text
+  if (typeof text !== "string")
+    text = require("util").inspect(text, { depth: 1 })
+
+  text = text
+    .replace(/`/g, "`" + String.fromCharCode(8203))
+    .replace(/@/g, "@" + String.fromCharCode(8203))
+    .replace(client.token, "mfa.VkO_2GND--DFIjodSFISD+_F2_dontgetmyfuckingtokenyouhacker--fds9f)WJFSJIO")
+
+  return text
+}
