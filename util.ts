@@ -13,7 +13,7 @@ interface Env {
   [ key: string ]: string
 }
 
-export const env: Env = new Proxy({}, {
+export const env: Env = new Proxy(Object.create(null), {
   set (_, prop: string, value: string): boolean {
     const env: Env = Object.fromEntries(
       read('./.env', 'utf-8')
