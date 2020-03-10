@@ -36,7 +36,7 @@ export const env: Env = new Proxy({}, {
   }
 })
 
-export async function clean (client: Bot, text: any): Promise<String> {
+export async function clean (client: Bot, text: any): Promise<string> {
   if (text && text instanceof Promise)
     text = await text
   if (typeof text !== 'string')
