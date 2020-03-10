@@ -63,7 +63,7 @@ export const persist: PersistStorage = new Proxy({}, {
   set (_, prop: string, value: any): boolean {
     let data = require('./data.json')
     data[ prop ] = value
-    writeFileSync('./data.json', JSON.stringify(data))
+    writeFileSync('./data.json', JSON.stringify(data, null, 2))
     return true
   }
 })
