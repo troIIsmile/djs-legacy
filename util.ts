@@ -11,13 +11,30 @@ interface Env {
   [ key: string ]: string
 }
 
-export const env: Env = Object.fromEntries(
-  readFileSync('./.env', 'utf-8')
-    .split('\n') // split the file into lines
-    .filter(line => !line.startsWith('#')) // remove comments
-    .filter(Boolean) // remove spacing
-    .map(line => line.split('=')) // split the lines into key:value pairs
-)
+export const env: Env = new Proxy({}, {
+  set (_, prop: string, value: string): boolean {
+    const env: Env = Object.fromEntries(
+      readFileSync('./.env', 'utf-8')
+        .split('\n') // split the file into lines
+        .filter(line => !line.startsWith('#')) // remove comments
+        .filter(Boolean) // remove spacing
+        .map(line => line.split('=')) // split the lines into key:value pairs
+    )
+    env[ prop ] = value
+    writeFileSync('./.env', Object.entries(env).map(ent => ent.join('=')).join('\n'))
+    return true
+  },
+
+  get (_, prop: string) {
+    return Object.fromEntries(
+      readFileSync('./.env', 'utf-8')
+        .split('\n') // split the file into lines
+        .filter(line => !line.startsWith('#')) // remove comments
+        .filter(Boolean) // remove spacing
+        .map(line => line.split('=')) // split the lines into key:value pairs
+    )[ prop ]
+  }
+})
 
 export async function clean (client: Bot, text: any): Promise<String> {
   if (text && text instanceof Promise)

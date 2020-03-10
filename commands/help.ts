@@ -23,7 +23,8 @@ const descriptions: Describe = {
   doge: 'wow',
   tts: 'gives you an mp3 of what you typed. try using --slow',
   help: 'what the fuck are you using right now',
-  add: 'Adds a command to the bot, until it restarts.'
+  add: 'Adds a command to the bot, until it restarts.',
+  env: 'Modify environment variables. Due to the odd way jackbot-next dotenv implementation is, these should take effect instantly.'
 }
 export default (message: Message, _: string[], bot: Bot) => {
   message.channel.send(
