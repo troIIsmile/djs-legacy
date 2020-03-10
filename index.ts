@@ -27,3 +27,5 @@ async function readCommandDir (folder: string): Promise<Commands> {
 }
 
 readCommandDir('./commands/').then(bot.add.bind(bot))
+
+export default bot
