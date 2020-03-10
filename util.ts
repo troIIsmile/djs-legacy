@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs'
+import { readFileSync, writeFileSync, existsSync } from 'fs'
 import { Bot } from 'jackbot-discord'
 import { inspect } from 'util'
 export function hasFlag (args: string[], flag: string): boolean {
@@ -32,3 +32,21 @@ export async function clean (client: Bot, text: any): Promise<String> {
 
   return text
 }
+
+if (!existsSync('./data.json')) writeFileSync('./data.json', '{}')
+
+type ArrayPersist = Array<string | number | boolean | null | PersistStorage | ArrayPersist>
+interface PersistStorage {
+  [ key: string ]: string | number | boolean | null | PersistStorage | ArrayPersist
+}
+export const persist: PersistStorage = new Proxy({}, {
+  get (_, name) {
+    return require('./data.json')[ name ]
+  },
+  set (_, prop: string, value: any): boolean {
+    let data = require('./data.json')
+    data[ prop ] = value
+    writeFileSync('./data.json', JSON.stringify(data))
+    return true
+  }
+})
