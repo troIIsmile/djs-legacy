@@ -22,7 +22,8 @@ const descriptions: Describe = {
   roblox: 'it is free',
   doge: 'wow',
   tts: 'gives you an mp3 of what you typed. try using --slow',
-  help: 'what the fuck are you using right now'
+  help: 'what the fuck are you using right now',
+  add: 'Adds a command to the bot, until it restarts.'
 }
 export default (message: Message, _: string[], bot: Bot) => {
   message.channel.send(
