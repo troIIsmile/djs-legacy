@@ -6,7 +6,10 @@ const bot = new Bot({}, {
   prefix: '-'
 })
 
-bot.login(env.TOKEN) // login using the token from .env
+if (!env.TOKEN) { // if there's no token
+  console.error('No token found. Please add it to the .env')
+  process.exit(1)
+} else bot.login(env.TOKEN) // login using the token from .env
 
 async function readCommandDir (folder: string): Promise<Commands> {
   async function fileToCommand (file: string): Promise<[ string, Command ]> {

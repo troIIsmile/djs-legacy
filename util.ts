@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, existsSync } from 'fs'
+import { readFileSync as read, writeFileSync as write, existsSync as exists } from 'fs'
 import { Bot } from 'jackbot-discord'
 import { inspect } from 'util'
 export function hasFlag (args: string[], flag: string): boolean {
@@ -7,6 +7,8 @@ export function hasFlag (args: string[], flag: string): boolean {
     .includes('--' + flag) // does any of the args have the flag
 }
 
+if (!exists('./.env')) write('./.env', '') // make a env if it's not there
+
 interface Env {
   [ key: string ]: string
 }
@@ -14,20 +16,20 @@ interface Env {
 export const env: Env = new Proxy({}, {
   set (_, prop: string, value: string): boolean {
     const env: Env = Object.fromEntries(
-      readFileSync('./.env', 'utf-8')
+      read('./.env', 'utf-8')
         .split('\n') // split the file into lines
         .filter(line => !line.startsWith('#')) // remove comments
         .filter(Boolean) // remove spacing
         .map(line => line.split('=')) // split the lines into key:value pairs
     )
     env[ prop ] = value
-    writeFileSync('./.env', Object.entries(env).map(ent => ent.join('=')).join('\n'))
+    write('./.env', Object.entries(env).map(ent => ent.join('=')).join('\n'))
     return true
   },
 
   get (_, prop: string) {
     return Object.fromEntries(
-      readFileSync('./.env', 'utf-8')
+      read('./.env', 'utf-8')
         .split('\n') // split the file into lines
         .filter(line => !line.startsWith('#')) // remove comments
         .filter(Boolean) // remove spacing
@@ -50,7 +52,7 @@ export async function clean (client: Bot, text: any): Promise<string> {
   return text
 }
 
-if (!existsSync('./data.json')) writeFileSync('./data.json', '{}')
+if (!exists('./data.json')) write('./data.json', '{}')
 type JSONTypes = string | number | boolean | null | PersistStorage | JSONTypes[]
 
 interface PersistStorage {
@@ -63,7 +65,7 @@ export const persist: PersistStorage = new Proxy({}, {
   set (_, prop: string, value: any): boolean {
     let data = require('./data.json')
     data[ prop ] = value
-    writeFileSync('./data.json', JSON.stringify(data, null, 2))
+    write('./data.json', JSON.stringify(data, null, 2))
     return true
   }
 })
