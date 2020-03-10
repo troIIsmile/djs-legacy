@@ -8,8 +8,8 @@ const bot = new Bot({}, {
 
 bot.login(env.TOKEN) // login using the token from .env
 
-async function getCommandsFromFolder (folder: string): Promise<Commands> {
-  async function getCommand (file: string): Promise<[ string, Command ]> {
+async function readCommandDir (folder: string): Promise<Commands> {
+  async function fileToCommand (file: string): Promise<[ string, Command ]> {
     return [ file, (await import(folder + file)).default ]
   }
 
@@ -18,9 +18,9 @@ async function getCommandsFromFolder (folder: string): Promise<Commands> {
       readdirSync(folder, 'utf-8') // get the file names of every command in the commands folder
         .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
         .map(filename => filename.replace('.js', '')) // remove `.js` from those
-        .map(getCommand) // convert filenames to commands
+        .map(fileToCommand) // convert filenames to commands
     )
   )
 }
 
-getCommandsFromFolder('./commands/').then(bot.add.bind(bot))
+readCommandDir('./commands/').then(bot.add.bind(bot))
