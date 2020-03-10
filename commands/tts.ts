@@ -25,7 +25,7 @@ export default async (message: Message, args: string[]) => {
     }
   } catch (e) {
     if (e instanceof RangeError) {
-      message.channel.send("The -tts command only supports up to 200 chars. Blame Google!")
+      message.channel.send('The -tts command only supports up to 200 chars. Blame Google!')
     } else message.channel.send('Error!\nError data:\n' + e)
   }
 }

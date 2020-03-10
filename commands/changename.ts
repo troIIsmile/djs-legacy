@@ -3,7 +3,7 @@ export default (message: Message, args: string[]) => {
   if (message.guild) {
     if (!message.guild.me.hasPermission('MANAGE_NICKNAMES')) {
       return message.channel.send(
-        "I don't have permission to change your nickname!"
+        'I don\'t have permission to change your nickname!'
       )
     }
     message.member.setNickname(args.join(' '))

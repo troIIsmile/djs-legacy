@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs'
 import { Bot } from 'jackbot-discord'
-
+import { inspect } from 'util'
 export function hasFlag (args: string[], flag: string): boolean {
   return args
     .filter(arg => arg.startsWith('--')) // only flags
@@ -20,15 +20,15 @@ export const env: Env = Object.fromEntries(
 )
 
 export async function clean (client: Bot, text: any): Promise<String> {
-  if (text && text.constructor.name == "Promise")
+  if (text && text instanceof Promise)
     text = await text
-  if (typeof text !== "string")
-    text = require("util").inspect(text, { depth: 1 })
+  if (typeof text !== 'string')
+    text = inspect(text, { depth: 1 })
 
   text = text
-    .replace(/`/g, "`" + String.fromCharCode(8203))
-    .replace(/@/g, "@" + String.fromCharCode(8203))
-    .replace(client.token, "mfa.VkO_2GND--DFIjodSFISD+_F2_dontgetmyfuckingtokenyouhacker--fds9f)WJFSJIO")
+    .replace(/`/g, '`' + String.fromCharCode(8203))
+    .replace(/@/g, '@' + String.fromCharCode(8203))
+    .replace(client.token, 'mfa.VkO_2GND--DFIjodSFISD+_F2_dontgetmyfuckingtokenyouhacker--fds9f)WJFSJIO')
 
   return text
 }
