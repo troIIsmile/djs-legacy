@@ -35,7 +35,7 @@ export async function clean (client: Bot, text: any): Promise<String> {
 
 if (!existsSync('./data.json')) writeFileSync('./data.json', '{}')
 
-type ArrayPersist = Array<string | number | boolean | null | PersistStorage | ArrayPersist>
+type ArrayPersist = (string | number | boolean | null | PersistStorage | ArrayPersist)[]
 interface PersistStorage {
   [ key: string ]: string | number | boolean | null | PersistStorage | ArrayPersist
 }
