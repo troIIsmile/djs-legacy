@@ -35,6 +35,11 @@ export const env: Env = new Proxy({}, {
         .filter(Boolean) // remove spacing
         .map(line => line.split('=')) // split the lines into key:value pairs
     )[ prop ]
+  },
+  deleteProperty (_, name: string): boolean {
+    const env = read('./.env', 'utf-8')
+    write('./.env', env.split('\n').filter(line => !line.startsWith(name + '=')).join('\n'))
+    return true
   }
 })
 
