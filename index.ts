@@ -1,6 +1,7 @@
 import { Bot, Commands, Command } from 'jackbot-discord'
-import { readdirSync } from 'fs'
+import { promises as fs } from 'fs'
 import { env } from './util'
+
 
 const bot = new Bot({}, {
   prefix: '-'
@@ -18,7 +19,7 @@ async function readCommandDir (folder: string): Promise<Commands> {
 
   return Object.fromEntries( // Object.fromEntries does this: [ ['hello', 2] ] -> { hello: 2 }
     await Promise.all(
-      readdirSync(folder, 'utf-8') // get the file names of every command in the commands folder
+      (await fs.readdir(folder, 'utf-8')) // get the file names of every command in the commands folder
         .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
         .map(filename => filename.replace('.js', '')) // remove `.js` from those
         .map(fileToCommand) // convert filenames to commands
@@ -26,6 +27,8 @@ async function readCommandDir (folder: string): Promise<Commands> {
   )
 }
 
-readCommandDir('./commands/').then(bot.add.bind(bot))
+bot.on('ready', () => {
+  readCommandDir('./commands/').then(bot.add.bind(bot))
+})
 
 export default bot
