@@ -9,7 +9,7 @@ async function command (message: Message, _: string[], bot: Bot) {
     })
 
     process.exit(0)
-  } else message.channel.send('you are not jack')
+  } else message.channel.send('you are not the bot owner')
 }
 export const desc = 'Shuts down the bot.'
 export default command

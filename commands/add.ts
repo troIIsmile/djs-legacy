@@ -11,7 +11,7 @@ async function run (message: Message, args: string[], bot: Bot): Promise<void> {
       bot.add(name, func) // make a command with the arguments that are left
       message.channel.send(`🎉 Created ${name}!`) // tell the user
     } else message.channel.send('Uhh, you forgot the code.')
-  } else message.channel.send('You are not Jack.')
+  } else message.channel.send('You are not the bot owner.')
 }
 
 export default run

@@ -11,7 +11,7 @@ async function run (message: Message, args: string[], client: Bot): Promise<void
     } catch (err) {
       message.channel.send(`\`ERROR\` \`\`\`xl\n${await clean(client, err)}\n\`\`\``)
     }
-  } else message.channel.send('You are not Jack.')
+  } else message.channel.send('You are not the bot owner.')
 }
 
 export default run
