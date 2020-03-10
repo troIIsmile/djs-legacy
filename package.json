@@ -14,12 +14,10 @@
     "discord.js": "^11.5.1",
     "google-tts-api": "0.0.4",
     "jackbot-discord": "^9.1.0",
-    "node-fetch": "^2.6.0",
     "tslib": "^1.10.0"
   },
   "devDependencies": {
     "@types/node": "^13.7.1",
-    "@types/node-fetch": "^2.5.4",
     "typescript": "^3.7.4"
   }
 }
