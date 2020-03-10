@@ -1,6 +1,6 @@
-import { Message } from 'jackbot-discord'
+import { Message, Bot } from 'jackbot-discord'
 
-export default (message: Message) => {
+export default (message: Message, _: string[], bot: Bot) => {
   const timestamp = process.uptime()
 
   // 2
@@ -17,7 +17,7 @@ export default (message: Message) => {
   message.channel.send(`
   // How long the bot has been on for
   Uptime: ${formatted}
-
+  Server count: ${bot.guilds.size}
   // Put more stats, please! -Jack
   `.split('\n')
     .map(line => line.trim()) // Remove whitespace
