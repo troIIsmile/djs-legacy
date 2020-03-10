@@ -40,13 +40,6 @@ export const env: Env = new Proxy({}, {
     const env = read('./.env', 'utf-8')
     write('./.env', env.split('\n').filter(line => !line.startsWith(name + '=')).join('\n'))
     return true
-  },
-  ownKeys (): string[] {
-    return read('./.env', 'utf-8')
-      .split('\n') // split the file into lines
-      .filter(line => !line.startsWith('#')) // remove comments
-      .filter(Boolean) // remove spacing
-      .map(line => line.split('=')[ 0 ]) // split the lines into key:value pairs
   }
 })
 
