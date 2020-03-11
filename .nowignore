@@ -1,0 +1,5 @@
+.env
+example.env
+node_modules/
+*.js
+data.json

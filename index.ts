@@ -1,16 +1,17 @@
 import { Bot, Commands } from 'jackbot-discord'
-import { promises as fs } from 'fs'
-import { env } from './util'
-
+import { promises as fs, existsSync } from 'fs'
+if (existsSync('./.env')) {
+  require('./loadenv')
+}
 
 const bot = new Bot({}, {
   prefix: '-'
 })
 
-if (!env.TOKEN) { // if there's no token
-  console.error('No token found. Please add it to the .env')
+if (!process.env.TOKEN) { // if there's no token
+  console.error('No token found. Please add it to the env')
   process.exit(1)
-} else bot.login(env.TOKEN) // login using the token from .env
+} else bot.login(process.env.TOKEN) // login using the token from .env
 
 async function readCommandDir (folder: string): Promise<Commands> {
   return Object.fromEntries( // Object.fromEntries does this: [ ['hello', 2] ] -> { hello: 2 }

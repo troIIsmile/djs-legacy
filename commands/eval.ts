@@ -1,8 +1,8 @@
 import { Bot, Message } from 'jackbot-discord'
-import { env, clean } from '../util'
+import { clean } from '../util'
 
 async function run (message: Message, args: string[], client: Bot): Promise<void> {
-  if (message.author.id === env.OWNER) {
+  if (message.author.id === process.env.OWNER) {
     try {
       const code = args.join(" ")
       const evaled = eval(code)

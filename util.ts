@@ -1,4 +1,4 @@
-import { readFileSync as read, writeFileSync as write, existsSync as exists } from 'fs'
+import { writeFileSync as write, existsSync as exists } from 'fs'
 import { Bot } from 'jackbot-discord'
 import { inspect } from 'util'
 export function hasFlag (args: string[], flag: string): boolean {
@@ -6,47 +6,6 @@ export function hasFlag (args: string[], flag: string): boolean {
     .filter(arg => arg.startsWith('--')) // only flags
     .includes('--' + flag) // does any of the args have the flag
 }
-
-if (!exists('./.env')) write('./.env', '') // make a env if it's not there
-
-interface Env {
-  [ key: string ]: string
-}
-
-export const env: Env = new Proxy(Object.create(null), {
-  set (_, prop: string, value: string): boolean {
-    const env: Env = Object.fromEntries(
-      read('./.env', 'utf-8')
-        .split('\n') // split the file into lines
-        .filter(line => !line.startsWith('#')) // remove comments
-        .filter(Boolean) // remove spacing
-        .map(line => line.split('=')) // split the lines into key:value pairs
-    )
-    env[ prop ] = value
-    write('./.env', Object.entries(env).map(ent => ent.join('=')).join('\n'))
-    return true
-  },
-
-  get (_, prop: string) {
-    return Object.fromEntries(
-      read('./.env', 'utf-8')
-        .split('\n') // split the file into lines
-        .filter(line => !line.startsWith('#')) // remove comments
-        .filter(Boolean) // remove spacing
-        .map(line => line.split('=')) // split the lines into key:value pairs
-    )[ prop ]
-  },
-  deleteProperty (_, name: string): boolean {
-    const env = read('./.env', 'utf-8')
-    write('./.env', env.split('\n').filter(line => !line.startsWith(name + '=')).join('\n'))
-    return true
-  },
-  has (_, prop: string): boolean {
-    return read('./.env', 'utf-8')
-      .split('\n') // split the file into lines
-      .some(line => line.startsWith(prop + '='))
-  }
-})
 
 export async function clean (client: Bot, text: any): Promise<string> {
   if (text && text instanceof Promise)
