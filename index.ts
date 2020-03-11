@@ -1,4 +1,4 @@
-import { Bot, Commands, Command } from 'jackbot-discord'
+import { Bot, Commands } from 'jackbot-discord'
 import { promises as fs } from 'fs'
 import { env } from './util'
 
