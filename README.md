@@ -4,16 +4,9 @@ The flagship JackBot. The reason [`jackbot-discord`](https://npm.im/jackbot-disc
 
 ## How to run
 
-Create a .env file with the following contents:
-
-```
-TOKEN=BOT_TOKEN_GOES_HERE
-OWNER=OWNER_ID_GOES_HERE
-```
-
-Obviously, replace `BOT_TOKEN_GOES_HERE` with the bot token and `OWNER_ID_GOES_HERE` with your Discord ID
-
-After doing that, open the terminal and type these commands:
+Rename `.env.example` to `.env`
+After that, replace the text after `TOKEN=` with your bot's token, and replace the text after `OWNER=` with your Discord ID.
+Finally, open the terminal and type these commands:
 
 ```bash
 npm i
