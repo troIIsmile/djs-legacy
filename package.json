@@ -8,6 +8,9 @@
     "build": "tsc",
     "start": "node ."
   },
+  "engines": {
+    "node": ">=7"
+  },
   "author": "Jack5079",
   "license": "ISC",
   "dependencies": {
