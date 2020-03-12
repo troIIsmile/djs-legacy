@@ -1,7 +1,8 @@
 import { Bot, Message, Command } from 'jackbot-discord'
+import hasOwner from '../permissions'
 
 async function run (message: Message, args: string[], bot: Bot): Promise<void> {
-  if (message.author.id === process.env.OWNER) {
+  if (hasOwner(message)) {
     // Lets users create a new command within the app
     if (args.length) {
       const name = args[ 0 ] // record the name before we remove it

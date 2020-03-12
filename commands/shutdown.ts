@@ -1,7 +1,8 @@
 import { Bot, Message } from 'jackbot-discord'
+import isBotOwner from '../permissions'
 
 async function command (message: Message, _: string[], bot: Bot) {
-  if (message.author.id === process.env.OWNER) {
+  if (isBotOwner(message)) {
     await message.channel.send('bye!')
     await bot.destroy()
     process.exit(0)
