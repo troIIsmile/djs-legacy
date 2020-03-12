@@ -1,6 +1,16 @@
-# jackbot-next
+<h1 style="text-align: center">
+<pre style="display: inline-block; font-weight: bold; text-align: center;">
+N
+ X
+  T
+</pre>
 
-The flagship JackBot. The reason [`jackbot-discord`](https://npm.im/jackbot-discord) exists.
+NXTBOT
+</h1>
+
+<p style="letter-spacing: 1em; text-align: center;">SEE WHAT'S NXT</p>
+
+The flagship [`jackbot-discord`](https://npm.im/jackbot-discord) bot.
 
 ## How to run
 
