@@ -1,14 +1,14 @@
-<h1 style="text-align: center">
+<div style="text-align: center">
 <pre style="display: inline-block; font-weight: bold; text-align: center;">
 N
  X
   T
 </pre>
+</div>
 
-NXTBOT
-</h1>
+# NXTBOT
 
-<p style="letter-spacing: 1em; text-align: center;">SEE WHAT'S NXT</p>
+*IT'S WHAT'S NXT*
 
 The flagship [`jackbot-discord`](https://npm.im/jackbot-discord) bot.
 
