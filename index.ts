@@ -5,7 +5,8 @@ if (existsSync('./.env')) {
 }
 
 const bot = new Bot({}, {
-  prefix: '-'
+  prefix: '-',
+  allowbots: true
 })
 
 if (!process.env.TOKEN) { // if there's no token
