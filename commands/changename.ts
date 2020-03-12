@@ -1,5 +1,5 @@
 import { Message } from 'jackbot-discord'
-export default (message: Message, args: string[]) => {
+export const run = (message: Message, args: string[]) => {
   if (message.guild) {
     if (!message.guild.me.hasPermission('MANAGE_NICKNAMES')) {
       return message.channel.send(
@@ -12,3 +12,4 @@ export default (message: Message, args: string[]) => {
 }
 
 module.exports.nodm = true
+export const desc = 'Change your nickname.'

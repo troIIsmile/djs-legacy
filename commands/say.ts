@@ -1,6 +1,6 @@
 import { Message } from 'jackbot-discord'
 
-export default (message: Message, args: string[]) => {
+export const run = (message: Message, args: string[]) => {
   if (message.guild && message.guild.me.hasPermission('MANAGE_MESSAGES')) {
     message.channel.send(args.join(' '))
     message.delete(0)
@@ -9,3 +9,4 @@ export default (message: Message, args: string[]) => {
 }
 
 export const nodm = true
+export const desc = 'Deletes your message and says what you said, letting you disguise as the bot.'

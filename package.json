@@ -1,7 +1,7 @@
 {
-  "name": "jackbot-next",
-  "version": "2.2.0",
-  "description": "",
+  "name": "nxtbot",
+  "version": "3.0.0",
+  "description": "IT'S WHAT'S NXT",
   "main": "index.js",
   "scripts": {
     "test": "echo no",

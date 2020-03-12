@@ -20,7 +20,7 @@ function getbal (url: string): Promise<number> {
     }).on("error", reject)
   })
 }
-export default async (message: Message, args: string[]) => {
+export const run = async (message: Message, args: string[]) => {
   try {
     const balance = await getbal('https://dogechain.info/api/v1/address/balance/' + encodeURIComponent(args.join(' ')))
     message.channel.send(new RichEmbed()
@@ -34,3 +34,5 @@ export default async (message: Message, args: string[]) => {
       .setColor(0xFF0000))
   }
 }
+
+export const desc = 'see how much DOGE dogecoin addresses have'

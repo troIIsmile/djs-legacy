@@ -20,7 +20,7 @@ async function readCommandDir (folder: string): Promise<Commands> {
       (await fs.readdir(folder, 'utf-8')) // get the file names of every command in the commands folder
         .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
         .map(filename => filename.replace('.js', '')) // remove `.js` from those
-        .map(async file => [ file, (await import(folder + file)).default ]) // convert filenames to commands
+        .map(async file => [ file, (await import(folder + file)).run ]) // convert filenames to commands
     )
   )
 }

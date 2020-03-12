@@ -12,10 +12,11 @@ function nth (i: number): string {
   return i + "th"
 }
 
-export default (message: Message) => {
+export const run = (message: Message) => {
   if (typeof persist.dogeCount !== 'number') persist.dogeCount = 0
   persist.dogeCount++
   message.channel.send(`le doge has arrived for the ${nth(persist.dogeCount)} time!`, {
     file: 'http://assets.stickpng.com/thumbs/5845e755fb0b0755fa99d7f3.png'
   })
 }
+export const desc = 'wow'

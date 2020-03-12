@@ -1,9 +1,9 @@
 import { Bot, Message } from 'jackbot-discord'
 import { clean } from '../util'
-import hasOwner from '../permissions'
+import { hasPerm } from '../permissions'
 
-async function run (message: Message, args: string[], client: Bot): Promise<void> {
-  if (hasOwner(message)) {
+export async function run (message: Message, args: string[], client: Bot): Promise<void> {
+  if (hasPerm(message)) {
     try {
       const code = args.join(" ")
       const evaled = eval(code)
@@ -14,5 +14,4 @@ async function run (message: Message, args: string[], client: Bot): Promise<void
     }
   } else message.channel.send('You are not the bot owner.')
 }
-
-export default run
+export const desc = 'give it code and it runs it'

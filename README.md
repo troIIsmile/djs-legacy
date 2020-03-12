@@ -12,7 +12,13 @@ N
 
 The flagship [`jackbot-discord`](https://npm.im/jackbot-discord) bot.
 
-## How to run
+## Migrating from everythingbot?
+
+-say is now -tts
+-stats is now -about
+-saybot is now -say
+
+## How to install?
 
 Rename `.env.example` to `.env`
 After that, replace the text after `TOKEN=` with your bot's token, and replace the text after `OWNER=` with your Discord ID.
@@ -20,6 +26,5 @@ Finally, open the terminal and type these commands:
 
 ```bash
 npm i
-npm run-script build
-npm start
+npm run build
 ```
