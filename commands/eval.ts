@@ -1,5 +1,5 @@
 import { Bot, Message } from 'jackbot-discord'
-import { clean } from '../util'
+import clean from "../modules/clean"
 import { hasPerm } from '../permissions'
 
 export async function run (message: Message, args: string[], client: Bot): Promise<void> {

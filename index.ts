@@ -2,7 +2,7 @@ import { Bot, Commands } from 'jackbot-discord'
 import { promises as fs, existsSync } from 'fs'
 import live from './modules/livereload'
 
-if (existsSync('./.env')) require('./modules/loadenv') // Before anything uses it, we must load the .env file (provided it exists, of course)
+if (existsSync('./.env')) require('./loadenv') // Before anything uses it, we must load the .env file (provided it exists, of course)
 
 const bot = new Bot({}, {
   prefix: '-',
