@@ -1,5 +1,5 @@
 import { Bot, Commands } from 'jackbot-discord'
-import { promises as fs, existsSync } from 'fs'
+import { promises as fs, existsSync, watch } from 'fs'
 if (existsSync('./.env')) {
   require('./loadenv')
 }
@@ -28,4 +28,14 @@ async function readCommandDir (folder: string): Promise<Commands> {
 bot.on('ready', () => {
   readCommandDir('./commands/').then(bot.add.bind(bot))
 })
+
+watch('./commands/', {}, async (_: string, filename: string) => {
+  if (filename.endsWith('.js')) {
+    filename = filename.replace('.js', '')
+    delete require.cache[ require.resolve(`./commands/${filename}.js`) ]
+    bot.remove(filename)
+    bot.add(filename, (await import(`./commands/${filename}.js`)).run)
+  }
+})
+
 export default bot
