@@ -20,10 +20,15 @@ export const run = async (message: Message, args: string[]) => {
       url = await tts(args.filter(arg => !arg.startsWith('--')).join(' '), 'en', 1)
     }
     const connection = await channel.join()
-    connection.play(url).on('end', channel.leave.bind(channel))
+    const dispatch = connection.play(url)
+    dispatch.on('end', () => {
+      dispatch.end()
+      channel.leave()
+    })
+
   } catch (e) {
     if (e instanceof RangeError) {
-      message.channel.send('The -tts command only supports up to 200 chars. Blame Google!')
+      message.channel.send('This command only supports up to 200 chars. Blame Google!')
     } else message.channel.send('Error!\nError data:\n' + e)
   }
 }
