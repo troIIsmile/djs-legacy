@@ -33,4 +33,4 @@ export const run = async (message: Message, args: string[]) => {
   }
 }
 
-export const desc = 'goes in your vc and say what you typed. try using --slow'
+export const desc = 'goes in your vc and says what you typed. try using --slow'
