@@ -6,7 +6,7 @@ async function tts (text: string = '', lang: string = 'en', speed: number = 1): 
   return await ttsWithoutTypes(text, lang, speed)
 }
 
-export default async (message: Message, args: string[]) => {
+export const run = async (message: Message, args: string[]) => {
   try {
     if (hasFlag(args, 'slow')) {
       message.channel.send({
@@ -29,3 +29,5 @@ export default async (message: Message, args: string[]) => {
     } else message.channel.send('Error!\nError data:\n' + e)
   }
 }
+
+export const desc = 'gives you an mp3 of what you typed. try using --slow'

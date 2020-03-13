@@ -1,8 +1,8 @@
 import { Bot, Message, Command } from 'jackbot-discord'
-import hasOwner from '../permissions'
+import { hasPerm } from '../permissions'
 
-async function run (message: Message, args: string[], bot: Bot): Promise<void> {
-  if (hasOwner(message)) {
+export async function run (message: Message, args: string[], bot: Bot): Promise<void> {
+  if (hasPerm(message)) {
     // Lets users create a new command within the app
     if (args.length) {
       const name = args[ 0 ] // record the name before we remove it
@@ -13,5 +13,4 @@ async function run (message: Message, args: string[], bot: Bot): Promise<void> {
     } else message.channel.send('Uhh, you forgot the code.')
   } else message.channel.send('You are not the bot owner.')
 }
-
-export default run
+export const desc = 'Adds a command to the bot, until it restarts.'

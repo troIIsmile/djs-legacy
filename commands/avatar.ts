@@ -1,6 +1,6 @@
 import { Message } from 'jackbot-discord'
 
-export default (message: Message) => {
+export const run = (message: Message) => {
   if (!message.mentions.users.size) {
     return message.channel.send({
       files: [ {
@@ -10,8 +10,9 @@ export default (message: Message) => {
     })
   } else return message.channel.send({
     files: [ {
-      attachment: message.mentions.users.first().displayAvatarURL,
+      attachment: message.mentions.users.first()?.displayAvatarURL(),
       name: 'avatar.png'
     } ]
   })
 }
+export const desc = 'Get the avatar of a user.'

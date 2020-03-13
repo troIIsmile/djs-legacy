@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "esnext",
+    "module": "CommonJS",
+    "target": "es2019",
     "forceConsistentCasingInFileNames": true,
     "removeComments": true,
+    "esModuleInterop": true,
     "importHelpers": true,
     "strict": true,
     "newLine": "lf",

@@ -1,7 +1,7 @@
 {
-  "name": "jackbot-next",
-  "version": "2.2.0",
-  "description": "",
+  "name": "nxtbot",
+  "version": "3.0.0",
+  "description": "IT'S WHAT'S NXT",
   "main": "index.js",
   "scripts": {
     "test": "echo no",
@@ -9,18 +9,21 @@
     "start": "node ."
   },
   "engines": {
-    "node": ">=7"
+    "node": ">=12"
   },
   "author": "Jack5079",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.5.1",
+    "@discordjs/opus": "^0.1.0",
+    "discord.js": "^12.0.2",
     "google-tts-api": "0.0.4",
-    "jackbot-discord": "^11.0.0",
-    "tslib": "^1.10.0"
+    "jackbot-discord": "^12.0.0",
+    "tslib": "^1.10.0",
+    "ytdl-core": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^13.7.1",
+    "@types/ws": "^7.2.2",
     "typescript": "^3.8.3"
   }
 }
