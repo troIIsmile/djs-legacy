@@ -29,12 +29,21 @@ bot.on('ready', () => {
   readCommandDir('./commands/').then(bot.add.bind(bot))
 })
 
-watch('./commands/', {}, async (_: string, filename: string) => {
+watch('./commands/', {}, async (type: string, filename: string) => {
   if (filename.endsWith('.js')) {
-    filename = filename.replace('.js', '')
-    delete require.cache[ require.resolve(`./commands/${filename}.js`) ]
-    bot.remove(filename)
-    bot.add(filename, (await import(`./commands/${filename}.js`)).run)
+    if (type === 'change') {
+      filename = filename.replace('.js', '')
+      delete require.cache[ require.resolve(`./commands/${filename}.js`) ]
+      bot.remove(filename)
+      bot.add(filename, (await import(`./commands/${filename}.js`)).run)
+    } else {
+      if (existsSync('./commands/${filename}') && filename.endsWith('.js')) {
+        bot.add(filename.replace('.js', ''), (await import(`./commands/${filename}`)).run)
+      } else if (filename.endsWith('.js')) {
+        filename = filename.replace('.js', '')
+        bot.remove(filename)
+      }
+    }
   }
 })
 
