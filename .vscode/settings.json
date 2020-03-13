@@ -4,5 +4,6 @@
       "when": "$(basename).ts"
     }
   },
-  "liveServer.settings.showOnStatusbar": false
+"liveServer.settings.showOnStatusbar": false,
+"typescript.tsdk": "node_modules/typescript/lib"
 }
