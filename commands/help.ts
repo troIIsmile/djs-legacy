@@ -5,6 +5,7 @@ interface Describe {
 }
 
 export async function run (message: Message, _: string[], bot: Bot) {
+  try {
   const descriptions: Describe = Object.fromEntries(
     await Promise.all(
       Object.keys(bot.commands)
@@ -17,6 +18,9 @@ export async function run (message: Message, _: string[], bot: Bot) {
       .join('\n') // string seperated by newline
     ,
     { code: '' })
+    } catch {
+      message.channel.send('something went wrong')
+    }
 }
 
 export const desc = 'what the fuck are you using right now'

@@ -15,8 +15,11 @@ The flagship [`jackbot-discord`](https://npm.im/jackbot-discord) bot.
 ## Migrating from everythingbot?
 
 -say is now -tts
+
 -stats is now -about
+
 -saybot is now -say
+
 -sayvc is now -ttsvc
 
 ## How to install?
