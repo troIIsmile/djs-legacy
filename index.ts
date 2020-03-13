@@ -1,5 +1,7 @@
 import { Bot, Commands } from 'jackbot-discord'
-import { promises as fs, existsSync, watch } from 'fs'
+import { promises as fs, existsSync } from 'fs'
+import live from './modules/live'
+
 if (existsSync('./.env')) {
   require('./loadenv')
 }
@@ -14,7 +16,7 @@ if (!process.env.TOKEN) { // if there's no token
   process.exit(1)
 } else bot.login(process.env.TOKEN) // login using the token from .env
 
-async function readCommandDir(folder: string): Promise<Commands> {
+async function readCommandDir (folder: string): Promise<Commands> {
   return Object.fromEntries( // Object.fromEntries does this: [ ['hello', 2] ] -> { hello: 2 }
     await Promise.all(
       (await fs.readdir(folder)) // get the file names of every command in the commands folder
@@ -29,22 +31,5 @@ bot.on('ready', () => {
   readCommandDir('./commands/').then(bot.add.bind(bot))
 })
 
-watch('./commands/', {}, async (type: string, filename: string) => {
-  if (filename.endsWith('.js')) {
-    if (type === 'change') {
-      filename = filename.replace('.js', '')
-      delete require.cache[require.resolve(`./commands/${filename}.js`)]
-      bot.remove(filename)
-      bot.add(filename, (await import(`./commands/${filename}.js`)).run)
-    } else {
-      if (existsSync('./commands/${filename}') && filename.endsWith('.js')) {
-        bot.add(filename.replace('.js', ''), (await import(`./commands/${filename}`)).run)
-      } else if (filename.endsWith('.js')) {
-        filename = filename.replace('.js', '')
-        bot.remove(filename)
-      }
-    }
-  }
-})
-
+live(bot, '../commands')
 export default bot
