@@ -5,7 +5,7 @@ export default (bot: Bot, folder: string) => watch('./commands/', {}, async (typ
   if (filename.endsWith('.js')) {
     if (type === 'change') {
       filename = filename.replace('.js', '')
-      delete require.cache[ require.resolve(`${folder}/${filename}.js`) ]
+      delete require.cache[require.resolve(`${folder}/${filename}.js`)]
       bot.remove(filename)
       bot.add(filename, (await import(`${folder}/${filename}.js`)).run)
     } else {
