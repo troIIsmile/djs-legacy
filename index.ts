@@ -17,7 +17,7 @@ if (!process.env.TOKEN) { // if there's no token
 async function readCommandDir (folder: string): Promise<Commands> {
   return Object.fromEntries( // Object.fromEntries does this: [ ['hello', 2] ] -> { hello: 2 }
     await Promise.all(
-      (await fs.readdir(folder, 'utf-8')) // get the file names of every command in the commands folder
+      (await fs.readdir(folder)) // get the file names of every command in the commands folder
         .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
         .map(filename => filename.replace('.js', '')) // remove `.js` from those
         .map(async file => [ file, (await import(folder + file)).run ]) // convert filenames to commands
