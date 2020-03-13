@@ -17,7 +17,7 @@ export const run = (message: Message, _: string[], bot: Bot) => {
   message.channel.send(`
   // How long the bot has been on for
   Uptime: ${formatted}
-  Server count: ${bot.guilds.size}
+  Server count: ${bot.guilds.cache.size}
   // Put more stats, please! -Jack
   `.split('\n')
     .map(line => line.trim()) // Remove whitespace

@@ -1,4 +1,4 @@
-import { RichEmbed } from 'discord.js'
+import { MessageEmbed as RichEmbed } from 'discord.js'
 import { Message } from 'jackbot-discord'
 import { get } from 'https'
 

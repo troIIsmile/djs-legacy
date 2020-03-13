@@ -9,10 +9,10 @@ const checks: Perms = {
     return message.author.id === process.env.OWNER
   },
   serverOwner (message) {
-    return message.guild.ownerID === message.author.id
+    return message.guild?.ownerID === message.author.id || false
   },
   serverAdmin (message) {
-    return message.member.hasPermission('ADMINISTRATOR')
+    return message.member?.hasPermission('ADMINISTRATOR') || false
   }
 }
 

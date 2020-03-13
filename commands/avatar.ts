@@ -10,7 +10,7 @@ export const run = (message: Message) => {
     })
   } else return message.channel.send({
     files: [ {
-      attachment: message.mentions.users.first().displayAvatarURL,
+      attachment: message.mentions.users.first()?.displayAvatarURL(),
       name: 'avatar.png'
     } ]
   })
