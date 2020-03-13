@@ -18,7 +18,8 @@
     "discord.js": "^12.0.2",
     "google-tts-api": "0.0.4",
     "jackbot-discord": "^12.0.0",
-    "tslib": "^1.10.0"
+    "tslib": "^1.10.0",
+    "ytdl-core": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^13.7.1",
