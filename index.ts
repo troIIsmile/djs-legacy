@@ -14,13 +14,13 @@ if (!process.env.TOKEN) { // if there's no token
   process.exit(1)
 } else bot.login(process.env.TOKEN) // login using the token from .env
 
-async function readCommandDir (folder: string): Promise<Commands> {
+async function readCommandDir(folder: string): Promise<Commands> {
   return Object.fromEntries( // Object.fromEntries does this: [ ['hello', 2] ] -> { hello: 2 }
     await Promise.all(
       (await fs.readdir(folder)) // get the file names of every command in the commands folder
         .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
         .map(filename => filename.replace('.js', '')) // remove `.js` from those
-        .map(async file => [ file, (await import(folder + file)).run ]) // convert filenames to commands
+        .map(async file => [file, (await import(folder + file)).run]) // convert filenames to commands
     )
   )
 }
@@ -33,7 +33,7 @@ watch('./commands/', {}, async (type: string, filename: string) => {
   if (filename.endsWith('.js')) {
     if (type === 'change') {
       filename = filename.replace('.js', '')
-      delete require.cache[ require.resolve(`./commands/${filename}.js`) ]
+      delete require.cache[require.resolve(`./commands/${filename}.js`)]
       bot.remove(filename)
       bot.add(filename, (await import(`./commands/${filename}.js`)).run)
     } else {
