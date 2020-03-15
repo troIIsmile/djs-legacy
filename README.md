@@ -1,11 +1,3 @@
-<div style="text-align: center">
-<pre style="display: inline-block; font-weight: bold; text-align: center;">
-N
- X
-  T
-</pre>
-</div>
-
 # NXTBOT
 
 *IT'S WHAT'S NXT*
