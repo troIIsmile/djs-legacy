@@ -30,4 +30,17 @@ bot.on('ready', () => {
 })
 
 live(bot, '../commands')
+
+const http = require("http");
+const express = require("express");
+const app = express();
+var path = require("path");
+
+
+app.use(express.static('views'));
+app.listen(process.env.PORT);
+
+setInterval(() => {
+  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
+}, 280000);
 export default bot

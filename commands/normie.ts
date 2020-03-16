@@ -1,4 +1,4 @@
-import { Message } from 'jackbot-discord'
+import { Message, Bot } from 'jackbot-discord'
 import ytdl from 'ytdl-core'
 export async function run (message: Message) {
   if (message.guild) {
