@@ -15,10 +15,7 @@ export const run = async (message: Message, args: string[]) => {
     let url: string
     if (hasFlag(args, 'slow')) {
       url = await tts(args.filter(arg => !arg.startsWith('--')).join(' '), 'en', 0.27)
-
-    } else {
-      url = await tts(args.filter(arg => !arg.startsWith('--')).join(' '), 'en', 1)
-    }
+    } else url = await tts(args.filter(arg => !arg.startsWith('--')).join(' '), 'en', 1)
     const connection = await channel.join()
     const dispatch = connection.play(url)
     dispatch.on('end', () => {

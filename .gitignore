@@ -1,8 +1,4 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-lerna-debug.log*
+.glitch-assets 
 
 # Dependency directories
 node_modules/
