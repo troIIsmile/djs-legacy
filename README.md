@@ -1,6 +1,6 @@
 # NXTBOT
 
-*IT'S WHAT'S NXT*
+_IT'S WHAT'S NXT_
 
 The flagship [`jackbot-discord`](https://npm.im/jackbot-discord) bot.
 
@@ -19,7 +19,9 @@ The flagship [`jackbot-discord`](https://npm.im/jackbot-discord) bot.
 this requires ffmpeg btw lol
 
 Rename `.env.example` to `.env`
+
 After that, replace the text after `TOKEN=` with your bot's token, and replace the text after `OWNER=` with your Discord ID.
+
 Finally, open the terminal and type these commands:
 
 ```bash
