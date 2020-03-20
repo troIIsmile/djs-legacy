@@ -1,0 +1,18 @@
+commands:
+  - commands/**/*
+
+modules:
+  - modules/**/*
+  - util.ts
+
+config:
+  - .vscode/**/*
+  - package.json
+  - .editorconfig
+  - .gitignore
+  - tsconfig.json
+  - watch.json
+
+core:
+  - index.ts
+  - loadenv.ts
