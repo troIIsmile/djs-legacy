@@ -1,10 +1,10 @@
 import { MessageEmbed as RichEmbed } from 'discord.js'
 import { Message } from 'jackbot-discord'
 
-import fetch from '../modules/fetch'
+import fetch from 'node-fetch'
 
 export const run = async (message: Message, args: string[]) => {
-  if (isNaN(args[0])) return message.channel.send(
+  if (isNaN(parseInt(args[0]))) return message.channel.send(
     new RichEmbed()
       .setAuthor('XKCD', 'https://pbs.twimg.com/profile_images/413359024617185280/pS8lVAWA_400x400.png')
       .addField('Error', 'That isn\'t a number!', true)
@@ -12,7 +12,7 @@ export const run = async (message: Message, args: string[]) => {
   )
   try {
     const url = args.length > 0 && args[0].match(/^\d+$/) ? `https://xkcd.com/${args[0]}/info.0.json` : "https://xkcd.com/info.0.json";
-    const data = await fetch(url)
+    const data = await (await fetch(url)).json()
     message.channel.send(
       new RichEmbed()
         .setTitle(data.safe_title)
