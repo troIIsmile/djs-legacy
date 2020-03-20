@@ -1,7 +1,7 @@
 import { Bot, Commands } from 'jackbot-discord'
 import { promises as fs, existsSync } from 'fs'
 import live from './modules/livereload'
-import * as http from 'http'
+import { IncomingMessage, ServerResponse, createServer } from 'http'
 if (existsSync('./.env')) require('./loadenv') // Before anything uses it, we must load the .env file (provided it exists, of course)
 
 const bot = new Bot({}, {
@@ -32,9 +32,9 @@ bot.on('ready', () => {
 live(bot, '../commands')
 
 if (process.env.PORT && process.env.PROJECT_DOMAIN) { // Running on glitch
-  http.createServer(function (_: http.IncomingMessage, res: http.ServerResponse) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.write('this is nxt');
+  createServer(function (_: IncomingMessage, res: ServerResponse) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write('<a href="https://github.com/Jack5079/nxtbot">this is nxt</a>');
     res.end();
   }).listen(process.env.PORT);
 }
