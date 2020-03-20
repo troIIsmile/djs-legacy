@@ -6,7 +6,7 @@ if (existsSync('./.env')) require('./loadenv') // Before anything uses it, we mu
 
 const bot = new Bot({}, {
   prefix: '-',
-  allowbots: true
+  allowbots: false
 })
 
 if (!process.env.TOKEN) { // if there's no token

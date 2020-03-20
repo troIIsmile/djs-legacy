@@ -1,28 +1,11 @@
 import { MessageEmbed as RichEmbed } from 'discord.js'
 import { Message } from 'jackbot-discord'
-import { get } from 'https'
 
-function getbal (url: string): Promise<number> {
-  return new Promise((resolve, reject) => {
-    get(url, (resp) => {
-      let data = ''
+import fetch from '../modules/fetch'
 
-      // A chunk of data has been recieved.
-      resp.on('data', (chunk) => {
-        data += chunk
-      })
-
-      // The whole response has been received. Print out the result.
-      resp.on('end', () => {
-        resolve(JSON.parse(data).balance)
-      })
-
-    }).on("error", reject)
-  })
-}
 export const run = async (message: Message, args: string[]) => {
   try {
-    const balance = await getbal('https://dogechain.info/api/v1/address/balance/' + encodeURIComponent(args.join(' ')))
+    const balance = await fetch('https://dogechain.info/api/v1/address/balance/' + encodeURIComponent(args.join(' '))).balance
     message.channel.send(new RichEmbed()
       .setAuthor('Dogechain', 'https://dogechain.info/favicon.png')
       .addField('Balance', balance + ' DOGE', true)
