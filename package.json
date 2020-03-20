@@ -20,8 +20,7 @@
     "jackbot-discord": "^12.0.0",
     "tslib": "^1.10.0",
     "ytdl-core": "^2.0.0",
-    "node-fetch": "^2.6.0",
-    "form-data": "^3.0.0"
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "@types/node": "^13.7.1",
