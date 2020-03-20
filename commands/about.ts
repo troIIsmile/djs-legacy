@@ -18,7 +18,8 @@ export const run = (message: Message, _: string[], bot: Bot) => {
   // How long the bot has been on for
   Uptime: ${formatted}
   Server count: ${bot.guilds.cache.size}
-  // Put more stats, please! -Jack
+  // Put more stats, please! -Jack5079
+  Command count: ${Math.round(require('fs').readdirSync('.').length / 2)}
   `.split('\n')
     .map(line => line.trim()) // Remove whitespace
     .filter(Boolean) // Remove empty lines

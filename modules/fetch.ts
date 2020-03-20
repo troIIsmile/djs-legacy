@@ -1,7 +1,11 @@
 import { get } from 'https'
 export default function (url: string): unknown {
   return new Promise((resolve, reject) => {
-    get(url, (resp) => {
+    get(url, {
+      headers: {
+        'User-Agent': 'NXTBOT - github.com/Jack5079/nxtbot'
+      }
+    },(resp) => {
       let data = ''
 
       // A chunk of data has been recieved.
