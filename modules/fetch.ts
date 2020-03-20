@@ -11,7 +11,12 @@ export default function (url: string): unknown {
 
       // The whole response has been received. Print out the result.
       resp.on('end', () => {
-        resolve(JSON.parse(data))
+        try {
+          const result = JSON.parse(data)
+          resolve(result)
+        } catch (e) {
+          reject(e)
+        }
       })
 
     }).on("error", reject)
