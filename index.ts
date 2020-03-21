@@ -1,8 +1,19 @@
 import { Bot, Commands } from 'jackbot-discord'
-import { promises as fs, existsSync } from 'fs'
+import { promises as fs, existsSync, readFileSync as read } from 'fs'
 import live from './utils/livereload'
 import { IncomingMessage, ServerResponse, createServer } from 'http'
-if (existsSync('./.env')) require('./loadenv') // Before anything uses it, we must load the .env file (provided it exists, of course)
+if (existsSync('./.env')) { // Before anything uses it, we must load the .env file (provided it exists, of course)
+  process.env = {
+    ...process.env,
+    ...Object.fromEntries(
+      read('./.env', 'utf-8')
+        .split('\n') // split the file into lines
+        .filter(line => !line.startsWith('#')) // remove comments
+        .filter(Boolean) // remove spacing
+        .map(line => line.split('=')) // split the lines into key:value pairs
+    )
+  }
+}
 
 const bot = new Bot({}, {
   prefix: '-',
