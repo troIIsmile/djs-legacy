@@ -1,6 +1,7 @@
 import { Bot, Message } from 'jackbot-discord'
 import getGames from 'nintendo-switch-eshop'
 export async function run (message: Message, args: string[]): Promise<void> {
+  message.channel.startTyping()
   const {
     msrp: price,
     img: thumbnail,
@@ -16,7 +17,7 @@ export async function run (message: Message, args: string[]): Promise<void> {
     players
   } = (await getGames()).find(e=>e.title.toLowerCase().includes(args.join(' ').toLowerCase()))
   if (title) {
-     message.channel.send({
+     await message.channel.send({
        embed: {
          image: 'https://nintendo.com' + thumbnail,
          title,
@@ -51,7 +52,7 @@ export async function run (message: Message, args: string[]): Promise<void> {
        }
     })
   } else {
-    message.channel.send({
+    await message.channel.send({
         embed: {
           author: {
             name: 'Error'
@@ -61,6 +62,7 @@ export async function run (message: Message, args: string[]): Promise<void> {
         }
     })
   }
+  message.channel.stopTyping()
 }
 
 export const desc = 'you will buy these thi'
