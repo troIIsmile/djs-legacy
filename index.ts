@@ -32,6 +32,7 @@ bot.on('ready', () => {
 live(bot, '../commands')
 
 if (process.env.PORT && process.env.PROJECT_DOMAIN) { // Running on glitch
+  console.log('[PROD] Starting web server on', process.env.PROJECT_DOMAIN, 'with port', process.env.PORT)
   createServer(function (_: IncomingMessage, res: ServerResponse) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write('<a href="https://github.com/Jack5079/nxtbot">this is nxt</a>');

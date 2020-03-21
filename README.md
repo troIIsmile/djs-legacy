@@ -1,6 +1,6 @@
 # NXTBOT
 
-_IT'S WHAT'S NXT_
+_THIS IS NXT_
 
 The flagship [`jackbot-discord`](https://npm.im/jackbot-discord) bot.
 
