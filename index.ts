@@ -1,6 +1,6 @@
 import { Bot, Commands } from 'jackbot-discord'
 import { promises as fs, existsSync } from 'fs'
-import live from './modules/livereload'
+import live from './utils/livereload'
 import { IncomingMessage, ServerResponse, createServer } from 'http'
 if (existsSync('./.env')) require('./loadenv') // Before anything uses it, we must load the .env file (provided it exists, of course)
 

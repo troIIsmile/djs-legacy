@@ -1,5 +1,5 @@
 import { Message } from 'jackbot-discord'
-import { permList } from '../permissions'
+import { permList } from '../utils/permissions'
 
 export const run = (message: Message) => {
   const input = permList(message)
