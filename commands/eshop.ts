@@ -1,7 +1,20 @@
 import { Bot, Message } from 'jackbot-discord'
 import getGames from 'nintendo-switch-eshop'
 export async function run (message: Message, args: string[]): Promise<void> {
-  const {title, msrp: price, img: thumbnail, characters, categories, developers, url, lastModified: timestamp, esrb, esrbDescriptors, description, players} = (await getGames()).find(e=>e.title.toLowerCase().includes(args.join(' ').toLowerCase()))
+  const {
+    msrp: price,
+    img: thumbnail,
+    lastModified: timestamp,
+    title,
+    characters,
+    categories,
+    developers,
+    url,
+    esrb,
+    esrbDescriptors,
+    description,
+    players
+  } = (await getGames()).find(e=>e.title.toLowerCase().includes(args.join(' ').toLowerCase()))
   if (title) {
      message.channel.send({
        embed: {
@@ -16,19 +29,24 @@ export async function run (message: Message, args: string[]): Promise<void> {
          color: 0x6E6E6E,
          fields: [{
            name: 'Price',
-           value: ('$' + price) || '???'
+           value: ('$' + price) || '???',
+           inline: true,
          }, {
            name: 'Players',
-           value: players || '???'
+           value: players || '???',
+           inline: true,
          }, {
            name: 'Categories',
-           value: categories.join(', ') || '???'
+           value: categories.join(', ') || '???',
+           inline: true
          }, {
            name: 'Characters',
-           value: characters.join(', ') || '???'
+           value: characters.join(', ') || '???',
+           inline: true
          }, {
            name: 'Rating',
-           value: `${esrb} (${esrbDescriptors.join(', ')})`
+           value: `${esrb} (${esrbDescriptors.join(', ')})`,
+           inline: true
          }]
        }
     })
