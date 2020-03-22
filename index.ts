@@ -41,12 +41,16 @@ async function readCommandDir (folder: string): Promise<Commands> {
 bot.on('ready', () => {
   readCommandDir('./commands/').then(bot.add.bind(bot))
   // I'm sorry, @TheEssem
-  fetch('https://raw.githubusercontent.com/TheEssem/esmBot/master/messages.json').then(res=>res.json()).then(messages=>{
-    bot.user.setActivity(messages[Math.floor(Math.random()*messages.length)]);
-    setInterval(()=>{
+  // this code adds the funny playing
+  fetch('https://raw.githubusercontent.com/TheEssem/esmBot/master/messages.json')
+    .then(res=>res.json())
+    .then(list=>list.filter(line=>!line.includes('esmBot'))) // remove "follow @esmBot_ on Twitter"
+    .then(messages=>{
       bot.user.setActivity(messages[Math.floor(Math.random()*messages.length)]);
-    }, 60000)
-  })
+      setInterval(()=>{
+        bot.user.setActivity(messages[Math.floor(Math.random()*messages.length)]);
+      }, 60000)
+    })
 })
 
 live(bot, '../commands')
