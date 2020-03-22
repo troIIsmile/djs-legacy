@@ -6,6 +6,7 @@ export const run = async (message: Message, args: string[]) => {
   if (args[0] && isNaN(parseInt(args[0]))) return message.channel.send(
     message.channel.send({
           embed: {
+            type: 'image',
             author: {
               name: 'xkcd',
               url: 'https://xkcd.com',

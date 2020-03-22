@@ -1,7 +1,7 @@
 import {Message} from 'jackbot-discord'
 
 export function run (message: Message, args: string[]) {
-  if (args.join('').length === 0) return message.channel.send(`${message.author}, give me text to convert to fullwidth!`)
+  if (args.join('').length === 0) return message.reply('give me text to convert to fullwidth!')
   message.channel.send(
     args
       .join('')

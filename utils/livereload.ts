@@ -9,9 +9,9 @@ export default (bot: Bot, folder: string) => watch('./commands/', {}, async (typ
       bot.remove(filename)
       bot.add(filename, (await import(`${folder}/${filename}.js`)).run)
     } else {
-      if (existsSync(`${folder}/${filename}`) && filename.endsWith('.js')) {
+      if (existsSync(`${folder}/${filename}`)) {
         bot.add(filename.replace('.js', ''), (await import(`${folder}/${filename}`)).run)
-      } else if (filename.endsWith('.js')) {
+      } else {
         filename = filename.replace('.js', '')
         bot.remove(filename)
       }

@@ -5,15 +5,15 @@ _THIS IS NXT_
 The flagship [`jackbot-discord`](https://npm.im/jackbot-discord) bot.
 
 
-## Migrating from everythingbot?
+## Migrating from everythingbot/jackbot?
 
--say is now -tts
+-say → -tts
 
--stats is now -about
+-stats → -about
 
--saybot is now -say
+-saybot → -say
 
--sayvc is now -ttsvc
+-sayvc → -ttsvc
 
 ## How to install?
 
