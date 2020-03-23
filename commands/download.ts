@@ -1,6 +1,6 @@
 import {Message} from 'jackbot-discord'
 
-export async function run (message: Message, args: string[]) {
+export const run = async (message: Message, args: string[]) => {
   try {
     await message.channel.send({
       files: [{
@@ -9,7 +9,7 @@ export async function run (message: Message, args: string[]) {
       }]
     }) 
   } catch (e) {
-    if (e.toString() == 'DiscordAPIError: Request entity too large') return message.channel.send('video is too big to send')
+    if (e.toString() == 'DiscordAPIError: Request entity too large') return 'video is too big to send'
     message.channel.send(e.toString())
   }
 }

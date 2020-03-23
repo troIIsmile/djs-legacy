@@ -6,7 +6,7 @@ async function command (message: Message, _: string[], bot: Bot) {
     await message.channel.send('bye!')
     bot.destroy()
     process.exit(0)
-  } else message.channel.send('you are not the bot owner')
+  } else return 'you are not the bot owner'
 }
 export const desc = 'Turns off the bot.'
 export const run = command

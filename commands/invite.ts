@@ -1,5 +1,3 @@
-import {Message, Bot} from 'jackbot-discord'
-export const run = async (message: Message, args: string[], client: Bot) => {
-  message.channel.send(await client.generateInvite(['ADMINISTRATOR']))
-}
+import {Bot} from 'jackbot-discord'
+export const run = (_: void, __: void, client: Bot) => client.generateInvite(['ADMINISTRATOR'])
 export const desc = 'add me to your server'

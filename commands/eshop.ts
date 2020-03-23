@@ -1,6 +1,6 @@
 import { Bot, Message } from 'jackbot-discord'
 import getGames from 'nintendo-switch-eshop'
-export async function run (message: Message, args: string[]): Promise<void> {
+export async function run (message: Message, args: string[]) {
   message.channel.startTyping()
   try {
   const {
@@ -53,7 +53,7 @@ export async function run (message: Message, args: string[]): Promise<void> {
        }
     })
   } else {
-    await message.channel.send({
+    return {
         embed: {
           author: {
             name: 'Error',
@@ -62,10 +62,10 @@ export async function run (message: Message, args: string[]): Promise<void> {
           description: 'Couldn\'t find your game!',
           color: 0xFF0000
         }
-    })
+    }
   }
   } catch (e) {
-    await message.channel.send({
+    return {
         embed: {
           author: {
             name: 'Error',
@@ -74,7 +74,7 @@ export async function run (message: Message, args: string[]): Promise<void> {
           description: 'Couldn\'t find your game!',
           color: 0xFF0000
         }
-    })
+    }
   }
   message.channel.stopTyping()
 }

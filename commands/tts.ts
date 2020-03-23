@@ -9,24 +9,24 @@ async function tts (text: string = '', lang: string = 'en', speed: number = 1): 
 export const run = async (message: Message, args: string[]) => {
   try {
     if (hasFlag(args, 'slow')) {
-      message.channel.send({
+      return {
         files: [ {
           attachment: await tts(args.filter(arg => !arg.startsWith('--')).join(' '), 'en', 0.27),
           name: 'sound.mp3'
         } ]
-      })
+      }
     } else {
-      message.channel.send({
+      return {
         files: [ {
           attachment: await tts(args.filter(arg => !arg.startsWith('--')).join(' '), 'en', 1),
           name: 'sound.mp3'
         } ]
-      })
+      }
     }
   } catch (e) {
     if (e instanceof RangeError) {
-      message.channel.send('The -tts command only supports up to 200 chars. Blame Google!')
-    } else message.channel.send('Error!\nError data:\n' + e)
+      return 'The -tts command only supports up to 200 chars. Blame Google!'
+    } else return 'Error!\nError data:\n' + e
   }
 }
 

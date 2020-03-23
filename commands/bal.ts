@@ -1,11 +1,9 @@
-import { Message } from 'jackbot-discord'
-
 import fetch from 'node-fetch'
 
-export const run = async (message: Message, args: string[]) => {
+export const run = async (_: void, args: string[]) => {
   try {
     const {balance} = await (await fetch('https://dogechain.info/api/v1/address/balance/' + encodeURIComponent(args.join(' ')))).json()
-    message.channel.send({
+    return {
       embed: {
         author: {
           name: 'Dogechain',
@@ -19,9 +17,9 @@ export const run = async (message: Message, args: string[]) => {
           inline: true
         }]
       }
-    })
+    }
   } catch (error) {
-    message.channel.send({
+    return {
       embed: {
         author: {
           name: 'Dogechain',
@@ -31,7 +29,7 @@ export const run = async (message: Message, args: string[]) => {
         description: 'Error! \n' + error,
         color: 0xFF0000
       }
-    })
+    }
   }
 }
 

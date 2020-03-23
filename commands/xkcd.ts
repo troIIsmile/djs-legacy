@@ -3,8 +3,7 @@ import { Message } from 'jackbot-discord'
 import fetch from 'node-fetch'
 
 export const run = async (message: Message, args: string[]) => {
-  if (args[0] && isNaN(parseInt(args[0]))) return message.channel.send(
-    message.channel.send({
+  if (args[0] && isNaN(parseInt(args[0]))) return {
           embed: {
             type: 'image',
             author: {
@@ -15,12 +14,11 @@ export const run = async (message: Message, args: string[]) => {
             color: 0xFF0000,
             description: 'That isn\'t a number.'
           }
-      })
-  )
+  }
   try {
     const url = args.length > 0 && args[0].match(/^\d+$/) ? `https://xkcd.com/${args[0]}/info.0.json` : "https://xkcd.com/info.0.json";
     const {year, month, day, alt: description, img, num, safe_title: title} = await (await fetch(url)).json()
-    message.channel.send({
+    return {
       embed: {
         title,
         timestamp: `${year}-${month}-${day}`,
@@ -36,9 +34,9 @@ export const run = async (message: Message, args: string[]) => {
         url: `https://xkcd.com/${num}`,
         color: 0x6E6E6E
       }
-    })
+    }
   } catch (error) {
-      message.channel.send({
+      return {
         embed: {
           author: {
             name: 'xkcd',
@@ -48,7 +46,7 @@ export const run = async (message: Message, args: string[]) => {
           color: 0xFF0000,
           description: error.toString()
         }
-    })
+    }
 }
 }
 

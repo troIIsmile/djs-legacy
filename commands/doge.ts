@@ -16,10 +16,10 @@ function nth (i: number): string {
 export async function run (message: Message) {
   if (typeof persist.dogeCount !== 'number') persist.dogeCount = 0
   persist.dogeCount++
-  message.channel.send({
+  return {
     file: 'http://assets.stickpng.com/thumbs/5845e755fb0b0755fa99d7f3.png',
     content: `le doge has arrived for the ${nth(persist.dogeCount)} time!`
-  })
+  }
   if (message.member?.voice.channel) {
     const channel = message.member.voice.channel
     const stream = ytdl('https://www.youtube.com/watch?v=sd4bqmP_460', { filter: 'audioonly' })

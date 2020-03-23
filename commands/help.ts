@@ -12,14 +12,14 @@ export async function run(message: Message, _: string[], bot: Bot) {
           .map(async id => [id, (await import(`./${id}`)).desc])
       )
     )
-    message.channel.send(
-      Object.keys(bot.commands) // list of command names
+    return {
+      content:  Object.keys(bot.commands) // list of command names
         .map(name => `-${name} :: ${descriptions[name]}`) // add "-" to the start
-        .join('\n') // string seperated by newline
-      ,
-      { code: '' })
+        .join('\n'), // string seperated by newline
+      code: true
+    }
   } catch {
-    message.channel.send('something went wrong')
+    return 'something went wrong'
   }
 }
 
