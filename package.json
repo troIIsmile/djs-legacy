@@ -1,6 +1,6 @@
 {
   "name": "nxtbot",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "THIS IS NXT",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,9 @@
   },
   "engines": {
     "node": ">=12"
+  },
+  "links": {
+    "repository": "github:Jack5079/nxtbot"
   },
   "author": "Jack5079",
   "license": "ISC",

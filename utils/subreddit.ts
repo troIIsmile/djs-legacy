@@ -2,8 +2,7 @@ import {Message} from 'jackbot-discord'
 import fetch from 'node-fetch'
 interface Options {
   name: string,
-  color: number,
-  iconURL: string
+  color: number
 }
 
 interface Post {
@@ -24,8 +23,14 @@ interface Subreddit {
 export default function (options: Options) {
   return async (message: Message) => {
     message.channel.startTyping()
-    const {title, author, created, url, permalink, ups} = (await (await fetch(`https://www.reddit.com/r/${options.name}.json`)).json()).data.children.find((post: Post)=>post.data.url.startsWith('https://i.redd.it')).data
-    await message.channel.send({
+    const posts = (await fetch(`https://www.reddit.com/r/${options.name}.json`) // fetch the sub
+                   .then(res=>res.json())) // turn it into data we can read
+                   .data.children // array of posts
+                   .filter((post: Post)=>post.data.url.startsWith('https://i.redd.it')) // only images
+    const {data: {community_icon: iconURL}} = await fetch(`https://www.reddit.com/r/${options.name}/about.json`).then(res=>res.json())
+    const {data: {title, author, created, url, permalink, ups}} = posts[Math.floor(Math.random() * posts.length)] // random post
+    message.channel.stopTyping()
+    return {
       embed: {
         timestamp: created * 1000,
         url: 'https://reddit.com' + permalink,
@@ -36,7 +41,7 @@ export default function (options: Options) {
         title,
         footer: {
           text: 'r/' + options.name,
-          iconURL: options.iconURL
+          iconURL
         },
         image: {
           url
@@ -47,7 +52,6 @@ export default function (options: Options) {
         }],
         color: options.color
       }
-    })
-    message.channel.stopTyping()
+    }
   }   
 }

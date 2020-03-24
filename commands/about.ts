@@ -12,27 +12,39 @@ export const run = (message: Message, _: string[], bot: Bot) => {
   // 42
   const seconds = Math.floor(timestamp % 60)
 
-  const formatted = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0')
-
-  return {
-    content: `
-  NXTBOT by Jack#9701
+  const formatted = `${hours} hour(s), ${minutes} minute(s), and ${seconds} second(s).`
   
-  "Playing" statuses stolen from esmBot
-  The text -> fullwidth converter code stolen from esmBot
-  The *idea* for the qrcreate and xkcd commands stolen from esmBot
-  I got the *idea* for fake___ commands from the whiskers bot (whiskers only has fakeperson)
-  // How long the bot has been on for
-  Uptime: ${formatted}
-  Server count: ${bot.guilds.cache.size}
-  // Put more stats, please! -Jack5079
-  Command count: ${Math.round(require('fs').readdirSync('.').length / 2)}
-  `.split('\n')
-    .map(line => line.trim()) // Remove whitespace
-    .filter(Boolean) // Remove empty lines
-    .filter(line => !line.startsWith('//')) // Remove comments
-    .join('\n'),
-    code: true
+  return {
+    embed: {
+      author: {
+        name: 'NXTBOT Info',
+        iconURL: bot.user.displayAvatarURL()
+      },
+      color: 0x454545,
+      fields: [{
+        name: '✏ Credits',
+        value: `
+        Developed by **Jack#9701**
+        Some snippets of code from Guidebot by eslachance and esmBot by **Essem#9261**
+        ["Playing" messages from esmBot](https://github.com/TheEssem/esmBot/blob/master/messages.json)`
+      }, {
+        name: '💬 Server Count',
+        value: bot.guilds.cache.size,
+        inline: true
+      }, {
+        name: '🧑🏻 User Count',
+        value: bot.users.cache.size,
+        inline: true
+      }, {
+        name: 'ℹ Version',
+        value: require('../package.json').version,
+        inline: true
+      }, {
+        name: '⏰ Uptime',
+        value: formatted,
+        inline: true
+      }]
+    }
   }
 }
 
