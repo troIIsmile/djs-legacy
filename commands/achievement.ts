@@ -1,6 +1,15 @@
 export const desc = 'achievement <text> - Makes a minecraft achievement'
-
-export const run = (_: void, args: string[]) => {
+const talkedRecently = new Set()
+import { Message } from 'jackbot-discord'
+export const run = (msg: Message, args: string[]) => {
+      if (talkedRecently.has(msg.author.id)) {
+            return `Please wait 30 seconds before doing that again, ${msg.author}!`
+    } else {
+        talkedRecently.add(msg.author.id);
+        setTimeout(() => {
+          talkedRecently.delete(msg.author.id);
+        }, 30000);
+    }
   if (args.join('')) {
     return {
       files: [{
