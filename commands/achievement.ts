@@ -1,4 +1,4 @@
-export const desc = 'achivement <text> - Makes a minecraft achivement'
+export const desc = 'achievement <text> - Makes a minecraft achievement'
 
 export const run = (_: void, args: string[]) => {
   if (args.join('')) {

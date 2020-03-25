@@ -1,9 +1,10 @@
 import fetch from 'node-fetch'
+import {Message} from 'jackbot-discord'
 export const desc = 'funny virus'
-export async function run ({channel}) {
-  channel.startTyping()
+export async function run (message: Message) {
+  message.channel.startTyping()
   const { data: {confirmed, deaths, recovered}, dt: timestamp} = await fetch('https://covid2019-api.herokuapp.com/v2/total').then(res=>res.json())
-  channel.stopTyping()
+  message.channel.stopTyping()
   return {
     embed: {
       author: {

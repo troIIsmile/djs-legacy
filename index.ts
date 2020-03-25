@@ -33,6 +33,7 @@ if (!process.env.TOKEN) { // if there's no token
 } else bot.login(process.env.TOKEN) // login using the token from .env
 
 // What this does is get all the commands in a directory, and adds them to the bot. ***Might*** add aliases later on
+// .js is removed because of the way import/require works & that it makes it easier in the end
 async function readCommandDir (folder: string): Promise<Commands> {
   return Object.fromEntries( // Object.fromEntries does this: [ ['hello', 2] ] -> { hello: 2 }
     await Promise.all(
@@ -58,6 +59,8 @@ bot.on('ready', async () => {
     }, 60000)
 })
 
+bot.on('warn', console.warn)
+
 live(bot, '../commands')
 
 if (process.env.PORT && process.env.PROJECT_DOMAIN) { // Running on glitch
@@ -66,7 +69,7 @@ if (process.env.PORT && process.env.PROJECT_DOMAIN) { // Running on glitch
     res.writeHead(200, {
       'Content-Type': 'text-html'
     });
-    res.write('<a href="https://github.com/Jack5079/nxtbot">this is nxt</a>');
+    res.write('<a href=https://github.com/Jack5079/nxtbot>source');
     res.end();
   }).listen(process.env.PORT);
 }

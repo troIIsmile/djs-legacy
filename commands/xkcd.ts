@@ -17,7 +17,7 @@ export const run = async (message: Message, args: string[]) => {
   }
   try {
     const url = args.length > 0 && args[0].match(/^\d+$/) ? `https://xkcd.com/${args[0]}/info.0.json` : "https://xkcd.com/info.0.json";
-    const {year, month, day, alt: description, img, num, safe_title: title} = await (await fetch(url)).json()
+    const {year, month, day, alt: description, img, num, safe_title: title} = await fetch(url).then(res=>res.json())
     return {
       embed: {
         title,

@@ -3,7 +3,7 @@ import { hasFlag } from '../util'
 import ttsWithoutTypes = require('google-tts-api')
 
 async function tts (text: string = '', lang: string = 'en', speed: number = 1): Promise<string> {
-  return await ttsWithoutTypes(text, lang, speed)
+  return ttsWithoutTypes(text, lang, speed)
 }
 
 export const run = async (message: Message, args: string[]) => {
