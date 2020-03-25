@@ -22,7 +22,7 @@ if (exists('./.env')) { // Before anything uses it, we must load the .env file (
   }
 }
 
-const bot = new Bot({}, {
+const bot = new Bot(new Map(), {
   prefix: ['-'],
   allowbots: false
 })
@@ -35,18 +35,22 @@ if (!process.env.TOKEN) { // if there's no token
 // What this does is get all the commands in a directory, and adds them to the bot. ***Might*** add aliases later on
 // .js is removed because of the way import/require works & that it makes it easier in the end
 async function readCommandDir (folder: string): Promise<Commands> {
-  return Object.fromEntries( // Object.fromEntries does this: [ ['hello', 2] ] -> { hello: 2 }
-    await Promise.all(
+  const map = new Map()
+  const entries = await Promise.all(
       readdir(folder) // get the file names of every command in the commands folder
         .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
         .map(filename => filename.replace('.js', '')) // remove `.js` from those
         .map(async file => [file, (await import(folder + file)).run]) // convert filenames to commands
-    )
   )
+  
+  entries.forEach(([name, func])=>map.set(name, func))
+  return map
 }
 
 bot.on('ready', async () => {
-  readCommandDir('./commands/').then(bot.add.bind(bot))
+  readCommandDir('./commands/').then(commands=>{
+    bot.commands = commands
+  })
   // I'm sorry, @TheEssem
   // this code adds the funny playing
   const messages: string[] = await fetch('https://raw.githubusercontent.com/TheEssem/esmBot/master/messages.json')

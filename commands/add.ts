@@ -8,7 +8,7 @@ export async function run (message: Message, args: string[], bot: Bot): Promise<
       const name = args[ 0 ] // record the name before we remove it
       args.shift() // remove the name
       const func = new Function('message', 'args', 'bot', args.join(' ')) as Command
-      bot.add(name, func) // make a command with the arguments that are left
+      bot.commands.set(name, func) // make a command with the arguments that are left
       return `🎉 Created ${name}!` // tell the user
     } else return 'Uhh, you forgot the code.'
   } else return 'You are not the bot owner.'

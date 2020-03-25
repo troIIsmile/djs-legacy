@@ -19,7 +19,7 @@
   "dependencies": {
     "@discordjs/opus": "^0.1.0",
     "google-tts-api": "0.0.4",
-    "jackbot-discord": "^13.2.1",
+    "jackbot-discord": "^14.0.0",
     "tslib": "^1.10.0",
     "ytdl-core": "^2.0.0",
     "node-fetch": "^2.6.0",
