@@ -53,7 +53,7 @@ export async function run (message: Message, args: string[]) {
          author: {
            name: developers[0] || '???'
          },
-         color: 0x6E6E6E,
+         color: 0xFE7C02,
          fields: [{
            name: 'Price',
            value: ('$' + price) || '???',
