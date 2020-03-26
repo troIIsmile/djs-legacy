@@ -1,5 +1,30 @@
 import { Bot, Message } from 'jackbot-discord'
 import getGames from 'nintendo-switch-eshop'
+interface Game {
+  msrp: number
+  img: string
+  lastModified: number
+  title: string
+  characters: string[]
+  categories: string[]
+  developers: string[]
+  url: string
+  esrb: string
+  esrbDescriptors: string[]
+  description: string
+  players: string
+}
+const error = {
+      embed: {
+        author: {
+          name: 'Error',
+          iconURL: 'https://www.bing.com/th?id=OIP.DZljw0bam4UFXr5B5VLlTAHaHa&pid=Api&rs=1'
+        },
+        description: 'Couldn\'t find your game!',
+        color: 0xFF0000
+      }
+}
+
 export async function run (message: Message, args: string[]) {
   message.channel.startTyping()
   try {
@@ -16,7 +41,7 @@ export async function run (message: Message, args: string[]) {
     esrbDescriptors,
     description,
     players
-  } = (await getGames()).find(e=>e.title.toLowerCase().includes(args.join(' ').toLowerCase()))
+  } = <Game><unknown>(await getGames()).find(e=>e.title.toLowerCase().includes(args.join(' ').toLowerCase()))
   if (title) {
      await message.channel.send({
        embed: {
@@ -53,28 +78,10 @@ export async function run (message: Message, args: string[]) {
        }
     })
   } else {
-    return {
-        embed: {
-          author: {
-            name: 'Error',
-            iconURL: 'https://www.bing.com/th?id=OIP.DZljw0bam4UFXr5B5VLlTAHaHa&pid=Api&rs=1'
-          },
-          description: 'Couldn\'t find your game!',
-          color: 0xFF0000
-        }
-    }
+    return error
   }
   } catch (e) {
-    return {
-        embed: {
-          author: {
-            name: 'Error',
-            iconURL: 'https://www.bing.com/th?id=OIP.DZljw0bam4UFXr5B5VLlTAHaHa&pid=Api&rs=1'
-          },
-          description: 'Couldn\'t find your game!',
-          color: 0xFF0000
-        }
-    }
+    return error
   }
   message.channel.stopTyping()
 }

@@ -18,7 +18,7 @@ export const run = (message: Message, _: string[], bot: Bot) => {
     embed: {
       author: {
         name: 'NXTBOT Info',
-        iconURL: bot.user.displayAvatarURL()
+        iconURL: bot.user?.displayAvatarURL()
       },
       color: 0x454545,
       fields: [{

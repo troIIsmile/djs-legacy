@@ -5,6 +5,7 @@ import {
   readFileSync as readFile
 } from 'fs'
 import live from './utils/livereload'
+import random from './utils/random'
 import { IncomingMessage, ServerResponse, createServer } from 'http'
 import fetch from 'node-fetch'
 if (exists('./.env')) { // Before anything uses it, we must load the .env file (provided it exists, of course)
@@ -24,6 +25,7 @@ const bot = new Bot(new Map(), {
   prefix: ['-'],
   allowbots: false
 })
+
 
 if (!process.env.TOKEN) { // if there's no token
   console.error('No token found. Please add it to the env')
@@ -55,10 +57,13 @@ bot.on('ready', async () => {
     .then(res=>res.json())
     .then(list=>list.filter((line: string)=>!line.includes('esmBot'))) // remove "follow @esmBot_ on Twitter
 
-    bot.user.setActivity(messages[Math.floor(Math.random()*messages.length)]);
-    setInterval(()=>{
-      bot.user.setActivity(messages[Math.floor(Math.random()*messages.length)]);
-    }, 60000)
+  // set activity (a.k.a. the gamer code)
+  ;(async function activityChanger () {
+    bot.user?.setActivity("online", {
+      name: random(messages)
+    });
+    setTimeout(activityChanger, 900000);
+  })();
 })
 
 bot.on('warn', console.warn)
