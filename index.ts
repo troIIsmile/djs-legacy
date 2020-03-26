@@ -4,7 +4,6 @@ import {
   existsSync as exists,
   readFileSync as readFile
 } from 'fs'
-import { join } from 'path'
 import live from './utils/livereload'
 import { IncomingMessage, ServerResponse, createServer } from 'http'
 import fetch from 'node-fetch'
