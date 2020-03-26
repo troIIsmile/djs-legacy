@@ -2,8 +2,7 @@ import { Bot, Commands } from 'jackbot-discord'
 import {
   readdirSync as readdir,
   existsSync as exists,
-  readFileSync as readFile,
-  statSync as stat
+  readFileSync as readFile
 } from 'fs'
 import { join } from 'path'
 import live from './utils/livereload'
