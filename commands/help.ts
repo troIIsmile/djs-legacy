@@ -1,25 +1,31 @@
+// TODO: Add some sort of cool embed
 import { Message, Bot } from 'jackbot-discord'
 
 interface Describe {
   [key: string]: string
 }
 
-export async function run(message: Message, _: string[], bot: Bot) {
+export async function run(message: Message, args: string[], bot: Bot) {
   try {
+    const commands = Array.from(bot.commands.keys())
     const descriptions: Describe = Object.fromEntries(
       await Promise.all(
-        Array.from(bot.commands.keys())
-          .map(async id => [id, (await import(`./${id}`)).desc])
+        commands.map(async id => [id, (await import(`./${id}`)).desc])
       )
     )
+    return commands // list of command names
+        .map(name => `**-${name}** :: ${descriptions[name]}`) // add "-" to the start
+        .join('\n') // string seperated by newline
+  } catch (e) {
     return {
-      content: Array.from(bot.commands.keys()) // list of command names
-        .map(name => `-${name} :: ${descriptions[name]}`) // add "-" to the start
-        .join('\n'), // string seperated by newline
-      code: true
+      embed: {
+        author: {
+          name: 'Error!'
+        },
+        title: e.toString(),
+        color: 0xFF0000
+      }
     }
-  } catch {
-    return 'something went wrong'
   }
 }
 
