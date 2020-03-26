@@ -7,7 +7,7 @@ interface Describe {
 
 export async function run(message: Message, args: string[], bot: Bot) {
   try {
-    const commands = Array.from(bot.commands.keys()).filter(command=>exists(`./${command}`))
+    const commands = Array.from(bot.commands.keys())
     const descriptions: Describe = Object.fromEntries(
       await Promise.all(
         commands.map(async id => [id, (await import(`./${id}`)).desc])
