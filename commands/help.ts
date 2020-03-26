@@ -1,20 +1,20 @@
 // TODO: Add some sort of cool embed
 import { Message, Bot } from 'jackbot-discord'
-
+import { existsSync as exists } from 'fs'
 interface Describe {
   [key: string]: string
 }
 
 export async function run(message: Message, args: string[], bot: Bot) {
   try {
-    const commands = Array.from(bot.commands.keys())
-    const descriptions: Describe = new Map<string, string>(
+    const commands = Array.from(bot.commands.keys()).filter(command=>exists(`./${command}`))
+    const descriptions: Describe = Object.fromEntries(
       await Promise.all(
         commands.map(async id => [id, (await import(`./${id}`)).desc])
       )
     )
     return commands // list of command names
-        .map(name => `**-${name}** :: ${descriptions.get(name)}`) // add "-" to the start
+        .map(name => `**-${name}** :: ${descriptions[name]}`) // add "-" to the start
         .join('\n') // string seperated by newline
   } catch (e) {
     return {
