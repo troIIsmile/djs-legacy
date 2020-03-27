@@ -22,6 +22,7 @@ this requires ffmpeg btw lol
 Rename `.env.example` to `.env`
 
 After that, replace the text after `TOKEN=` with your bot's token, and replace the text after `OWNER=` with your Discord ID.
+You can also add `SUPPORT=` if you have a support server. You don't need to, however.
 
 Finally, open the terminal and type these commands:
 

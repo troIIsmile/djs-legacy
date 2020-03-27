@@ -21,12 +21,12 @@ export const run = (message: Message, _: string[], bot: Bot) => {
         iconURL: bot.user?.displayAvatarURL()
       },
       color: 0x454545,
+      title: 'Developed by *Jack#9701*',
       fields: [{
         name: '✏ Credits',
         value: `
-        Developed by **Jack#9701**
         Some snippets of code from Guidebot by eslachance and esmBot by **Essem#9261**
-        ["Playing" messages from esmBot](https://github.com/TheEssem/esmBot/blob/master/messages.json)`
+        [Some "Playing" messages from esmBot](https://github.com/TheEssem/esmBot/blob/master/messages.json)`
       }, {
         name: '💬 Server Count',
         value: bot.guilds.cache.size,
@@ -43,7 +43,10 @@ export const run = (message: Message, _: string[], bot: Bot) => {
         name: '⏰ Uptime',
         value: formatted,
         inline: true
-      }]
+      }, {
+        name: '🙋🏻‍♂️ Support',
+        value: process.env.SUPPORT
+      }].filter(field=>field.value) // Remove any fields without values (like support if it isn't in env)
     }
   }
 }

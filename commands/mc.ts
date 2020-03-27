@@ -6,7 +6,7 @@ export const desc = 'mc <playername> - Get info about Minecraft: Java Edition pl
 export const run = async (message: void, args: string[]) => {
   try {
     const {embed: { fields } } = await status()
-    if (fields.find(e=>e.name === 'sessionserver.mojang.com')?.value !== '✅ Up') {
+    if (fields.find(service => service.name === 'sessionserver.mojang.com')?.value !== '✅ Up') {
       return {
         embed: {
           color: 0x3F3F3F,
