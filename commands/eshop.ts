@@ -41,13 +41,13 @@ export async function run (message: Message, args: string[]) {
     esrbDescriptors,
     description,
     players
-  } = <Game><unknown>(await getGames()).find(e=>e.title.toLowerCase().includes(args.join(' ').toLowerCase()))
+  } = <Game><unknown>(await getGames()).find(game => game.title.toLowerCase().includes(args.join(' ').toLowerCase()))
   if (title) {
      await message.channel.send({
        embed: {
          image: 'https://nintendo.com' + thumbnail,
          title,
-         description,
+         description: description.replace(/\*/g, '\\*'),
          timestamp,
          url: 'https://nintendo.com' + url,
          author: {
@@ -82,8 +82,9 @@ export async function run (message: Message, args: string[]) {
   }
   } catch (e) {
     return error
+  } finally {
+    message.channel.stopTyping()
   }
-  message.channel.stopTyping()
 }
 
 export const desc = 'you will buy these thi'

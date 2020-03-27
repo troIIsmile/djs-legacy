@@ -8,6 +8,8 @@ import live from './utils/livereload'
 import random from './utils/random'
 import { IncomingMessage, ServerResponse, createServer } from 'http'
 import fetch from 'node-fetch'
+
+// We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'TOKEN=blahblahblah' > Env:/TOKEN` )
 if (exists('./.env')) { // Before anything uses it, we must load the .env file (provided it exists, of course)
   process.env = {
     ...process.env,
@@ -21,10 +23,13 @@ if (exists('./.env')) { // Before anything uses it, we must load the .env file (
   }
 }
 
-const bot = new Bot(new Map(), {
-  prefix: ['-'],
-  allowbots: false
-})
+const bot = new Bot(
+  new Map(), // jackbot-discord@14 and up uses a Map instead of an Object
+  {
+    prefix: ['-'],
+    allowbots: false
+  }
+)
 
 
 if (!process.env.TOKEN) { // if there's no token
@@ -51,19 +56,17 @@ bot.on('ready', async () => {
   readCommandDir('./commands/').then(commands=>{
     bot.commands = commands
   })
-  // I'm sorry, @TheEssem
-  // this code adds the funny playing
-  const messages: string[] = await fetch('https://raw.githubusercontent.com/TheEssem/esmBot/master/messages.json')
-    .then(res=>res.json())
-    .then(list=>list.filter((line: string)=>!line.includes('esmBot'))) // remove "follow @esmBot_ on Twitter
+  
+  // Playing messages from esmBot
+  // Why?
+  // @TheEssem has a sense of humor, unlike me
+  const messages = Object.values((await import('./messages')).default).flat()
 
-  // set activity (a.k.a. the gamer code)
+  // activityChanger also from esmBot, also known as "the gamer code"
   ;(async function activityChanger () {
-    bot.user?.setActivity("online", {
-      name: random(messages)
-    });
-    setTimeout(activityChanger, 900000);
-  })();
+    bot.user?.setActivity(random(messages))
+    setTimeout(activityChanger, 900000)
+  })()
 })
 
 bot.on('warn', console.warn)
