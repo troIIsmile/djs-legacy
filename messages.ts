@@ -44,38 +44,49 @@ const messages: Messages = {
     'Blender', // The free and open source 3D creation suite.
     'Visual Studio Code', // Visual Studio without the Visual
     'Atom', // A hackable text editor for the 21st Century
-    'Shotcut' // Free, open source, and cross-platform video editor.
+    'Shotcut', // Free, open source, and cross-platform video editor.
+    'foobar2000',
+    'XMPlay',
+    'OpenMPT',
   ],
-  Nintendo: [
-    'Super Mario Run',
-    'Miitomo',
-    'Pokémon GO',
-    'Animal Crossing: Pocket Camp',
-    'Dr. Mario World',
-    'Super Mario Maker 2',
-    'Super Smash Bros. Ultimate',
-    'Yoshi for the NES',
-    'Nintendo™',
-    'Game Boy Advance Video',
-    'Nintendo Switch Online',
-    'Wario World',
-    'Mario',
-    // Wii Channels
-    'Wii Speak Channel',
-    'Wii Shop Channel',
-    'Internet Channel',
-    'Photo Channel',
-    'Mii Channel',
-    'Disc Channel'
-  ],
+  Nintendo: {
+    Wii: [
+      'Wii Speak Channel',
+      'Wii Shop Channel',
+      'Internet Channel',
+      'Photo Channel',
+      'Mii Channel',
+      'Disc Channel'
+    ],
+    Switch: [
+      'Super Mario Maker 2',
+      'Super Smash Bros. Ultimate',
+    ],
+    Other: [
+      'Yoshi for the NES',
+      'Nintendo™',
+      'Game Boy Advance Video',
+      'Wario World',
+      'Mario',
+    ],
+    Mobile: [
+      'Super Mario Run',
+      'Miitomo',
+      'Pokémon GO',
+      'Animal Crossing: Pocket Camp',
+      'Nintendo Switch Online',
+      'Dr. Mario World'
+    ]
+  },
   Emulators: [
     'Yuzu',
     'Dolphin Emulator',
     'RetroArch'
   ],
-  'Programming References': [
-    'single quote no semicolons two spaces',
-    'Submit playing lines on github: Jack5079/nxtbot'
+  NXTBOT: [ // References to this bot
+    'Report bugs to github.com/Jack5079/NXTBOT/issues',
+    'Submit playing lines on github: Jack5079/NXTBOT',
+    'NXTBOT v4 full release coming soon'
   ],
   Songs: Object.entries({
     'Scatman John': [
@@ -101,7 +112,7 @@ const messages: Messages = {
     'Your Favorite Martian': [
       "Grandma's Got A Facebook"
     ]
-  }).map(name => {
+  }).map(name => { // Turn this object into a string[] of 'Author - Song' names
     const author = name[0]
     const songsByAuthor = name[1]
     return songsByAuthor.map(title=>`${author} - ${title}`)
@@ -172,7 +183,6 @@ const messages: Messages = {
     'woo yeah',
     'joe mama',
     '#BringBackNationalSex',
-    'foobar2000',
     'with GIFs'
   ]
 }
