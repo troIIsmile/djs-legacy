@@ -16,3 +16,6 @@ config:
 core:
   - index.ts
   - loadenv.ts
+
+messages:
+  - messages.ts
