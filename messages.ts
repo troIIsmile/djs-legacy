@@ -47,7 +47,7 @@ const messages: Messages = {
     'Shotcut', // Free, open source, and cross-platform video editor.
     'foobar2000',
     'XMPlay',
-    'OpenMPT',
+    'OpenMPT'
   ],
   Nintendo: {
     Wii: [
