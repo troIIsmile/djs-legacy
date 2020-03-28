@@ -13,7 +13,7 @@ import fetch from 'node-fetch'
 // Why?
 // @TheEssem has a sense of humor, unlike me.
 
-import { messages } from './messages'
+import { all as playingWith } from './messages'
 
 // We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'TOKEN=blahblahblah' > Env:/TOKEN` )
 if (exists('./.env')) { // Before anything uses it, we must load the .env file (provided it exists, of course)
@@ -65,7 +65,7 @@ bot.on('ready', async () => {
   
   // activityChanger also from esmBot, also known as "the gamer code"
   ;(async function activityChanger () {
-    bot.user?.setActivity(random(messages))
+    bot.user?.setActivity(random(playingWith))
     setTimeout(activityChanger, 900000)
   })()
 })
