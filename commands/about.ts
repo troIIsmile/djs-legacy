@@ -1,6 +1,7 @@
 import { Message, Bot } from 'jackbot-discord'
+import fetch from 'node-fetch'
 
-export const run = (message: Message, _: string[], bot: Bot) => {
+export const run = async (message: Message, _: string[], bot: Bot) => {
   const timestamp = process.uptime()
 
   // 2
@@ -20,6 +21,10 @@ export const run = (message: Message, _: string[], bot: Bot) => {
   
   if (!(bot.user && owner)) return 'oops the owner or the bot user does not exist some how'
   
+  const esmBotMessages = await fetch('https://raw.githubusercontent.com/TheEssem/esmBot/master/messages.json').then(txt=>txt.json())
+  const messages = (await import('../messages')).all
+  const linesFromEsmBot = messages.filter(line => esmBotMessages.includes(line)).length
+  const percentOfLines = (linesFromEsmBot*100)/messages.length
   return {
     embed: {
       author: {
@@ -35,7 +40,7 @@ export const run = (message: Message, _: string[], bot: Bot) => {
         name: '✏ Credits',
         value: `
         Some snippets of code from Guidebot by eslachance and esmBot by **Essem#9261**
-        [Some "Playing" messages from esmBot](https://github.com/TheEssem/esmBot/blob/master/messages.json)`,
+        [${Math.round(percentOfLines)}% of the "Playing" messages from esmBot](https://github.com/TheEssem/esmBot/blob/master/messages.json)`,
         inline: true
       }, {
         name: '💬 Server Count',

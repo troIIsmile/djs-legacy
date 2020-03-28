@@ -12,6 +12,7 @@ import fetch from 'node-fetch'
 // (Most) Playing messages from esmBot
 // Why?
 // @TheEssem has a sense of humor, unlike me.
+// I've refactored the list (Adding categories and song authors and stuff) and probably put more time into working on the messages than him
 
 import { all as playingWith } from './messages'
 
