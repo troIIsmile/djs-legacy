@@ -101,7 +101,11 @@ const messages: Messages = {
     'Your Favorite Martian': [
       "Grandma's Got A Facebook"
     ]
-  }).map(name => name[1].map(title=>`${name[0]} - ${title}`)).flat(), // Terrible code to turn it into song names
+  }).map(name => {
+    const author = name[0]
+    const songsByAuthor = name[1]
+    return songsByAuthor.map(title=>`${author} - ${title}`)
+  }).flat(),
   Games: [ // Finally, the actual games lmao
     'Pac-Man Championship Edition DX+',
     'Pac-Man Championship Edition 2',
