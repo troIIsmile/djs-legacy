@@ -36,6 +36,7 @@ const messages: Messages = {
   Apps: [ // Apps are programs on mobile
     'TikTok',
     'iPod Music',
+    'Skype' // I mean it's on mobile now
   ],
   Nintendo: [
     'Super Mario Run',
@@ -68,69 +69,81 @@ const messages: Messages = {
     'single quote no semicolons two spaces',
     'Submit playing lines on github: Jack5079/nxtbot'
   ],
-  other: [
-    'with your sanity',
-    'h',
+  Games: [ // Finally, the actual games lmao
+    'Pac-Man Championship Edition DX+',
+    'Pac-Man Championship Edition 2',
     'Club Penguin',
-    'Skype',
-    'with yo mama',
+    'Hong Kong 97',
+    "Sonic's Schoolhouse",
+    'Desert Bus',
+    'Shrek Extra Large', // Somehow a real game.
+    'Roblox', // I know this is a game engine but
+    'Minecraft',
+    'Skyrim',
+    'Sonic 06',
+    'Metal Gear Solid 4',
+    'Action 52',
+    'Meme Run',
+  ],
+  'Fake Games': [
     'FL Studio: SoundCloud Rapper Edition',
-    'Funny Fortain',
+    'Hello Kitty Island Adventure',
     'Fake Download Button Simulator',
+    'Funny Fortain',
+    'Battletoads for Wii',
+    'Fortnut', // i mean kinda
+    'The Elder Scrolls 6', // Not yet
+    'Mega Man Legends 3',
+    'BLJ Simulator',
+  ],
+  Songs: [
+    "Scatman's World"
+  ],
+  Puns: [
+    'with your sanity',
+    'with yo mama',
+    'with a broken god',
+    'games with the mortals',
+    'with the Infinity Gauntlet'
+  ],
+  Websites: [
+    'Twitter',
+    'Reddit',
+    'YouTube',
+    'MDN Web Docs' // the current name
+  ],
+  Random: [
+    'h',
     'a game',
     'anime',
     'absolutely nothing',
-    'Fortnut',
     'epic mashups bro',
-    'Hello Kitty Island Adventure',
-    'with the Infinity Gauntlet',
-    'BLJ Simulator',
     'Jake Paul videos on repeat',
     'gniyalP',
     'HaaH WaaW',
-    'Shrek Extra Large',
     'dQw4w9WgXcQ',
-    'Hong Kong 97',
-    'Twitter',
-    'Reddit',
-    'Battletoads for Wii',
     'MS Paint',
-    'Roblox',
-    'Minecraft',
-    'Desert Bus',
-    'Mega Man Legends 3',
-    "Sonic's Schoolhouse",
-    'Action 52',
     'the funny memes epic',
     'the Cat Piano',
-    'Pac-Man Championship Edition DX+',
-    'Pac-Man Championship Edition 2',
     'Bottom Text',
-    'The Elder Scrolls 6',
-    'Skyrim',
     'lol 7',
-    'Meme Run',
     'Family Guy',
-    'Deltarune',
     'yeah',
     'Rofa Cat',
     'jeff',
     'woo yeah',
     'with Edgar',
     'joe mama',
-    'Sonic 06',
-    'Metal Gear Solid 4',
     'Liquid Sun',
     'with your Discord server',
-    "Scatman's World",
     'with a stone, Luigi.',
     'doin your mom doin doin your mo',
-    'with a broken god',
-    'games with the mortals',
     '#BringBackNationalSex',
     'foobar2000',
     'with GIFs'
   ]
 }
 
-export default messages
+const all = Object.values(messages).flat()
+
+export { messages, all }

@@ -9,6 +9,12 @@ import random from './utils/random'
 import { IncomingMessage, ServerResponse, createServer } from 'http'
 import fetch from 'node-fetch'
 
+// (Most) Playing messages from esmBot
+// Why?
+// @TheEssem has a sense of humor, unlike me.
+
+import { messages } from './messages'
+
 // We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'TOKEN=blahblahblah' > Env:/TOKEN` )
 if (exists('./.env')) { // Before anything uses it, we must load the .env file (provided it exists, of course)
   process.env = {
@@ -57,11 +63,6 @@ bot.on('ready', async () => {
     bot.commands = commands
   })
   
-  // Playing messages from esmBot
-  // Why?
-  // @TheEssem has a sense of humor, unlike me
-  const messages = Object.values((await import('./messages')).default).flat()
-
   // activityChanger also from esmBot, also known as "the gamer code"
   ;(async function activityChanger () {
     bot.user?.setActivity(random(messages))
