@@ -1,5 +1,3 @@
-// Might wanna spin this off into a different repo
-// Instead of putting a version put `github:author/repo`
 interface Messages {
   [key: string]: Messages | string[]
 }
