@@ -86,8 +86,7 @@ const messages: Messages = {
     'RetroArch'
   ],
   NXTBOT: [ // References to this bot
-    'Report bugs to github.com/Jack5079/NXTBOT/issues',
-    'Submit playing lines on github: Jack5079/NXTBOT'
+    'Submit playing lines & bug reports @ github.com/Jack5079/NXTBOT'
   ],
   Songs: Object.entries({
     'Scatman John': [
@@ -199,8 +198,7 @@ const flatten = (messages: Messages): string[] => {
         return Object.values(val).flat()
     }).flat()
     
-    if (result.every(str => typeof str === 'string')) return result
-    return flatten(result)
+    return result.every(str => typeof str === 'string') ? result : flatten(result)
 }
 
 const all = flatten(messages)
