@@ -2,7 +2,7 @@ commands:
   - commands/**/*
 
 modules:
-  - modules/**/*
+  - utils/**/*
   - util.ts
 
 config:
@@ -19,3 +19,6 @@ core:
 
 messages:
   - messages.ts
+  
+events:
+  - events/**/*
