@@ -20,13 +20,10 @@ if (exists('./.env')) { // Before anything uses it, we must load the .env file (
   }
 }
 
-const bot = new Bot(
-  new Map(), // jackbot-discord@14 and up uses a Map instead of an Object
-  {
-    prefix: ['-'],
+const bot = new Bot(new Map(), { // jackbot-discord@14 and up uses a Map instead of an Object for commands
+    prefix: ['-'], // feel free to add more to this later on
     allowbots: false
-  }
-)
+})
 
 readdir('./events/')
   .filter(name => name.endsWith('.js'))
