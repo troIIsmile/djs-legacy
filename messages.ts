@@ -1,24 +1,28 @@
+// add more
 interface Messages {
   [key: string]: Messages | string[]
 }
 
 
 const messages: Messages = {
-  Browsers: [
-    'Mozilla Firefox',
-    'Google Chrome',
-    'Wexond',
-    'Dot Browser',
-    'Opera',
-    'Microsoft Edge',
-    'Microsoft Internet Explorer',
-    'Netscape Navigator'
-  ],
+  Browsers: {
+    Chromium: [
+      'Google Chrome',
+      'Wexond', // "an open-source, privacy-focused, extensible web browser with a totally new user experience"
+      'Dot Browser', // "A privacy-centric web browser, with an elegant UI and a robust built-in ad blocker, all designed with anonymity in mind, based on Wexond"
+      'Opera GX', // funny meme
+      'Microsoft Edge'
+    ],
+    Other: [
+      'Mozilla Firefox',
+      'Microsoft Internet Explorer',
+      'Netscape Navigator'
+    ]
+  },
   'Operating Systems': {
     Linux: [
       'Ubuntu',
       'KDE neon', // kde users when they see a lawn gnome in their neighbor's yard
-      'Kubuntu',
       'Arch Linux',
       'SteamOS',
       'Hannah Montana Linux' // The one true Linux distro.
@@ -83,8 +87,7 @@ const messages: Messages = {
   ],
   NXTBOT: [ // References to this bot
     'Report bugs to github.com/Jack5079/NXTBOT/issues',
-    'Submit playing lines on github: Jack5079/NXTBOT',
-    'NXTBOT v4 full release coming soon'
+    'Submit playing lines on github: Jack5079/NXTBOT'
   ],
   Songs: Object.entries({
     'Scatman John': [
@@ -97,6 +100,10 @@ const messages: Messages = {
       'Wow Wow',
       'The Starting Line'
     ],
+    'Big Shaq': [
+      "Man Don't Dance",
+      'Mans Not Hot'
+    ],
     TOPAZ: [ // topazzz.bandcamp.com to be exact
       'Half Awake, Pt. 2',
       'Half Awake, Pt. 1'
@@ -108,7 +115,8 @@ const messages: Messages = {
       'Conspiracy Theory Guy'
     ],
     'Your Favorite Martian': [
-      "Grandma's Got A Facebook"
+      "Grandma's Got A Facebook",
+      "STALKIN' YOUR MOM"
     ]
   }).map(name => { // Turn this object into a string[] of 'Author - Song' names
     const author = name[0]
@@ -149,11 +157,11 @@ const messages: Messages = {
     'with your sanity',
     'with yo mama',
     'with a broken god',
+    'with GIFs',
     'games with the mortals',
     'with the Infinity Gauntlet',
     'with your Discord server',
     'with a stone, Luigi.',
-    'the Cat Piano',
   ],
   Websites: [
     'Twitter', // "It's what's happening."
@@ -168,7 +176,8 @@ const messages: Messages = {
     'absolutely nothing',
     'epic mashups bro',
     'Jake Paul videos on repeat',
-    'gniyalP',
+    'gniyalꟼ',
+    'the Cat Piano',
     'HaaH WaaW',
     'dQw4w9WgXcQ',
     'the funny memes epic',
@@ -181,7 +190,6 @@ const messages: Messages = {
     'woo yeah',
     'joe mama',
     '#BringBackNationalSex',
-    'with GIFs'
   ]
 }
 

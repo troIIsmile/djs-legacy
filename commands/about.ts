@@ -4,16 +4,10 @@ import fetch from 'node-fetch'
 export const run = async (message: Message, _: string[], bot: Bot) => {
   const timestamp = process.uptime()
 
-  // 2
+  // hours
   const hours = Math.floor(timestamp / 60 / 60)
 
-  // 37
-  const minutes = Math.floor(timestamp / 60) - (hours * 60)
-
-  // 42
-  const seconds = Math.floor(timestamp % 60)
-
-  const formatted = `${hours} hour(s), ${minutes} minute(s), and ${seconds} second(s).`
+  const formatted = `${hours} hour(s), ${Math.floor(timestamp / 60) - (hours * 60)} minute(s), and ${Math.floor(timestamp % 60)} second(s).`
   
   delete require.cache[require.resolve('../package.json')] // Always get the latest package.json
   
@@ -33,7 +27,7 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
       },
       color: 0x454545,
       footer: {
-        text: `Developed by ${owner.tag}`,
+        text: `Owned by ${owner.tag}`,
         iconURL: owner.displayAvatarURL()
       },
       fields: [{

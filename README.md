@@ -4,7 +4,6 @@ _THIS IS NXT_
 
 The flagship [`jackbot-discord`](https://npm.im/jackbot-discord) bot.
 
-
 ## Migrating from everythingbot/jackbot?
 
 -say → -tts
@@ -30,3 +29,7 @@ Finally, open the terminal and type these commands:
 npm i
 npm run build
 ```
+
+## Donate
+
+haha no this bot is terrible
