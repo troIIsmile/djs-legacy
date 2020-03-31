@@ -1,8 +1,8 @@
 import subreddit from '../utils/subreddit'
 const command = subreddit({
-  name: 'nermalfunny',
-  color: 0x454545
+  name: 'BigChungus',
+  color: 0x4FBCFF
 });
 
-export const desc = 'nermal funny'
+export const desc = 'funny meme'
 export const run = command

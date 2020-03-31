@@ -1,18 +1,18 @@
 # NXTBOT
 
-_IT'S WHAT'S NXT_
+_THIS IS NXT_
 
 The flagship [`jackbot-discord`](https://npm.im/jackbot-discord) bot.
 
-## Migrating from everythingbot?
+## Migrating from everythingbot/jackbot?
 
--say is now -tts
+-say → -tts
 
--stats is now -about
+-stats → -about
 
--saybot is now -say
+-saybot → -say
 
--sayvc is now -ttsvc
+-sayvc → -ttsvc
 
 ## How to install?
 
@@ -21,6 +21,7 @@ this requires ffmpeg btw lol
 Rename `.env.example` to `.env`
 
 After that, replace the text after `TOKEN=` with your bot's token, and replace the text after `OWNER=` with your Discord ID.
+You can also add `SUPPORT=` if you have a support server. You don't need to, however.
 
 Finally, open the terminal and type these commands:
 
@@ -28,3 +29,7 @@ Finally, open the terminal and type these commands:
 npm i
 npm run build
 ```
+
+## Donate
+
+haha no this bot is terrible

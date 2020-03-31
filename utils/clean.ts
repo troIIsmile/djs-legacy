@@ -8,6 +8,6 @@ export default async function (client: Bot, text: any): Promise<string> {
   text = text
     .replace(/`/g, '`' + String.fromCharCode(8203))
     .replace(/@/g, '@' + String.fromCharCode(8203))
-    .replace(client.token, 'mfa.VkO_2GND--DFIjodSFISD+_F2_dontgetmyfuckingtokenyouhacker--fds9f)WJFSJIO')
+    .replace(client.token, '<redacted>')
   return text
 }

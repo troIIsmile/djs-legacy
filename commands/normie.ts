@@ -9,7 +9,7 @@ export async function run (message: Message) {
       const connection = await channel.join()
       const dispatch = connection.play(stream, { volume: false, seek: 0 })
       dispatch.on('end', channel.leave.bind(channel))
-    } else message.channel.send('go in vc')
-  } else message.channel.send('go in a server')
+    } else return 'go in vc'
+  } else return 'go in a server'
 }
 export const desc = 'run in vc for a funny. normie cringe'

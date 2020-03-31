@@ -3,12 +3,12 @@ import { hasFlag } from '../util'
 import ttsWithoutTypes = require('google-tts-api')
 
 async function tts (text: string = '', lang: string = 'en', speed: number = 1): Promise<string> {
-  return await ttsWithoutTypes(text, lang, speed)
+  return ttsWithoutTypes(text, lang, speed)
 }
 
 export const run = async (message: Message, args: string[]) => {
   if (!message.member?.voice.channel) {
-    return message.channel.send('You need to be in a voice channel!')
+    return 'You need to be in a voice channel!'
   }
   try {
     const channel = message.member?.voice.channel
@@ -25,8 +25,8 @@ export const run = async (message: Message, args: string[]) => {
 
   } catch (e) {
     if (e instanceof RangeError) {
-      message.channel.send('This command only supports up to 200 chars. Blame Google!')
-    } else message.channel.send('Error!\nError data:\n' + e)
+      return 'This command only supports up to 200 chars. Blame Google!'
+    } else return 'Error!\nError data:\n' + e
   }
 }
 
