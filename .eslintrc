@@ -1,24 +1,83 @@
 {
-    "extends": "eslint:recommended",
-    "parserOptions": {
-        "ecmaVersion": 8,
-        "sourceType": "script",
-        "ecmaFeatures": {
-            "jsx": false,
-            "experimentalObjectRestSpread": true
-        }
+  "env": {
+    "shared-node-browser": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "impliedStrict": true
     },
-    "env": {
-        "node": true
-    },
-    "rules": {
-       "quotes": [2, "single", { "avoidEscape": true }],
-        "indent": [
-            "error",
-            2
-        ],
-        "handle-callback-err": [
-            "error"
-        ]
-    }
+    // "sourceType": "module", // use this for bark beagle and stuff
+    "ecmaVersion": 2020 // update this every year lmao
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "accessor-pairs": "warn",
+    "block-spacing": "warn",
+    "brace-style": "warn",
+    "camelcase": "warn",
+    "comma-dangle": [
+      "warn",
+      "never"
+    ],
+    "comma-spacing": "warn",
+    "constructor-super": "warn",
+    "curly": "warn",
+    "dot-location": [
+      "warn",
+      "property"
+    ],
+    "dot-notation": "warn",
+    "eol-last": "warn",
+    "eqeqeq": "warn",
+    "func-call-spacing": "warn",
+    "handle-callback-err": "warn",
+    "indent": [
+      "warn",
+      2
+    ],
+    "key-spacing": "warn",
+    "keyword-spacing": "warn",
+    "new-cap": "warn",
+    "new-parens": "warn",
+    "no-array-constructor": "warn",
+    "no-await-in-loop": "error",
+    "no-caller": "warn",
+    "no-duplicate-imports": "warn",
+    "no-eval": "warn",
+    "no-extend-native": "warn",
+    "no-extra-bind": "warn",
+    "no-extra-parens": "warn",
+    "no-floating-decimal": "warn",
+    "no-implied-eval": "warn",
+    "no-iterator": "warn",
+    "no-label-var": "warn",
+    "no-labels": "warn",
+    "no-multi-spaces": "warn",
+    "no-multiple-empty-lines": "warn",
+    "no-new-wrappers": "error",
+    "no-return-await": "error",
+    "no-throw-literal": "warn",
+    "no-trailing-spaces": "warn",
+    "no-useless-call": "warn",
+    "one-var": [
+      "warn",
+      "never"
+    ],
+    "operator-linebreak": "warn",
+    "quotes": [
+      "warn",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "require-await": "error",
+    "semi": [
+      "warn",
+      "never"
+    ],
+    "sort-imports": "warn",
+    "space-before-function-paren": "warn",
+    "space-infix-ops": "warn"
+  }
 }
