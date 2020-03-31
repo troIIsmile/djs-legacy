@@ -15,10 +15,9 @@ function nth (i: number): string {
 
 export async function run (message: Message) {
   if (typeof persist.dogeCount !== 'number') persist.dogeCount = 0
-  persist.dogeCount++
   message.channel.send({
     file: 'http://assets.stickpng.com/thumbs/5845e755fb0b0755fa99d7f3.png',
-    content: `le doge has arrived for the ${nth(persist.dogeCount)} time!`
+    content: `le doge has arrived for the ${nth(++persist.dogeCount)} time!`
   })
   if (message.member?.voice.channel) {
     const channel = message.member.voice.channel
