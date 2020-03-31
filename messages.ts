@@ -86,7 +86,8 @@ const messages: Messages = {
     'RetroArch'
   ],
   NXTBOT: [ // References to this bot
-    'Submit playing lines & bug reports @ github.com/Jack5079/NXTBOT'
+    'Submit playing lines & bug reports @ github.com/Jack5079/NXTBOT',
+    'NotSoBot is bad™'
   ],
   Songs: Object.entries({
     'Scatman John': [

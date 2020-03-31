@@ -36,4 +36,4 @@ export const run = async () => {
   }
 }
 
-export const desc = 'mc <playername> - Get info about Minecraft: Java Edition players'
+export const desc = 'is minecraft down?'
