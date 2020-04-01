@@ -12,21 +12,20 @@ import { all as playingWith } from '../messages'
 // What this does is get all the commands in a directory, and adds them to the bot. ***Might*** add aliases later on
 async function readCommandDir (folder: string): Promise<Commands> {
   const map = new Map()
-  try {
+  // try {
     const entries = Object.fromEntries(await Promise.all(
         readdir(folder) // get the file names of every command in the commands folder
           .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
-          .map(filename => filename.replace('.js', '')) // remove `.js` from those
           .map(async file => {
             console.log(`[COMMANDS] Loading ${file}`)
-            return [file, (await import(folder + file)).run]
+            return [file.replace('.js', ''), (await import(folder + file)).run]
           }) // convert filenames to commands
     ))
     
     entries.forEach(map.set.bind(map))
-  } catch (err) {
-    console.log('[COMMANDS]', err.toString().split('\n')[0])
-  }
+  // } catch (err) {
+  //   console.log('[COMMANDS]', err.toString().split('\n')[0])
+  // }
   return map
 }
 export default (_: void, bot: Bot) => {
