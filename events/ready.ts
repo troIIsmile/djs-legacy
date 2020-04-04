@@ -2,8 +2,11 @@ import { Bot, Commands } from 'jackbot-discord'
 import random from '../utils/random'
 import live from '../utils/livereload'
 import { readdirSync as readdir } from 'fs'
-
 // (Most) Playing messages from esmBot
+// Why?
+// @TheEssem has a sense of humor, unlike me.
+// I've refactored the list (Adding categories and song authors and stuff) and probably put more time into working on the messages than him
+
 import { all as playingWith } from '../messages'
 
 // What this does is get all the commands in a directory, and adds them to the bot. ***Might*** add aliases later on
