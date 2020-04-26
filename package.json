@@ -23,7 +23,8 @@
     "tslib": "^1.10.0",
     "ytdl-core": "^2.0.0",
     "node-fetch": "^2.6.0",
-    "nintendo-switch-eshop": "^3.0.0"
+    "nintendo-switch-eshop": "^3.0.0",
+    "wikibase-sdk": "^7.2.1"
   },
   "devDependencies": {
     "@types/node": "^13.7.1",

@@ -6,7 +6,7 @@ import {
 } from 'fs'
 import { IncomingMessage, ServerResponse, createServer } from 'http'
 
-// We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'TOKEN=blahblahblah' > Env:/TOKEN` )
+// We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'blahblahblah' > Env:/TOKEN` )
 if (exists('./.env')) { // Before anything uses it, we must load the .env file (provided it exists, of course)
   process.env = {
     ...process.env,

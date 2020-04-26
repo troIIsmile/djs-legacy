@@ -17,18 +17,21 @@ interface Post {
 }
 interface Subreddit {
   data: {
-    chidren: Post[]
+    children: Post[]
   }
 }
+
+async function getPost (sub: string): Promise<Post> {
+  const result = await fetch(`https://www.reddit.com/r/${sub}/random.json`).then(res=>res.json()).then(data=>data[0].data.children[0])
+  if (result.data.url.startsWith('https://i.redd.it')) return result
+  return getPost(sub)
+}
+
 export default function (options: Options) {
   return async (message: Message) => {
     message.channel.startTyping()
-    const posts = (await fetch(`https://www.reddit.com/r/${options.name}.json`) // fetch the sub
-                   .then(res=>res.json())) // turn it into data we can read
-                   .data.children // array of posts
-                   .filter((post: Post)=>post.data.url.startsWith('https://i.redd.it')) // only images
     const {data: {community_icon: iconURL}} = await fetch(`https://www.reddit.com/r/${options.name}/about.json`).then(res=>res.json())
-    const {data: {title, author, created, url, permalink, ups}} = posts[Math.floor(Math.random() * posts.length)] // random post
+    const {data: {title, author, created, url, permalink, ups}} = await getPost(options.name) // random post
     message.channel.stopTyping()
     return {
       embed: {
