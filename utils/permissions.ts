@@ -2,7 +2,7 @@ import { Message } from 'jackbot-discord'
 
 interface Perms {
   [ key: string ]: (message: Message) => boolean
-}
+}  
 
 const checks: Perms = {
   botOwner (message) {
