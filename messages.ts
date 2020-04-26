@@ -193,7 +193,7 @@ const messages: Messages = {
   ]
 }
 
-const flatten = (messages: Messages): string[] => {
+const flatten = (messages: Messages | string[]): string[] => {
     const result = Object.values(messages).map(val => {
         if (Array.isArray(val)) return val
         return Object.values(val).flat()
