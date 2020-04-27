@@ -1,4 +1,4 @@
-import { Message } from 'jackbot-discord'
+import { Message } from 'discord.js'
 export const run = (message: Message, args: string[]) => {
   if (message.guild) {
     if (!message.guild.me?.hasPermission('MANAGE_NICKNAMES')) {

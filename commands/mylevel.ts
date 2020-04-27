@@ -1,4 +1,4 @@
-import { Message } from 'jackbot-discord'
+import { Message } from 'discord.js'
 import { permList } from '../utils/permissions'
 
 export const run = (message: Message) => {

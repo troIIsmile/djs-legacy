@@ -1,5 +1,5 @@
 // TODO: Add VC like the old jackbot
-import { Message } from 'jackbot-discord'
+import { Message } from 'discord.js'
 import { persist } from '../util'
 import ytdl from 'ytdl-core'
 
@@ -7,10 +7,10 @@ import ytdl from 'ytdl-core'
 function nth (i: number): string {
   const j = i % 10
   const k = i % 100
-  if (j == 1 && k != 11) return i + "st"
-  if (j == 2 && k != 12) return i + "nd"
-  if (j == 3 && k != 13) return i + "rd"
-  return i + "th"
+  if (j == 1 && k != 11) return i + 'st'
+  if (j == 2 && k != 12) return i + 'nd'
+  if (j == 3 && k != 13) return i + 'rd'
+  return i + 'th'
 }
 
 export async function run (message: Message) {
@@ -21,7 +21,9 @@ export async function run (message: Message) {
   })
   if (message.member?.voice.channel) {
     const channel = message.member.voice.channel
-    const stream = ytdl('https://www.youtube.com/watch?v=sd4bqmP_460', { filter: 'audioonly' })
+    const stream = ytdl('https://www.youtube.com/watch?v=sd4bqmP_460', {
+      filter: 'audioonly'
+    })
     const connection = await channel.join()
     const dispatch = connection.play(stream, { volume: false, seek: 0 })
     dispatch.on('end', channel.leave.bind(channel))
