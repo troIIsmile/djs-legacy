@@ -1,4 +1,5 @@
-import { Client, Message, MessageOptions } from 'discord.js'
+import { Client, Message } from 'discord.js'
+import { Bot, Command } from './utils/types'
 import {
   existsSync as exists,
   readFileSync as readFile,
@@ -19,14 +20,6 @@ if (exists('./.env')) { // Before anything uses it, we must load the .env file (
     )
   }
 }
-
-interface Bot extends Client {
-  commands: Map<string, Command>
-}
-
-type Return = (MessageOptions | string | void)
-type Command = (message: Message, args: string[], bot: Bot) => Return | Promise<Return>
-
 
 const options = {
   prefix: '-'
@@ -104,15 +97,16 @@ if (process.env.PORT && process.env.PROJECT_DOMAIN) { // Running on glitch
   createServer(function (_: IncomingMessage, res: ServerResponse) {
     res.writeHead(200, {
       'Content-Type': 'text-html'
-    });
-    res.write(`<meta http-equiv="refresh" content="0;url=${require('./package.json').homepage}">`);
-    res.end();
-  }).listen(process.env.PORT);
+    })
+    res.write(`<meta http-equiv="refresh" content="0;url=${require('./package.json').homepage}">`)
+    res.end()
+  }).listen(process.env.PORT)
 }
 
 if (!process.env.TOKEN) { // if there's no token
   console.error('No token found. Please add it to the env')
   process.exit(1)
 } else bot.login(process.env.TOKEN) // login using the token from .env
+
 
 export default bot
