@@ -118,11 +118,7 @@ const messages: Messages = {
       "Grandma's Got A Facebook",
       "STALKIN' YOUR MOM"
     ]
-  }).map(name => { // Turn this object into a string[] of 'Author - Song' names
-    const author = name[0]
-    const songsByAuthor = name[1]
-    return songsByAuthor.map(title=>`${author} - ${title}`)
-  }).flat(),
+  }).map(([author, songs]) => songs.map(title => `${author} - ${title}`)).flat(), // Turn this object into a string[] of 'Author - Song' names
   Games: [ // Finally, the actual games lmao
     'Pac-Man Championship Edition DX+',
     'Pac-Man Championship Edition 2',
@@ -194,12 +190,12 @@ const messages: Messages = {
 }
 
 const flatten = (messages: Messages): string[] => {
-    const result = Object.values(messages).map(val => {
-        if (Array.isArray(val)) return val
-        return Object.values(val).flat()
-    }).flat()
-    
-    return result.every(str => typeof str === 'string') ? result : flatten(result)
+  const result = Object.values(messages).map(val => {
+    if (Array.isArray(val)) return val
+    return Object.values(val).flat()
+  }).flat()
+
+  return result.every(str => typeof str === 'string') ? result : flatten(result)
 }
 
 const all = flatten(messages)
