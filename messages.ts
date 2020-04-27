@@ -44,6 +44,7 @@ const messages: Messages = {
     'MS Paint',
     'Skype', // Communication tool for free calls and chat
     'Blender', // The free and open source 3D creation suite.
+  "AOL Instant Messenger",
     'Visual Studio Code', // Visual Studio without the Visual
     'Atom', // A hackable text editor for the 21st Century
     'Shotcut', // Free, open source, and cross-platform video editor.
@@ -121,6 +122,7 @@ const messages: Messages = {
   }).map(([author, songs]) => songs.map(title => `${author} - ${title}`)).flat(), // Turn this object into a string[] of 'Author - Song' names
   Games: [ // Finally, the actual games lmao
     'Pac-Man Championship Edition DX+',
+    "Yandere Simulator",
     'Pac-Man Championship Edition 2',
     'Club Penguin',
     'Club Penguin Island',
@@ -136,6 +138,7 @@ const messages: Messages = {
     'Sonic 06',
     'Metal Gear Solid 4',
     'Action 52',
+  "Animal Crossing: New Horizons",
     'Meme Run',
   ],
   'Fake Games': [
@@ -153,6 +156,8 @@ const messages: Messages = {
     'with your sanity',
     'with yo mama',
     'with a broken god',
+    
+  "with Brody Foxx",
     'with GIFs',
     'games with the mortals',
     'with the Infinity Gauntlet',
@@ -185,7 +190,15 @@ const messages: Messages = {
     'jeff',
     'woo yeah',
     'joe mama',
-    '#BringBackNationalSex'
+    '#BringBackNationalSex',
+  "the",
+  "sissy hypnosis",
+  "PogChamp",
+  "yourself",
+  "sentience",
+  "beep boop",
+  "Hello, Gordon!",
+  "the j"
   ]
 }
 
