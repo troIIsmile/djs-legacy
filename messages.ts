@@ -118,11 +118,7 @@ const messages: Messages = {
       "Grandma's Got A Facebook",
       "STALKIN' YOUR MOM"
     ]
-  }).map(name => { // Turn this object into a string[] of 'Author - Song' names
-    const author = name[0]
-    const songsByAuthor = name[1]
-    return songsByAuthor.map(title=>`${author} - ${title}`)
-  }).flat(),
+  }).map(([author, songs]) => songs.map(title => `${author} - ${title}`)).flat(), // Turn this object into a string[] of 'Author - Song' names
   Games: [ // Finally, the actual games lmao
     'Pac-Man Championship Edition DX+',
     'Pac-Man Championship Edition 2',
