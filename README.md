@@ -2,7 +2,7 @@
 
 _THIS IS NXT_
 
-The flagship [`jackbot-discord`](https://npm.im/jackbot-discord) bot.
+A terrible Discord bot.
 
 ## Migrating from everythingbot/jackbot?
 
@@ -16,19 +16,19 @@ The flagship [`jackbot-discord`](https://npm.im/jackbot-discord) bot.
 
 ## How to install?
 
-this requires ffmpeg btw lol
-
-Rename `.env.example` to `.env`
-
-After that, replace the text after `TOKEN=` with your bot's token, and replace the text after `OWNER=` with your Discord ID.
-You can also add `SUPPORT=` if you have a support server. You don't need to, however.
-
-Finally, open the terminal and type these commands:
+1. Install dependencies:
 
 ```bash
+sudo apt install ffmpeg
 npm i
-npm run build
 ```
+
+2. Rename `.env.example` to `.env`
+
+3. Replace the text after `TOKEN=` with your bot's token, and replace the text after `OWNER=` with your Discord ID.
+   You can also add `SUPPORT=` if you have a support server. You don't need to, however.
+
+4. Compile the bot by running `npm run build` in your terminal.
 
 ## Donate
 

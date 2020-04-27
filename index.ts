@@ -6,11 +6,11 @@ import {
 } from 'fs'
 import { IncomingMessage, ServerResponse, createServer } from 'http'
 
-// We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'blahblahblah' > Env:/TOKEN` )
+// We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'blahblahblah' > Env:/TOKEN`)
 if (exists('./.env')) { // Before anything uses it, we must load the .env file (provided it exists, of course)
   process.env = {
-    ...process.env,
-    ...Object.fromEntries(
+    ...process.env, // Preserve existing env
+    ...Object.fromEntries( // Overwrite the env with the .env file
       readFile('./.env', 'utf-8')
         .split('\n') // split the file into lines
         .filter(line => !line.startsWith('#')) // remove comments
@@ -104,10 +104,10 @@ if (process.env.PORT && process.env.PROJECT_DOMAIN) { // Running on glitch
   createServer(function (_: IncomingMessage, res: ServerResponse) {
     res.writeHead(200, {
       'Content-Type': 'text-html'
-    })
-    res.write('<a href=https://github.com/Jack5079/nxtbot>source')
-    res.end()
-  }).listen(process.env.PORT)
+    });
+    res.write(`<meta http-equiv="refresh" content="0;url=${require('./package.json').homepage}">`);
+    res.end();
+  }).listen(process.env.PORT);
 }
 
 if (!process.env.TOKEN) { // if there's no token
