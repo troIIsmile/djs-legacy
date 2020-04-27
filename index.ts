@@ -8,10 +8,12 @@ import {
 import { IncomingMessage, ServerResponse, createServer } from 'http'
 
 // We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'blahblahblah' > Env:/TOKEN`)
-if (exists('./.env')) { // Before anything uses it, we must load the .env file (provided it exists, of course)
+if (exists('./.env')) {
+  // Before anything uses it, we must load the .env file (provided it exists, of course)
   process.env = {
     ...process.env, // Preserve existing env
-    ...Object.fromEntries( // Overwrite the env with the .env file
+    ...Object.fromEntries(
+      // Overwrite the env with the .env file
       readFile('./.env', 'utf-8')
         .split('\n') // split the file into lines
         .filter(line => !line.startsWith('#')) // remove comments
@@ -26,17 +28,20 @@ const options = {
 }
 
 const bot = new Client() as Bot
-bot.commands = new Map<string, Command>();
+bot.commands = new Map<string, Command>()
 
 // The actual command loader
-(async function commandLoader () {
+;(async function commandLoader () {
   try {
     const entries = await Promise.all(
       readdir('./commands/') // get the file names of every command in the commands folder
         .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
         .map(async file => {
           console.log(`[COMMANDS] Loading ${file}`)
-          return [file.replace('.js', ''), (await import('./commands/' + file)).run]
+          return [
+            file.replace('.js', ''),
+            (await import('./commands/' + file)).run
+          ]
         }) // convert filenames to commands
     )
     entries.forEach(([name, command]) => {
@@ -47,31 +52,28 @@ bot.commands = new Map<string, Command>();
   }
 })()
 
-bot.on('message', (message) => {
+// Remember jackbot-discord? This is it now.
+bot.on('message', message => {
   // When a message is sent
-  if (!message.author?.bot) { // no bots allowed
+  if (!message.author?.bot) {
+    // no bots allowed
     const content = message.content || ''
-    let name
-    for (const cmdname of bot.commands.keys()) {
-      if (
-        content.startsWith(`${options.prefix}${cmdname} `) // matches any command with a space after
-        || content === `${options.prefix}${cmdname}` // matches any command without arguments
-      ) {
-        name = cmdname
-        break
-      }
-    }
+    const name = [...bot.commands.keys()].find(
+      cmdname =>
+        content.startsWith(`${options.prefix}${cmdname} `) || // matches any command with a space after
+        content === `${options.prefix}${cmdname}` // matches any command without arguments
+    )
 
     // Run the command!
     if (name) {
-      const command = bot.commands.get(name) || function () { }
+      const command = bot.commands.get(name) || function () {}
       const output = command(
         message as Message, // the message
         // The arguments
         content
           .substring(options.prefix.length + 1 + name.length) // only the part after the command
-          .split(' ') // split with spaces
-        , bot // The bot
+          .split(' '), // split with spaces
+        bot // The bot
       )
       if (output) {
         if (output instanceof Promise) {
@@ -92,21 +94,31 @@ readdir('./events/')
     })
   })
 
-if (process.env.PORT && process.env.PROJECT_DOMAIN) { // Running on glitch
-  console.log('[PROD] Starting web server on', process.env.PROJECT_DOMAIN, 'with port', process.env.PORT)
+if (process.env.PORT && process.env.PROJECT_DOMAIN) {
+  // Running on glitch
+  console.log(
+    '[PROD] Starting web server on',
+    process.env.PROJECT_DOMAIN,
+    'with port',
+    process.env.PORT
+  )
   createServer(function (_: IncomingMessage, res: ServerResponse) {
     res.writeHead(200, {
       'Content-Type': 'text-html'
     })
-    res.write(`<meta http-equiv="refresh" content="0;url=${require('./package.json').homepage}">`)
+    res.write(
+      `<meta http-equiv="refresh" content="0;url=${
+        require('./package.json').homepage
+      }">`
+    )
     res.end()
   }).listen(process.env.PORT)
 }
 
-if (!process.env.TOKEN) { // if there's no token
+if (!process.env.TOKEN) {
+  // if there's no token
   console.error('No token found. Please add it to the env')
   process.exit(1)
 } else bot.login(process.env.TOKEN) // login using the token from .env
-
 
 export default bot
