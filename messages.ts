@@ -85,8 +85,8 @@ const messages: Messages = {
     'Dolphin Emulator',
     'RetroArch'
   ],
-  NXTBOT: [ // References to this bot
-    'Submit playing lines & bug reports @ github.com/Jack5079/NXTBOT',
+  Meta: [ // References to bots (or this bot)
+    'Submit playing lines & bug reports @ ' + require('./package.json').links.repository,
     'NotSoBot is bad™'
   ],
   Songs: Object.entries({
@@ -143,8 +143,8 @@ const messages: Messages = {
     'Meme Run',
   ],
   'Fake Games': [
-    'FL Studio: SoundCloud Rapper Edition',
     'Hello Kitty Island Adventure',
+    'FL Studio: SoundCloud Rapper Edition',
     'Fake Download Button Simulator',
     'Funny Fortain',
     'Battletoads for Wii',
@@ -179,7 +179,7 @@ const messages: Messages = {
     'gniyalꟼ',
     'the Cat Piano',
     'HaaH WaaW',
-    'dQw4w9WgXcQ',
+    'dQw4w9WgXcQ', // never gonna give you up
     'the funny memes epic',
     'Bottom Text',
     'lol 7',
@@ -189,7 +189,7 @@ const messages: Messages = {
     'jeff',
     'woo yeah',
     'joe mama',
-    '#BringBackNationalSex',
+    '#BringBackNationalSex'
   ]
 }
 

@@ -3,6 +3,7 @@
   "version": "4.2.0",
   "description": "THIS IS NXT",
   "main": "index.js",
+  "homepage": "https://jack5079.github.io/nxtbot/",
   "scripts": {
     "test": "echo no",
     "build": "tsc",

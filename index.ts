@@ -1,4 +1,4 @@
-import { Bot } from 'jackbot-discord'
+import { Bot } from 'jackbot-discord' 
 import {
   existsSync as exists,
   readFileSync as readFile,
@@ -6,11 +6,11 @@ import {
 } from 'fs'
 import { IncomingMessage, ServerResponse, createServer } from 'http'
 
-// We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'blahblahblah' > Env:/TOKEN` )
+// We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'blahblahblah' > Env:/TOKEN`)
 if (exists('./.env')) { // Before anything uses it, we must load the .env file (provided it exists, of course)
   process.env = {
-    ...process.env,
-    ...Object.fromEntries(
+    ...process.env, // Preserve existing env
+    ...Object.fromEntries( // Overwrite the env with the .env file
       readFile('./.env', 'utf-8')
         .split('\n') // split the file into lines
         .filter(line => !line.startsWith('#')) // remove comments
@@ -20,8 +20,9 @@ if (exists('./.env')) { // Before anything uses it, we must load the .env file (
   }
 }
 
+// Pretty soon, I'll merge jackbot-discord into NXTBOT. I haven't done that yet, so "-" is the prefix.
 const bot = new Bot(new Map(), { // jackbot-discord@14 and up uses a Map instead of an Object for commands
-    prefix: ['-'], // feel free to add more to this later on
+    prefix: ['-'], 
     allowbots: false
 })
 
@@ -41,7 +42,7 @@ if (process.env.PORT && process.env.PROJECT_DOMAIN) { // Running on glitch
     res.writeHead(200, {
       'Content-Type': 'text-html'
     });
-    res.write('<a href=https://github.com/Jack5079/nxtbot>source');
+    res.write(`<meta http-equiv="refresh" content="0;url=${require('./package.json').homepage}">`);
     res.end();
   }).listen(process.env.PORT);
 }

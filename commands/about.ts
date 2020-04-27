@@ -22,8 +22,9 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
   return {
     embed: {
       author: {
-        name: `${bot.user.tag.split('#')[0]} Info`, // I'm sorry this is the only way I could figure out how
-        iconURL: bot.user?.displayAvatarURL()
+        name: `About ${bot.user.tag.split('#')[0]}`, // I'm sorry this is the only way I could figure out how
+        iconURL: bot.user?.displayAvatarURL(),
+        url: require('../package.json').homepage
       },
       color: 0x454545,
       footer: {
@@ -34,7 +35,7 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
         name: '✏ Credits',
         value: `
         Some snippets of code from Guidebot by eslachance and esmBot by **Essem#9261**
-        [${Math.round(percentOfLines)}% of the "Playing" messages from esmBot](https://github.com/TheEssem/esmBot/blob/master/messages.json)`,
+        [${percentOfLines}% of the "Playing" messages from esmBot](https://github.com/TheEssem/esmBot/blob/master/messages.json)`,
         inline: true
       }, {
         name: '💬 Server Count',
