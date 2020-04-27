@@ -1,4 +1,4 @@
-import { Bot } from 'jackbot-discord'
+import { Client, Message, MessageOptions } from 'discord.js'
 import {
   existsSync as exists,
   readFileSync as readFile,
@@ -20,9 +20,73 @@ if (exists('./.env')) { // Before anything uses it, we must load the .env file (
   }
 }
 
-const bot = new Bot(new Map(), { // jackbot-discord@14 and up uses a Map instead of an Object for commands
-    prefix: ['-'], // feel free to add more to this later on
-    allowbots: false
+interface Bot extends Client {
+  commands: Map<string, Command>
+}
+
+type Return = (MessageOptions | string | void)
+type Command = (message: Message, args: string[], bot: Bot) => Return | Promise<Return>
+
+
+const options = {
+  prefix: '-'
+}
+
+const bot = new Client() as Bot
+bot.commands = new Map<string, Command>();
+
+// The actual command loader
+(async function commandLoader () {
+  try {
+    const entries = await Promise.all(
+      readdir('./commands/') // get the file names of every command in the commands folder
+        .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
+        .map(async file => {
+          console.log(`[COMMANDS] Loading ${file}`)
+          return [file.replace('.js', ''), (await import('./commands/' + file)).run]
+        }) // convert filenames to commands
+    )
+    entries.forEach(([name, command]) => {
+      bot.commands.set(name, command)
+    })
+  } catch (err) {
+    console.log('[COMMANDS]', err.toString().split('\n')[0])
+  }
+})()
+
+bot.on('message', (message) => {
+  // When a message is sent
+  if (!message.author?.bot) { // no bots allowed
+    const content = message.content || ''
+    let name
+    for (const cmdname of bot.commands.keys()) {
+      if (
+        content.startsWith(`${options.prefix}${cmdname} `) // matches any command with a space after
+        || content === `${options.prefix}${cmdname}` // matches any command without arguments
+      ) {
+        name = cmdname
+        break
+      }
+    }
+
+    // Run the command!
+    if (name) {
+      const command = bot.commands.get(name) || function () { }
+      const output = command(
+        message as Message, // the message
+        // The arguments
+        content
+          .substring(options.prefix.length + 1 + name.length) // only the part after the command
+          .split(' ') // split with spaces
+        , bot // The bot
+      )
+      if (output) {
+        if (output instanceof Promise) {
+          output.then(message.channel?.send.bind(message.channel))
+        } else message.channel?.send(output)
+      }
+    }
+  }
 })
 
 readdir('./events/')
@@ -40,10 +104,10 @@ if (process.env.PORT && process.env.PROJECT_DOMAIN) { // Running on glitch
   createServer(function (_: IncomingMessage, res: ServerResponse) {
     res.writeHead(200, {
       'Content-Type': 'text-html'
-    });
-    res.write('<a href=https://github.com/Jack5079/nxtbot>source');
-    res.end();
-  }).listen(process.env.PORT);
+    })
+    res.write('<a href=https://github.com/Jack5079/nxtbot>source')
+    res.end()
+  }).listen(process.env.PORT)
 }
 
 if (!process.env.TOKEN) { // if there's no token
