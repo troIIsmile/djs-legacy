@@ -1,4 +1,4 @@
-import { Client, Message } from 'discord.js'
+import { Client, Message, ClientEvents } from 'discord.js'
 import { Bot, Command } from './utils/types'
 import {
   existsSync as exists,
@@ -87,7 +87,7 @@ bot.on('message', message => {
 readdir('./events/')
   .filter(name => name.endsWith('.js'))
   .map(name => name.replace('.js', ''))
-  .forEach(async filename => {
+  .forEach(async (filename: any) => {
     const ev = (await import('./events/' + filename)).default
     bot.on(filename, context => {
       ev(context, bot)
