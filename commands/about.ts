@@ -1,4 +1,5 @@
-import { Message, Bot } from 'jackbot-discord'
+import { Message } from 'discord.js'
+import { Bot } from '../utils/types'
 import fetch from 'node-fetch'
 
 export const run = async (message: Message, _: string[], bot: Bot) => {

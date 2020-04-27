@@ -3,7 +3,6 @@ interface Messages {
   [key: string]: Messages | string[]
 }
 
-
 const messages: Messages = {
   Browsers: {
     Chromium: [
@@ -36,14 +35,17 @@ const messages: Messages = {
       'Windows 3.1'
     ]
   },
-  Apps: [ // Apps are programs on mobile
+  Apps: [
+    // Apps are programs on mobile
     'TikTok',
     'iPod Music'
   ],
-  Programs: [ // Programs are apps on PC
+  Programs: [
+    // Programs are apps on PC
     'MS Paint',
     'Skype', // Communication tool for free calls and chat
     'Blender', // The free and open source 3D creation suite.
+    'AOL Instant Messenger',
     'Visual Studio Code', // Visual Studio without the Visual
     'Atom', // A hackable text editor for the 21st Century
     'Shotcut', // Free, open source, and cross-platform video editor.
@@ -60,16 +62,13 @@ const messages: Messages = {
       'Mii Channel',
       'Disc Channel'
     ],
-    Switch: [
-      'Super Mario Maker 2',
-      'Super Smash Bros. Ultimate',
-    ],
+    Switch: ['Super Mario Maker 2', 'Super Smash Bros. Ultimate'],
     Other: [
       'Yoshi for the NES',
       'Nintendo™',
       'Game Boy Advance Video',
       'Wario World',
-      'Mario',
+      'Mario'
     ],
     Mobile: [
       'Super Mario Run',
@@ -80,47 +79,35 @@ const messages: Messages = {
       'Dr. Mario World'
     ]
   },
-  Emulators: [
-    'Yuzu',
-    'Dolphin Emulator',
-    'RetroArch'
-  ],
-  Meta: [ // References to bots (or this bot)
-    'Submit playing lines & bug reports @ ' + require('./package.json').links.repository,
+  Emulators: ['Yuzu', 'Dolphin Emulator', 'RetroArch'],
+  Meta: [
+    // References to bots (or this bot)
+    'Submit playing lines & bug reports @ ' +
+      require('./package.json').links.repository,
     'NotSoBot is bad™'
   ],
   Songs: Object.entries({
-    'Scatman John': [
-      "Scatman's World"
-    ],
-    'Alex Arcoleo': [
-      'Bloom 7'
-    ],
-    'Neil Cicierega': [
-      'Wow Wow',
-      'The Starting Line'
-    ],
-    'Big Shaq': [
-      "Man Don't Dance",
-      'Mans Not Hot'
-    ],
-    TOPAZ: [ // topazzz.bandcamp.com to be exact
+    'Scatman John': ["Scatman's World"],
+    'Alex Arcoleo': ['Bloom 7'],
+    'Neil Cicierega': ['Wow Wow', 'The Starting Line'],
+    'Big Shaq': ["Man Don't Dance", 'Mans Not Hot'],
+    TOPAZ: [
+      // topazzz.bandcamp.com to be exact
       'Half Awake, Pt. 2',
       'Half Awake, Pt. 1'
     ],
     'Fatty Spins': [
-      "Doin' Your Mom", // you know we straight
+      "Doin' Your Mom" // you know we straight
     ],
-    'FAT DAMON': [
-      'Conspiracy Theory Guy'
-    ],
-    'Your Favorite Martian': [
-      "Grandma's Got A Facebook",
-      "STALKIN' YOUR MOM"
-    ]
-  }).map(([author, songs]) => songs.map(title => `${author} - ${title}`)).flat(), // Turn this object into a string[] of 'Author - Song' names
-  Games: [ // Finally, the actual games lmao
+    'FAT DAMON': ['Conspiracy Theory Guy'],
+    'Your Favorite Martian': ["Grandma's Got A Facebook", "STALKIN' YOUR MOM"]
+  })
+    .map(([author, songs]) => songs.map(title => `${author} - ${title}`))
+    .flat(), // Turn this object into a string[] of 'Author - Song' names
+  Games: [
+    // Finally, the actual games lmao
     'Pac-Man Championship Edition DX+',
+    'Yandere Simulator',
     'Pac-Man Championship Edition 2',
     'Club Penguin',
     'Club Penguin Island',
@@ -136,7 +123,8 @@ const messages: Messages = {
     'Sonic 06',
     'Metal Gear Solid 4',
     'Action 52',
-    'Meme Run',
+    'Animal Crossing: New Horizons',
+    'Meme Run'
   ],
   'Fake Games': [
     'Hello Kitty Island Adventure',
@@ -147,17 +135,18 @@ const messages: Messages = {
     'Fortnut', // i mean kinda
     'The Elder Scrolls 6', // Not yet
     'Mega Man Legends 3',
-    'BLJ Simulator',
+    'BLJ Simulator'
   ],
   Puns: [
     'with your sanity',
     'with yo mama',
     'with a broken god',
+    'with Brody Foxx',
     'with GIFs',
     'games with the mortals',
     'with the Infinity Gauntlet',
     'with your Discord server',
-    'with a stone, Luigi.',
+    'with a stone, Luigi.'
   ],
   Websites: [
     'Twitter', // "It's what's happening."
@@ -165,7 +154,8 @@ const messages: Messages = {
     'YouTube', // "Broadcast Yourself"
     'MDN Web Docs' // the current name
   ],
-  Random: [ // All of these are from esmBot.
+  Random: [
+    // All of these are from esmBot.
     'h',
     'a game',
     'anime',
@@ -185,17 +175,27 @@ const messages: Messages = {
     'jeff',
     'woo yeah',
     'joe mama',
-    '#BringBackNationalSex'
+    '#BringBackNationalSex',
+    'the',
+    'sissy hypnosis',
+    'PogChamp',
+    'yourself',
+    'sentience',
+    'beep boop',
+    'Hello, Gordon!',
+    'the j'
   ]
 }
 
 const flatten = (messages: Messages | string[]): string[] => {
-    const result = Object.values(messages).map(val => {
-        if (Array.isArray(val)) return val
-        return Object.values(val).flat()
-    }).flat()
-    
-    return result.every(str => typeof str === 'string') ? result : flatten(result)
+  const result = Object.values(messages)
+    .map(val => {
+      if (Array.isArray(val)) return val
+      return Object.values(val).flat()
+    })
+    .flat()
+
+  return result.every(str => typeof str === 'string') ? result : flatten(result)
 }
 
 const all = flatten(messages)

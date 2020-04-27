@@ -1,8 +1,12 @@
-import { Message } from 'jackbot-discord'
+import { Message } from 'discord.js'
 import { hasFlag } from '../util'
 import ttsWithoutTypes = require('google-tts-api')
 
-async function tts (text: string = '', lang: string = 'en', speed: number = 1): Promise<string> {
+async function tts (
+  text: string = '',
+  lang: string = 'en',
+  speed: number = 1
+): Promise<string> {
   return ttsWithoutTypes(text, lang, speed)
 }
 
@@ -14,15 +18,23 @@ export const run = async (message: Message, args: string[]) => {
     const channel = message.member?.voice.channel
     let url: string
     if (hasFlag(args, 'slow')) {
-      url = await tts(args.filter(arg => !arg.startsWith('--')).join(' '), 'en', 0.27)
-    } else url = await tts(args.filter(arg => !arg.startsWith('--')).join(' '), 'en', 1)
+      url = await tts(
+        args.filter(arg => !arg.startsWith('--')).join(' '),
+        'en',
+        0.27
+      )
+    } else
+      url = await tts(
+        args.filter(arg => !arg.startsWith('--')).join(' '),
+        'en',
+        1
+      )
     const connection = await channel.join()
     const dispatch = connection.play(url)
     dispatch.on('end', () => {
       dispatch.end()
       channel.leave()
     })
-
   } catch (e) {
     if (e instanceof RangeError) {
       return 'This command only supports up to 200 chars. Blame Google!'
