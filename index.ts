@@ -84,13 +84,6 @@ bot.on('message', message => {
   }
 })
 
-// Let users find the prefix of the server
-bot.on('message', message => {
-  if (message.content.trim() === `<${bot.user?.id}>`) {
-    message.reply('My prefix is ' + options.prefix)
-  }
-})
-
 readdir('./events/')
   .filter(name => name.endsWith('.js'))
   .map(name => name.replace('.js', ''))
