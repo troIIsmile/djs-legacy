@@ -4,6 +4,7 @@ export async function run (_message: Message, args: string[]) {
   const res = await fetch('https://minecraftskinstealer.com/api/v1/skin/render/skin/' + encodeURI(args.join(' ')))
   return res.ok
     ? { // If it worked
+      content: `Here's the Minecraft: Java Edition skin of ${args.join(' ')}!`,
       files: [
         {
           attachment: await res.buffer(),
