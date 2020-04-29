@@ -1,4 +1,4 @@
-import { Client, Message, ClientEvents } from 'discord.js'
+import { Client, Message } from 'discord.js'
 import { Bot, Command } from './utils/types'
 import {
   existsSync as exists,
@@ -30,27 +30,27 @@ const options = {
 const bot = new Client() as Bot
 bot.commands = new Map<string, Command>()
 
-// The actual command loader
-;(async function commandLoader () {
-  try {
-    const entries = await Promise.all(
-      readdir('./commands/') // get the file names of every command in the commands folder
-        .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
-        .map(async file => {
-          console.log(`[COMMANDS] Loading ${file}`)
-          return [
-            file.replace('.js', ''),
-            (await import('./commands/' + file)).run
-          ]
-        }) // convert filenames to commands
-    )
-    entries.forEach(([name, command]) => {
-      bot.commands.set(name, command)
-    })
-  } catch (err) {
-    console.log('[COMMANDS]', err.toString().split('\n')[0])
-  }
-})()
+  // The actual command loader
+  ; (async function commandLoader () {
+    try {
+      const entries = await Promise.all(
+        readdir('./commands/') // get the file names of every command in the commands folder
+          .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
+          .map(async file => {
+            console.log(`[COMMANDS] Loading ${file}`)
+            return [
+              file.replace('.js', ''),
+              (await import('./commands/' + file)).run
+            ]
+          }) // convert filenames to commands
+      )
+      entries.forEach(([name, command]) => {
+        bot.commands.set(name, command)
+      })
+    } catch (err) {
+      console.log('[COMMANDS]', err.toString().split('\n')[0])
+    }
+  })()
 
 // Remember jackbot-discord? This is it now.
 bot.on('message', message => {
@@ -66,7 +66,7 @@ bot.on('message', message => {
 
     // Run the command!
     if (name) {
-      const command = bot.commands.get(name) || function () {}
+      const command = bot.commands.get(name) || function () { }
       const output = command(
         message as Message, // the message
         // The arguments
@@ -108,7 +108,7 @@ if (process.env.PORT && process.env.PROJECT_DOMAIN) {
     })
     res.write(
       `<meta http-equiv="refresh" content="0;url=${
-        require('./package.json').homepage
+      require('./package.json').homepage
       }">`
     )
     res.end()
