@@ -9,17 +9,17 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
   const hours = Math.floor(timestamp / 60 / 60)
 
   const formatted = `${hours} hour(s), ${Math.floor(timestamp / 60) - (hours * 60)} minute(s), and ${Math.floor(timestamp % 60)} second(s).`
-  
+
   delete require.cache[require.resolve('../package.json')] // Always get the latest package.json
-  
+
   const owner = bot.users.cache.get(process.env.OWNER as string)
-  
+
   if (!(bot.user && owner)) return 'oops the owner or the bot user does not exist some how'
-  
-  const esmBotMessages = await fetch('https://raw.githubusercontent.com/TheEssem/esmBot/master/messages.json').then(txt=>txt.json())
+
+  const esmBotMessages = await fetch('https://raw.githubusercontent.com/TheEssem/esmBot/master/messages.json').then(res => res.json())
   const messages = (await import('../messages')).all
   const linesFromEsmBot = messages.filter(line => esmBotMessages.includes(line)).length
-  const percentOfLines = (linesFromEsmBot*100)/messages.length
+  const percentOfLines = (linesFromEsmBot * 100) / messages.length
   return {
     embed: {
       author: {
@@ -57,7 +57,7 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
       }, {
         name: '🙋🏻‍♂️ Support',
         value: process.env.SUPPORT
-      }].filter(field=>field.value) // Remove any fields without values (like support if it isn't in env)
+      }].filter(field => field.value) // Remove any fields without values (like support if it isn't in env)
     }
   }
 }
