@@ -23,7 +23,7 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
   return {
     embed: {
       author: {
-        name: `About ${bot.user.tag.split('#')[0]}`, // I'm sorry this is the only way I could figure out how
+        name: `About ${bot.user.username}`,
         iconURL: bot.user?.displayAvatarURL(),
         url: require('../package.json').homepage
       },
