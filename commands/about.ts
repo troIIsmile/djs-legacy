@@ -8,15 +8,13 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
   // hours
   const hours = Math.floor(timestamp / 60 / 60)
 
-  const formatted = `${hours} hour(s), ${Math.floor(timestamp / 60) - (hours * 60)} minute(s), and ${Math.floor(timestamp % 60)} second(s).`
-
   delete require.cache[require.resolve('../package.json')] // Always get the latest package.json
 
   const owner = bot.users.cache.get(process.env.OWNER as string)
 
   if (!(bot.user && owner)) return 'oops the owner or the bot user does not exist some how'
 
-  const esmBotMessages = await fetch('https://raw.githubusercontent.com/TheEssem/esmBot/master/messages.json').then(res => res.json())
+  const esmBotMessages: string[] = await fetch('https://raw.githubusercontent.com/TheEssem/esmBot/master/messages.json').then(res => res.json())
   const messages = (await import('../messages')).all
   const linesFromEsmBot = messages.filter(line => esmBotMessages.includes(line)).length
   const percentOfLines = (linesFromEsmBot * 100) / messages.length
@@ -52,7 +50,7 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
         inline: true
       }, {
         name: '⏰ Uptime',
-        value: formatted,
+        value: [hours, Math.floor(timestamp / 60) - (hours * 60), Math.floor(timestamp % 60)].join(':'),
         inline: true
       }, {
         name: '🙋🏻‍♂️ Support',
