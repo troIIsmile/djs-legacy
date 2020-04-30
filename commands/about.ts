@@ -34,7 +34,7 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
         name: '✏ Credits',
         value: `
         Some snippets of code from Guidebot by eslachance and esmBot by **Essem#9261**
-        [${percentOfLines}% of the "Playing" messages from esmBot](https://github.com/TheEssem/esmBot/blob/master/messages.json)`,
+        [${percentOfLines.toFixed(5)}% of the "Playing" messages from esmBot](https://github.com/TheEssem/esmBot/blob/master/messages.json)`,
         inline: true
       }, {
         name: '💬 Server Count',
