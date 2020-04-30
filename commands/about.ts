@@ -25,6 +25,8 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
         iconURL: bot.user?.displayAvatarURL(),
         url: require('../package.json').homepage
       },
+      title: 'Invite the bot',
+      url: (await bot.generateInvite(['ADMINISTRATOR'])),
       color: 0x454545,
       footer: {
         text: `Owned by ${owner.tag}`,
