@@ -1,4 +1,4 @@
-import { Client, Message } from 'discord.js'
+import { Client, Message, Collection } from 'discord.js'
 import { Bot, Command } from './utils/types'
 import {
   existsSync as exists,
@@ -28,7 +28,7 @@ const options = {
 }
 
 const bot = new Client() as Bot
-bot.commands = new Map<string, Command>()
+bot.commands = new Collection<string, Command>()
 
   // The actual command loader
   ; (async function commandLoader () {
