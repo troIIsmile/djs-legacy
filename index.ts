@@ -3,7 +3,8 @@ import { Bot, Command } from './utils/types'
 import {
   existsSync as exists,
   readFileSync as readFile,
-  readdirSync as readdir
+  readdirSync as readdir,
+  watch
 } from 'fs'
 import { IncomingMessage, ServerResponse, createServer } from 'http'
 
@@ -84,6 +85,29 @@ bot.on('message', message => {
   }
 })
 
+// Live reload
+watch('./commands/', {}, async (type: string, filename: string) => {
+  if (filename.endsWith('.js')) {
+    if (type === 'change') {
+      filename = filename.replace('.js', '')
+      delete require.cache[require.resolve(`./commands/${filename}.js`)]
+      bot.commands.set(
+        filename,
+        (await import(`./commands/${filename}.js`)).run
+      )
+    } else {
+      if (exists(`./commands/${filename}`)) {
+        bot.commands.set(
+          filename.replace('.js', ''),
+          (await import(`./commands/${filename}`)).run
+        )
+      } else {
+        filename = filename.replace('.js', '')
+        bot.commands.delete(filename)
+      }
+    }
+  }
+})
 readdir('./events/')
   .filter(name => name.endsWith('.js'))
   .map(name => name.replace('.js', ''))
