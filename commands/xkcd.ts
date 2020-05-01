@@ -11,7 +11,7 @@ const template = {
       'https://pbs.twimg.com/profile_images/413359024617185280/pS8lVAWA_400x400.png'
   }
 }
-export const run = async (message: Message, args: string[]) => {
+export const run = async (_message: Message, args: string[]) => {
   if (args[0] && isNaN(parseInt(args[0])))
     return {
       embed: {
