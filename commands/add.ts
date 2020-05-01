@@ -4,14 +4,12 @@ import { Bot, Command } from '../utils/types'
 
 export async function run (
   message: Message,
-  args: string[],
+  [name, ...args]: [string, string[]],
   bot: Bot
 ): Promise<string> {
   if (hasPerm(message)) {
     // Lets users create a new command within the app
     if (args.length) {
-      const name = args[0] // record the name before we remove it
-      args.shift() // remove the name
       const func = new Function(
         'message',
         'args',
