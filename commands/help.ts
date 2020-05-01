@@ -4,7 +4,11 @@ import { Bot } from '../utils/types'
 
 export async function run (_message: Message, _args: string[], bot: Bot) {
   try {
-    const commands = await Promise.all(Array.from(bot.commands.keys(), async id => [id, (await import(`./${id}`))]))
+    const commands = await Promise.all(
+      Array.from(
+        bot.commands.keys(), async id => [id, (await import(`./${id}`))]
+      )
+    )
     return commands // list of command names
       .map(([name, { desc }]) => `**-${name}** :: ${desc}`) // add "-" to the start
       .join('\n') // string seperated by newline

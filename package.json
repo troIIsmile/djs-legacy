@@ -15,6 +15,7 @@
   "links": {
     "repository": "github:Jack5079/nxtbot"
   },
+  "bugs": "https://github.com/Jack5079/nxtbot/issue",
   "author": "Jack5079",
   "license": "ISC",
   "dependencies": {
