@@ -17,6 +17,6 @@
       "}",
       "export const desc = '${1:A new command}'"
     ],
-    "description": "New command for NXTBOT."
+    "description": "A complete template for your new command."
   }
 }

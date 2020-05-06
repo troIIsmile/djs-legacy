@@ -1,9 +1,9 @@
-import { Client, Message, MessageOptions } from 'discord.js'
+import { Client, Message, MessageOptions, Collection } from 'discord.js'
 type Return = (MessageOptions | string | void)
 type Command = (message: Message, args: string[], bot: Bot) => Return | Promise<Return>
 
 interface Bot extends Client {
-  commands: Map<string, Command>
+  commands: Collection<string, Command>
 }
 
 export {

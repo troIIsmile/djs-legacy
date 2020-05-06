@@ -1,11 +1,11 @@
 import fetch from 'node-fetch'
-import { run as status } from './mcstatus' // The best part about jackbot-discord@13 is that commands can call other commands. We use this to get server data.
+import { run as status } from './mcstatus'
 
 export const desc = 'mc <playername> - Get info about Minecraft: Java Edition players'
 
 export const run = async (message: void, args: string[]) => {
   try {
-    const {embed: { fields } } = await status()
+    const { embed: { fields } } = await status()
     if (fields.find(service => service.name === 'sessionserver.mojang.com')?.value !== '✅ Up') {
       return {
         embed: {
@@ -19,8 +19,8 @@ export const run = async (message: void, args: string[]) => {
         }
       }
     }
-    const { id } = await fetch('https://api.mojang.com/users/profiles/minecraft/' + args.join('')).then(res=>res.json())
-    const {properties, name: title} = await fetch('https://sessionserver.mojang.com/session/minecraft/profile/' + id).then(res=>res.json())
+    const { id } = await fetch('https://api.mojang.com/users/profiles/minecraft/' + args.join('')).then(res => res.json())
+    const { properties, name: title } = await fetch('https://sessionserver.mojang.com/session/minecraft/profile/' + id).then(res => res.json())
     return {
       embed: {
         color: 0x3F3F3F,

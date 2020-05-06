@@ -8,25 +8,25 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
   // hours
   const hours = Math.floor(timestamp / 60 / 60)
 
-  const formatted = `${hours} hour(s), ${Math.floor(timestamp / 60) - (hours * 60)} minute(s), and ${Math.floor(timestamp % 60)} second(s).`
-  
   delete require.cache[require.resolve('../package.json')] // Always get the latest package.json
-  
+
   const owner = bot.users.cache.get(process.env.OWNER as string)
-  
+
   if (!(bot.user && owner)) return 'oops the owner or the bot user does not exist some how'
-  
-  const esmBotMessages = await fetch('https://raw.githubusercontent.com/TheEssem/esmBot/master/messages.json').then(txt=>txt.json())
+
+  const esmBotMessages: string[] = await fetch('https://raw.githubusercontent.com/TheEssem/esmBot/master/messages.json').then(res => res.json())
   const messages = (await import('../messages')).all
   const linesFromEsmBot = messages.filter(line => esmBotMessages.includes(line)).length
-  const percentOfLines = (linesFromEsmBot*100)/messages.length
+  const percentOfLines = (linesFromEsmBot * 100) / messages.length
   return {
     embed: {
       author: {
-        name: `About ${bot.user.tag.split('#')[0]}`, // I'm sorry this is the only way I could figure out how
+        name: `About ${bot.user.username}`,
         iconURL: bot.user?.displayAvatarURL(),
         url: require('../package.json').homepage
       },
+      title: 'Invite the bot',
+      url: (await bot.generateInvite(['ADMINISTRATOR'])),
       color: 0x454545,
       footer: {
         text: `Owned by ${owner.tag}`,
@@ -35,8 +35,8 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
       fields: [{
         name: '✏ Credits',
         value: `
-        Some snippets of code from Guidebot by eslachance and esmBot by **Essem#9261**
-        [${percentOfLines}% of the "Playing" messages from esmBot](https://github.com/TheEssem/esmBot/blob/master/messages.json)`,
+        Some snippets of code from Guidebot by eslachance and esmBot by Essem#9261
+        [${percentOfLines.toFixed(5)}% of the "Playing" messages from esmBot](https://github.com/TheEssem/esmBot/blob/master/messages.json)`,
         inline: true
       }, {
         name: '💬 Server Count',
@@ -52,12 +52,12 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
         inline: true
       }, {
         name: '⏰ Uptime',
-        value: formatted,
+        value: [hours, Math.floor(timestamp / 60) - (hours * 60), Math.floor(timestamp % 60)].join(':'),
         inline: true
       }, {
         name: '🙋🏻‍♂️ Support',
         value: process.env.SUPPORT
-      }].filter(field=>field.value) // Remove any fields without values (like support if it isn't in env)
+      }].filter(field => field.value) // Remove any fields without values (like support if it isn't in env)
     }
   }
 }
