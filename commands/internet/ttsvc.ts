@@ -1,5 +1,5 @@
 import { Message } from 'discord.js'
-import { hasFlag } from '../util'
+import { hasFlag } from '../../util'
 import ttsWithoutTypes = require('google-tts-api')
 
 async function tts (
