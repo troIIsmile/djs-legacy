@@ -25,4 +25,4 @@ export async function run (_message: Message, _args: string[], bot: Bot) {
   }
 }
 
-export const desc = 'what the fuck are you using right now'
+export const desc = 'Shows a list of all the commands and their descriptions.'
