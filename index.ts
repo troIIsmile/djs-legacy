@@ -1,5 +1,5 @@
 import { Client, Message, Collection } from 'discord.js'
-import { Bot, Command } from './utils/types'
+import { Bot, CommandObj } from './utils/types'
 import {
   existsSync as exists,
   readFileSync as readFile,
@@ -40,7 +40,7 @@ const options = {
 }
 
 const bot = new Client() as Bot
-bot.commands = new Collection<string, Command>()
+bot.commands = new Collection<string, CommandObj>()
 
   // The actual command loader
   ; (async function commandLoader () {
@@ -52,7 +52,7 @@ bot.commands = new Collection<string, Command>()
             console.log(`[COMMANDS] Loading ${file.replace('commands\\', '').replace('commands/', '')}`)
             return [
               file.replace('.js', '').replace('commands/', '').replace('commands\\', ''),
-              (await import('./' + file)).run
+              (await import('./' + file))
             ]
           }) // convert filenames to commands
       )
@@ -78,7 +78,7 @@ bot.on('message', message => {
 
     // Run the command!
     if (name) {
-      const command = bot.commands.get(name) || function () { }
+      const command = bot.commands.get(name)?.run || function () { }
       const output = command(
         message as Message, // the message
         // The arguments

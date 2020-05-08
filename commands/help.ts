@@ -6,12 +6,15 @@ export async function run (_message: Message, _args: string[], bot: Bot) {
   try {
     const commands = await Promise.all(
       Array.from(
-        bot.commands.keys(), async id => [id, (await import(`./${id}`))]
+        bot.commands.entries(), async ([name, { desc }]) => [name, desc]
       )
     )
-    return commands // list of command names
-      .map(([name, { desc }]) => `**-${name}** :: ${desc}`) // add "-" to the start
-      .join('\n') // string seperated by newline
+    return {
+      content: commands // list of command names
+        .map(([name, desc]) => `**-${name}** :: ${desc}`) // add "-" to the start
+        .join('\n'), // string seperated by newline
+      split: true
+    }
   } catch (e) {
     return {
       embed: {
