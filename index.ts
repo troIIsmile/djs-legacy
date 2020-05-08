@@ -51,7 +51,7 @@ bot.commands = new Collection<string, Command>()
           .map(async file => {
             console.log(`[COMMANDS] Loading ${file.replace('commands\\', '').replace('commands/', '')}`)
             return [
-              file.replace('.js', ''),
+              file.replace('.js', '').replace('commands/', '').replace('commands\\', ''),
               (await import('./' + file)).run
             ]
           }) // convert filenames to commands
