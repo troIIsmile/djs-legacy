@@ -138,6 +138,7 @@ const messages: Messages = {
     'BLJ Simulator'
   ],
   Puns: [
+    'with recursion', // haha get it v6
     'with your sanity',
     'with yo mama',
     'with a broken god',
