@@ -1,5 +1,5 @@
 import { Message } from 'discord.js'
-import { permList } from '../utils/permissions'
+import { permList } from '../../utils/permissions'
 
 export const run = (message: Message) => {
   const input = permList(message)

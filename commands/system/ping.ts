@@ -1,5 +1,5 @@
 import { Message } from 'discord.js'
-import { Bot } from '../utils/types'
+import { Bot } from '../../utils/types'
 
 export const run = async (message: Message, _args: string[], client: Bot) => {
   const msg = (await message.channel.send('Ping?')) as Message
