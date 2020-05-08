@@ -1,6 +1,6 @@
 // TODO: Add some sort of cool embed
 import { Message } from 'discord.js'
-import { Bot } from '../utils/types'
+import { Bot } from '../../utils/types'
 
 export async function run (_message: Message, _args: string[], bot: Bot) {
   try {
@@ -9,6 +9,7 @@ export async function run (_message: Message, _args: string[], bot: Bot) {
         bot.commands.entries(), async ([name, { desc }]) => [name, desc]
       )
     )
+    console.log(commands)
     return {
       content: commands // list of command names
         .map(([name, desc]) => `**-${name}** :: ${desc}`) // add "-" to the start

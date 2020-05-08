@@ -1,6 +1,6 @@
 import { Message } from 'discord.js'
-import { hasPerm } from '../utils/permissions'
-import { Bot, Command } from '../utils/types'
+import { hasPerm } from '../../utils/permissions'
+import { Bot, Command } from '../../utils/types'
 
 export function run (
   message: Message,

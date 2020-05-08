@@ -49,9 +49,9 @@ bot.commands = new Collection<string, CommandObj>()
         (await rreaddir('./commands/')) // get the file names of every command in the commands folder
           .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
           .map(async file => {
-            console.log(`[COMMANDS] Loading ${file.replace('commands\\', '').replace('commands/', '')}`)
+            console.log(`[COMMANDS] Loading ${file}`)
             return [
-              file.replace('.js', '').replace('commands/', '').replace('commands\\', ''),
+              file.replace('.js', '').replace(/^.*[\\\/]/, ''),
               (await import('./' + file))
             ]
           }) // convert filenames to commands
@@ -75,7 +75,6 @@ bot.on('message', message => {
         content.startsWith(`${options.prefix}${cmdname} `) || // matches any command with a space after
         content === `${options.prefix}${cmdname}` // matches any command without arguments
     )
-
     // Run the command!
     if (name) {
       const command = bot.commands.get(name)?.run || function () { }
