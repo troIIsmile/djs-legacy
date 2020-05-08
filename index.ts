@@ -1,12 +1,23 @@
 import { Client, Message, Collection } from 'discord.js'
-import { Bot, Command } from './utils/types'
+import { Bot, CommandObj } from './utils/types'
 import {
   existsSync as exists,
   readFileSync as readFile,
-  readdirSync as readdir,
-  watch
+  readdirSync,
+  watch,
+  promises
 } from 'fs'
 import { IncomingMessage, ServerResponse, createServer } from 'http'
+const { readdir, stat } = promises
+import { join } from 'path'
+async function rreaddir (dir: string, allFiles: string[] = []): Promise<string[]> {
+  const files = (await readdir(dir)).map(f => join(dir, f))
+  allFiles.push(...files)
+  await Promise.all(files.map(async f => (
+    (await stat(f)).isDirectory() && rreaddir(f, allFiles)
+  )))
+  return allFiles
+}
 
 // We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'blahblahblah' > Env:/TOKEN`)
 if (exists('./.env')) {
@@ -29,19 +40,19 @@ const options = {
 }
 
 const bot = new Client() as Bot
-bot.commands = new Collection<string, Command>()
+bot.commands = new Collection<string, CommandObj>()
 
   // The actual command loader
   ; (async function commandLoader () {
     try {
       const entries = await Promise.all(
-        readdir('./commands/') // get the file names of every command in the commands folder
+        (await rreaddir('./commands/')) // get the file names of every command in the commands folder
           .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
           .map(async file => {
             console.log(`[COMMANDS] Loading ${file}`)
             return [
-              file.replace('.js', ''),
-              (await import('./commands/' + file)).run
+              file.replace('.js', '').replace(/^.*[\\\/]/, ''),
+              (await import('./' + file))
             ]
           }) // convert filenames to commands
       )
@@ -64,10 +75,9 @@ bot.on('message', message => {
         content.startsWith(`${options.prefix}${cmdname} `) || // matches any command with a space after
         content === `${options.prefix}${cmdname}` // matches any command without arguments
     )
-
     // Run the command!
     if (name) {
-      const command = bot.commands.get(name) || function () { }
+      const command = bot.commands.get(name)?.run || function () { }
       const output = command(
         message as Message, // the message
         // The arguments
@@ -86,29 +96,31 @@ bot.on('message', message => {
 })
 
 // Live reload
-watch('./commands/', {}, async (type: string, filename: string) => {
-  if (filename.endsWith('.js')) {
-    if (type === 'change') {
-      filename = filename.replace('.js', '')
-      delete require.cache[require.resolve(`./commands/${filename}.js`)]
-      bot.commands.set(
-        filename,
-        (await import(`./commands/${filename}.js`)).run
-      )
-    } else {
-      if (exists(`./commands/${filename}`)) {
-        bot.commands.set(
-          filename.replace('.js', ''),
-          (await import(`./commands/${filename}`)).run
-        )
-      } else {
-        filename = filename.replace('.js', '')
-        bot.commands.delete(filename)
-      }
-    }
-  }
-})
-readdir('./events/')
+// Disabled until we can get recursive working on Linux.
+// watch('./commands/', { recursive: true}, async (type: string, filename: string) => {
+//   if (filename.endsWith('.js')) {
+//     if (type === 'change') {
+//       filename = filename.replace('.js', '')
+//       delete require.cache[require.resolve(`./commands/${filename}.js`)]
+//       bot.commands.set(
+//         filename,
+//         (await import(`./commands/${filename}.js`)).run
+//       )
+//     } else {
+//       if (exists(`./commands/${filename}`)) {
+//         bot.commands.set(
+//           filename.replace('.js', ''),
+//           (await import(`./commands/${filename}`)).run
+//         )
+//       } else {
+//         filename = filename.replace('.js', '')
+//         bot.commands.delete(filename)
+//       }
+//     }
+//   }
+// })
+
+readdirSync('./events/')
   .filter(name => name.endsWith('.js'))
   .map(name => name.replace('.js', ''))
   .forEach(async (filename: any) => {

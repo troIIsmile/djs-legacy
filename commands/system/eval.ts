@@ -1,7 +1,7 @@
 import { Message } from 'discord.js'
-import clean from '../utils/clean'
-import { hasPerm } from '../utils/permissions'
-import { Bot } from '../utils/types'
+import clean from '../../utils/clean'
+import { hasPerm } from '../../utils/permissions'
+import { Bot } from '../../utils/types'
 
 export async function run (
   message: Message,

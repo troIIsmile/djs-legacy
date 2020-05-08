@@ -1,1 +1,1 @@
-export default console.warn.bind(console, '[WARNING]')
+export default console.warn.bind(console, '[DISCORD WARNING]')

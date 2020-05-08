@@ -1,5 +1,5 @@
-import { hasPerm } from '../utils/permissions'
-import { Bot } from '../utils/types'
+import { hasPerm } from '../../utils/permissions'
+import { Bot } from '../../utils/types'
 import { Message } from 'discord.js'
 
 async function command (message: Message, _: string[], bot: Bot) {

@@ -1,4 +1,4 @@
-import random from '../utils/random'
+import random from '../../utils/random'
 import { Message } from 'discord.js'
 const faces = ['OwO', 'UwU', '-w-']
 export const run = (message: Message, args: string[]) => {

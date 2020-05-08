@@ -6,5 +6,5 @@ export const run = (_message: Message, _args: string[], client: Bot) => random(
     .map(guild => guild.emojis.cache.array())
     .flat()
     .filter(Boolean).map(emoji => emoji.toString())
-) || 'The bot somehow has no emoji. What the fuck?'
+) || 'The bot somehow has no emoji. What the?'
 export const desc = 'Random emote from the servers this bot is in'
