@@ -3,10 +3,21 @@ import { Bot, Command } from './utils/types'
 import {
   existsSync as exists,
   readFileSync as readFile,
-  readdirSync as readdir,
-  watch
+  readdirSync,
+  watch,
+  promises
 } from 'fs'
 import { IncomingMessage, ServerResponse, createServer } from 'http'
+const { readdir, stat } = promises
+import { join } from 'path'
+async function rreaddir (dir: string, allFiles: string[] = []): Promise<string[]> {
+  const files = (await readdir(dir)).map(f => join(dir, f))
+  allFiles.push(...files)
+  await Promise.all(files.map(async f => (
+    (await stat(f)).isDirectory() && rreaddir(f, allFiles)
+  )))
+  return allFiles
+}
 
 // We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'blahblahblah' > Env:/TOKEN`)
 if (exists('./.env')) {
@@ -35,13 +46,13 @@ bot.commands = new Collection<string, Command>()
   ; (async function commandLoader () {
     try {
       const entries = await Promise.all(
-        readdir('./commands/') // get the file names of every command in the commands folder
+        (await rreaddir('./commands/')) // get the file names of every command in the commands folder
           .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
           .map(async file => {
-            console.log(`[COMMANDS] Loading ${file}`)
+            console.log(`[COMMANDS] Loading ${file.replace('commands\\', '').replace('commands/', '')}`)
             return [
               file.replace('.js', ''),
-              (await import('./commands/' + file)).run
+              (await import('./' + file)).run
             ]
           }) // convert filenames to commands
       )
@@ -108,7 +119,7 @@ watch('./commands/', {}, async (type: string, filename: string) => {
     }
   }
 })
-readdir('./events/')
+readdirSync('./events/')
   .filter(name => name.endsWith('.js'))
   .map(name => name.replace('.js', ''))
   .forEach(async (filename: any) => {
