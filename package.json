@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo no",
     "build": "tsc",
-    "start": "tsc --watch &\n node ."
+    "start": "node ."
   },
   "engines": {
     "node": ">=12"
