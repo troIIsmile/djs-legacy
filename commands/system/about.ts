@@ -8,7 +8,7 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
   // hours
   const hours = Math.floor(timestamp / 60 / 60)
 
-  delete require.cache[require.resolve('../package.json')] // Always get the latest package.json
+  delete require.cache[require.resolve('../../package.json')] // Always get the latest package.json
 
   const owner = bot.users.cache.get(process.env.OWNER as string)
 
@@ -23,7 +23,7 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
       author: {
         name: `About ${bot.user.username}`,
         iconURL: bot.user?.displayAvatarURL(),
-        url: require('../package.json').homepage
+        url: require('../../package.json').homepage
       },
       title: 'Invite the bot',
       url: (await bot.generateInvite(['ADMINISTRATOR'])),
@@ -48,7 +48,7 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
         inline: true
       }, {
         name: 'ℹ Version',
-        value: require('../package.json').version,
+        value: require('../../package.json').version,
         inline: true
       }, {
         name: '⏰ Uptime',
