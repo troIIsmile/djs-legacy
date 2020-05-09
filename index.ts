@@ -4,7 +4,6 @@ import {
   existsSync as exists,
   readFileSync as readFile,
   readdirSync,
-  watch,
   promises
 } from 'fs'
 import { IncomingMessage, ServerResponse, createServer } from 'http'
