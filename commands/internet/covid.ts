@@ -18,7 +18,6 @@ export async function run (message: Message) {
   } = await fetch(url)
     .then(res => res.json())
     .then(wdk.parse.wd.entities)
-  console.log(deaths, confirmed, recovered)
   message.channel.stopTyping()
   return {
     embed: {
