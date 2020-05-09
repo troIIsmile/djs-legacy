@@ -8,7 +8,11 @@ export async function run (_message: Message, _args: string[], bot: Bot) {
       Array.from(
         bot.commands.entries(), async ([name, { desc }]) => [name, desc]
       )
-    )
+    ).then((unsorted) => unsorted.sort(([a], [b]) => { // God is dead
+      if (a < b) { return -1 }
+      if (a > b) { return 1 }
+      return 0
+    }))
     console.log(commands)
     return {
       content: commands // list of command names
