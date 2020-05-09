@@ -41,7 +41,7 @@ export async function run (_message: Message, args: string[], bot: Bot) {
       return {
         embed: {
           title: `${bot.user?.username || ''} Commands`,
-          description: 'What the fuck negivate pages do not exist'
+          description: 'What the fuck pages below and including 0 do not exist'
         }
       }
     }
