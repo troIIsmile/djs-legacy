@@ -3,21 +3,10 @@ import { Bot, CommandObj } from './utils/types'
 import {
   existsSync as exists,
   readFileSync as readFile,
-  readdirSync,
-  promises
+  readdirSync
 } from 'fs'
 import { IncomingMessage, ServerResponse, createServer } from 'http'
-const { readdir, stat } = promises
-import { join } from 'path'
-async function rreaddir (dir: string, allFiles: string[] = []): Promise<string[]> {
-  const files = (await readdir(dir)).map(f => join(dir, f))
-  allFiles.push(...files)
-  await Promise.all(files.map(async f => (
-    (await stat(f)).isDirectory() && rreaddir(f, allFiles)
-  )))
-  return allFiles
-}
-
+import { rreaddir } from './utils/rreaddir'
 // We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'blahblahblah' > Env:/TOKEN`)
 if (exists('./.env')) {
   // Before anything uses it, we must load the .env file (provided it exists, of course)
