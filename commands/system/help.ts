@@ -31,6 +31,7 @@ export async function run (_message: Message, args: string[], bot: Bot) {
         return { name, value }
       }),
       footer: {
+        iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/VisualEditor_-_Icon_-_Book.svg/600px-VisualEditor_-_Icon_-_Book.svg.png',
         text: `${page}/${chunks.length}`
       }
     }
