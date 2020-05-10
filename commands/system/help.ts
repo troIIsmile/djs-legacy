@@ -22,26 +22,14 @@ export async function run (_message: Message, args: string[], bot: Bot) {
       Array.from(
         bot.commands.entries(), async ([name, { desc }]) => [name, desc]
       )
-    ).then((unsorted) => unsorted.sort(([a], [b]) => { // God is dead
-      if (a < b) { return -1 }
-      if (a > b) { return 1 }
-      return 0
-    }))
+    ).then((unsorted) => unsorted.sort(([a], [b]) => a.localeCompare(b)))
     const chunks = chunk(commands, 20)
-    if ((page - 1) >= chunks.length) {
-      return {
-        embed: {
-          title: `${bot.user?.username || ''} Commands`,
-          description: `There are only ${chunks.length} pages idiot`
-        }
-      }
-    }
 
-    if (page <= 0) {
+    if (!chunks[page-1]) {
       return {
         embed: {
           title: `${bot.user?.username || ''} Commands`,
-          description: 'What the fuck pages below and including 0 do not exist'
+          description: 'That page does not exist'
         }
       }
     }
