@@ -15,13 +15,11 @@ function chunk (array: any[], size: number = 1): Array<any> {
     return acc
   }, [])
 }
-export async function run (_message: Message, args: string[], bot: Bot) {
+export function run (_message: Message, args: string[], bot: Bot) {
   const page = parseInt(args.join('')) || 1
-  const commands = await Promise.all(
-    Array.from(
-      bot.commands.entries(), async ([name, { desc }]) => [name, desc]
-    )
-  ).then((unsorted) => unsorted.sort(([a], [b]) => a.localeCompare(b)))
+  const commands = Array.from(
+    bot.commands.entries(), ([name, { desc }]) => [name, desc]
+  ).sort(([a], [b]) => a.localeCompare(b))
   const chunks = chunk(commands, 20)
 
   return chunks[page - 1] ? {
