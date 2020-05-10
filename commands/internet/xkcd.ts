@@ -11,8 +11,8 @@ const template = {
       'https://pbs.twimg.com/profile_images/413359024617185280/pS8lVAWA_400x400.png'
   }
 }
-export const run = async (_message: Message, args: string[]) => {
-  if (args[0] && isNaN(parseInt(args[0])))
+export const run = async (_message: Message, [comicnum]: [string]) => {
+  if (comicnum && isNaN(parseInt(comicnum))) {
     return {
       embed: {
         ...template,
@@ -20,10 +20,11 @@ export const run = async (_message: Message, args: string[]) => {
         description: "That isn't a number."
       }
     }
+  }
   try {
     const url =
-      args.length > 0 && args[0].match(/^\d+$/)
-        ? `https://xkcd.com/${args[0]}/info.0.json`
+      comicnum && comicnum.match(/^\d+$/)
+        ? `https://xkcd.com/${comicnum}/info.0.json`
         : 'https://xkcd.com/info.0.json'
     const {
       year,
