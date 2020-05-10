@@ -16,42 +16,30 @@ function chunk (array: any[], size: number = 1): Array<any> {
   }, [])
 }
 export async function run (_message: Message, args: string[], bot: Bot) {
-  try {
-    const page = parseInt(args.join('')) || 1
-    const commands = await Promise.all(
-      Array.from(
-        bot.commands.entries(), async ([name, { desc }]) => [name, desc]
-      )
-    ).then((unsorted) => unsorted.sort(([a], [b]) => a.localeCompare(b)))
-    const chunks = chunk(commands, 20)
+  const page = parseInt(args.join('')) || 1
+  const commands = await Promise.all(
+    Array.from(
+      bot.commands.entries(), async ([name, { desc }]) => [name, desc]
+    )
+  ).then((unsorted) => unsorted.sort(([a], [b]) => a.localeCompare(b)))
+  const chunks = chunk(commands, 20)
 
-    return chunks[page - 1] ? {
-      embed: {
-        title: `${bot.user?.username || ''} Commands`,
-        fields: chunks[page - 1].map(([name, value]: [string, string]) => {
-          return { name, value }
-        }),
-        footer: {
-          text: `${page}/${chunks.length}`
-        }
-      }
-    } : {
-        embed: {
-          title: `${bot.user?.username || ''} Commands`,
-          description: 'That page does not exist.'
-        }
-      }
-  } catch (e) {
-    return {
-      embed: {
-        author: {
-          name: 'Error!'
-        },
-        title: e.toString(),
-        color: 0xff0000
+  return chunks[page - 1] ? {
+    embed: {
+      title: `${bot.user?.username || ''} Commands`,
+      fields: chunks[page - 1].map(([name, value]: [string, string]) => {
+        return { name, value }
+      }),
+      footer: {
+        text: `${page}/${chunks.length}`
       }
     }
-  }
+  } : {
+      embed: {
+        title: `${bot.user?.username || ''} Commands`,
+        description: 'That page does not exist.'
+      }
+    }
 }
 
 export const desc = 'Shows a list of all the commands and their descriptions.'
