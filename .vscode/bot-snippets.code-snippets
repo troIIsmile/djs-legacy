@@ -8,7 +8,7 @@
   // Example:
   "New command": {
     "scope": "typescript",
-    "prefix": "export",
+    "prefix": "command",
     "body": [
       "import { Message } from 'discord.js'",
       "import { Bot } from '../utils/types'",
