@@ -4,6 +4,8 @@
       "when": "$(basename).ts"
     }
   },
-"liveServer.settings.showOnStatusbar": false,
-"typescript.tsdk": "node_modules/typescript/lib"
+  "liveServer.settings.showOnStatusbar": false,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.format.semicolons": "remove",
+  "typescript.preferences.quoteStyle": "single"
 }
