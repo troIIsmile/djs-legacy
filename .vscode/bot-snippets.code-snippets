@@ -12,7 +12,7 @@
     "body": [
       "import { Message } from 'discord.js'",
       "import { Bot } from '../utils/types'",
-      "export const run = (message: Message, args: string[], bot: Bot) => {",
+      "export async function run (message: Message, args: string[], bot: Bot) {",
       "  $0",
       "}",
       "export const desc = '${1:A new command}'"
