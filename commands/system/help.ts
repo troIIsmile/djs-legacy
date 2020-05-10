@@ -25,15 +25,7 @@ export async function run (_message: Message, args: string[], bot: Bot) {
     ).then((unsorted) => unsorted.sort(([a], [b]) => a.localeCompare(b)))
     const chunks = chunk(commands, 20)
 
-    if (!chunks[page-1]) {
-      return {
-        embed: {
-          title: `${bot.user?.username || ''} Commands`,
-          description: 'That page does not exist'
-        }
-      }
-    }
-    return {
+    return chunks[page - 1] ? {
       embed: {
         title: `${bot.user?.username || ''} Commands`,
         fields: chunks[page - 1].map(([name, value]: [string, string]) => {
@@ -43,7 +35,12 @@ export async function run (_message: Message, args: string[], bot: Bot) {
           text: `${page}/${chunks.length}`
         }
       }
-    }
+    } : {
+        embed: {
+          title: `${bot.user?.username || ''} Commands`,
+          description: 'That page does not exist.'
+        }
+      }
   } catch (e) {
     return {
       embed: {
