@@ -12,32 +12,17 @@ async function tts (
 
 export const run = async (_message: Message, args: string[]) => {
   try {
-    if (hasFlag(args, 'slow')) {
-      return {
-        files: [
-          {
-            attachment: await tts(
-              args.filter(arg => !arg.startsWith('--')).join(' '),
-              'en',
-              0.27
-            ),
-            name: 'sound.mp3'
-          }
-        ]
-      }
-    } else {
-      return {
-        files: [
-          {
-            attachment: await tts(
-              args.filter(arg => !arg.startsWith('--')).join(' '),
-              'en',
-              1
-            ),
-            name: 'sound.mp3'
-          }
-        ]
-      }
+    return {
+      files: [
+        {
+          attachment: await tts(
+            args.filter(arg => !arg.startsWith('--')).join(' '),
+            'en',
+            hasFlag(args, 'slow') ? 0.27 : 1
+          ),
+          name: 'sound.mp3'
+        }
+      ]
     }
   } catch (e) {
     if (e instanceof RangeError) {
