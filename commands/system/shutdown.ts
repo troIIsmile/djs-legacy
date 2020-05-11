@@ -11,3 +11,4 @@ async function command (message: Message, _: string[], bot: Bot) {
 }
 export const desc = 'Turns off the bot.'
 export const run = command
+export const aliases = ['reboot']
