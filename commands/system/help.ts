@@ -23,7 +23,7 @@ export function run (_message: Message, args: string[], bot: Bot) {
     .filter(([, { desc }]) => { // Remove commands without description
       return !!desc
     })
-    .map(([name, { desc }]) => [name, desc || '']) // Only descriptions
+    .map(([name, { desc, aliases }]) => [name + (aliases ? ` (Aliases: ${aliases?.join(', ')})` : ''), desc || '']) // Only descriptions
     .sort((a, b) => {
       return a[0].localeCompare(b[0] || '') || -1
     })
@@ -33,7 +33,10 @@ export function run (_message: Message, args: string[], bot: Bot) {
     embed: {
       title: `${bot.user?.username || ''} Commands`,
       fields: chunks[page - 1].map(([name, value]: [string, string]) => {
-        return { name, value }
+        return {
+          name,
+          value
+        }
       }),
       footer: {
         iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/VisualEditor_-_Icon_-_Book.svg/600px-VisualEditor_-_Icon_-_Book.svg.png',
