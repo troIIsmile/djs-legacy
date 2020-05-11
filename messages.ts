@@ -83,7 +83,7 @@ const messages: Messages = {
   Meta: [
     // References to bots (or this bot)
     'Submit playing lines & bug reports @ ' +
-      require('./package.json').links.repository,
+    require('./package.json').bugs,
     'NotSoBot is bad™'
   ],
   Songs: Object.entries({
