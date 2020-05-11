@@ -7,6 +7,7 @@ import {
 } from 'fs'
 import { IncomingMessage, ServerResponse, createServer } from 'http'
 import { rreaddir } from './utils/rreaddir'
+import aliasFrom from './utils/alias'
 // We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'blahblahblah' > Env:/TOKEN`)
 if (exists('./.env')) {
   // Before anything uses it, we must load the .env file (provided it exists, of course)
@@ -50,12 +51,7 @@ bot.commands = new Collection<string, CommandObj>()
       entries.forEach(([name, command]: [string, CommandObj]) => {
         bot.commands.set(name, command)
         command.aliases?.forEach(alias => {
-          bot.commands.set(alias, {
-            run (...args) {
-              const command = bot.commands.get(name)?.run || (() => { })
-              return command(...args)
-            }
-          })
+          bot.commands.set(alias, aliasFrom(name))
         })
       })
     } catch (err) {
