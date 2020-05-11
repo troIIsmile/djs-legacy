@@ -67,3 +67,4 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
 }
 
 export const desc = 'Statistics about the bot.'
+export const aliases = ['list', 'stats']

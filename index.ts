@@ -33,7 +33,7 @@ bot.commands = new Collection<string, CommandObj>()
   // The actual command loader
   ; (async function commandLoader () {
     try {
-      const entries = await Promise.all(
+      const entries: [string, CommandObj][] = await Promise.all(
         (await rreaddir('./commands/')) // get the file names of every command in the commands folder
           .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
           .map(async file => {
@@ -46,9 +46,17 @@ bot.commands = new Collection<string, CommandObj>()
               }
             ]
           }) // convert filenames to commands
-      )
-      entries.forEach(([name, command]) => {
+      ) as [string, CommandObj][]
+      entries.forEach(([name, command]: [string, CommandObj]) => {
         bot.commands.set(name, command)
+        command.aliases?.forEach(alias => {
+          bot.commands.set(alias, {
+            run (...args) {
+              const command = bot.commands.get(name)?.run || (() => { })
+              return command(...args)
+            }
+          })
+        })
       })
     } catch (err) {
       console.log('[COMMANDS]', err.toString().split('\n')[0])

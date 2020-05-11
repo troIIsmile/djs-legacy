@@ -18,8 +18,15 @@ function chunk (array: any[], size: number = 1): Array<any> {
 export function run (_message: Message, args: string[], bot: Bot) {
   const page = parseInt(args.join('')) || 1
   const commands = Array.from(
-    bot.commands.entries(), ([name, { desc }]) => [name, desc]
-  ).sort(([a], [b]) => a.localeCompare(b))
+    bot.commands.entries()
+  )
+    .filter(([, { desc }]) => { // Remove commands without description
+      return !!desc
+    })
+    .map(([name, { desc }]) => [name, desc || '']) // Only descriptions
+    .sort((a, b) => {
+      return a[0].localeCompare(b[0] || '') || -1
+    })
   const chunks = chunk(commands, 20)
 
   return chunks[page - 1] ? {
