@@ -41,8 +41,8 @@ bot.commands = new Collection<string, CommandObj>()
             return [
               file.replace('.js', '').replace(/^.*[\\\/]/, ''),
               {
-                ...(await import('./' + file)),
-                path: require.resolve('./' + file)
+                ...(await import('./' + file)), // `run` and `desc`
+                path: require.resolve('./' + file) // for stuff like reload
               }
             ]
           }) // convert filenames to commands

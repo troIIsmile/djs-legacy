@@ -7,7 +7,15 @@ export async function run (message: Message, args: string[], bot: Bot) {
       const path = bot.commands.get(args.join(' '))?.path! // Jesus fucking christ TypeScript
       delete require.cache[path]
       bot.commands.set(args.join(' '), { ...(await import(path)), path })
-      return ':white_check_mark:  Reloaded the command sucessfully!'
+      return {
+        embed: {
+          author: {
+            name: 'Command reloaded!'
+          },
+          title: args.join(' '),
+          description: (await import(path)).desc
+        }
+      }
     } else return '❌ That command does not exist!'
   } else return '❌ This command is for the bot owner only.'
 }
