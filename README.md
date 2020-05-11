@@ -35,7 +35,7 @@ npm i
 ### Glitch
 
 [Click here to remix.](https://glitch.com/edit/#!/remix/nxtbot)
-After remixing, open the terminal and type `npx tsc`. After that, follow steps 2 and 3 of the normal route.
+After remixing, open the terminal and type `npx tsc`. After that, follow step 3 of the normal route.
 
 ## Donate
 
