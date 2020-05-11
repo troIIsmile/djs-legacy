@@ -10,8 +10,10 @@ export async function run (message: Message, args: string[], bot: Bot) {
       return {
         embed: {
           author: {
-            name: 'Command reloaded!'
+            name: 'Command reloaded!',
+            iconURL: bot.user?.displayAvatarURL()
           },
+          color: 0x00FF00, // Checkmark green
           title: args.join(' '),
           description: (await import(path)).desc
         }
