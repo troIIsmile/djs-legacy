@@ -27,15 +27,17 @@ npm i
 
 2. Rename `.env.example` to `.env`
 
-3. Replace the text after `TOKEN=` with your bot's token, and replace the text after `OWNER=` with your Discord ID.
-   You can also add `SUPPORT=` if you have a support server. You don't need to, however.
+3. Open `.env` and:
+   1. Replace the text after `TOKEN=` with your bot's token
+   2. Replace the text after `OWNER=` with your Discord ID.
+   3. You can also add `SUPPORT=` if you have a support server. You don't need to, however.
 
 4. Compile the bot by running `npm run build` in your terminal.
 
 ### Glitch
 
 [Click here to remix.](https://glitch.com/edit/#!/remix/nxtbot)
-After remixing, open the terminal and type `npx tsc`. After that, follow steps 2 and 3 of the normal route.
+After remixing, open the terminal and type `npx tsc`. After that, follow step 3 of the normal route.
 
 ## Donate
 
