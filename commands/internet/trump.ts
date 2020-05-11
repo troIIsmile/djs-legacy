@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 export const desc = 'orange man badyyyyyyyyy! give me upvote!!!!'
 export const run = async () => {
-  const data = await fetch('https://api.tronalddump.io/random/quote').then(res=>res.json())
+  const data = await fetch('https://api.tronalddump.io/random/quote').then(res => res.json())
   return {
     embed: {
       author: {
@@ -12,7 +12,7 @@ export const run = async () => {
       description: data.value,
       title: '',
       timestamp: new Date(data.appeared_at),
-      color: 0x1DA1F2,
+      color: 0x1DA1F2, // https://brandpalettes.com/twitter-colors/
       footer: {
         text: 'Tronald Dump API',
         icon_url: 'https://www.tronalddump.io/img/tronalddump_850x850.png'
