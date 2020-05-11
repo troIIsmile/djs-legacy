@@ -29,7 +29,8 @@ export async function run (message: Message, args: string[], bot: Bot) {
           description: (await import(path)).desc
         }
       }
-    } else return '❌ That command does not exist, or is an alias.'
+    } else return '❌ That command does not exist, was added with the add command, or is an alias.'
   } else return '❌ This command is for the bot owner only.'
 }
 export const desc = 'Reloads a command.'
+export const aliases = []
