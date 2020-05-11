@@ -85,6 +85,8 @@ const messages: Messages = {
     'Submit playing lines & bug reports @ ' +
     require('./package.json').bugs,
     'Almost 300 commits!',
+    'Made with discord.js!',
+    'Made with Node.js!',
     'NotSoBot is bad™'
   ],
   Songs: Object.entries({
