@@ -24,11 +24,12 @@ if (exists('./.env')) {
   }
 }
 
+// I should really move this
 const options = {
   prefix: '-'
 }
 
-const bot = new Client() as Bot
+const bot = new Client() as Bot // Bot is Client but with commands
 bot.commands = new Collection<string, CommandObj>()
 
   // The actual command loader
@@ -40,7 +41,7 @@ bot.commands = new Collection<string, CommandObj>()
           .map(async file => {
             console.log(`[COMMANDS] Loading ${file}`)
             return [
-              file.replace('.js', '').replace(/^.*[\\\/]/, ''),
+              file.replace('.js', '').replace(/^.*[\\\/]/, ''), // Remove folders from the path and .js, leaving only the command name
               {
                 ...(await import('./' + file)), // `run` and `desc`
                 path: require.resolve('./' + file) // for stuff like reload
@@ -115,6 +116,7 @@ bot.on('message', message => {
 //   }
 // })
 
+// Load in events
 readdirSync('./events/')
   .filter(name => name.endsWith('.js'))
   .map(name => name.replace('.js', ''))
@@ -125,8 +127,9 @@ readdirSync('./events/')
     })
   })
 
+// Make a web server if the bot is running on Glitch
+// Why? Glitch requires your project to be pinged every 5 minutes.
 if (process.env.PORT && process.env.PROJECT_DOMAIN) {
-  // Running on glitch
   console.log(
     '[PROD] Starting web server on',
     process.env.PROJECT_DOMAIN,
@@ -146,6 +149,7 @@ if (process.env.PORT && process.env.PROJECT_DOMAIN) {
   }).listen(process.env.PORT)
 }
 
+// Login to Discord
 if (!process.env.TOKEN) {
   // if there's no token
   console.error('No token found. Please add it to the env')

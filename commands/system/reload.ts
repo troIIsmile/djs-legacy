@@ -10,9 +10,10 @@ export async function run (message: Message, args: string[], bot: Bot) {
       if (bot.commands.get(args.join(' '))?.aliases) {
         bot.commands.get(args.join(' '))?.aliases?.forEach(bot.commands.delete.bind(bot.commands))
       }
-      const path = bot.commands.get(args.join(' '))?.path! // Jesus fucking christ TypeScript
-      delete require.cache[path]
-      bot.commands.set(args.join(' '), { ...(await import(path)), path })
+      const path = bot.commands.get(args.join(' '))?.path! // Jesus fucking christ TypeScript I just need the path
+      delete require.cache[path] // Remove require's cache so we can import the new one
+      bot.commands.set(args.join(' '), { ...(await import(path)), path }) // Loads in a newly imported command along with the path
+      // If there are aliases in the reloaded command, add them
       if (bot.commands.get(args.join(' '))?.aliases) {
         bot.commands.get(args.join(' '))?.aliases?.forEach(alias => {
           bot.commands.set(alias, aliasFrom(args.join(' ')))
