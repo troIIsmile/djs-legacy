@@ -55,7 +55,10 @@ function scramble_text (text: string) {
 
 import { Message } from 'discord.js'
 export async function run (_message: Message, args: string[]) {
-  return scramble_text(args.join(' '))
+  return {
+    content: scramble_text(args.join(' ')),
+    disableMentions: 'everyone'
+  }
 }
 export const desc = 'Ɔяʏρтιc Ƭɛϰт Ғσямαттɛя'
 export const aliases = []

@@ -7,5 +7,6 @@
   "liveServer.settings.showOnStatusbar": false,
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.format.semicolons": "remove",
-  "typescript.preferences.quoteStyle": "single"
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
