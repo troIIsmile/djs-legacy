@@ -10,7 +10,7 @@ jspm_packages/
 
 # TS output
 *.js
-
+!docs/*.js
 # data
 data.json
 prefixes.json
