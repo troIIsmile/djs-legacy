@@ -1,0 +1,62 @@
+@import url('https://rsms.me/inter/inter.css');
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: 'Inter var', sans-serif;
+  }
+}
+
+a {
+  color: skyblue;
+  text-decoration: none;
+}
+
+.sep::after {
+  content: '|'
+}
+
+body {
+  background: black;
+  color: white;
+  text-align: center;
+}
+
+svg {
+  width: 50%;
+  height: auto;
+  transform: skew(11deg);
+  animation: skew 1s ease-out 1s 1 forwards;
+}
+
+@keyframes skew {
+  from {
+    transform: skew(11deg);
+  }
+  to {
+    transform: skew(0deg);
+  }
+}
+
+path {
+  visibility: hidden;
+  cursor: pointer;
+  animation: fade 1s ease-out 1s 1 forwards;
+}
+
+text {
+  pointer-events: none;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    visibility: visible;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
