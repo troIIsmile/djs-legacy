@@ -9,7 +9,8 @@
     "strict": true,
     "newLine": "lf",
     "alwaysStrict": true,
-    "inlineSourceMap": true
+    "inlineSourceMap": true,
+    "incremental": true
   },
   "exclude": [
     "node_modules",
