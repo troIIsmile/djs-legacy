@@ -8,6 +8,8 @@ import {
 import { IncomingMessage, ServerResponse, createServer } from 'http'
 import { rreaddir } from './utils/rreaddir'
 import aliasFrom from './utils/alias'
+import { prefixes } from './util'
+
 // We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'blahblahblah' > Env:/TOKEN`)
 if (exists('./.env')) {
   // Before anything uses it, we must load the .env file (provided it exists, of course)
@@ -65,20 +67,21 @@ bot.on('message', message => {
   // When a message is sent
   if (!message.author?.bot) {
     // no bots allowed
+    const prefix: string = prefixes[message.guild?.id || ''] || '-'
     const content = message.content || ''
     const name = [...bot.commands.keys()].find(
       cmdname =>
-        content.startsWith(`${options.prefix}${cmdname} `) || // matches any command with a space after
-        content === `${options.prefix}${cmdname}` // matches any command without arguments
+        content.startsWith(`${prefix}${cmdname} `) || // matches any command with a space after
+        content === `${prefix}${cmdname}` // matches any command without arguments
     )
     // Run the command!
     if (name) {
-      const command = bot.commands.get(name)?.run || function () { }
+      const command = bot.commands.get(name)?.run || (() => { })
       const output = command(
         message as Message, // the message
         // The arguments
         content
-          .substring(options.prefix.length + 1 + name.length) // only the part after the command
+          .substring(prefix.length + 1 + name.length) // only the part after the command
           .split(' '), // split with spaces
         bot // The bot
       )
@@ -90,31 +93,6 @@ bot.on('message', message => {
     }
   }
 })
-
-// Live reload
-// Disabled until we can get recursive working on Linux.
-// watch('./commands/', { recursive: true}, async (type: string, filename: string) => {
-//   if (filename.endsWith('.js')) {
-//     if (type === 'change') {
-//       filename = filename.replace('.js', '')
-//       delete require.cache[require.resolve(`./commands/${filename}.js`)]
-//       bot.commands.set(
-//         filename,
-//         (await import(`./commands/${filename}.js`)).run
-//       )
-//     } else {
-//       if (exists(`./commands/${filename}`)) {
-//         bot.commands.set(
-//           filename.replace('.js', ''),
-//           (await import(`./commands/${filename}`)).run
-//         )
-//       } else {
-//         filename = filename.replace('.js', '')
-//         bot.commands.delete(filename)
-//       }
-//     }
-//   }
-// })
 
 // Load in events
 readdirSync('./events/')

@@ -13,6 +13,7 @@ jspm_packages/
 
 # data
 data.json
+prefixes.json
 
 shrinkwrap.yaml
 package-lock.json

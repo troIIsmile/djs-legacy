@@ -6,6 +6,8 @@ export function hasFlag (args: string[], flag: string): boolean {
 }
 
 if (!exists('./data.json')) write('./data.json', '{}')
+if (!exists('./prefixes.json')) write('./prefixes.json', '{}')
+
 type JSONTypes = string | number | boolean | null | PersistStorage | JSONTypes[]
 
 interface PersistStorage {
@@ -19,6 +21,21 @@ export const persist: PersistStorage = new Proxy({}, {
     let data = require('./data.json')
     data[prop] = value
     write('./data.json', JSON.stringify(data, null, 2))
+    return true
+  }
+})
+
+interface Prefixes {
+  [key: string]: string
+}
+export const prefixes: Prefixes = new Proxy({}, {
+  get (_, name) {
+    return require('./prefixes.json')[name]
+  },
+  set (_, prop: string, value: any): boolean {
+    let data = require('./prefixes.json')
+    data[prop] = value
+    write('./prefixes.json', JSON.stringify(data, null, 2))
     return true
   }
 })

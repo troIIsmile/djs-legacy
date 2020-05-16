@@ -84,7 +84,7 @@ const messages: Messages = {
     // References to bots (or this bot)
     'Submit playing lines & bug reports @ ' +
     require('./package.json').bugs,
-    'Almost 300 commits!',
+    '300+ commits!',
     'Made with discord.js!',
     'Made with Node.js!',
     'NotSoBot is bad™'
