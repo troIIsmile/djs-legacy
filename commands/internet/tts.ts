@@ -1,14 +1,6 @@
 import { Message } from 'discord.js'
 import { hasFlag } from '../../util'
-import ttsWithoutTypes = require('google-tts-api')
-
-async function tts (
-  text: string = '',
-  lang: string = 'en',
-  speed: number = 1
-): Promise<string> {
-  return ttsWithoutTypes(text, lang, speed)
-}
+import tts from 'google-tts-api'
 
 export const run = async (_message: Message, args: string[]) => {
   try {
