@@ -20,9 +20,7 @@ play.addEventListener('click', ()=>{
       fill: 'forwards'
     })
   } else {
-    if (document.getElementById('music')) {
-      document.getElementById('music').remove()
-    }
+    document.getElementById('music')?.remove()
     const video = document.createElement('iframe')
     video.id = 'music'
     video.style.display = 'none'
