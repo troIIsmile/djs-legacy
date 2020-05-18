@@ -26,13 +26,8 @@ if (exists('./.env')) {
   }
 }
 
-// I should really move this
-const options = {
-  prefix: '-'
-}
-
 const bot = new Client() as Bot // Bot is Client but with commands
-bot.commands = new Collection<string, CommandObj>()
+bot.commands = new Collection<string, CommandObj>() // Init commands
 
   // The actual command loader
   ; (async function commandLoader () {
