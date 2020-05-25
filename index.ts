@@ -134,7 +134,7 @@ if (process.env.PORT && process.env.PROJECT_DOMAIN) {
     'with port',
     process.env.PORT
   )
-  createServer(function (_: IncomingMessage, res: ServerResponse) {
+  createServer((_: IncomingMessage, res: ServerResponse) => {
     res.writeHead(200, {
       'Content-Type': 'text/html'
     })
