@@ -152,8 +152,6 @@ if (!process.env.TOKEN) {
   // if there's no token
   console.error('No token found. Please add it to your enviroment variables, or in your .env file.')
   bot.destroy()
-}
-
-if (process.env.TOKEN) bot.login(process.env.TOKEN) // login using the token from .env
+} else bot.login(process.env.TOKEN) // login using the token from .env
 
 export default bot
