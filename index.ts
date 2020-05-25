@@ -70,7 +70,7 @@ async function loadCommands () {
 loadCommands()
 
 // Remember jackbot-discord? This is it now.
-bot.on('message', message => {
+bot.on('message', async message => {
   // When a message is sent
   if (!message.author?.bot) {
     // no bots allowed
@@ -84,18 +84,31 @@ bot.on('message', message => {
     // Run the command!
     if (name) {
       const command = bot.commands.get(name)?.run || (() => { })
-      const output = command(
-        message as Message, // the message
-        // The arguments
-        content
-          .substring(prefix.length + 1 + name.length) // only the part after the command
-          .split(' '), // split with spaces
-        bot // The bot
-      )
-      if (output) {
-        if (output instanceof Promise) {
-          output.then(message.channel?.send.bind(message.channel))
-        } else message.channel?.send(output)
+
+      try {
+        const output = await command(
+          message as Message, // the message
+          // The arguments
+          content
+            .substring(prefix.length + 1 + name.length) // only the part after the command
+            .split(' '), // split with spaces
+          bot // The bot
+        )
+
+        if (output) message.channel?.send(output)
+      } catch (err) {
+        message.channel?.send({
+          embed: {
+            author: {
+              name: `${bot.user?.username} ran into an error while running your command!`,
+              iconURL: bot.user?.avatarURL()
+            },
+            title: err.toString(),
+            footer: {
+              text: 'Report this bug @ ' + require('./package.json').bugs
+            }
+          }
+        })
       }
     }
   }
