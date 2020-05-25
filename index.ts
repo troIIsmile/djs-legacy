@@ -150,10 +150,10 @@ if (process.env.PORT && process.env.PROJECT_DOMAIN) {
 // Login to Discord
 if (!process.env.TOKEN) {
   // if there's no token
-  console.error('No token found. Please add it to the env')
-  process.exit(1)
+  console.error('No token found. Please add it to your enviroment variables, or in your .env file.')
+  bot.destroy()
 }
-// If there is no token the above code will close the bot
-bot.login(process.env.TOKEN) // login using the token from .env
+
+if (process.env.TOKEN) bot.login(process.env.TOKEN) // login using the token from .env
 
 export default bot
