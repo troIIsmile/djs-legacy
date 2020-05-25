@@ -39,9 +39,6 @@ process.on('SIGINT', bot.destroy.bind(bot))
 process.on('SIGUSR1', bot.destroy.bind(bot))
 process.on('SIGUSR2', bot.destroy.bind(bot))
 
-//catches uncaught exceptions
-process.on('uncaughtException', bot.destroy.bind(bot))
-
 // The actual command loader
 async function loadCommands () {
   try {
