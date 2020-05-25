@@ -4,7 +4,8 @@
       "when": "$(basename).ts"
     }
   },
-  "liveServer.settings.showOnStatusbar": false,
+  "liveServer.settings.showOnStatusbar": true,
+  "liveServer.settings.root": "/docs/",
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.format.semicolons": "remove",
   "typescript.preferences.quoteStyle": "single",
