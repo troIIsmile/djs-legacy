@@ -136,7 +136,7 @@ if (process.env.PORT && process.env.PROJECT_DOMAIN) {
   )
   createServer(function (_: IncomingMessage, res: ServerResponse) {
     res.writeHead(200, {
-      'Content-Type': 'text-html'
+      'Content-Type': 'text/html'
     })
     res.write(
       `<meta http-equiv="refresh" content="0;url=${
