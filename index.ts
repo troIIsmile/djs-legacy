@@ -29,33 +29,48 @@ if (exists('./.env')) {
 const bot = new Client() as Bot // Bot is Client but with commands
 bot.commands = new Collection<string, CommandObj>() // Init commands
 
-  // The actual command loader
-  ; (async function commandLoader () {
-    try {
-      const entries: [string, CommandObj][] = await Promise.all(
-        (await rreaddir('./commands/')) // get the file names of every command in the commands folder
-          .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
-          .map(async file => {
-            console.log(`[COMMANDS] Loading ${file}`)
-            return [
-              file.replace('.js', '').replace(/^.*[\\\/]/, ''), // Remove folders from the path and .js, leaving only the command name
-              {
-                ...(await import('./' + file)), // `run` and `desc`
-                path: require.resolve('./' + file) // for stuff like reload
-              }
-            ]
-          }) // convert filenames to commands
-      ) as [string, CommandObj][]
-      entries.forEach(([name, command]: [string, CommandObj]) => {
-        bot.commands.set(name, command)
-        command.aliases?.forEach(alias => {
-          bot.commands.set(alias, aliasFrom(name))
-        })
+// On close events
+process.on('exit', bot.destroy.bind(bot))
+
+//catches ctrl+c event
+process.on('SIGINT', bot.destroy.bind(bot))
+
+// catches "kill pid" (for example: nodemon restart)
+process.on('SIGUSR1', bot.destroy.bind(bot))
+process.on('SIGUSR2', bot.destroy.bind(bot))
+
+//catches uncaught exceptions
+process.on('uncaughtException', bot.destroy.bind(bot))
+
+// The actual command loader
+async function loadCommands () {
+  try {
+    const entries: [string, CommandObj][] = await Promise.all(
+      (await rreaddir('./commands/')) // get the file names of every command in the commands folder
+        .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
+        .map(async file => {
+          console.log(`[COMMANDS] Loading ${file}`)
+          return [
+            file.replace('.js', '').replace(/^.*[\\\/]/, ''), // Remove folders from the path and .js, leaving only the command name
+            {
+              ...(await import('./' + file)), // `run` and `desc`
+              path: require.resolve('./' + file) // for stuff like reload
+            }
+          ]
+        }) // convert filenames to commands
+    ) as [string, CommandObj][]
+    entries.forEach(([name, command]: [string, CommandObj]) => {
+      bot.commands.set(name, command)
+      command.aliases?.forEach(alias => {
+        bot.commands.set(alias, aliasFrom(name))
       })
-    } catch (err) {
-      console.log('[COMMANDS]', err.toString().split('\n')[0])
-    }
-  })()
+    })
+  } catch (err) {
+    console.log('[COMMANDS]', err.toString().split('\n')[0])
+  }
+}
+
+loadCommands()
 
 // Remember jackbot-discord? This is it now.
 bot.on('message', message => {
