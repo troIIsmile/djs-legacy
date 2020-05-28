@@ -187,7 +187,9 @@ const messages: Messages = {
     'sentience',
     'beep boop',
     'Hello, Gordon!',
-    'the j'
+    // add your messages here
+    'now this is a j',
+    'fuck macOS'
   ]
 }
 
