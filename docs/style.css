@@ -59,7 +59,9 @@ strong {
   width: 100%;
   display: block;
 }
-
+strong a {
+  color: darkblue;
+}
 .primary {
   background: #7289DA;
   color: white;
