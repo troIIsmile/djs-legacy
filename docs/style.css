@@ -20,11 +20,11 @@ body {
   margin: 0;
 }
 
-main {
+article {
   margin: 5em;
 }
 
-img {
+header img {
   animation: skew 1s ease-out 1s 1 backwards;
 }
 
@@ -36,7 +36,9 @@ header {
   align-items: center;
   top: 0;
 }
-
+aside {
+  float: right;
+}
 header a {
   margin: 1em;
 }
