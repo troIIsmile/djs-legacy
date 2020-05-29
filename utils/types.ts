@@ -1,6 +1,6 @@
 import { Client, Message, MessageOptions, Collection } from 'discord.js'
 type Return = (MessageOptions | string | void)
-type Command = (message: Message, args: string[], bot: Bot) => Return | Promise<Return>
+type Command = (this: Bot, message: Message, args: string[]) => Return | Promise<Return>
 interface CommandObj {
   run: Command,
   desc: string,

@@ -4,18 +4,18 @@ import { hasPerm } from '../../utils/permissions'
 import { Bot } from '../../utils/types'
 
 export async function run (
+  this: Bot,
   message: Message,
-  args: string[],
-  client: Bot
+  args: string[]
 ): Promise<string> {
   if (hasPerm(message)) {
     try {
       const code = args.join(' ')
       const evaled = eval(code)
-      const txt = await clean(client, evaled)
+      const txt = await clean(this, evaled)
       return `\`\`\`js\n${txt}\n\`\`\``
     } catch (err) {
-      return `\`ERROR\` \`\`\`xl\n${await clean(client, err)}\n\`\`\``
+      return `\`ERROR\` \`\`\`xl\n${await clean(this, err)}\n\`\`\``
     }
   } else return 'You are not the bot owner.'
 }

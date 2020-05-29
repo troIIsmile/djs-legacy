@@ -28,7 +28,6 @@ export default async (message: Message, bot: Bot) => {
           content
             .substring(prefix.length + 1 + name.length) // only the part after the command
             .split(' '), // split with spaces
-          bot // The bot
         )
 
         if (output) message.channel?.send(output)
