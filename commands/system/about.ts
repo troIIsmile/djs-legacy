@@ -72,5 +72,5 @@ export const run = async function (this: Bot, message: Message, _: string[]): Pr
   }
 }
 
-export const desc = 'Statistics about the this.'
+export const desc = 'Statistics about the bot.'
 export const aliases = ['list', 'stats']
