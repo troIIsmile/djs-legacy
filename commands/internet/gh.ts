@@ -12,9 +12,9 @@ export async function run (_: any, args: string[]): Promise<MessageOptions> {
       },
       timestamp: new Date(created_at),
       description,
-      provider: {
-        name: 'GitHub',
-        url: 'https://github.com'
+      footer: {
+        text: 'GitHub',
+        iconURL: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'
       },
       fields: [{
         name: 'Public Repos',
