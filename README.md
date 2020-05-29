@@ -21,7 +21,7 @@ A terrible Discord bot.
 1. Install dependencies:
 
 ```bash
-sudo apt install ffmpeg
+sudo apt install ffmpeg # Soon this won't be the case
 npm i
 ```
 
