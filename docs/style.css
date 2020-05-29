@@ -14,20 +14,31 @@ a {
   text-decoration: none;
 }
 
-.sep::after {
-  content: '|'
-}
-
 body {
   background: black;
   color: white;
-  text-align: center;
+  margin: 0;
+}
+
+main {
+  margin: 5em;
 }
 
 img {
-  width: 50%;
-  height: auto;
   animation: skew 1s ease-out 1s 1 backwards;
+}
+
+header {
+  background: darkslategray;
+  position: sticky;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  top: 0;
+}
+
+header a {
+  margin: 1em;
 }
 
 @keyframes skew {
@@ -37,4 +48,20 @@ img {
   to {
     transform: skew(0deg);
   }
+}
+
+strong {
+  text-align: center;
+  background: yellow;
+  color: black;
+  width: 100%;
+  display: block;
+}
+
+.primary {
+  background: #7289DA;
+  color: white;
+  padding: 1em;
+  border-radius: 1em;
+  box-shadow: #7289DA 1px 1px 5px;
 }
