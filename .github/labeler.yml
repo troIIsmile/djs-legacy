@@ -16,7 +16,7 @@ config:
   - .eslintrc
 
 core:
-  - index.ts
+  - core.ts
 
 messages:
   - messages.ts
