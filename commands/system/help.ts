@@ -29,12 +29,10 @@ export function run (this: Bot, _message: Message, args: string[]) {
   return chunks[page - 1] ? {
     embed: {
       title: `${this.user?.username || ''} Commands`,
-      fields: chunks[page - 1].map(([name, value]: [string, string]) => {
-        return {
-          name,
-          value
-        }
-      }),
+      fields: chunks[page - 1].map(([name, value]: [string, string]) => ({
+        name,
+        value
+      })),
       footer: {
         iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/VisualEditor_-_Icon_-_Book.svg/600px-VisualEditor_-_Icon_-_Book.svg.png',
         text: `${page}/${chunks.length}`
