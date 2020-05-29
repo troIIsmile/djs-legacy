@@ -21,3 +21,6 @@ messages:
   
 events:
   - events/**/*
+
+docs:
+  - docs/**/*
