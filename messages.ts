@@ -80,6 +80,12 @@ const messages: Messages = {
     ]
   },
   Emulators: ['Yuzu', 'Dolphin Emulator', 'RetroArch'],
+  Plugs: [ //bru
+    '5079.ml',
+    'Bruh Beagle',
+    'Bark Beagle',
+    'Bruh Beagle 3'
+  ],
   Meta: [
     // References to bots (or this bot)
     'Submit playing lines & bug reports @ ' +
