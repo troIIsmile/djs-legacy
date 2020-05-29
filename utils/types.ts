@@ -4,7 +4,7 @@ type Command = (message: Message, args: string[], bot: Bot) => Return | Promise<
 interface CommandObj {
   run: Command,
   desc: string,
-  path?: string,
+  path: string,
   aliases?: string[]
 }
 
