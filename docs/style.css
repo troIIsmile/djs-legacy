@@ -36,9 +36,7 @@ header {
   align-items: center;
   top: 0;
 }
-aside {
-  float: right;
-}
+
 header a {
   margin: 1em;
 }
@@ -51,7 +49,9 @@ header a {
     transform: skew(0deg);
   }
 }
-
+article {
+  display: inline-block;
+}
 strong {
   text-align: center;
   background: yellow;
