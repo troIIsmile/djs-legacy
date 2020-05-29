@@ -7,7 +7,6 @@ import {
 } from 'fs'
 import { IncomingMessage, ServerResponse, createServer } from 'http'
 import { rreaddir } from './utils/rreaddir'
-import aliasFrom from './utils/alias'
 import { prefixes } from './util'
 
 // We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'blahblahblah' > Env:/TOKEN`)
@@ -28,6 +27,7 @@ if (exists('./.env')) {
 
 const bot = new Client() as Bot // Bot is Client but with commands
 bot.commands = new Collection<string, CommandObj>() // Init commands
+bot.aliases = new Collection<string, string>()
 
 // On close events
 process.on('exit', bot.destroy.bind(bot))
@@ -59,7 +59,7 @@ async function loadCommands () {
     entries.forEach(([name, command]: [string, CommandObj]) => {
       bot.commands.set(name, command)
       command.aliases?.forEach(alias => {
-        bot.commands.set(alias, aliasFrom(name))
+        bot.aliases.set(alias, name)
       })
     })
   } catch (err) {
@@ -76,14 +76,14 @@ bot.on('message', async message => {
     // no bots allowed
     const prefix: string = prefixes[message.guild?.id || ''] || '-'
     const content = message.content || ''
-    const name = [...bot.commands.keys()].find(
+    const name = [...bot.commands.keys(), ...bot.aliases.keys()].find(
       cmdname =>
         content.startsWith(`${prefix}${cmdname} `) || // matches any command with a space after
         content === `${prefix}${cmdname}` // matches any command without arguments
     )
     // Run the command!
     if (name) {
-      const command = bot.commands.get(name)?.run || (() => { })
+      const command = bot.commands.get(name)?.run || bot.commands.get(bot.aliases.get(name))?.run || (() => { })
 
       try {
         const output = await command(

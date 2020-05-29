@@ -1,14 +1,13 @@
 import { Message } from 'discord.js'
 import { Bot } from './../../utils/types' // I really really need to fix this
 import { hasPerm } from '../../utils/permissions'
-import aliasFrom from '../../utils/alias'
 
 export async function run (message: Message, args: string[], bot: Bot) {
   if (hasPerm(message)) {
     if (bot.commands.get(args.join(' '))?.path) {
       // Remove old aliases
       if (bot.commands.get(args.join(' '))?.aliases) {
-        bot.commands.get(args.join(' '))?.aliases?.forEach(bot.commands.delete.bind(bot.commands))
+        bot.commands.get(args.join(' '))?.aliases?.forEach(Map.prototype.delete.bind(bot.aliases))
       }
       const path = bot.commands.get(args.join(' '))?.path! // Jesus fucking christ TypeScript I just need the path
       delete require.cache[path] // Remove require's cache so we can import the new one
@@ -16,7 +15,7 @@ export async function run (message: Message, args: string[], bot: Bot) {
       // If there are aliases in the reloaded command, add them
       if (bot.commands.get(args.join(' '))?.aliases) {
         bot.commands.get(args.join(' '))?.aliases?.forEach(alias => {
-          bot.commands.set(alias, aliasFrom(args.join(' ')))
+          bot.aliases.set(alias, args.join(' '))
         })
       }
       return {
