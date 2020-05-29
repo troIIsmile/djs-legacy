@@ -1,13 +1,11 @@
 import { Message } from 'discord.js'
-
+import dl from 'youtube-dl'
 export const run = async (message: Message, args: string[]) => {
   try {
     await message.channel.send({
       files: [
         {
-          attachment: `https://projectlounge.pw/ytdl/download?url=${encodeURIComponent(
-            args.join(' ')
-          )}`,
+          attachment: dl(encodeURI(args.join(' ')), [], {}),
           name: 'video.mp4'
         }
       ]
