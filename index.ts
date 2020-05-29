@@ -49,6 +49,7 @@ async function loadCommands () {
           return [
             file.replace('.js', '').replace(/^.*[\\\/]/, ''), // Remove folders from the path and .js, leaving only the command name
             {
+              desc: 'A command without a description', // this will be overwritten by the real description if it is there
               ...(await import('./' + file)), // `run` and `desc`
               path: require.resolve('./' + file) // for stuff like reload
             }
