@@ -23,7 +23,7 @@ export const run = async (message: Message, args: string[]) => {
           url: `https://projectlounge.pw/ytdl/download?url=${encodeURIComponent(
             args.join(' ')
           )}`,
-          color: 0x00ff00
+          color: 'RED'
         }
       }
 
@@ -32,7 +32,7 @@ export const run = async (message: Message, args: string[]) => {
         author: {
           name: 'youtube-dl'
         },
-        color: 0xff0000,
+        color: 'RED',
         title: 'Error!',
         description: e.toString()
       }

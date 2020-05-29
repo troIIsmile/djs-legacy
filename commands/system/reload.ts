@@ -26,7 +26,7 @@ export async function run (this: Bot, message: Message, args: string[],): Promis
             name: 'Command reloaded!',
             iconURL: this.user?.displayAvatarURL()
           },
-          color: 0x00FF00, // Checkmark green
+          color: 'GREEN',
           title: cmdname,
           description: (await import(path)).desc,
           fields: [{

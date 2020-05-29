@@ -22,7 +22,7 @@ const error = {
         'https://www.bing.com/th?id=OIP.DZljw0bam4UFXr5B5VLlTAHaHa&pid=Api&rs=1'
     },
     description: "Couldn't find your game!",
-    color: 0xff0000
+    color: 'RED'
   }
 }
 

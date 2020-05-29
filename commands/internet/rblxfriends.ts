@@ -15,7 +15,7 @@ export const run = async (message: Message, args: string[]) => {
           name: 'Error!'
         },
         title: 'Please provide a username!',
-        color: 0xff0000
+        color: 'RED'
       }
     }
   }
@@ -30,7 +30,7 @@ export const run = async (message: Message, args: string[]) => {
           name: 'Error!'
         },
         title: "That player couldn't be found!",
-        color: 0xff0000
+        color: 'RED'
       }
     }
   }
@@ -44,7 +44,7 @@ export const run = async (message: Message, args: string[]) => {
           name: 'Error!'
         },
         title: 'There was a problem getting the list of friends',
-        color: 0xff0000
+        color: 'RED'
       }
     }
   }

@@ -16,7 +16,7 @@ export async function run (_message: Message, args: string[]) {
       embed: {
         title: res.status === 404 ? 'Player not found!' : `${res.status}: ${res.statusText}`,
         description: 'OOPSIE WOOPSIE!! Uwu We made a fucky wucky!! A wittle fucko boingo!',
-        color: 0xFF0000
+        color: 'RED'
       }
     }
 }
