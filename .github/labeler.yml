@@ -7,11 +7,13 @@ modules:
 
 config:
   - .vscode/**/*
+  - .github/**/*
   - package.json
   - .editorconfig
   - .gitignore
   - tsconfig.json
   - watch.json
+  - .eslintrc
 
 core:
   - index.ts
@@ -25,3 +27,4 @@ events:
 docs:
   - docs/**/*
   - README.md
+  - .env.example
