@@ -24,3 +24,4 @@ events:
 
 docs:
   - docs/**/*
+  - README.md
