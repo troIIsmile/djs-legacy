@@ -55,6 +55,10 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
         value: [hours, Math.floor(timestamp / 60) - (hours * 60), Math.floor(timestamp % 60)].join(':'),
         inline: true
       }, {
+        name: '🖥 OS',
+        value: process.platform,
+        inline: true
+      }, {
         name: '🙋🏻‍♂️ Support',
         value: process.env.SUPPORT
       }, {
