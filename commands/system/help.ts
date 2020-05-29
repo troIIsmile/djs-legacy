@@ -20,9 +20,6 @@ export function run (_message: Message, args: string[], bot: Bot) {
   const commands = Array.from(
     bot.commands.entries()
   )
-    .filter(([, { desc }]) => { // Remove commands without description
-      return !!desc
-    })
     .map(([name, { desc, aliases }]) => [name + ((aliases && aliases.length) ? ` (Aliases: ${aliases?.join(', ')})` : ''), desc || '']) // Only descriptions
     .sort((a, b) => {
       return a[0].localeCompare(b[0] || '') || -1

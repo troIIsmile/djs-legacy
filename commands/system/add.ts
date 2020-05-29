@@ -1,14 +1,14 @@
-import { Message } from 'discord.js'
+import { Message, MessageOptions } from 'discord.js'
 import { hasPerm } from '../../utils/permissions'
 import { Bot, Command } from '../../utils/types'
 
 export function run (
   message: Message,
-  [name, ...args]: [string, string[]],
+  args: string[],
   bot: Bot
-): string {
+): MessageOptions {
   if (hasPerm(message)) {
-    // Lets users create a new command within the app
+    const name = Math.random().toString(36).substr(2)
     if (args.length) {
       const run = new Function(
         'message',
@@ -20,8 +20,16 @@ export function run (
         run,
         desc: 'Made with the -add command.'
       }) // make a command with the arguments that are left
-      return `🎉 Created ${name}!` // tell the user
-    } else return 'Uhh, you forgot the code.'
-  } else return 'You are not the bot owner.'
+      return {
+        embed: {
+          title: 'Created your command!',
+          fields: [{
+              name: 'Name',
+              value: name
+            }]
+        }
+      }
+    } else return { content: 'Uhh, you forgot the code.' }
+  } else return { content: 'You are not the bot owner.' }
 }
 export const desc = 'Adds a command to the bot, until it restarts.'
