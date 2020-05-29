@@ -1,4 +1,4 @@
-import { Message } from 'discord.js'
+import { Message, MessageOptions } from 'discord.js'
 import { Bot } from '../../utils/types'
 
 function chunk (array: any[], size: number = 1): Array<any> {
@@ -15,7 +15,7 @@ function chunk (array: any[], size: number = 1): Array<any> {
     return acc
   }, [])
 }
-export function run (this: Bot, _message: Message, args: string[]) {
+export function run (this: Bot, _message: Message, args: string[]): MessageOptions {
   const page = parseInt(args.join('')) || 1
   const commands = Array.from(
     this.commands.entries(),
