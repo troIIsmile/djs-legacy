@@ -73,11 +73,7 @@ export async function run (message: Message, args: string[]) {
       return {
         embed: {
           title: 'Error!',
-          description: `Please keep NSFW to NSFW channels. From Discord's Guidelines: 
-          > The following is not tolerated. We will remove content and issue a warning. Subsequent misconduct and cases of extreme severity will result in account deletion:
-          > ...
-          > * Not properly labeling NSFW channels. Some content just isn't appropriate for kids under 18, so let's do the right thing in our community and label any channel containing adult content as NSFW. This will add an age gate to the channel, protecting those who wish not to see.
-          > ...`
+          description: 'The bot found a NSFW post. As this is a SFW channel, this bot can not post NSFW content here without breaking Discord\'s Community Guidelines.'
         }
       }
     }
@@ -93,3 +89,5 @@ export async function run (message: Message, args: string[]) {
 
 export const desc =
   'wholesome 100 - gives you a random post from the subreddit you choose'
+
+export const aliases = ['subreddit', 'r/']
