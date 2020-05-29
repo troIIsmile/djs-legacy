@@ -15,10 +15,10 @@ function chunk (array: any[], size: number = 1): Array<any> {
     return acc
   }, [])
 }
-export function run (_message: Message, args: string[], bot: Bot) {
+export function run (this: Bot, _message: Message, args: string[]) {
   const page = parseInt(args.join('')) || 1
   const commands = Array.from(
-    bot.commands.entries()
+    this.commands.entries()
   )
     .map(([name, { desc, aliases }]) => [name + ((aliases && aliases.length) ? ` (Aliases: ${aliases?.join(', ')})` : ''), desc || '']) // Only descriptions
     .sort((a, b) => {
@@ -28,7 +28,7 @@ export function run (_message: Message, args: string[], bot: Bot) {
 
   return chunks[page - 1] ? {
     embed: {
-      title: `${bot.user?.username || ''} Commands`,
+      title: `${this.user?.username || ''} Commands`,
       fields: chunks[page - 1].map(([name, value]: [string, string]) => {
         return {
           name,
@@ -42,7 +42,7 @@ export function run (_message: Message, args: string[], bot: Bot) {
     }
   } : {
       embed: {
-        title: `${bot.user?.username || ''} Commands`,
+        title: `${this.user?.username || ''} Commands`,
         description: 'That page does not exist.'
       }
     }
