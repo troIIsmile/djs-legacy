@@ -18,9 +18,9 @@ function chunk (array: any[], size: number = 1): Array<any> {
 export function run (this: Bot, _message: Message, args: string[]) {
   const page = parseInt(args.join('')) || 1
   const commands = Array.from(
-    this.commands.entries()
+    this.commands.entries(),
+    ([name, { desc, aliases }]) => [name + ((aliases && aliases.length) ? ` (Aliases: ${aliases?.join(', ')})` : ''), desc || '']
   )
-    .map(([name, { desc, aliases }]) => [name + ((aliases && aliases.length) ? ` (Aliases: ${aliases?.join(', ')})` : ''), desc || '']) // Only descriptions
     .sort((a, b) => {
       return a[0].localeCompare(b[0] || '') || -1
     })
