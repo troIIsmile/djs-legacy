@@ -1,8 +1,9 @@
 import { Message } from 'discord.js'
 import { Bot } from './../../utils/types' // I really really need to fix this
 import { hasPerm } from '../../utils/permissions'
+import { MessageOptions } from 'discord.js'
 
-export async function run (message: Message, args: string[], bot: Bot) {
+export async function run (message: Message, args: string[], bot: Bot): Promise<MessageOptions> {
   if (hasPerm(message)) {
     const cmdname = (bot.commands.get(args.join(' ')) ? args.join(' ') : (bot.commands.get(bot.aliases.get(args.join(' ')) || '') ? bot.aliases.get(args.join(' ')) : '')) || ''
     if (bot.commands.get(cmdname)?.path) {
@@ -27,11 +28,15 @@ export async function run (message: Message, args: string[], bot: Bot) {
           },
           color: 0x00FF00, // Checkmark green
           title: cmdname,
-          description: (await import(path)).desc
+          description: (await import(path)).desc,
+          fields: [{
+            name: 'Aliases',
+            value: ((await import(path)).aliases) ? ((await import(path)).aliases).join(', ') : ''
+          }].filter(({value})=>value)
         }
       }
-    } else return '❌ That command does not exist, or was added with the add command.'
-  } else return '❌ This command is for the bot owner only.'
+    } else return { content: '❌ That command does not exist, or was added with the add command.' }
+  } else return { content: '❌ This command is for the bot owner only.' }
 }
 export const desc = 'Reloads a command.'
 export const aliases = []
