@@ -1,7 +1,7 @@
 commands:
   - commands/**/*
 
-modules:
+util:
   - utils/**/*
   - util.ts
 
