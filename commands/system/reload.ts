@@ -3,28 +3,28 @@ import { Bot } from './../../utils/types' // I really really need to fix this
 import { hasPerm } from '../../utils/permissions'
 import { MessageOptions } from 'discord.js'
 
-export async function run (message: Message, args: string[], bot: Bot): Promise<MessageOptions> {
+export async function run (this: Bot, message: Message, args: string[],): Promise<MessageOptions> {
   if (hasPerm(message)) {
-    const cmdname = (bot.commands.get(args.join(' ')) ? args.join(' ') : (bot.commands.get(bot.aliases.get(args.join(' ')) || '') ? bot.aliases.get(args.join(' ')) : '')) || ''
-    if (bot.commands.get(cmdname)?.path) {
+    const cmdname = (this.commands.get(args.join(' ')) ? args.join(' ') : (this.commands.get(this.aliases.get(args.join(' ')) || '') ? this.aliases.get(args.join(' ')) : '')) || ''
+    if (this.commands.get(cmdname)?.path) {
       // Remove old aliases
-      if (bot.commands.get(cmdname)?.aliases) {
-        bot.commands.get(cmdname)?.aliases?.forEach(Map.prototype.delete.bind(bot.aliases))
+      if (this.commands.get(cmdname)?.aliases) {
+        this.commands.get(cmdname)?.aliases?.forEach(Map.prototype.delete.bind(this.aliases))
       }
-      const path = bot.commands.get(cmdname)?.path! // Jesus fucking christ TypeScript I just need the path
+      const path = this.commands.get(cmdname)?.path! // Jesus fucking christ TypeScript I just need the path
       delete require.cache[path] // Remove require's cache so we can import the new one
-      bot.commands.set(cmdname, { ...(await import(path)), path }) // Loads in a newly imported command along with the path
+      this.commands.set(cmdname, { ...(await import(path)), path }) // Loads in a newly imported command along with the path
       // If there are aliases in the reloaded command, add them
-      if (bot.commands.get(cmdname)?.aliases) {
-        bot.commands.get(cmdname)?.aliases?.forEach(alias => {
-          bot.aliases.set(alias, cmdname)
+      if (this.commands.get(cmdname)?.aliases) {
+        this.commands.get(cmdname)?.aliases?.forEach(alias => {
+          this.aliases.set(alias, cmdname)
         })
       }
       return {
         embed: {
           author: {
             name: 'Command reloaded!',
-            iconURL: bot.user?.displayAvatarURL()
+            iconURL: this.user?.displayAvatarURL()
           },
           color: 0x00FF00, // Checkmark green
           title: cmdname,
