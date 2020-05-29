@@ -27,8 +27,7 @@ body {
 img {
   width: 50%;
   height: auto;
-  transform: skew(11deg);
-  animation: skew 1s ease-out 1s 1 forwards;
+  animation: skew 1s ease-out 1s 1 backwards;
 }
 
 @keyframes skew {
