@@ -67,3 +67,10 @@ strong {
   border-radius: 1em;
   box-shadow: #7289DA 1px 1px 5px;
 }
+
+
+footer {
+  text-align: right;
+  padding: 1em;
+  background: rgb(14, 14, 14);
+}
