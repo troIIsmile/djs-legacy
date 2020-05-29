@@ -21,7 +21,8 @@ export default async (message: Message, bot: Bot) => {
         || (() => { }) // Do nothing otherwise
 
       try {
-        const output = await command(
+        const output = await command.call(
+          bot,
           message as Message, // the message
           // The arguments
           content

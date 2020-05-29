@@ -2,7 +2,7 @@ import { Message, MessageOptions } from 'discord.js'
 import { Bot } from '../../utils/types'
 import fetch from 'node-fetch'
 
-export const run = async (message: Message, _: string[], bot: Bot): Promise<MessageOptions> => {
+export const run = async function (this: Bot, message: Message, _: string[], bot: Bot): Promise<MessageOptions> {
   const timestamp = process.uptime()
 
   // hours
@@ -10,9 +10,9 @@ export const run = async (message: Message, _: string[], bot: Bot): Promise<Mess
 
   delete require.cache[require.resolve('../../package.json')] // Always get the latest package.json
 
-  const owner = bot.users.cache.get(process.env.OWNER as string)
+  const owner = this.users.cache.get(process.env.OWNER as string)
 
-  if (!(bot.user && owner)) return {
+  if (!(this.user && owner)) return {
     content: 'oops the owner or the bot user does not exist some how'
   }
 
@@ -23,12 +23,12 @@ export const run = async (message: Message, _: string[], bot: Bot): Promise<Mess
   return {
     embed: {
       author: {
-        name: `About ${bot.user.username}`,
-        iconURL: bot.user?.displayAvatarURL(),
+        name: `About ${this.user.username}`,
+        iconURL: this.user?.displayAvatarURL(),
         url: require('../../package.json').homepage
       },
       title: 'Invite the bot',
-      url: (await bot.generateInvite(['ADMINISTRATOR'])),
+      url: (await this.generateInvite(['ADMINISTRATOR'])),
       color: 0x454545,
       footer: {
         text: `Owned by ${owner.tag}`,
@@ -42,11 +42,11 @@ export const run = async (message: Message, _: string[], bot: Bot): Promise<Mess
         inline: false
       }, {
         name: '💬 Server Count',
-        value: bot.guilds.cache.size,
+        value: this.guilds.cache.size,
         inline: true
       }, {
         name: '🧑🏻 User Count',
-        value: bot.users.cache.size,
+        value: this.users.cache.size,
         inline: true
       }, {
         name: 'ℹ Version',
@@ -65,12 +65,12 @@ export const run = async (message: Message, _: string[], bot: Bot): Promise<Mess
         value: process.env.SUPPORT
       }, {
         name: '>_ Command Count',
-        value: bot.commands.filter(command => !!command.desc).size,
+        value: this.commands.filter(command => !!command.desc).size,
         inline: true
       }].filter(field => field.value) // Remove any fields without values (like support if it isn't in env)
     }
   }
 }
 
-export const desc = 'Statistics about the bot.'
+export const desc = 'Statistics about the this.'
 export const aliases = ['list', 'stats']
