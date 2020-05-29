@@ -39,6 +39,7 @@ export default async (message: Message, bot: Bot) => {
               iconURL: bot.user?.avatarURL()
             },
             title: err.toString(),
+            color: 'RED',
             footer: {
               text: 'Report this bug @ ' + require('../package.json').bugs
             }
