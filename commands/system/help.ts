@@ -24,18 +24,18 @@ export function run (this: Bot, _message: Message, args: string[]) {
     .sort((a, b) => {
       return a[0].localeCompare(b[0] || '') || -1
     })
-  const chunks = chunk(commands, 20)
+  const pages = chunk(commands, 20)
 
-  return chunks[page - 1] ? {
+  return pages[page - 1] ? {
     embed: {
       title: `${this.user?.username || ''} Commands`,
-      fields: chunks[page - 1].map(([name, value]: [string, string]) => ({
+      fields: pages[page - 1].map(([name, value]: [string, string]) => ({
         name,
         value
       })),
       footer: {
         iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/VisualEditor_-_Icon_-_Book.svg/600px-VisualEditor_-_Icon_-_Book.svg.png',
-        text: `${page}/${chunks.length}`
+        text: `${page}/${pages.length}`
       }
     }
   } : {
