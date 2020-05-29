@@ -1,8 +1,8 @@
-import { Message } from 'discord.js'
+import { Message, MessageOptions } from 'discord.js'
 import { Bot } from '../../utils/types'
 import fetch from 'node-fetch'
 
-export const run = async (message: Message, _: string[], bot: Bot) => {
+export const run = async (message: Message, _: string[], bot: Bot): Promise<MessageOptions> => {
   const timestamp = process.uptime()
 
   // hours
@@ -12,7 +12,9 @@ export const run = async (message: Message, _: string[], bot: Bot) => {
 
   const owner = bot.users.cache.get(process.env.OWNER as string)
 
-  if (!(bot.user && owner)) return 'oops the owner or the bot user does not exist some how'
+  if (!(bot.user && owner)) return {
+    content: 'oops the owner or the bot user does not exist some how'
+  }
 
   const esmBotMessages: string[] = await fetch('https://raw.githubusercontent.com/TheEssem/esmBot/master/messages.json').then(res => res.json())
   const messages = (await import('../../messages')).all
