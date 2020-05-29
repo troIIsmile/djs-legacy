@@ -12,9 +12,6 @@ jspm_packages/
 *.js
 *.tsbuildinfo
 
-# GitHub Pages
-!docs/*.js
-
 # data
 data.json
 prefixes.json

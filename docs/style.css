@@ -24,7 +24,7 @@ body {
   text-align: center;
 }
 
-svg {
+img {
   width: 50%;
   height: auto;
   transform: skew(11deg);
@@ -37,26 +37,5 @@ svg {
   }
   to {
     transform: skew(0deg);
-  }
-}
-
-path {
-  visibility: hidden;
-  cursor: pointer;
-  animation: fade 1s ease-out 1s 1 forwards;
-}
-
-text {
-  pointer-events: none;
-}
-
-@keyframes fade {
-  from {
-    opacity: 0;
-    visibility: visible;
-  }
-  to {
-    visibility: visible;
-    opacity: 1;
   }
 }
