@@ -83,7 +83,9 @@ bot.on('message', async message => {
     )
     // Run the command!
     if (name) {
-      const command = bot.commands.get(name)?.run || bot.commands.get(bot.aliases.get(name) || '')?.run || (() => { })
+      const command = bot.commands.get(name)?.run // The command if it found it
+        || bot.commands.get(bot.aliases.get(name) || '')?.run // Aliases
+        || (() => { }) // Do nothing otherwise
 
       try {
         const output = await command(
