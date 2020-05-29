@@ -40,7 +40,7 @@ export default async (message: Message, bot: Bot) => {
             },
             title: err.toString(),
             footer: {
-              text: 'Report this bug @ ' + require('./package.json').bugs
+              text: 'Report this bug @ ' + require('../package.json').bugs
             }
           }
         })
