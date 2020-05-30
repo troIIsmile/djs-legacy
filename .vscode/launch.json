@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
   {
-    "command": "npx serve docs",
+    "command": "explorer 'http://localhost:5000'; npx serve docs",
     "name": "Web",
     "request": "launch",
     "type": "pwa-node-terminal"
