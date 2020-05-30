@@ -5,7 +5,7 @@ export const run = async (message: Message, args: string[]) => {
     await message.channel.send({
       files: [
         {
-          attachment: dl(encodeURI(args.join(' ')), ['--format=best'], {}),
+          attachment: dl(encodeURI(args.join(' ')), [], {}),
           name: 'video.mp4'
         }
       ]
