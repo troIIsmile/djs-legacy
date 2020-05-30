@@ -39,6 +39,9 @@ npm i
 [Click here to remix.](https://glitch.com/edit/#!/remix/nxtbot)
 After remixing, open the terminal and type `npx tsc`. After that, follow step 3 of the normal route.
 
+## Website
+`npx serve docs`
+
 ## Donate
 
 haha no this bot is terrible
