@@ -77,7 +77,7 @@ readdirSync('./events/')
   .forEach(async (filename: any) => {
     const ev = (await import('./events/' + filename)).default
     bot.on(filename, context => {
-      ev(context, bot)
+      ev.call(bot, context)
     })
   })
 

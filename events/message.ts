@@ -3,26 +3,26 @@ import { Bot } from '../utils/types'
 import { prefixes } from '../util'
 
 // Command Handler (This used to be jackbot-discord!)
-export default async (message: Message, bot: Bot) => {
+export default async function (this: Bot, message: Message) {
   // When a message is sent
   if (!message.author?.bot) {
     // no bots allowed
     const prefix: string = prefixes[message.guild?.id || ''] || '-'
     const content = message.content || ''
-    const name = [...bot.commands.keys(), ...bot.aliases.keys()].find(
+    const name = [...this.commands.keys(), ...this.aliases.keys()].find(
       cmdname =>
         content.startsWith(`${prefix}${cmdname} `) || // matches any command with a space after
         content === `${prefix}${cmdname}` // matches any command without arguments
     )
     // Run the command!
     if (name) {
-      const command = bot.commands.get(name)?.run // The command if it found it
-        || bot.commands.get(bot.aliases.get(name) || '')?.run // Aliases
+      const command = this.commands.get(name)?.run // The command if it found it
+        || this.commands.get(this.aliases.get(name) || '')?.run // Aliases
         || (() => { }) // Do nothing otherwise
 
       try {
         const output = await command.call(
-          bot,
+          this,
           message as Message, // the message
           // The arguments
           content
@@ -35,8 +35,8 @@ export default async (message: Message, bot: Bot) => {
         message.channel?.send({
           embed: {
             author: {
-              name: `${bot.user?.username} ran into an error while running your command!`,
-              iconURL: bot.user?.avatarURL()
+              name: `${this.user?.username} ran into an error while running your command!`,
+              iconURL: this.user?.avatarURL()
             },
             title: err.toString(),
             color: 'RED',
