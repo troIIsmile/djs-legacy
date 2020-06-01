@@ -37,7 +37,7 @@ export const run = async function (this: Bot, message: Message, _: string[]): Pr
       fields: [{
         name: '✏ Credits',
         value: `
-        Some snippets of code from esmBot by Essem#9261
+        URL for the -achievement command from esmBot by Essem#9261
         [${percentOfLines.toFixed(5)}% of the "Playing" messages from esmBot](https://github.com/TheEssem/esmBot/blob/master/messages.json)`,
         inline: false
       }, {
