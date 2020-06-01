@@ -1,7 +1,7 @@
 import { Message } from 'discord.js'
 import { Bot } from '../../utils/types'
 
-export const run = async function (this: Bot, message: Message, _args: string[])  {
+export const run = async function (this: Bot, message: Message)  {
   const msg = (await message.channel.send('Ping?')) as Message
   msg.edit(
     `Pong! Latency is ${msg.createdTimestamp -
