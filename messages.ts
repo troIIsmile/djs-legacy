@@ -201,10 +201,7 @@ const messages: Messages = {
 
 const flatten = (messages: Messages | string[]): string[] => {
   const result = Object.values(messages)
-    .map(val => {
-      if (Array.isArray(val)) return val
-      return Object.values(val).flat()
-    })
+    .map(val => Array.isArray(val) ? val : Object.values(val).flat())
     .flat()
 
   return result.some(Array.isArray) ? flatten(result) : result
