@@ -1,4 +1,3 @@
-// TODO: Add VC like the old jackbot
 import { Message } from 'discord.js'
 import ytdl from 'ytdl-core'
 export async function run (message: Message) {
