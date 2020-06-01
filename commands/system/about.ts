@@ -65,7 +65,7 @@ export const run = async function (this: Bot, message: Message, _: string[]): Pr
         value: process.env.SUPPORT
       }, {
         name: '>_ Command Count',
-        value: this.commands.filter(command => !!command.desc).size,
+        value: this.commands.size,
         inline: true
       }].filter(field => field.value) // Remove any fields without values (like support if it isn't in env)
     }
