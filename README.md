@@ -27,7 +27,7 @@ sudo apt install ffmpeg # Soon this won't be the case
 npm i
 ```
 
-2. Rename `.env.example` to `.env`
+2. Rename `example.env` to `.env`
 
 3. Open `.env` and:
    1. Replace the text after `TOKEN=` with your bot's token
