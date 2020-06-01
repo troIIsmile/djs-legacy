@@ -207,7 +207,7 @@ const flatten = (messages: Messages | string[]): string[] => {
     })
     .flat()
 
-  return result.every(str => typeof str === 'string') ? result : flatten(result)
+  return result.some(Array.isArray) ? flatten(result) : result
 }
 
 const all = flatten(messages)
