@@ -1,1 +1,1 @@
-export default (items: any[]) => items[Math.floor(Math.random() * items.length)]
+export default <Type>(items: Type[]): Type => items[Math.floor(Math.random() * items.length)]
