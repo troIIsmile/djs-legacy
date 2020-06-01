@@ -41,7 +41,7 @@ export default async (message: Message, bot: Bot) => {
             title: err.toString(),
             color: 'RED',
             footer: {
-              text: 'Report this bug @ ' + require('../package.json').bugs
+              text: `Report this bug @ ${require('../package.json').bugs}`
             }
           }
         })
