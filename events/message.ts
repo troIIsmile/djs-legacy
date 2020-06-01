@@ -2,7 +2,7 @@ import { Message } from 'discord.js'
 import { Bot } from '../utils/types'
 import { prefixes } from '../util'
 
-// NXTBOT Command Handler (This used to be jackbot-discord!)
+// Command Handler (This used to be jackbot-discord!)
 export default async (message: Message, bot: Bot) => {
   // When a message is sent
   if (!message.author?.bot) {
