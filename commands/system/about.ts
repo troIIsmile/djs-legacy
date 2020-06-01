@@ -1,8 +1,8 @@
-import { Message, MessageOptions } from 'discord.js'
+import { MessageOptions } from 'discord.js'
 import { Bot } from '../../utils/types'
 import fetch from 'node-fetch'
 
-export const run = async function (this: Bot, message: Message, _: string[]): Promise<MessageOptions> {
+export const run = async function (this: Bot): Promise<MessageOptions> {
   const timestamp = process.uptime()
 
   // hours
