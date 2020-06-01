@@ -24,9 +24,10 @@ if (exists('./.env')) {
   }
 }
 
-const bot = new Client() as Bot // Bot is Client but with commands
+const bot = new Client() as Bot // Bot is Client but with commands & aliases
+// time to define them:
 bot.commands = new Collection<string, CommandObj>() // Init commands
-bot.aliases = new Collection<string, string>()
+bot.aliases = new Collection<string, string>() // Init aliases
 
 // On close events
 process.on('exit', bot.destroy.bind(bot))
