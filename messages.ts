@@ -128,7 +128,7 @@ const messages: Messages = {
     'Roblox', // I know this is a game engine
     'Minecraft',
     'Skyrim',
-    'SuperTuxKart', // Force restarts my laptop when I press Enter or Space while paused.
+    'SuperTuxKart', // Crashed my laptop when I press Enter or Space while paused.
     'Sonic 06',
     'Metal Gear Solid 4',
     'Action 52',
