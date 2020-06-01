@@ -30,6 +30,7 @@ header img {
 
 header {
   background: darkslategray;
+  position: -webkit-sticky;
   position: sticky;
   text-align: left;
   display: flex;
