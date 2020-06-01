@@ -39,7 +39,7 @@ process.on('SIGINT', bot.destroy.bind(bot))
 process.on('SIGUSR1', bot.destroy.bind(bot))
 process.on('SIGUSR2', bot.destroy.bind(bot))
 
-// The actual command loader
+// This function gets all commands in the commands folder and adds them (& their aliases!) to the bot
 async function loadCommands () {
   try {
     const entries: [string, CommandObj][] = await Promise.all(
