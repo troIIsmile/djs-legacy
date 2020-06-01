@@ -1,6 +1,8 @@
-# NXTBOT
+<div align="center">
+	<img width="360" src="https://raw.githubusercontent.com/Jack5079/nxtbot/master/docs/icon.png" alt="NXTBOT">
+</div>
 
-_THIS IS NXT_
+# NXTBOT
 
 A terrible Discord bot.
 
