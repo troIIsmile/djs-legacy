@@ -27,7 +27,7 @@ export const run = async (_: void, args: string[]) => {
           iconURL: 'https://dogechain.info/favicon.png'
         },
         description: 'Error! \n' + error,
-        color: 'REDF'
+        color: 'RED'
       }
     }
   }
