@@ -29,16 +29,6 @@ const bot = new Client() as Bot // Bot is Client but with commands & aliases
 bot.commands = new Collection<string, CommandObj>() // Init commands
 bot.aliases = new Collection<string, string>() // Init aliases
 
-// On close events
-process.on('exit', bot.destroy.bind(bot))
-
-//catches ctrl+c event
-process.on('SIGINT', bot.destroy.bind(bot))
-
-// catches "kill pid" (for example: nodemon restart)
-process.on('SIGUSR1', bot.destroy.bind(bot))
-process.on('SIGUSR2', bot.destroy.bind(bot))
-
 // This function gets all commands in the commands folder and adds them (& their aliases!) to the bot
 async function loadCommands () {
   try {
