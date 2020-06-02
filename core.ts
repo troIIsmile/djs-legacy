@@ -36,7 +36,6 @@ bot.aliases = new Collection<string, string>() // Init aliases
 
 // This function gets all commands in the commands folder and adds them (& their aliases!) to the bot
 async function loadCommands () {
-  try {
     const entries: [string, CommandObj][] = await Promise.all(
       (await rreaddir('./commands/')) // get the file names of every command in the commands folder
         .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
@@ -58,9 +57,6 @@ async function loadCommands () {
         bot.aliases.set(alias, name)
       })
     })
-  } catch (err) {
-    console.log('[COMMANDS]', err.toString().split('\n')[0])
-  }
 }
 
 loadCommands()

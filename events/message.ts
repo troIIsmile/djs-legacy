@@ -1,6 +1,6 @@
 import { Message } from 'discord.js'
 import { Bot } from '../utils/types'
-import { prefixes } from '../util'
+import prefixes from '../utils/prefixes'
 
 // Command Handler (This used to be jackbot-discord!)
 export default async function (this: Bot, message: Message) {

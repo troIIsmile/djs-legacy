@@ -1,5 +1,6 @@
 import { MessageOptions } from 'discord.js'
 import random from '../../utils/random'
+import fetch from 'node-fetch'
 interface Rant {
   text: string
   hate: number

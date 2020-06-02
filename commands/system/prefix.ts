@@ -1,6 +1,6 @@
 import { Message } from 'discord.js'
 import { hasPerm } from '../../utils/permissions'
-import { prefixes } from '../../util'
+import prefixes from '../../utils/prefixes'
 
 export async function run (message: Message, args: string[]) {
   if (message.guild) {

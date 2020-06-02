@@ -10,14 +10,15 @@ if (!exists('./prefixes.json')) write('./prefixes.json', '{}')
 interface Prefixes {
   [key: string]: string
 }
-export const prefixes: Prefixes = new Proxy({}, {
+const prefixes: Prefixes = new Proxy({}, {
   get (_, name) {
-    return require('./prefixes.json')[name]
+    return require('../prefixes.json')[name]
   },
   set (_, prop: string, value: any): boolean {
-    let data = require('./prefixes.json')
+    let data = require('../prefixes.json')
     data[prop] = value
     write('./prefixes.json', JSON.stringify(data, null, 2))
     return true
   }
 })
+export default prefixes
