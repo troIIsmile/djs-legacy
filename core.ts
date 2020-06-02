@@ -1,6 +1,6 @@
 /**
  * @file core
- * This file logs into Discord. It also loads commands, events, the .env file, aliases, and the Web server (if it is required)
+ * This file logs into Discord. It also loads events, the .env file, and the Web server (if it is required)
  * @author Jack <hello@5079.ml> (https://5079.ml)
  */
 import { Client, Collection } from 'discord.js'
@@ -11,7 +11,6 @@ import {
   readdirSync
 } from 'fs'
 import { IncomingMessage, ServerResponse, createServer } from 'http'
-import { rreaddir } from './utils/rreaddir'
 
 // We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'blahblahblah' > Env:/TOKEN`)
 if (exists('./.env')) {
@@ -33,33 +32,6 @@ const bot = new Client() as Bot // Bot is Client but with commands & aliases
 // time to define them:
 bot.commands = new Collection<string, CommandObj>() // Init commands
 bot.aliases = new Collection<string, string>() // Init aliases
-
-// This function gets all commands in the commands folder and adds them (& their aliases!) to the bot
-async function loadCommands () {
-    const entries: [string, CommandObj][] = await Promise.all(
-      (await rreaddir('./commands/')) // get the file names of every command in the commands folder
-        .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
-        .map(async file => {
-          console.log(`[COMMANDS] Loading ${file}`)
-          return [
-            file.replace('.js', '').replace(/^.*[\\\/]/, ''), // Remove folders from the path and .js, leaving only the command name
-            {
-              desc: 'A command without a description', // this will be overwritten by the real description if it is there
-              ...(await import(`./${file}`)), // `run` and `desc`
-              path: require.resolve('./' + file) // for stuff like reload
-            }
-          ]
-        }) // convert filenames to commands
-    ) as [string, CommandObj][]
-    entries.forEach(([name, command]: [string, CommandObj]) => {
-      bot.commands.set(name, command)
-      command.aliases?.forEach(alias => {
-        bot.aliases.set(alias, name)
-      })
-    })
-}
-
-loadCommands()
 
 // Load in events
 readdirSync('./events/')
