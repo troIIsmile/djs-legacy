@@ -1,5 +1,5 @@
 import { MessageOptions } from 'discord.js'
-import random from '../../../utils/random'
+import random from '../../utils/random'
 interface Rant {
   text: string
   hate: number
