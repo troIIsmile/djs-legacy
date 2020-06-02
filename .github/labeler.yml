@@ -3,7 +3,6 @@ commands:
 
 util:
   - utils/**/*
-  - util.ts
 
 config:
   - .vscode/**/*
