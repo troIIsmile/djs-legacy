@@ -1,5 +1,4 @@
 import { Message } from 'discord.js'
-import { hasFlag } from '../../util'
 import tts from 'google-tts-api'
 
 export const run = async (_message: Message, args: string[]) => {
@@ -10,7 +9,7 @@ export const run = async (_message: Message, args: string[]) => {
           attachment: await tts(
             args.filter(arg => !arg.startsWith('--')).join(' '),
             'en',
-            hasFlag(args, 'slow') ? 0.27 : 1
+            args.includes('--slow')  ? 0.27 : 1
           ),
           name: 'sound.mp3'
         }

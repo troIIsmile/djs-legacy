@@ -1,5 +1,4 @@
 import { Message } from 'discord.js'
-import { hasFlag } from '../../util'
 import tts from 'google-tts-api'
 
 export const run = async (message: Message, args: string[]) => {
@@ -9,7 +8,7 @@ export const run = async (message: Message, args: string[]) => {
   try {
     const channel = message.member?.voice.channel
     let url: string
-    if (hasFlag(args, 'slow')) {
+    if (args.includes('--slow')) {
       url = await tts(
         args.filter(arg => !arg.startsWith('--')).join(' '),
         'en',

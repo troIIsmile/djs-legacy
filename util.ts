@@ -3,11 +3,6 @@
  * This file will be gone soon
  */
 import { writeFileSync as write, existsSync as exists } from 'fs'
-export function hasFlag (args: string[], flag: string): boolean {
-  return args
-    .filter(arg => arg.startsWith('--')) // only flags
-    .includes('--' + flag) // does any of the args have the flag
-}
 
 if (!exists('./prefixes.json')) write('./prefixes.json', '{}')
 
