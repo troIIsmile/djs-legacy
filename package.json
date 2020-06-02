@@ -2,12 +2,12 @@
   "name": "nxtbot",
   "version": "8.0.0",
   "description": "THIS IS NXT",
-  "main": "core.js",
+  "main": "init.js",
   "homepage": "https://jack5079.github.io/nxtbot/",
   "scripts": {
     "test": "echo no",
     "build": "tsc",
-    "start": "node core"
+    "start": "node init"
   },
   "engines": {
     "node": ">=12"

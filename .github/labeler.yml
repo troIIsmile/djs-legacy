@@ -15,8 +15,8 @@ config:
   - watch.json
   - .eslintrc
 
-core:
-  - core.ts
+init:
+  - init.ts
 
 messages:
   - messages.ts
