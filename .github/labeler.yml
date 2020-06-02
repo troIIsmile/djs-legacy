@@ -1,5 +1,5 @@
 commands:
-  - commands/**/*
+  - commands/**/*.ts
 
 util:
   - utils/**/*
@@ -25,5 +25,5 @@ events:
 
 docs:
   - docs/**/*
-  - README.md
+  - ./**/*.md
   - .env.example
