@@ -1,3 +1,8 @@
+/**
+ * @file core
+ * This file logs into Discord. It also loads commands, events, the .env file, aliases, and the Web server (if it is required)
+ * @author Jack <hello@5079.ml> (https://5079.ml)
+ */
 import { Client, Collection } from 'discord.js'
 import { Bot, CommandObj } from './utils/types'
 import {
