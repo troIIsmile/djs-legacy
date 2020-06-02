@@ -1,3 +1,7 @@
+/**
+ * @file Utiliy
+ * This file will be gone soon
+ */
 import { writeFileSync as write, existsSync as exists } from 'fs'
 export function hasFlag (args: string[], flag: string): boolean {
   return args
