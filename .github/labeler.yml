@@ -25,5 +25,5 @@ events:
 
 docs:
   - docs/**/*
-  - ./**/*.md
+  - *.md
   - .env.example
