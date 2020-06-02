@@ -17,9 +17,7 @@ interface Game {
 const error = {
   embed: {
     author: {
-      name: 'Error',
-      iconURL:
-        'https://www.bing.com/th?id=OIP.DZljw0bam4UFXr5B5VLlTAHaHa&pid=Api&rs=1'
+      name: 'Error'
     },
     description: "Couldn't find your game!",
     color: 'RED'
