@@ -17,7 +17,7 @@ async function getPost (sub: string): Promise<Post> {
     `https://www.reddit.com/r/${sub}/random.json`
   )
     .then(res => res.json())
-    .then(data => data[0].data.children[0])
+    .then(data => data[0].data.children[0]) // It's a SINGLE POST just give me the post it shouldn't have children what the fuck is the Reddit API
   if (result.data.url.startsWith('https://i.redd.it')) return result
   return getPost(sub)
 }
