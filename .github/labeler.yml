@@ -5,14 +5,13 @@ util:
   - utils/**/*
 
 config:
-  - .vscode/**/*
-  - .github/**/*
-  - package.json
+  - .vscode/**/* # visual studio code config
+  - .github/**/* # how meta
+  - package.json # name and stuff
   - .editorconfig
-  - .gitignore
-  - tsconfig.json
-  - watch.json
-  - .eslintrc
+  - .gitignore # private
+  - tsconfig.json # compiler config
+  - watch.json # glitch hosting
 
 init:
   - init.ts
