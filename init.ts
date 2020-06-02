@@ -1,5 +1,5 @@
 /**
- * @file core
+ * @file Init
  * This file logs into Discord. It also loads events, the .env file, and the Web server (if it is required)
  * @author Jack <hello@5079.ml> (https://5079.ml)
  */
