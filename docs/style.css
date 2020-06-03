@@ -70,7 +70,11 @@ strong a {
   border-radius: 1em;
   box-shadow: #7289DA 1px 1px 5px;
 }
-
+table {
+  border-radius: 1em;
+  padding: 1em;
+  background: #363636;
+}
 
 footer {
   text-align: right;
