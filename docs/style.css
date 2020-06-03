@@ -50,9 +50,11 @@ header a {
     transform: skew(0deg);
   }
 }
+
 article {
   display: inline-block;
 }
+
 strong {
   text-align: center;
   background: yellow;
@@ -60,9 +62,23 @@ strong {
   width: 100%;
   display: block;
 }
+
 strong a {
   color: darkblue;
 }
+
+td {
+  text-align: center;
+  background: transparent;
+  transition: transform 1s, background 1s, box-shadow 1s;
+}
+
+td:hover {
+  transform: scale(1.1);
+  background: #363636;
+  box-shadow: black 0 0 5px;
+}
+
 .primary {
   background: #7289DA;
   color: white;
@@ -70,6 +86,7 @@ strong a {
   border-radius: 1em;
   box-shadow: #7289DA 1px 1px 5px;
 }
+
 table {
   border-radius: 1em;
   padding: 1em;
