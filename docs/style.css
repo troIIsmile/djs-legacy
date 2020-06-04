@@ -73,7 +73,7 @@ td {
   transition: transform 1s, background 1s, box-shadow 1s;
 }
 
-td:hover {
+td:not(:first-child):hover {
   transform: scale(1.1);
   background: #363636;
   box-shadow: black 0 0 5px;
