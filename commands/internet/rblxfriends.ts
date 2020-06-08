@@ -1,6 +1,6 @@
 import { Message } from 'discord.js'
 import fetch from 'node-fetch'
-interface RobloxFriend {
+interface Player {
   Id: number
   Username: string
   IsOnline: boolean
@@ -17,7 +17,7 @@ export const run = async (message: Message, args: string[]) => {
       }
     }
   }
-  const { Id: id } = await fetch(
+  const { Id: id, IsOnline }: Player = await fetch(
     'https://api.roblox.com/users/get-by-username?username=' +
       encodeURIComponent(args.join(' '))
   ).then(res => res.json())
@@ -32,7 +32,7 @@ export const run = async (message: Message, args: string[]) => {
       }
     }
   }
-  const friendarray = await fetch(
+  const friendarray: Player[] = await fetch(
     `https://api.roblox.com/users/${id}/friends`
   ).then(res => res.json())
   if (!friendarray) {
@@ -46,7 +46,7 @@ export const run = async (message: Message, args: string[]) => {
       }
     }
   }
-  const fields = friendarray.map((friend: RobloxFriend) => {
+  const fields = friendarray.map(friend => {
     return {
       name: friend.Username,
       value: friend.IsOnline ? '🟢 Online' : '🔴 Offline',
@@ -56,7 +56,7 @@ export const run = async (message: Message, args: string[]) => {
   return {
     embed: {
       author: {
-        name: args.join(' '),
+        name: args.join(' ') + IsOnline ? ' (🟢 Online)' : ' (🔴 Offline)'
         iconURL: `https://roblox.com/Thumbs/Avatar.ashx?x=420&y=420&username=${encodeURIComponent(
           args.join(' ')
         )}`,
