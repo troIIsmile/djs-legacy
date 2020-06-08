@@ -36,17 +36,7 @@ export const run = async (message: Message, args: string[]) => {
   const friendarray: Player[] = await fetch(
     `https://api.roblox.com/users/${id}/friends`
   ).then(res => res.json())
-  if (!friendarray) {
-    return {
-      embed: {
-        author: {
-          name: 'Error!'
-        },
-        title: 'There was a problem getting the list of friends',
-        color: 'RED'
-      }
-    }
-  }
+
   const fields = friendarray.map(friend => {
     return {
       name: friend.Username,
