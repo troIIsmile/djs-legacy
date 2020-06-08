@@ -1,10 +1,8 @@
 import { Message } from 'discord.js'
 import fetch from 'node-fetch'
 interface RobloxFriend {
-  AvatarUri: string // I want to use this
   Id: number
   Username: string
-  AvatarFinal: boolean // ?????????????????????????
   IsOnline: boolean
 }
 export const run = async (message: Message, args: string[]) => {
