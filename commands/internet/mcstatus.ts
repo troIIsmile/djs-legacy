@@ -26,8 +26,8 @@ export const run = async () => {
     embed: {
       author: {
         name: 'Mojang Status',
-        url: 'https://twitter.com/MojangStatus',
-        iconURL: 'https://th.bing.com/th?id=OIP.dgfesKRbRs2WCbuACljJ2QHaHa&pid=Api&rs=1'
+        url: 'https://twiter.com/MojangStatus',
+        iconURL: 'https://upload.wikimedia.org/wikipedia/en/c/cb/Mojang_Studios_Logo%2C_May_2020_Redesign.png'
       },
       fields
     }
