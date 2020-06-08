@@ -1,6 +1,6 @@
 import { Message, MessageOptions } from 'discord.js'
 import clean from '../../utils/clean'
-import { hasPerm } from '../../utils/permissions'
+import { hasPerm as isOwner } from '../../utils/permissions'
 import { Bot } from '../../utils/types'
 
 export async function run (
@@ -8,7 +8,7 @@ export async function run (
   message: Message,
   args: string[]
 ): Promise<MessageOptions> {
-  if (hasPerm(message)) {
+  if (isOwner(message)) {
     try {
       const code = args.join(' ')
       const evaled = eval(code)
