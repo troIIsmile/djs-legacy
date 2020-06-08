@@ -56,7 +56,7 @@ export const run = async (message: Message, args: string[]) => {
   return {
     embed: {
       author: {
-        name: args.join(' ') + IsOnline ? ' (🟢 Online)' : ' (🔴 Offline)'
+        name: args.join(' ') + IsOnline ? ' (🟢 Online)' : ' (🔴 Offline)',
         iconURL: `https://roblox.com/Thumbs/Avatar.ashx?x=420&y=420&username=${encodeURIComponent(
           args.join(' ')
         )}`,
