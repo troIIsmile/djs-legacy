@@ -19,7 +19,7 @@ export async function run (
       return {
         content: 'The output was more than 2000 characters; here is a file with the output:',
         files: [{
-          name: 'output.js',
+          name: 'output.txt',
           attachment: new Buffer(txt)
         }]
       }
