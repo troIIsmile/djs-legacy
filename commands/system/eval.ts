@@ -2,7 +2,6 @@ import { Message, MessageOptions } from 'discord.js'
 import clean from '../../utils/clean'
 import { hasPerm } from '../../utils/permissions'
 import { Bot } from '../../utils/types'
-import fetch from 'node-fetch'
 
 export async function run (
   this: Bot,
@@ -16,19 +15,13 @@ export async function run (
       const txt = await clean(this, evaled)
       const msg = `\`\`\`js\n${txt}\n\`\`\``
       if (msg.length <= 2000) return { content: msg }
-
-      const { key } = await fetch(`https://hastebin.com/documents`, {
-        method: "POST",
-        body: txt,
-        headers: { "Content-Type": "text/plain" }
-      }).then(res => res.json())
       
       return {
-        embed: {
-          title: 'Uploaded!',
-          url: `https://hastebin.com/${key}`,
-          color: 'GREEN'
-        }
+        content: 'The output was more than 2000 characters; here is a file with the output:',
+        files: [{
+          name: 'output.js',
+          attachment: new Buffer(txt)
+        }]
       }
     } catch (err) {
       return { content: `\`ERROR\` \`\`\`xl\n${await clean(this, err)}\n\`\`\`` }
