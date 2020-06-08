@@ -8,22 +8,20 @@ interface Status {
 
 export const run = async () => {
   const data: Status[] = await fetch('https://status.mojang.com/check').then(res => res.json())
-  const fields = data.map(info => {
-    return {
-      name: Object.keys(info)[0],
-      value: (status => {
-        switch (status) {
-          case 'yellow':
-            return '❓ Problems'
-          case 'green':
-            return '✅ Up'
-          default:
-            return '❎ Down'
-        }
-      })(info[Object.keys(info)[0]]),
-      inline: true
-    }
-  })
+  const fields = data.map(obj => Object.entries(obj).flat()).map(([name, status]) => ({
+    name,
+    value: (() => {
+      switch (status) {
+        case 'yellow':
+          return '❓ Problems'
+        case 'green':
+          return '✅ Up'
+        default:
+          return '❎ Down'
+      }
+    })(),
+    inline: true
+  }))
   return {
     embed: {
       author: {
