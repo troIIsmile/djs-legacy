@@ -27,8 +27,7 @@
     "node-fetch": "^2.6.0",
     "tslib": "^1.10.0",
     "wikibase-sdk": "^7.2.1",
-    "youtube-dl": "^3.0.2",
-    "ytdl-core": "^2.0.0"
+    "youtube-dl": "^3.0.2"
   },
   "devDependencies": {
     "@types/node": "^13.7.1",
