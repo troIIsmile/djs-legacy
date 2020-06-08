@@ -1,4 +1,4 @@
-import { Message } from 'discord.js'
+import { Message, MessageOptions } from 'discord.js'
 import fetch from 'node-fetch'
 interface Player {
   Id: number
@@ -6,7 +6,7 @@ interface Player {
   IsOnline: boolean,
   errorMessage?: string
 }
-export const run = async (message: Message, args: string[]) => {
+export async function run (message: Message, args: string[]): Promise<MessageOptions> {
   if (!args.join('').length) {
     return {
       embed: {
