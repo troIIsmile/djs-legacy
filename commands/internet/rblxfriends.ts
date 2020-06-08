@@ -3,7 +3,8 @@ import fetch from 'node-fetch'
 interface Player {
   Id: number
   Username: string
-  IsOnline: boolean
+  IsOnline: boolean,
+  errorMessage?: string
 }
 export const run = async (message: Message, args: string[]) => {
   if (!args.join('').length) {
@@ -17,17 +18,17 @@ export const run = async (message: Message, args: string[]) => {
       }
     }
   }
-  const { Id: id, IsOnline }: Player = await fetch(
+  const { Id: id, IsOnline, errorMessage }: Player = await fetch(
     'https://api.roblox.com/users/get-by-username?username=' +
       encodeURIComponent(args.join(' '))
   ).then(res => res.json())
-  if (!id) {
+  if (errorMessage) {
     return {
       embed: {
         author: {
           name: 'Error!'
         },
-        title: "That player couldn't be found!",
+        title: errorMessage,
         color: 'RED'
       }
     }
