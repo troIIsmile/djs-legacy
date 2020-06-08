@@ -33,17 +33,9 @@ export const run = async (message: Message, args: string[]) => {
       }
     }
   }
-  const friendarray: Player[] = await fetch(
+  const friends: Player[] = await fetch(
     `https://api.roblox.com/users/${id}/friends`
   ).then(res => res.json())
-
-  const fields = friendarray.map(friend => {
-    return {
-      name: friend.Username,
-      value: friend.IsOnline ? '🟢 Online' : '🔴 Offline',
-      inline: true
-    }
-  })
   return {
     embed: {
       author: {
@@ -53,7 +45,13 @@ export const run = async (message: Message, args: string[]) => {
         )}`,
         url: `https://www.roblox.com/users/${id}/`
       },
-      fields
+      fields: friends.map(friend => {
+        return {
+          name: friend.Username,
+          value: friend.IsOnline ? '🟢 Online' : '🔴 Offline',
+          inline: true
+        }
+      })
     }
   }
 }
