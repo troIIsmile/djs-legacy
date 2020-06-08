@@ -56,3 +56,4 @@ export const run = async (message: Message, args: string[]) => {
   }
 }
 export const desc = 'username -> info'
+export const aliases = ['rblxonline']
