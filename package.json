@@ -20,7 +20,7 @@
   "author": "Jack5079",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.1.0",
+    "@discordjs/opus": "^0.3.2",
     "discord.js": "^12.2.0",
     "google-tts-api": "0.0.4",
     "nintendo-switch-eshop": "^3.0.0",
