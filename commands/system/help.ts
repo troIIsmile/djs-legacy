@@ -1,5 +1,7 @@
 import { Message, MessageOptions } from 'discord.js'
 import { Bot } from '../../utils/types'
+import prefixes from '../../utils/prefixes'
+import random from '../../utils/random'
 
 function chunk (array: any[], size: number = 1): Array<any> {
   let chunk: any[] = []
@@ -15,7 +17,7 @@ function chunk (array: any[], size: number = 1): Array<any> {
     return acc
   }, [])
 }
-export function run (this: Bot, _message: Message, args: string[]): MessageOptions {
+export function run (this: Bot, message: Message, args: string[]): MessageOptions {
   const page = parseInt(args.join('')) || 1
   const commands = Array.from(
     this.commands.entries(),
@@ -25,18 +27,22 @@ export function run (this: Bot, _message: Message, args: string[]): MessageOptio
       return a[0].localeCompare(b[0] || '') || -1
     })
   const pages = chunk(commands, 20)
-
+  const prefix = prefixes[message?.guild?.id || ''] || '-'
   return pages[page - 1] ? {
     embed: {
       title: `${this.user?.username || ''} Commands`,
-      fields: pages[page - 1].map(([name, value]: [string, string]) => ({
-        name,
-        value
-      })),
+      description: pages[page - 1].map(([name, description]: [string, string]) => `${prefix}**${name}** - ${description}`).join('\n'),
       footer: {
         iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/VisualEditor_-_Icon_-_Book.svg/600px-VisualEditor_-_Icon_-_Book.svg.png',
         text: `${page}/${pages.length}`
-      }
+      },
+      fields: [{
+        name: 'Tip',
+        value: random([
+          'Report bugs and feature requests at ' + require('../../package.json').bugs,
+          'This bot was created by ' + this.users.cache.get(process.env.OWNER || '')?.tag || 'someone'
+        ])
+      }]
     }
   } : {
       embed: {
