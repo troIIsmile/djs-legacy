@@ -14,21 +14,32 @@ a {
   text-decoration: none;
 }
 
-.sep::after {
-  content: '|'
-}
-
 body {
   background: black;
   color: white;
-  text-align: center;
+  margin: 0;
 }
 
-svg {
-  width: 50%;
-  height: auto;
-  transform: skew(11deg);
-  animation: skew 1s ease-out 1s 1 forwards;
+article {
+  margin: 5em;
+}
+
+header img {
+  animation: skew 1s ease-out 1s 1 backwards;
+}
+
+header {
+  background: darkslategray;
+  position: -webkit-sticky;
+  position: sticky;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  top: 0;
+}
+
+header a {
+  margin: 1em;
 }
 
 @keyframes skew {
@@ -40,23 +51,50 @@ svg {
   }
 }
 
-path {
-  visibility: hidden;
-  cursor: pointer;
-  animation: fade 1s ease-out 1s 1 forwards;
+article {
+  display: inline-block;
 }
 
-text {
-  pointer-events: none;
+strong {
+  text-align: center;
+  background: yellow;
+  color: black;
+  width: 100%;
+  display: block;
 }
 
-@keyframes fade {
-  from {
-    opacity: 0;
-    visibility: visible;
-  }
-  to {
-    visibility: visible;
-    opacity: 1;
-  }
+strong a {
+  color: darkblue;
+}
+
+td {
+  text-align: center;
+  background: transparent;
+  transition: transform 1s, background 1s, box-shadow 1s;
+}
+
+td:not(:first-child):hover {
+  transform: scale(1.1);
+  background: #363636;
+  box-shadow: black 0 0 5px;
+}
+
+.primary {
+  background: #7289DA;
+  color: white;
+  padding: 1em;
+  border-radius: 1em;
+  box-shadow: #7289DA 1px 1px 5px;
+}
+
+table {
+  border-radius: 1em;
+  padding: 1em;
+  background: #363636;
+}
+
+footer {
+  text-align: right;
+  padding: 1em;
+  background: rgb(14, 14, 14);
 }

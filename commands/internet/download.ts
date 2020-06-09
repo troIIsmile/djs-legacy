@@ -1,13 +1,11 @@
 import { Message } from 'discord.js'
-
+import dl from 'youtube-dl'
 export const run = async (message: Message, args: string[]) => {
   try {
     await message.channel.send({
       files: [
         {
-          attachment: `https://projectlounge.pw/ytdl/download?url=${encodeURIComponent(
-            args.join(' ')
-          )}`,
+          attachment: dl(encodeURI(args.join(' ')), [], {}),
           name: 'video.mp4'
         }
       ]
@@ -23,7 +21,7 @@ export const run = async (message: Message, args: string[]) => {
           url: `https://projectlounge.pw/ytdl/download?url=${encodeURIComponent(
             args.join(' ')
           )}`,
-          color: 0x00ff00
+          color: 'RED'
         }
       }
 
@@ -32,7 +30,7 @@ export const run = async (message: Message, args: string[]) => {
         author: {
           name: 'youtube-dl'
         },
-        color: 0xff0000,
+        color: 'RED',
         title: 'Error!',
         description: e.toString()
       }

@@ -1,13 +1,12 @@
-import { Message } from 'discord.js'
+import { Message, MessageOptions } from 'discord.js'
 import fetch from 'node-fetch'
-interface RobloxFriend {
-  AvatarUri: string // I want to use this
+interface Player {
   Id: number
   Username: string
-  AvatarFinal: boolean // ?????????????????????????
-  IsOnline: boolean
+  IsOnline: boolean,
+  errorMessage?: string
 }
-export const run = async (message: Message, args: string[]) => {
+export async function run (message: Message, args: string[]): Promise<MessageOptions> {
   if (!args.join('').length) {
     return {
       embed: {
@@ -15,57 +14,46 @@ export const run = async (message: Message, args: string[]) => {
           name: 'Error!'
         },
         title: 'Please provide a username!',
-        color: 0xff0000
+        color: 'RED'
       }
     }
   }
-  const { Id: id } = await fetch(
+  const { Id: id, IsOnline, errorMessage }: Player = await fetch(
     'https://api.roblox.com/users/get-by-username?username=' +
       encodeURIComponent(args.join(' '))
   ).then(res => res.json())
-  if (!id) {
+  if (errorMessage) {
     return {
       embed: {
         author: {
           name: 'Error!'
         },
-        title: "That player couldn't be found!",
-        color: 0xff0000
+        title: errorMessage,
+        color: 'RED'
       }
     }
   }
-  const friendarray = await fetch(
+  const friends: Player[] = await fetch(
     `https://api.roblox.com/users/${id}/friends`
   ).then(res => res.json())
-  if (!friendarray) {
-    return {
-      embed: {
-        author: {
-          name: 'Error!'
-        },
-        title: 'There was a problem getting the list of friends',
-        color: 0xff0000
-      }
-    }
-  }
-  const fields = friendarray.map((friend: RobloxFriend) => {
-    return {
-      name: friend.Username,
-      value: friend.IsOnline ? '🟢 Online' : '🔴 Offline',
-      inline: true
-    }
-  })
   return {
     embed: {
       author: {
-        name: args.join(' '),
+        name: args.join(' ') + IsOnline ? ' (🟢 Online)' : ' (🔴 Offline)',
         iconURL: `https://roblox.com/Thumbs/Avatar.ashx?x=420&y=420&username=${encodeURIComponent(
           args.join(' ')
         )}`,
         url: `https://www.roblox.com/users/${id}/`
       },
-      fields
+      fields: friends.map(friend => {
+        return {
+          name: friend.Username,
+          value: friend.IsOnline ? '🟢 Online' : '🔴 Offline',
+          inline: true
+        }
+      })
     }
   }
 }
 export const desc = 'username -> info'
+export const aliases = ['rblxonline']

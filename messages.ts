@@ -80,11 +80,16 @@ const messages: Messages = {
     ]
   },
   Emulators: ['Yuzu', 'Dolphin Emulator', 'RetroArch'],
+  Plugs: [ //bru
+    'Bruh Beagle',
+    'Bark Beagle',
+    'Bruh Beagle 3'
+  ],
   Meta: [
     // References to bots (or this bot)
     'Submit playing lines & bug reports @ ' +
     require('./package.json').bugs,
-    '300+ commits!',
+    '500+ commits!',
     'Made with discord.js!',
     'Made with Node.js!',
     'NotSoBot is bad™'
@@ -103,7 +108,8 @@ const messages: Messages = {
       "Doin' Your Mom" // you know we straight
     ],
     'FAT DAMON': ['Conspiracy Theory Guy'],
-    'Your Favorite Martian': ["Grandma's Got A Facebook", "STALKIN' YOUR MOM"]
+    'Your Favorite Martian': ["Grandma's Got A Facebook", "STALKIN' YOUR MOM"],
+    'Post Malone': ['I Know']
   })
     .map(([author, songs]) => songs.map(title => `${author} - ${title}`))
     .flat(), // Turn this object into a string[] of 'Author - Song' names
@@ -122,7 +128,7 @@ const messages: Messages = {
     'Roblox', // I know this is a game engine
     'Minecraft',
     'Skyrim',
-    'SuperTuxKart', // Force restarts my laptop when I press Enter or Space while paused.
+    'SuperTuxKart', // Crashed my laptop when I press Enter or Space while paused.
     'Sonic 06',
     'Metal Gear Solid 4',
     'Action 52',
@@ -195,13 +201,10 @@ const messages: Messages = {
 
 const flatten = (messages: Messages | string[]): string[] => {
   const result = Object.values(messages)
-    .map(val => {
-      if (Array.isArray(val)) return val
-      return Object.values(val).flat()
-    })
+    .map(val => Array.isArray(val) ? val : Object.values(val).flat())
     .flat()
 
-  return result.every(str => typeof str === 'string') ? result : flatten(result)
+  return result.some(Array.isArray) ? flatten(result) : result
 }
 
 const all = flatten(messages)

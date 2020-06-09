@@ -1,0 +1,59 @@
+@import url('https://rsms.me/inter/inter.css');
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+html {
+  width: 100%;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(118deg, #ff0000, #0000ff);
+  background-size: 400% 400%;
+  animation: AnimationName 30s ease infinite;
+}
+
+body {
+  color: white;
+}
+
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 51%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 51%
+  }
+}
+
+body {
+  padding: 1em;
+  border-radius: 2em;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.274);
+  background: #222233;
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: 'Inter var', sans-serif;
+  }
+}
+
+a {
+  border-radius: 1em;
+  padding: 0.5em;
+  text-decoration: none;
+  background: white;
+  color: black;
+}
+
+title {
+  font-size: 10em;
+  display: block;
+  font-weight: bold;
+}

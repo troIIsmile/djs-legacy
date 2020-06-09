@@ -1,22 +1,31 @@
-import { Message } from 'discord.js'
+import { Message, MessageOptions } from 'discord.js'
 import clean from '../../utils/clean'
-import { hasPerm } from '../../utils/permissions'
+import { hasPerm as isOwner } from '../../utils/permissions'
 import { Bot } from '../../utils/types'
 
 export async function run (
+  this: Bot,
   message: Message,
-  args: string[],
-  client: Bot
-): Promise<string> {
-  if (hasPerm(message)) {
+  args: string[]
+): Promise<MessageOptions> {
+  if (isOwner(message)) {
     try {
       const code = args.join(' ')
       const evaled = eval(code)
-      const txt = await clean(client, evaled)
-      return `\`\`\`js\n${txt}\n\`\`\``
+      const txt = await clean(this, evaled)
+      const msg = `\`\`\`js\n${txt}\n\`\`\``
+      if (msg.length <= 2000) return { content: msg }
+      
+      return {
+        content: 'The output was more than 2000 characters; here is a file with the output:',
+        files: [{
+          name: 'output.txt',
+          attachment: new Buffer(txt)
+        }]
+      }
     } catch (err) {
-      return `\`ERROR\` \`\`\`xl\n${await clean(client, err)}\n\`\`\``
+      return { content: `\`ERROR\` \`\`\`xl\n${await clean(this, err)}\n\`\`\`` }
     }
-  } else return 'You are not the bot owner.'
+  } else return { content: 'You are not the bot owner.' }
 }
 export const desc = 'give it code and it runs it'

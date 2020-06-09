@@ -16,7 +16,7 @@ export const run = async (_message: Message, [comicnum]: [string]) => {
     return {
       embed: {
         ...template,
-        color: 0xff0000,
+        color: 'RED',
         description: "That isn't a number."
       }
     }
@@ -51,7 +51,7 @@ export const run = async (_message: Message, [comicnum]: [string]) => {
     return {
       embed: {
         ...template,
-        color: 0xff0000,
+        color: 'RED',
         description: error.toString()
       }
     }

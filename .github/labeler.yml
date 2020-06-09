@@ -1,23 +1,28 @@
 commands:
-  - commands/**/*
+  - commands/**/*.ts
 
-modules:
+util:
   - utils/**/*
-  - util.ts
 
 config:
-  - .vscode/**/*
-  - package.json
+  - .vscode/**/* # visual studio code config
+  - .github/**/* # how meta
+  - package.json # name and stuff
   - .editorconfig
-  - .gitignore
-  - tsconfig.json
-  - watch.json
+  - .gitignore # private
+  - tsconfig.json # compiler config
+  - watch.json # glitch hosting
 
-core:
-  - index.ts
+init:
+  - init.ts
 
 messages:
   - messages.ts
   
 events:
   - events/**/*
+
+docs:
+  - docs/**/*
+  - README.md
+  - example.env
