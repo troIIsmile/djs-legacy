@@ -1,5 +1,12 @@
 import { Bot } from './types'
 import { inspect } from 'util'
+
+/**
+ * Inspect an object and remove pings and secrets.
+ * 
+ * @param client A discord.js client.
+ * @param text Any object.
+ */
 export default async function (client: Bot, text: any): Promise<string> {
   if (text && text instanceof Promise) text = await text
   if (typeof text !== 'string') text = inspect(text, { depth: 1 })
