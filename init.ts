@@ -28,10 +28,10 @@ if (exists('./.env')) {
   }
 }
 
-const bot = new Client() as Bot // Bot is Client but with commands & aliases
+const client = new Client() as Bot // Bot is Client but with commands & aliases
 // time to define them:
-bot.commands = new Collection // Init commands
-bot.aliases = new Collection // Init aliases
+client.commands = new Collection // Init commands
+client.aliases = new Collection // Init aliases
 
 // Load in events
 readdirSync('./events/')
@@ -39,8 +39,8 @@ readdirSync('./events/')
   .map(name => name.replace('.js', ''))
   .forEach(async (filename: any) => {
     const ev = (await import('./events/' + filename)).default
-    bot.on(filename, context => {
-      ev.call(bot, context)
+    client.on(filename, context => {
+      ev.call(client, context)
     })
   })
 
@@ -70,7 +70,7 @@ if (process.env.PORT && process.env.PROJECT_DOMAIN) {
 if (!process.env.TOKEN) {
   // if there's no token
   console.error('No token found. Please add it to your enviroment variables, or in your .env file.')
-  bot.destroy()
-} else bot.login(process.env.TOKEN) // login using the token from .env
+  client.destroy()
+} else client.login(process.env.TOKEN) // login using the token from .env
 
-export default bot
+export default client
