@@ -5,7 +5,7 @@
  * @author Jack <hello@5079.ml> (https://5079.ml)
  */
 import { Client, Collection } from 'discord.js'
-import { Bot, CommandObj } from './utils/types'
+import { Bot } from './utils/types'
 import {
   existsSync as exists,
   readFileSync as readFile,
@@ -30,8 +30,8 @@ if (exists('./.env')) {
 
 const bot = new Client() as Bot // Bot is Client but with commands & aliases
 // time to define them:
-bot.commands = new Collection<string, CommandObj>() // Init commands
-bot.aliases = new Collection<string, string>() // Init aliases
+bot.commands = new Collection() // Init commands
+bot.aliases = new Collection() // Init aliases
 
 // Load in events
 readdirSync('./events/')
