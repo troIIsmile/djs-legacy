@@ -1,7 +1,3 @@
-/**
- * @file Utiliy
- * This file will be gone soon
- */
 import { writeFileSync as write, existsSync as exists } from 'fs'
 
 if (!exists('./prefixes.json')) write('./prefixes.json', '{}')
