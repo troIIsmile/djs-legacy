@@ -9,7 +9,7 @@ async function command (this: Bot, message: Message) {
         author: {
           name: this.user?.username
         },
-        desc: 'Shutting down...',
+        description: 'Shutting down...',
         color: 'RED'
       }
     })
