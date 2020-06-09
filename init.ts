@@ -30,8 +30,8 @@ if (exists('./.env')) {
 
 const bot = new Client() as Bot // Bot is Client but with commands & aliases
 // time to define them:
-bot.commands = new Collection() // Init commands
-bot.aliases = new Collection() // Init aliases
+bot.commands = new Collection // Init commands
+bot.aliases = new Collection // Init aliases
 
 // Load in events
 readdirSync('./events/')
