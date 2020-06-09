@@ -3,7 +3,7 @@ import { inspect } from 'util'
 
 /**
  * Inspect an object and remove pings and secrets.
- * 
+ * @author Évelyne Lachance <eslachance@gmail.com> (http://luckyevelyne.wordpress.com/)
  * @param client A discord.js client.
  * @param text Any object.
  */
