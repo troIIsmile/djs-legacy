@@ -27,16 +27,20 @@ export function run (this: Bot, message: Message, args: string[]): MessageOption
       return a[0].localeCompare(b[0] || '') || -1
     })
   const pages = chunk(commands, 20)
-  const prefix = prefixes[message?.guild?.id || ''] || '-'
   return pages[page - 1] ? {
     embed: {
       title: `${this.user?.username || ''} Commands`,
-      description: pages[page - 1].map(([name, description]: [string, string]) => `${prefix}**${name}** - ${description}`).join('\n'),
+      description: pages[page - 1].map(([name, description]: [string, string]) => `**${name}** - ${description}`).join('\n'),
       footer: {
         iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/VisualEditor_-_Icon_-_Book.svg/600px-VisualEditor_-_Icon_-_Book.svg.png',
         text: `${page}/${pages.length}`
       },
-      fields: [{
+      fields: [
+        {
+          name: 'Prefix',
+          value: prefixes[message?.guild?.id || ''] || '-'
+        },
+        {
         name: 'Tip',
         value: random([
           'Report bugs and feature requests at ' + require('../../package.json').bugs,
