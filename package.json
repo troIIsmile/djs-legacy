@@ -25,7 +25,7 @@
     "google-tts-api": "0.0.4",
     "nintendo-switch-eshop": "^3.0.0",
     "node-fetch": "^2.6.0",
-    "tslib": "^1.10.0",
+    "tslib": "^2.0.0",
     "wikibase-sdk": "^7.2.1",
     "youtube-dl": "^3.0.2"
   },
