@@ -2,7 +2,9 @@ import { Bot } from './types'
 import { inspect } from 'util'
 
 /**
- * Inspect an object and remove pings and secrets.
+ * "Clean" removes @everyone pings, as well as tokens, and makes code blocks
+ * escaped so they're shown more easily. As a bonus it resolves promises
+ * and stringifies objects!
  * @author Évelyne Lachance <eslachance@gmail.com> (http://luckyevelyne.wordpress.com/)
  * @license MIT
  * @param client A discord.js client.
