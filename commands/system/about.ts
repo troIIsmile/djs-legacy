@@ -1,4 +1,4 @@
-import { MessageOptions } from 'discord.js'
+import { MessageOptions, version } from 'discord.js'
 import { Bot } from '../../utils/types'
 import fetch from 'node-fetch'
 
@@ -49,9 +49,12 @@ export async function run (this: Bot): Promise<MessageOptions> {
         value: this.users.cache.size,
         inline: true
       }, {
-        name: 'ℹ Version',
+        name: 'ℹ Bot Version',
         value: require('../../package.json').version,
         inline: true
+      }, {
+        name: '📚 Discord.js Version',
+        value: version, inline: true
       }, {
         name: '⏰ Uptime',
         value: [hours, Math.floor(timestamp / 60) - (hours * 60), Math.floor(timestamp % 60)].join(':'),
