@@ -81,7 +81,6 @@ const messages: Messages = {
   },
   Emulators: ['Yuzu', 'Dolphin Emulator', 'RetroArch'],
   Plugs: [ //bru
-    '5079.ml',
     'Bruh Beagle',
     'Bark Beagle',
     'Bruh Beagle 3'
@@ -90,7 +89,7 @@ const messages: Messages = {
     // References to bots (or this bot)
     'Submit playing lines & bug reports @ ' +
     require('./package.json').bugs,
-    '300+ commits!',
+    '400+ commits!',
     'Made with discord.js!',
     'Made with Node.js!',
     'NotSoBot is bad™'
@@ -109,7 +108,8 @@ const messages: Messages = {
       "Doin' Your Mom" // you know we straight
     ],
     'FAT DAMON': ['Conspiracy Theory Guy'],
-    'Your Favorite Martian': ["Grandma's Got A Facebook", "STALKIN' YOUR MOM"]
+    'Your Favorite Martian': ["Grandma's Got A Facebook", "STALKIN' YOUR MOM"],
+    'Post Malone': ['I Know']
   })
     .map(([author, songs]) => songs.map(title => `${author} - ${title}`))
     .flat(), // Turn this object into a string[] of 'Author - Song' names
