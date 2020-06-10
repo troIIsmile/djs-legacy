@@ -1,9 +1,8 @@
 import { Message } from 'discord.js'
-import random from '../utils/random'
 export const run = (message: Message) => {
   if (message.guild) {
     return `
-You played Fortnite with ${random(Array.from(message.guild.members.cache))[1]}
+You played Fortnite with ${message.guild.members.cache.random()}
 Your ${Math.random() >= 0.5 ? 'Battle Pass' : 'Free Pass'} tier is ${Math.floor(
       Math.random() * 100
     )}`
