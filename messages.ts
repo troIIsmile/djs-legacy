@@ -157,7 +157,6 @@ const messages: Nested<string> = {
     'Twitter', // "It's what's happening."
     'Reddit', // will keep you updated
     'YouTube', // "Broadcast Yourself"
-    'MDN Web Docs' // the current name
   ],
   Random: [
     // All of these are from esmBot.
