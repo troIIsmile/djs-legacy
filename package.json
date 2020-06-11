@@ -2,6 +2,7 @@
   "name": "nxtbot",
   "version": "8.1.0",
   "description": "THIS IS NXT",
+  "private": true,
   "main": "init.js",
   "homepage": "https://jack5079.github.io/nxtbot/",
   "scripts": {
