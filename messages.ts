@@ -27,13 +27,13 @@ const messages: Nested<string> = {
       'Hannah Montana Linux' // The one true Linux distro.
     ],
     Windows: [
-      'Windows 10',
-      'Windows 7',
-      'Windows Vista',
-      'Windows XP',
-      'Windows 95',
-      'Windows 3.1'
-    ]
+      '10',
+      '7',
+      'Vista',
+      'XP',
+      '95',
+      '3.1'
+    ].map(str=>`Windows ${str}`)
   },
   Apps: [
     // Apps are programs on mobile
