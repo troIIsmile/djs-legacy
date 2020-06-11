@@ -80,11 +80,6 @@ const messages: Nested<string> = {
     ]
   },
   Emulators: ['Yuzu', 'Dolphin Emulator', 'RetroArch'],
-  Plugs: [ //bru
-    'Bruh Beagle',
-    'Bark Beagle',
-    'Bruh Beagle 3'
-  ],
   Meta: [
     // References to bots (or this bot)
     'Submit playing lines & bug reports @ ' +
