@@ -7,7 +7,11 @@ export async function run (_: any, args: string[]): Promise<MessageOptions> {
     return {
       embed: {
         title: "That user doesn't exist!",
-        color: 'RED'
+        color: 'RED',
+        footer: {
+          text: 'GitHub',
+          iconURL: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'
+        }
       }
     }
   }
