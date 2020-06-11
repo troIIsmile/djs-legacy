@@ -3,7 +3,14 @@ import fetch from 'node-fetch'
 export async function run (_: any, args: string[]): Promise<MessageOptions> {
   const { html_url: url, avatar_url: iconURL, created_at, bio: description, public_repos, public_gists, followers, following } = await fetch('https://api.github.com/users/' + encodeURI(args.join('_')))
     .then(res => res.json())
-
+  if (!url) {
+    return {
+      embed: {
+        title: "That user doesn't exist!",
+        color: 'RED'
+      }
+    }
+  }
   return {
     embed: {
       author: {
