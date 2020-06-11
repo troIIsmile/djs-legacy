@@ -80,6 +80,7 @@ const messages: Nested<string> = {
     ]
   },
   Emulators: ['Yuzu', 'Dolphin Emulator', 'RetroArch'],
+  Websites: ['Twitter', 'Reddit', 'YouTube'],
   Meta: [
     // References to bots (or this bot)
     'Submit playing lines & bug reports @ ' +
@@ -153,7 +154,6 @@ const messages: Nested<string> = {
     'with your Discord server',
     'with a stone, Luigi.'
   ],
-  Websites: ['Twitter', 'Reddit', 'YouTube'],
   Random: [
     // All of these are from esmBot.
     'h',
