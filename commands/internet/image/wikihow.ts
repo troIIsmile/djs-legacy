@@ -95,11 +95,12 @@ declare module GitHubSearch {
 
 export async function run (): Promise<MessageOptions> {
   const { items }: GitHubSearch.RootObject = await fetch('https://api.github.com/search/code?q=extension:jpg+repo:AhoyLemon/damn.dog').then(res => res.json()) 
-  const { content } = await (await fetch(random(items).url)).json()
+  const {name, url} = random(items)
+  const { content } = await (await fetch(url)).json()
   return {
     files: [{
       attachment: new Buffer(content, 'base64'),
-      name: 'how.jpg'
+      name
 }]
   }
 }
