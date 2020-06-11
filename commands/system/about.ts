@@ -44,10 +44,6 @@ export async function run (this: Bot): Promise<MessageOptions> {
         name: '💬 Server Count',
         value: this.guilds.cache.size,
         inline: true
-        }, {
-          name: '💬 Servers that the bot owner isn\'t in',
-          value: this.guilds.cache.filter(gld => !gld.members.cache.find(usr => usr.id === process.env.OWNER)).size,
-          inline: true
         },{
         name: '🧑🏻 User Count',
         value: this.users.cache.size,
