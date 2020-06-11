@@ -1,9 +1,9 @@
 // add more
-interface Messages {
-  [key: string]: Messages | string[]
+interface Nested<Type> {
+  [key: string]: Nested<Type> | Type[]
 }
 
-const messages: Messages = {
+const messages: Nested<string> = {
   Browsers: {
     Chromium: [
       'Google Chrome',
@@ -199,7 +199,7 @@ const messages: Messages = {
   ]
 }
 
-const flatten = (messages: Messages | string[]): string[] => {
+const flatten = <Type>(messages: Nested<Type> | Type[]): Type[] => {
   const result = Object.values(messages)
     .map(val => Array.isArray(val) ? val : Object.values(val).flat())
     .flat()
