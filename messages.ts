@@ -33,7 +33,7 @@ const messages: Nested<string> = {
       'XP',
       '95',
       '3.1'
-    ].map(str=>`Windows ${str}`)
+    ].map(str => `Windows ${str}`)
   },
   Apps: [
     // Apps are programs on mobile
@@ -153,11 +153,7 @@ const messages: Nested<string> = {
     'with your Discord server',
     'with a stone, Luigi.'
   ],
-  Websites: [
-    'Twitter', // "It's what's happening."
-    'Reddit', // will keep you updated
-    'YouTube', // "Broadcast Yourself"
-  ],
+  Websites: ['Twitter', 'Reddit', 'YouTube'],
   Random: [
     // All of these are from esmBot.
     'h',
@@ -193,7 +189,7 @@ const messages: Nested<string> = {
   ]
 }
 
-const flatten = <Type>(messages: Nested<Type> | Type[]): Type[] => {
+const flatten = <Type> (messages: Nested<Type> | Type[]): Type[] => {
   const result = Object.values(messages)
     .map(val => Array.isArray(val) ? val : Object.values(val).flat())
     .flat()
