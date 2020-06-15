@@ -30,7 +30,8 @@ export default async function (this: Bot) {
   ) as [string, CommandObj][]
   entries.forEach(([name, command]: [string, CommandObj]) => {
     this.commands.set(name, command)
-    console.log(`[COMMANDS] ${((++count * 100) / entries.length).toFixed(2)}% done loading commands.`)
+    const dec = ++count / entries.length
+    console.log(`[${'█'.repeat(dec * 10).padEnd(10)}]`, 'Loading commands...', `(${dec * 100}% complete)`)
     command.aliases?.forEach(alias => {
       this.aliases.set(alias, name)
     })
