@@ -1,36 +1,41 @@
 import { MessageOptions } from 'discord.js'
 import random from '../../../utils/random'
 import fetch from 'node-fetch'
-declare module GitHubSearch {
 
-  export interface Owner {
-    login: string
-    id: number
-    node_id: string
-    avatar_url: string
-    gravatar_id: string
-    url: string
-    html_url: string
-    followers_url: string
-    following_url: string
-    gists_url: string
-    starred_url: string
-    subscriptions_url: string
-    organizations_url: string
-    repos_url: string
-    events_url: string
-    received_events_url: string
-    type: string
-    site_admin: boolean
-  }
-
-  export interface Repository {
+interface File {
+  name: string
+  path: string
+  sha: string
+  url: string
+  git_url: string
+  html_url: string
+  score: number
+  repository: {
     id: number
     node_id: string
     name: string
     full_name: string
     private: boolean
-    owner: Owner
+    owner: {
+      login: string
+      id: number
+      node_id: string
+      avatar_url: string
+      gravatar_id: string
+      url: string
+      html_url: string
+      followers_url: string
+      following_url: string
+      gists_url: string
+      starred_url: string
+      subscriptions_url: string
+      organizations_url: string
+      repos_url: string
+      events_url: string
+      received_events_url: string
+      type: string
+      site_admin: boolean
+    }
     html_url: string
     description: string
     fork: boolean
@@ -72,36 +77,23 @@ declare module GitHubSearch {
     releases_url: string
     deployments_url: string
   }
-
-  export interface Item {
-    name: string
-    path: string
-    sha: string
-    url: string
-    git_url: string
-    html_url: string
-    repository: Repository
-    score: number
-  }
-
-  export interface RootObject {
-    total_count: number
-    incomplete_results: boolean
-    items: Item[]
-  }
-
 }
 
+interface Root {
+  total_count: number
+  incomplete_results: boolean
+  items: File[]
+}
 
 export async function run (): Promise<MessageOptions> {
-  const { items }: GitHubSearch.RootObject = await fetch('https://api.github.com/search/code?q=extension:jpg+repo:AhoyLemon/damn.dog').then(res => res.json()) 
-  const {name, url} = random(items)
+  const { items }: Root = await fetch('https://api.github.com/search/code?q=extension:jpg+repo:AhoyLemon/damn.dog').then(res => res.json())
+  const { name, url } = random(items)
   const { content } = await (await fetch(url)).json()
   return {
     files: [{
       attachment: new Buffer(content, 'base64'),
       name
-}]
+    }]
   }
 }
 export const desc = 'Get a random odd WikiHow image'
