@@ -28,7 +28,7 @@ if (exists('./.env')) {
   }
 }
 
-const client = new Client() as Bot // Bot is Client but with commands & aliases
+const client = new Client as Bot // Bot is Client but with commands & aliases
 // time to define them:
 client.commands = new Collection // Init commands
 client.aliases = new Collection // Init aliases
