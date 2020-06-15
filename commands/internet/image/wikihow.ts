@@ -91,7 +91,7 @@ export async function run (): Promise<MessageOptions> {
   const { content } = await (await fetch(url)).json()
   return {
     files: [{
-      attachment: new Buffer(content, 'base64'),
+      attachment: Buffer.from(content, 'base64'),
       name
     }]
   }

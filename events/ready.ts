@@ -12,11 +12,12 @@ async function activityChanger (this: Bot) {
 // This function gets all commands in the commands folder and adds them (& their aliases!) to the bot
 export default async function (this: Bot) {
   activityChanger.call(this)
+  const files = await rreaddir('./commands/')
+  let count = 0
   const entries: [string, CommandObj][] = await Promise.all(
-    (await rreaddir('./commands/')) // get the file names of every command in the commands folder
+    files // get the file names of every command in the commands folder
       .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
       .map(async file => {
-        console.log(`[COMMANDS] Loading ${file}`)
         return [
           file.replace('.js', '').replace(/^.*[\\\/]/, ''), // Remove folders from the path and .js, leaving only the command name
           {
@@ -29,6 +30,7 @@ export default async function (this: Bot) {
   ) as [string, CommandObj][]
   entries.forEach(([name, command]: [string, CommandObj]) => {
     this.commands.set(name, command)
+    console.log(`[COMMANDS] ${((++count * 100) / entries.length).toFixed(2)}% done loading commands.`)
     command.aliases?.forEach(alias => {
       this.aliases.set(alias, name)
     })
