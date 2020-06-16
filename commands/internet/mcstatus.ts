@@ -8,7 +8,10 @@ interface Status {
 
 export const run = async () => {
   const data: Status[] = await fetch('https://status.mojang.com/check').then(res => res.json())
-  const fields = data.map(obj => Object.entries(obj).flat()).map(([name, status]) => ({
+  const fields = data
+    .map(Object.entries) // Status[] -> string[][][]
+    .flat() // string[][][] -> string[][]
+    .map(([name, status]) => ({
     name,
     value: status === 'green' ? '✅ Up' : '❎ Down',
     inline: true
