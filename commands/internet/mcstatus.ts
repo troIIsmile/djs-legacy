@@ -1,9 +1,7 @@
 import fetch from 'node-fetch'
 
-type STATUS_TYPES = 'red' | 'green' | 'yellow'
-
 interface Status {
-  [key: string]: STATUS_TYPES
+  [key: string]: string
 }
 
 export const run = async () => {
