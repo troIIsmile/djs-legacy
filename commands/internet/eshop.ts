@@ -40,12 +40,10 @@ export async function run (message: Message, args: string[]) {
       esrbDescriptors,
       description,
       players
-    } = <Game>(
-      (<unknown>(
-        (await getGames()).find(game =>
-          game.title.toLowerCase().includes(args.join(' ').toLowerCase())
-        )
-      ))
+    } = <Game> <unknown>(
+      (await getGames()).find(game =>
+        game.title.toLowerCase().includes(args.join(' ').toLowerCase())
+      )
     )
     if (title) {
       await message.channel.send({
