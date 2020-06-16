@@ -11,6 +11,19 @@ const template = {
       'https://pbs.twimg.com/profile_images/413359024617185280/pS8lVAWA_400x400.png'
   }
 }
+interface Comic {
+  month: string
+  num: number
+  link: string
+  year: string
+  news: string
+  safe_title: string
+  transcript: string
+  alt: string
+  img: string
+  title: string
+  day: string
+}
 export const run = async (_message: Message, [comicnum]: [string]) => {
   if (comicnum && isNaN(parseInt(comicnum))) {
     return {
@@ -34,7 +47,7 @@ export const run = async (_message: Message, [comicnum]: [string]) => {
       img,
       num,
       safe_title: title
-    } = await fetch(url).then(res => res.json())
+    }: Comic = await fetch(url).then(res => res.json())
     return {
       embed: {
         ...template,
