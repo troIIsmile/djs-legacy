@@ -10,16 +10,7 @@ export const run = async () => {
   const data: Status[] = await fetch('https://status.mojang.com/check').then(res => res.json())
   const fields = data.map(obj => Object.entries(obj).flat()).map(([name, status]) => ({
     name,
-    value: (() => {
-      switch (status) {
-        case 'yellow':
-          return '❓ Problems'
-        case 'green':
-          return '✅ Up'
-        default:
-          return '❎ Down'
-      }
-    })(),
+    value: status === 'green' ? '✅ Up' : '❎ Down',
     inline: true
   }))
   return {
