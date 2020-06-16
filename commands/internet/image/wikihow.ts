@@ -85,15 +85,35 @@ interface Root {
   items: File[]
 }
 
+interface ItemURL {
+  download_url: string
+  name: string
+}
 export async function run (): Promise<MessageOptions> {
   const { items }: Root = await fetch('https://api.github.com/search/code?q=extension:jpg+repo:AhoyLemon/damn.dog').then(res => res.json())
-  const { name, url } = random(items)
-  const { content } = await (await fetch(url)).json()
+  const { url } = random(items)
+  const { download_url, name }: ItemURL = await (await fetch(url)).json()
+  const title = name.replace('.jpg', '').split('-').map(item => {
+    return item.charAt(0).toUpperCase() + item.substring(1)
+  }).join(' ')
   return {
-    files: [{
-      attachment: Buffer.from(content, 'base64'),
-      name
-    }]
+    embed: {
+      author: {
+        name: 'wikiHow',
+        iconURL: 'https://www.wikihow.com/skins/WikiHow/wH-initials_152x152.png',
+        url: 'https://www.wikihow.com'
+      },
+      title: 'How To ' + title,
+      color: 0xeaecf0,
+      url: 'https://www.wikihow.com/' + title.split(' ').join('-'),
+      image: {
+        url: download_url
+      },
+      footer: {
+        text: 'List from damn.dog by Lemon',
+        iconURL: 'https://damn.dog/favicon-194x194.png'
+      }
+    }
   }
 }
 export const desc = 'Get a random odd WikiHow image'
