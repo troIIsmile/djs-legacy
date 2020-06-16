@@ -10,10 +10,10 @@ export const run = async () => {
     .map(Object.entries) // Status[] -> string[][][]
     .flat() // string[][][] -> string[][]
     .map(([name, status]) => ({
-    name,
-    value: status === 'green' ? '✅ Up' : '❎ Down',
-    inline: true
-  }))
+      name,
+      value: status === 'green' ? '✅ Up' : '❎ Down',
+      inline: true
+    }))
   return {
     embed: {
       author: {
