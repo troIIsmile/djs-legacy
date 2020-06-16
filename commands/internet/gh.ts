@@ -28,20 +28,22 @@ export async function run (_: any, args: string[]): Promise<MessageOptions> {
         iconURL: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'
       },
       fields: [{
+        inline: true,
         name: 'Public Repos',
         value: public_repos
       }, {
+        inline: true,
         name: 'Public Gists',
         value: public_gists
       }, {
+        inline: true,
         name: 'Followers',
         value: followers
       }, {
+        inline: true,
         name: 'Following',
         value: following
-      }].map((obj) => ({
-        ...obj, inline: true
-      }))
+      }]
     }
   }
 }
