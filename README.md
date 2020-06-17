@@ -6,16 +6,6 @@
 
 A terrible Discord bot.
 
-## Migrating from everythingbot/jackbot?
-
--say → -tts
-
--stats → -about
-
--saybot → -say
-
--sayvc → -ttsvc
-
 ## How to install?
 
 ### Normal
