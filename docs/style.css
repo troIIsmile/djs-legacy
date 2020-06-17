@@ -31,6 +31,7 @@ header img {
 
 header {
   background: darkslategray;
+  -ms-position: fixed;
   position: -webkit-sticky;
   position: sticky;
   text-align: left;
