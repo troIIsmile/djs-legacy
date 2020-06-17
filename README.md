@@ -1,5 +1,5 @@
 <div align="center">
-	<img width="300" src="https://raw.githubusercontent.com/Jack5079/nxtbot/master/docs/icon.svg" alt="NXTBOT">
+	<img width="300" src="https://raw.githubusercontent.com/Jack5079/nxt/master/docs/icon.svg" alt="NXT">
 </div>
 
 ---
