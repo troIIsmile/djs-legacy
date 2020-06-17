@@ -116,5 +116,5 @@ export async function run (): Promise<MessageOptions> {
     }
   }
 }
-export const desc = 'Get a random odd WikiHow image'
-export const aliases = []
+export const desc = 'Get a random odd wikiHow image'
+export const aliases = ['wikiHow', 'WikiHow']
