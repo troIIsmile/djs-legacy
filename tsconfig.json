@@ -10,7 +10,8 @@
     "newLine": "lf",
     "alwaysStrict": true,
     "inlineSourceMap": true,
-    "incremental": true
+    "incremental": true,
+    "experimentalDecorators": true
   },
   "exclude": [
     "node_modules",
