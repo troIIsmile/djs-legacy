@@ -60,9 +60,9 @@ article {
 strong {
   text-align: center;
   background: yellow;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: black;
   width: 100%;
 }
@@ -81,6 +81,10 @@ td:not(:first-child):hover {
   transform: scale(1.1);
   background: #363636;
   box-shadow: black 0 0 5px;
+}
+
+.correct {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .primary {
