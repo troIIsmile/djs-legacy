@@ -1,10 +1,10 @@
 {
-  "name": "nxtbot",
+  "name": "nxt",
   "version": "9.0.0",
-  "description": "THIS IS NXT",
+  "description": "Yet another Discord bot. Written in TypeScript.",
   "private": true,
   "main": "init.js",
-  "homepage": "https://jack5079.github.io/nxtbot/",
+  "homepage": "https://jack5079.github.io/nxt/",
   "scripts": {
     "test": "echo no",
     "build": "tsc",
@@ -14,10 +14,10 @@
     "node": ">=12"
   },
   "links": {
-    "repository": "github:Jack5079/nxtbot"
+    "repository": "github:Jack5079/nxt"
   },
-  "repository": "Jack5079/nxtbot",
-  "bugs": "https://github.com/Jack5079/nxtbot/issues/",
+  "repository": "Jack5079/nxt",
+  "bugs": "https://github.com/Jack5079/nxt/issues/",
   "author": "Jack5079",
   "license": "ISC",
   "dependencies": {
