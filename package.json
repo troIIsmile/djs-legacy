@@ -27,7 +27,6 @@
     "nintendo-switch-eshop": "^3.0.0",
     "node-fetch": "^2.6.0",
     "tslib": "^2.0.0",
-    "wikibase-sdk": "^7.6.1",
     "youtube-dl": "^3.0.2"
   },
   "devDependencies": {
