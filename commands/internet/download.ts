@@ -1,6 +1,6 @@
-import { Message } from 'discord.js'
+import { Message, MessageOptions } from 'discord.js'
 import dl from 'youtube-dl'
-export const run = async (message: Message, args: string[]) => {
+export const run = async (message: Message, args: string[]): Promise<MessageOptions | undefined> => {
   try {
     await message.channel.send({
       files: [
@@ -31,7 +31,10 @@ export const run = async (message: Message, args: string[]) => {
           name: 'youtube-dl'
         },
         color: 'RED',
-        title: 'Error!',
+        title: 'Error! (Click here to try again)',
+        url: `https://projectlounge.pw/ytdl/download?url=${encodeURIComponent(
+          args.join(' ')
+        )}`,
         description: e.toString()
       }
     }
