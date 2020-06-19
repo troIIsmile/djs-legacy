@@ -11,7 +11,7 @@ import {
   readFileSync as readFile,
   readdirSync
 } from 'fs'
-import { IncomingMessage, ServerResponse, createServer } from 'http'
+import { IncomingMessage, ServerResponse, createServer, get } from 'http'
 
 // We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'blahblahblah' > Env:/TOKEN`)
 if (exists('./.env')) {
@@ -63,6 +63,9 @@ if (process.env.PORT && process.env.PROJECT_DOMAIN) {
       }">`
     )
     res.end()
+    setInterval(() => {
+      get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`)
+    }, 280000);
   }).listen(process.env.PORT)
 }
 
