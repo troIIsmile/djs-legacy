@@ -60,5 +60,5 @@ export async function run (_message: Message, args: string[]) {
     disableMentions: 'everyone'
   }
 }
-export const desc = 'Ɔяʏρтιc Ƭɛϰт Ғσямαттɛя'
+export const help = 'Ɔяʏρтιc Ƭɛϰт Ғσямαттɛя'
 export const aliases = []

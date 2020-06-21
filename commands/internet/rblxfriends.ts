@@ -55,5 +55,5 @@ export async function run (message: Message, args: string[]): Promise<MessageOpt
     }
   }
 }
-export const desc = 'username -> info'
+export const help = 'username -> info'
 export const aliases = ['rblxonline']

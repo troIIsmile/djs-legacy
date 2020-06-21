@@ -38,5 +38,5 @@ export async function run (this: Bot, message: Message, args: string[],): Promis
     } else return { content: '❌ That command does not exist!' }
   } else return { content: '❌ This command is for the bot owner only.' }
 }
-export const desc = 'Reloads a command.'
+export const help = 'Reloads a command.'
 export const aliases = []

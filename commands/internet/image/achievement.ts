@@ -1,4 +1,4 @@
-export const desc = 'achievement <text> - Makes a minecraft achievement'
+export const help = 'achievement <text> - Makes a minecraft achievement'
 const talkedRecently = new Set()
 import { Message } from 'discord.js'
 export const run = (msg: Message, args: string[]) => {

@@ -26,4 +26,4 @@ export const run = async () => {
   }
 }
 
-export const desc = 'is minecraft down?'
+export const help = 'is minecraft down?'

@@ -71,4 +71,4 @@ export const run = async (_message: Message, [comicnum]: [string]) => {
   }
 }
 
-export const desc = 'funny comic'
+export const help = 'funny comic'

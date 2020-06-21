@@ -3,7 +3,7 @@ type Return = (MessageOptions | string | void)
 
 interface CommandObj {
   run: (this: Bot, message: Message, args: string[]) => Return | Promise < Return >,
-  desc: string,
+  help: string,
   path: string,
   aliases?: string[]
 }

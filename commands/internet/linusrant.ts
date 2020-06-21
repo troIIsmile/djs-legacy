@@ -33,5 +33,5 @@ export async function run (): Promise<MessageOptions> {
     }
   }
 }
-export const desc = 'A random rant from the creator of Linux.'
+export const help = 'A random rant from the creator of Linux.'
 export const aliases = ['linux']

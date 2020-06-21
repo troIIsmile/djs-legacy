@@ -19,5 +19,5 @@ export async function run (): Promise<MessageOptions> {
     }
   }
 }
-export const desc = 'is not funny'
+export const help = 'is not funny'
 export const aliases = []

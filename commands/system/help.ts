@@ -21,7 +21,7 @@ export function run (this: Bot, message: Message, args: string[]): MessageOption
   const page = parseInt(args.join('')) || 1
   const commands = Array.from(
     this.commands.entries(),
-    ([name, { desc, aliases }]) => [name + ((aliases && aliases.length) ? ` (Aliases: ${aliases?.join(', ')})` : ''), desc || '']
+    ([name, { help: desc, aliases }]) => [name + ((aliases && aliases.length) ? ` (Aliases: ${aliases?.join(', ')})` : ''), desc || '']
   )
     .sort((a, b) => {
       return a[0].localeCompare(b[0] || '') || -1
@@ -56,4 +56,4 @@ export function run (this: Bot, message: Message, args: string[]): MessageOption
     }
 }
 
-export const desc = 'Shows a list of all the commands and their descriptions.'
+export const help = 'Shows a list of all the commands and their descriptions.'

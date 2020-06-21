@@ -15,7 +15,7 @@
       "export async function run (this: Bot, message: Message, args: string[]): Promise<MessageOptions> {",
       "  $0",
       "}",
-      "export const desc = '${1:A new command}'",
+      "export const help = '${1:A new command}'",
       "export const aliases = [$2]"
     ],
     "description": "A complete template for your new command."

@@ -7,4 +7,4 @@ export const run = (message: Message, args: string[]) => {
     disableMentions: 'everyone'
   }
 }
-export const desc = 'Pwease use my Disoword bot UwU'
+export const help = 'Pwease use my Disoword bot UwU'

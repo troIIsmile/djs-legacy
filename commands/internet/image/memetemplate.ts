@@ -35,5 +35,5 @@ export async function run (): Promise<MessageOptions> {
     }
   }
 }
-export const desc = 'Get a random meme template from imgflip.'
+export const help = 'Get a random meme template from imgflip.'
 export const aliases = []

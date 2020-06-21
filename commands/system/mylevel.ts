@@ -7,4 +7,4 @@ export const run = (message: Message) => {
   const result = input.join(', ') + ' and ' + last
   return `You have ${result}`
 }
-export const desc = 'see what perms you have'
+export const help = 'see what perms you have'

@@ -12,4 +12,4 @@ export const run = (_message: Message, args: string[]) => {
     ]
   }
 }
-export const desc = 'it is free'
+export const help = 'it is free'

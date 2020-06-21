@@ -5,4 +5,4 @@ export const run = () => ({
   } ]
 })
 
-export const desc = 'this cat does not exist'
+export const help = 'this cat does not exist'

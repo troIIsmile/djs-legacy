@@ -1,2 +1,2 @@
-export const desc = 'ayo'
+export const help = 'ayo'
 export const run = () => 'on a raft'

@@ -1,5 +1,5 @@
 import fetch from 'node-fetch'
-export const desc = 'orange man badyyyyyyyyy! give me upvote!!!!'
+export const help = 'orange man badyyyyyyyyy! give me upvote!!!!'
 export const run = async () => {
   const data = await fetch('https://api.tronalddump.io/random/quote').then(res => res.json())
   return {

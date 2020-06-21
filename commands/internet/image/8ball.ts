@@ -21,4 +21,4 @@ export async function run (): Promise<MessageOptions> {
     }
   }
 }
-export const desc = 'Yes, no, or maybe'
+export const help = 'Yes, no, or maybe'

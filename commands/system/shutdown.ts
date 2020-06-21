@@ -17,5 +17,5 @@ export async function run (this: Bot, message: Message) {
     process.exit(0)
   } else return 'you are not the bot owner'
 }
-export const desc = 'Turns off the bot.'
+export const help = 'Turns off the bot.'
 export const aliases = ['reboot']

@@ -20,5 +20,5 @@ export async function run (_message: Message, args: string[]) {
       }
     }
 }
-export const desc = 'mcsteal - Get the skin of a Minecraft: Java Edition player. Syntax: mcsteal <username>'
+export const help = 'mcsteal - Get the skin of a Minecraft: Java Edition player. Syntax: mcsteal <username>'
 export const aliases = ['mc']

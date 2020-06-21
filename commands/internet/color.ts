@@ -21,5 +21,5 @@ export async function run (message: Message, args: string[]): Promise<MessageOpt
     }
   }
 }
-export const desc = 'Get the name of a color. '
+export const help = 'Get the name of a color. '
 export const aliases = []

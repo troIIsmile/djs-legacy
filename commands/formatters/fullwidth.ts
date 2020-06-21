@@ -8,4 +8,4 @@ export function run (message: Message, args: string[]) {
     .replace(/[A-Za-z0-9]/g, s => String.fromCharCode(s.charCodeAt(0) + 0xfee0))
 }
 
-export const desc = 'ＶＡＰＯＲＷＡＶＥ'
+export const help = 'ＶＡＰＯＲＷＡＶＥ'

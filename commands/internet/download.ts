@@ -19,4 +19,4 @@ export const run = async (message: Message, args: string[]): Promise<MessageOpti
   }
 }
 
-export const desc = 'download videos'
+export const help = 'download videos'

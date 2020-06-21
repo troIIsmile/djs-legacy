@@ -47,5 +47,5 @@ export async function run (_: any, args: string[]): Promise<MessageOptions> {
     }
   }
 }
-export const desc = 'Get info about a GitHub user.'
+export const help = 'Get info about a GitHub user.'
 export const aliases = ['github']

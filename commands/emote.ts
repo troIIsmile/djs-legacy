@@ -8,4 +8,4 @@ export function run (this: Bot) {
       .filter(Boolean).map(emoji => emoji.toString())
   ) || 'The bot somehow has no emoji. What the?'
 }
-export const desc = 'Random emote from the servers this bot is in'
+export const help = 'Random emote from the servers this bot is in'

@@ -22,4 +22,4 @@ export const run = async (_message: Message, args: string[]) => {
   }
 }
 
-export const desc = 'gives you an mp3 of what you typed. try using --slow'
+export const help = 'gives you an mp3 of what you typed. try using --slow'

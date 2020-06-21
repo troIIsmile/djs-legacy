@@ -75,5 +75,5 @@ export async function run (this: Bot): Promise<MessageOptions> {
   }
 }
 
-export const desc = 'Statistics about the bot.'
+export const help = 'Statistics about the bot.'
 export const aliases = ['list', 'stats']

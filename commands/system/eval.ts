@@ -28,4 +28,4 @@ export async function run (
     }
   } else return { content: 'You are not the bot owner.' }
 }
-export const desc = 'give it code and it runs it'
+export const help = 'give it code and it runs it'

@@ -8,4 +8,4 @@ Your ${Math.random() >= 0.5 ? 'Battle Pass' : 'Free Pass'} tier is ${Math.floor(
     )}`
   } else return 'You must be in a server to use this command!'
 }
-export const desc = '@someone but funnier'
+export const help = '@someone but funnier'

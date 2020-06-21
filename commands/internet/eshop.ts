@@ -96,4 +96,4 @@ export async function run (message: Message, args: string[]) {
   }
 }
 
-export const desc = 'you will buy these thi'
+export const help = 'you will buy these thi'

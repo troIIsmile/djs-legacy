@@ -17,4 +17,4 @@ export const run = (message: Message) => message.mentions.users.size
       }
     ]
   }
-export const desc = 'Get the avatar of a user.'
+export const help = 'Get the avatar of a user.'

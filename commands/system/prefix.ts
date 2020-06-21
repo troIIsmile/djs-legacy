@@ -10,5 +10,5 @@ export async function run (message: Message, args: string[]) {
   }
   return 'You need to be on a server you have admin on.'
 }
-export const desc = 'Set the prefix for your server.'
+export const help = 'Set the prefix for your server.'
 export const aliases = []

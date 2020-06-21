@@ -15,4 +15,4 @@ export function run (message: Message, args: string[]) {
   }
 }
 
-export const desc = 'make a QR Code'
+export const help = 'make a QR Code'

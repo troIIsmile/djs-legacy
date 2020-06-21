@@ -33,4 +33,4 @@ export const run = async (_: void, args: string[]) => {
   }
 }
 
-export const desc = 'see how much DOGE dogecoin addresses have'
+export const help = 'see how much DOGE dogecoin addresses have'

@@ -87,7 +87,7 @@ export async function run (message: Message, args: string[]) {
   }
 }
 
-export const desc =
+export const help =
   'wholesome 100 - gives you a random post from the subreddit you choose'
 
 export const aliases = ['subreddit', 'r/']

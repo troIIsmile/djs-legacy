@@ -4,4 +4,4 @@ export async function run (message: Message): Promise<MessageOptions> {
     files: [`https://api.adorable.io/avatars/2048/${message.author.username}.png`]
   }
 }
-export const desc = 'Get an adorable avatar'
+export const help = 'Get an adorable avatar'

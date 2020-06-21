@@ -10,4 +10,4 @@ export const run = async function (this: Bot, message: Message)  {
     )}ms`
   )
 }
-export const desc = 'see the l a g of the bot'
+export const help = 'see the l a g of the bot'

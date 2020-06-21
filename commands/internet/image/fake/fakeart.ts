@@ -4,4 +4,4 @@ export const run = () => ({
     name: 'art.jpeg'
   } ]
 })
-export const desc = 'this art does not exist'
+export const help = 'this art does not exist'
