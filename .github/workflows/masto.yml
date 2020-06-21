@@ -22,4 +22,4 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Post to Mastodon
-      run: "curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -H 'Authorization: Bearer $MASTO_TOKEN' --data-urlencode 'status=$GITHUB_REF is out. https://github.com/Jack5079/nxt/releases' https://this-is-epic.space/api/v1/statuses"
+      run: "curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -H 'Authorization: Bearer $MASTO_TOKEN' --data-urlencode 'status=$GITHUB_REF is out. https://github.com/Jack5079/nxt/releases #update' https://this-is-epic.space/api/v1/statuses"
