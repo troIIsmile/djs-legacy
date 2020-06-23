@@ -70,10 +70,6 @@ if (process.env.PORT && process.env.PROJECT_DOMAIN) {
 }
 
 // Login to Discord
-if (!process.env.TOKEN) {
-  // if there's no token
-  console.error('No token found. Please add it to your enviroment variables, or in your .env file.')
-  client.destroy()
-} else client.login(process.env.TOKEN) // login using the token from .env
+client.login() // https://github.com/discordjs/discord.js/blob/d827544fbd12e827fb4b6ff99d8894ecd79ede02/src/client/Client.js#L142
 
 export default client
