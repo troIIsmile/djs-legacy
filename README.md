@@ -8,8 +8,6 @@ A terrible Discord bot.
 
 ## How to install?
 
-### Normal
-
 1. Install dependencies:
 
 ```bash
@@ -25,12 +23,6 @@ npm i
    3. You can also add `SUPPORT=` if you have a support server. You don't need to, however.
 
 4. Compile the bot by running `npm run build` in your terminal.
-
-### Glitch
-
-[Click here to remix.](https://glitch.com/edit/#!/remix/nxtbot)
-After remixing, open the terminal and type `npx tsc`. After that, follow step 3 of the normal route.
-
 ## Website
 `npx serve docs`
 
