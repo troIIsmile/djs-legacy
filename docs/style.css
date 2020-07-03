@@ -46,7 +46,7 @@ header a {
 
 @keyframes skew {
   from {
-    transform: skew(11deg);
+    transform: skew(10deg);
   }
   to {
     transform: skew(0deg);
