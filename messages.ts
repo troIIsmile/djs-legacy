@@ -150,7 +150,6 @@ const messages: Nested<string> = {
     'with Brody Foxx',
     'with GIFs',
     'games with the mortals',
-    'with the Infinity Gauntlet',
     'with your Discord server',
     'with a stone, Luigi.'
   ],

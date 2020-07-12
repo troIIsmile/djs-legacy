@@ -45,7 +45,7 @@ readdirSync('./events/')
   })
 
 // Make a web server
-// Why? Repl.it requires your project to be pinged about every 5 minutes.
+// Why? Repl.it requires your project to be pinged about 5 minutes.
 if (true) {
   console.log(
     '[PROD] Starting web server on',
