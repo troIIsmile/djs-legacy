@@ -44,9 +44,9 @@ readdirSync('./events/')
     })
   })
 
-// Make a web server if the bot is running on Glitch
-// Why? Glitch requires your project to be pinged every 5 minutes.
-if (process.env.PORT && process.env.PROJECT_DOMAIN) {
+// Make a web server
+// Why? Repl.it requires your project to be pinged about every 5 minutes.
+if (true) {
   console.log(
     '[PROD] Starting web server on',
     process.env.PROJECT_DOMAIN,
