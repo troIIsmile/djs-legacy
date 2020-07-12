@@ -60,10 +60,8 @@ article {
 strong {
   text-align: center;
   background: yellow;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: black;
+  display: block;
   width: 100%;
 }
 
