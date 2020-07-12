@@ -4,7 +4,7 @@
  * Fun fact: This used to be 14 lines! {@see https://github.com/Jack5079/nxt/blob/bfdfd1c6aa5b4e67cc08192f59ac55ac92d40663/index.ts}
  * @author Jack <hello@5079.ml> (https://5079.ml)
  */
-import { Client, Collection } from 'discord.js'
+import { Client, Collection, Intents } from 'discord.js'
 import { Bot } from './utils/types'
 import {
   existsSync as exists,
@@ -28,7 +28,11 @@ if (exists('./.env')) {
   }
 }
 
-const client = new Client as Bot // Bot is Client but with commands & aliases
+const client = new Client({
+  ws: {
+    intents: [Intents.NON_PRIVILEGED]
+  }
+}) as Bot // Bot is Client but with commands & aliases
 // time to define them:
 client.commands = new Collection // Init commands
 client.aliases = new Collection // Init aliases
