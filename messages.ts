@@ -85,7 +85,7 @@ const messages: Nested<string> = {
     // References to bots (or this bot)
     'Submit playing lines & bug reports @ ' +
     require('./package.json').bugs,
-    '500+ commits!',
+    '600+ commits!',
     'Made with discord.js!',
     'Made with Node.js!',
     'NotSoBot is bad™'
