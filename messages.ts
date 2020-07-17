@@ -153,7 +153,7 @@ const messages: Nested<string> = {
     'with your Discord server',
     'with a stone, Luigi.'
   ],
-  Random: [
+  'esmBot Random': [
     // All of these are from esmBot.
     'h',
     'a game',
@@ -182,7 +182,8 @@ const messages: Nested<string> = {
     'sentience',
     'beep boop',
     'Hello, Gordon!',
-    // add your messages here
+  ],
+  'nxt random': [ // New messages go here
     'now this is a j',
   ]
 }
