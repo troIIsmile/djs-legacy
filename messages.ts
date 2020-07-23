@@ -7,8 +7,6 @@ const messages: Nested<string> = {
   Browsers: {
     Chromium: [
       'Google Chrome',
-      'Wexond', // "an open-source, privacy-focused, extensible web browser with a totally new user experience"
-      'Dot Browser', // "A privacy-centric web browser, with an elegant UI and a robust built-in ad blocker, all designed with anonymity in mind, based on Wexond"
       'Opera GX', // funny meme
       'Microsoft Edge'
     ],
