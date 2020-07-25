@@ -1,5 +1,5 @@
 import { Message } from 'discord.js'
-import { Bot } from '../../utils/types' // I really really need to fix this
+import { Bot } from '../../utils/types'
 import { hasPerm } from '../../utils/permissions'
 import { MessageOptions } from 'discord.js'
 
