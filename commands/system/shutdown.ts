@@ -2,7 +2,7 @@ import { hasPerm } from '../../utils/permissions'
 import { Bot } from '../../utils/types'
 import { Message } from 'discord.js'
 
-export async function run (this: Bot, message: Message) {
+export async function run (this: Bot, message: Message): Promise<string | never> {
   if (hasPerm(message)) {
     await message.channel.send({
       embed: {
