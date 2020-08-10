@@ -68,9 +68,9 @@ if (true) {
     )
     res.end()
     setInterval(() => {
-      get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`)
+      get(`http://nxtb0t.jack5079.repl.run`)
     }, 280000);
-  }).listen(process.env.PORT)
+  }).listen(8080)
 }
 
 // Login to Discord
