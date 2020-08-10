@@ -37,6 +37,23 @@ const client = new Client({
 client.commands = new Collection // Init commands
 client.aliases = new Collection // Init aliases
 
+// replit redirect
+if (process.env.REPLIT_DB_URL) {
+  createServer((_: IncomingMessage, res: ServerResponse) => {
+    res.writeHead(200, {
+      'Content-Type': 'text/html'
+    });
+    res.write(
+      `<meta http-equiv="refresh" content="0;url=${
+      require('./package.json').homepage
+      }">`
+    );
+    res.end();
+  }).listen(8080);
+}
+
+
+
 // Load in events
 readdirSync('./events/')
   .filter(name => name.endsWith('.js'))

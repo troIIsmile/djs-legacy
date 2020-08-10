@@ -8,7 +8,7 @@
   "scripts": {
     "test": "echo no",
     "build": "tsc",
-    "start": "npx node init"
+    "start": "node init"
   },
   "engines": {
     "node": ">=12"
@@ -25,7 +25,6 @@
     "discord.js": "^12.2.0",
     "google-tts-api": "0.0.4",
     "nintendo-switch-eshop": "^3.0.2",
-    "node": "^14.7.0",
     "node-fetch": "^2.6.0",
     "tslib": "^2.0.1"
   },
