@@ -51,12 +51,6 @@ readdirSync('./events/')
 // Make a web server
 // Why? Repl.it requires your project to be pinged about 5 minutes.
 if (true) {
-  console.log(
-    '[PROD] Starting web server on',
-    process.env.PROJECT_DOMAIN,
-    'with port',
-    process.env.PORT
-  )
   createServer((_: IncomingMessage, res: ServerResponse) => {
     res.writeHead(200, {
       'Content-Type': 'text/html'
@@ -67,9 +61,6 @@ if (true) {
       }">`
     )
     res.end()
-    setInterval(() => {
-      get(`http://nxtb0t.jack5079.repl.run`)
-    }, 280000);
   }).listen(8080)
 }
 
