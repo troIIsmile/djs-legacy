@@ -48,23 +48,7 @@ readdirSync('./events/')
     })
   })
 
-// Make a web server
-// Why? Repl.it requires your project to be pinged about 5 minutes.
-if (true) {
-  createServer((_: IncomingMessage, res: ServerResponse) => {
-    res.writeHead(200, {
-      'Content-Type': 'text/html'
-    })
-    res.write(
-      `<meta http-equiv="refresh" content="0;url=${
-      require('./package.json').homepage
-      }">`
-    )
-    res.end()
-  }).listen(8080)
-}
-
 // Login to Discord
-client.login() // https://github.com/discordjs/discord.js/blob/d827544fbd12e827fb4b6ff99d8894ecd79ede02/src/client/Client.js#L142
+client.login(process.env.TOKEN)
 
 export default client
