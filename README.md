@@ -23,8 +23,6 @@ npm i
    3. You can also add `SUPPORT=` if you have a support server. You don't need to, however.
 
 4. Compile the bot by running `npm run build` in your terminal.
-## Website
-`npx serve docs`
 
 ## Donate
 
