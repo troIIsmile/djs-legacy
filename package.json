@@ -4,7 +4,7 @@
   "description": "Yet another Discord bot. Written in TypeScript.",
   "private": true,
   "main": "init.js",
-  "homepage": "https://jack5079.github.io/nxt/",
+  "homepage": "https://NXTB0T.github.io",
   "scripts": {
     "test": "echo no",
     "build": "tsc",
