@@ -1,7 +1,7 @@
 /**
  * @file Init
  * This file logs into Discord. It also loads events, the .env file, and the Web server (if it is required)
- * Fun fact: This used to be 14 lines! {@see https://github.com/Jack5079/nxt/blob/bfdfd1c6aa5b4e67cc08192f59ac55ac92d40663/index.ts}
+ * Fun fact: This used to be 14 lines! {@see https://github.com/NXTB0T/node/blob/bfdfd1c6aa5b4e67cc08192f59ac55ac92d40663/index.ts}
  * @author Jack <hello@5079.ml> (https://5079.ml)
  */
 import { Client, Collection, Intents } from 'discord.js';

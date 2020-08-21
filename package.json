@@ -14,10 +14,10 @@
     "node": ">=12"
   },
   "links": {
-    "repository": "github:Jack5079/nxt"
+    "repository": "github:NXTB0T/node"
   },
-  "repository": "Jack5079/nxt",
-  "bugs": "https://github.com/Jack5079/nxt/issues/",
+  "repository": "NXTB0T/node",
+  "bugs": "https://github.com/NXTB0T/node/issues/",
   "author": "Jack5079",
   "license": "ISC",
   "dependencies": {
