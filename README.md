@@ -1,10 +1,12 @@
 <div align="center">
-	<img width="300" src="https://raw.githubusercontent.com/NXTB0T/node/master/docs/icon.svg" alt="nxt">
+	<img width="300" src="https://raw.githubusercontent.com/NXTB0T/NXTB0T.github.io/master/icon.svg" alt="nxt">
 </div>
 
 ---
 
 A terrible Discord bot.
+
+> note: nxt has recently moved from @Jack5079 to @NXTB0T
 
 ## How to install?
 
