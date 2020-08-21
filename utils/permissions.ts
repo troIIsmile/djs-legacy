@@ -1,9 +1,12 @@
+
 import { Message } from 'discord.js'
 
+/** @deprecated */
 interface Perms {
   [key: string]: (message: Message) => boolean
 }
 
+/** @deprecated */
 const checks: Perms = {
   botOwner (message) {
     return message.author.id === process.env.OWNER
@@ -17,6 +20,7 @@ const checks: Perms = {
 }
 
 // The bot owner has every permission, and is the default level checked for.
+/** @deprecated */
 export function hasPerm (
   message: Message,
   permission: string = 'botOwner'
@@ -24,6 +28,7 @@ export function hasPerm (
   return checks.botOwner(message) || checks[permission](message)
 }
 
+/** @deprecated */
 export function permList (message: Message): string[] {
   return Object.keys(checks).filter(func => checks[func](message))
 }
