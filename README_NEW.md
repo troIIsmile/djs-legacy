@@ -34,6 +34,8 @@
 ### Setup
 
 ```shell
+$ cp example.env .env
+$ # fill out the .env file 
 $ sudo apt install ffmpeg
 $ npm install
 ```
@@ -44,8 +46,13 @@ $ npm install
 
 ## Features
 
-## Usage
+- A download command
+- Recursive command folder
+- Works in Repl.it
+- 
 
+## Usage
+`npm start`
 ---
 
 ## Contributing
