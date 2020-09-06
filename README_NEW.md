@@ -1,0 +1,105 @@
+<a href="https://nxtbot.ml"><img src="https://raw.githubusercontent.com/NXTB0T/NXTB0T.github.io/master/icon.svg" title="nxt" alt="nxt"></a>
+
+
+# nxt
+
+> Yet another Discord bot.
+
+
+![Node.js CI](https://github.com/NXTB0T/node/workflows/Node.js%20CI/badge.svg) [![License](http://img.shields.io/:license-isc-blue.svg?style=flat-square)](https://opensource.org/licenses/ISC)
+
+
+[![INSERT YOUR GRAPHIC HERE](http://i.imgur.com/dt8AUb6.png)]()
+
+---
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Features](#features)
+- [Contributing](#contributing)
+- [Team](#team)
+- [FAQ](#faq)
+- [Support](#support)
+- [License](#license)
+
+---
+
+## Installation
+
+- All the `code` required to get started
+- Images of what it should look like
+
+### Clone
+
+- Clone this repo to your local machine using `https://github.com/nxtb0t/node`
+
+### Setup
+
+```shell
+$ sudo apt install ffmpeg
+$ npm install
+```
+
+- For all the possible languages that support syntax highlithing on GitHub (which is basically all of them), refer <a href="https://github.com/github/linguist/blob/master/lib/linguist/languages.yml" target="_blank">here</a>.
+
+---
+
+## Features
+
+## Usage
+
+---
+
+## Contributing
+
+### Step 1
+
+- **Option 1**
+    - 🍴 Fork this repo!
+
+- **Option 2**
+    - 👯 Clone this repo to your local machine using `https://github.com/joanaz/HireDot2.git`
+
+### Step 2
+
+- **HACK AWAY!** 🔨🔨🔨
+
+### Step 3
+
+- 🔃 Create a new pull request using <a href="https://github.com/nxtb0t/node/compare/" target="_blank">`https://github.com/nxtb0t/node/compare/`</a>.
+
+---
+
+## Team
+
+
+| <a href="https://5079.ml" target="_blank">**Jack5079**</a> | <a href="https://5079.ml" target="_blank">**Jack5079**</a> | <a href="https://5079.ml" target="_blank">**Jack5079**</a> |
+| :---: |:---:| :---:|
+| [![Jack5079](https://avatars1.githubusercontent.com/u/29169102?v=3&s=200)](https://5079.ml)    | [![Jack5079](https://avatars1.githubusercontent.com/u/29169102?v=3&s=200)](https://5079.ml) | [![Jack5079](https://avatars1.githubusercontent.com/u/29169102?v=3&s=200)](https://5079.ml)  |
+| <a href="http://github.com/Jack5079" target="_blank">`github.com/Jack5079`</a> | <a href="http://github.com/Jack5079" target="_blank">`github.com/Jack5079`</a> | <a href="http://github.com/Jack5079" target="_blank">`github.com/Jack5079`</a> |
+
+---
+
+## FAQ
+
+- **How do I do *specifically* so and so?**
+    - No problem! Just do this.
+
+---
+
+## Support
+
+Reach out to me at one of the following places!
+
+- Website at <a href="https://nxtbot.ml" target="_blank">`nxtbot.ml`</a>
+- Twitter at <a href="http://twitter.com/InviteNXT" target="_blank">`@InviteNXT`</a>
+
+---
+
+## License
+
+[![License](http://img.shields.io/:license-isc-blue.svg?style=flat-square)]()
+
+- **[ISC license](https://opensource.org/licenses/ISC)**
+- Copyright 2020 © <a href="https://5079.ml" target="_blank">Jack</a>.
