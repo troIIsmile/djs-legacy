@@ -1,7 +1,4 @@
-<a href="https://nxtbot.ml"><img src="https://raw.githubusercontent.com/NXTB0T/NXTB0T.github.io/master/icon.svg" title="nxt" alt="nxt"></a>
-
-
-# nxt
+# <a href="https://nxtbot.ml"><img src="https://raw.githubusercontent.com/NXTB0T/NXTB0T.github.io/master/icon.svg" title="nxt" alt="nxt"></a>
 
 > Yet another Discord bot.
 
