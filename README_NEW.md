@@ -3,7 +3,7 @@
 > Yet another Discord bot.
 
 
-![Node.js CI](https://github.com/NXTB0T/node/workflows/Node.js%20CI/badge.svg) [![License](http:s//img.shields.io/:license-isc-blue.svg?style=flat-square)](https://opensource.org/licenses/ISC)
+![Node.js CI](https://github.com/NXTB0T/node/workflows/Node.js%20CI/badge.svg) [![License](https://img.shields.io/:license-isc-blue.svg?style=flat-square)](https://opensource.org/licenses/ISC)
 
 
 [![INSERT YOUR GRAPHIC HERE](https://i.imgur.com/dt8AUb6.png)]()
