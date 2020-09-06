@@ -3,10 +3,10 @@
 > Yet another Discord bot.
 
 
-![Node.js CI](https://github.com/NXTB0T/node/workflows/Node.js%20CI/badge.svg) [![License](http://img.shields.io/:license-isc-blue.svg?style=flat-square)](https://opensource.org/licenses/ISC)
+![Node.js CI](https://github.com/NXTB0T/node/workflows/Node.js%20CI/badge.svg) [![License](http:s//img.shields.io/:license-isc-blue.svg?style=flat-square)](https://opensource.org/licenses/ISC)
 
 
-[![INSERT YOUR GRAPHIC HERE](http://i.imgur.com/dt8AUb6.png)]()
+[![INSERT YOUR GRAPHIC HERE](https://i.imgur.com/dt8AUb6.png)]()
 
 ---
 
@@ -74,7 +74,7 @@ $ npm install
 | <a href="https://5079.ml" target="_blank">**Jack5079**</a> | <a href="https://5079.ml" target="_blank">**Jack5079**</a> | <a href="https://5079.ml" target="_blank">**Jack5079**</a> |
 | :---: |:---:| :---:|
 | [![Jack5079](https://avatars1.githubusercontent.com/u/29169102?v=3&s=200)](https://5079.ml)    | [![Jack5079](https://avatars1.githubusercontent.com/u/29169102?v=3&s=200)](https://5079.ml) | [![Jack5079](https://avatars1.githubusercontent.com/u/29169102?v=3&s=200)](https://5079.ml)  |
-| <a href="http://github.com/Jack5079" target="_blank">`github.com/Jack5079`</a> | <a href="http://github.com/Jack5079" target="_blank">`github.com/Jack5079`</a> | <a href="http://github.com/Jack5079" target="_blank">`github.com/Jack5079`</a> |
+| <a href="https://github.com/Jack5079" target="_blank">`github.com/Jack5079`</a> | <a href="https://github.com/Jack5079" target="_blank">`github.com/Jack5079`</a> | <a href="https://github.com/Jack5079" target="_blank">`github.com/Jack5079`</a> |
 
 ---
 
@@ -90,13 +90,13 @@ $ npm install
 Reach out to me at one of the following places!
 
 - Website at <a href="https://nxtbot.ml" target="_blank">`nxtbot.ml`</a>
-- Twitter at <a href="http://twitter.com/InviteNXT" target="_blank">`@InviteNXT`</a>
+- Twitter at <a href="https://twitter.com/InviteNXT" target="_blank">`@InviteNXT`</a>
 
 ---
 
 ## License
 
-[![License](http://img.shields.io/:license-isc-blue.svg?style=flat-square)]()
+[![License](https://img.shields.io/:license-isc-blue.svg?style=flat-square)]()
 
 - **[ISC license](https://opensource.org/licenses/ISC)**
 - Copyright 2020 © <a href="https://5079.ml" target="_blank">Jack</a>.
