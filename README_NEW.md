@@ -56,13 +56,30 @@ $ npm install
     - 🍴 Fork this repo!
 
 - **Option 2**
-    - 👯 Clone this repo to your local machine using `https://github.com/joanaz/HireDot2.git`
+    - 👯 Clone this repo to your local machine using `https://github.com/nxtb0t/node.git`
 
 ### Step 2
 
-- **HACK AWAY!** 🔨🔨🔨
+- Follow the setup.
 
 ### Step 3
+
+- **HACK AWAY!** 🔨🔨🔨
+- Commands basically are an object
+  - The `help` property shows up in the help command
+  - `aliases` is optional and is a `string[]` of names that will be used as aliases for your command
+  - And of course: the `run` property
+    - run is a function with the `this` value set to the bot (typings at utils/types)
+    - if it returns a truthy value then it will try to post it
+    - it has two arguments
+      - argument 1 is the Discord.js message
+      - argument 2 is the arguments (`string[]`)
+- If you are using Visual Studio Code you should be able to create a command template by typing in "command" and pressing Tab.
+- The command handler is in `events/message.ts`
+- The command loader is in `events/ready.ts`
+- The entry point is `init.ts`
+
+### Step 4
 
 - 🔃 Create a new pull request using <a href="https://github.com/nxtb0t/node/compare/" target="_blank">`https://github.com/nxtb0t/node/compare/`</a>.
 
