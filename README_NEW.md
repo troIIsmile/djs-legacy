@@ -97,8 +97,8 @@ $ npm install
 
 ## FAQ
 
-- **How do I do *specifically* so and so?**
-    - No problem! Just do this.
+- **How do I (question)?**
+    - I have no idea.
 
 ---
 
