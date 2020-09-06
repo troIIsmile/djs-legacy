@@ -74,7 +74,7 @@ $ npm install
     - it has two arguments
       - argument 1 is the Discord.js message
       - argument 2 is the arguments (`string[]`)
-- If you are using Visual Studio Code you should be able to create a command template by typing in "command" and pressing Tab.
+- If you are using Visual Studio Code you should be able to create a command in a new TypeScript file by typing in "command" and pressing Tab.
 - The command handler is in `events/message.ts`
 - The command loader is in `events/ready.ts`
 - The entry point is `init.ts`
