@@ -32,16 +32,12 @@
 - Clone this repo to your local machine using `https://github.com/nxtb0t/node`
 
 ### Setup
-
 ```shell
 $ cp example.env .env
 $ # fill out the .env file 
 $ sudo apt install ffmpeg
 $ npm install
 ```
-
-- For all the possible languages that support syntax highlithing on GitHub (which is basically all of them), refer <a href="https://github.com/github/linguist/blob/master/lib/linguist/languages.yml" target="_blank">here</a>.
-
 ---
 
 ## Features
