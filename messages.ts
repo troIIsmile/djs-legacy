@@ -183,6 +183,7 @@ const messages: Nested<string> = {
   ],
   'nxt random': [ // New messages go here
     'now this is a j',
+    "Season X is here, and the world is destabilising, fast. But, don’t worry, that means there are a ton of new ways to play Fortnite"
   ]
 }
 
