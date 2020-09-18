@@ -1,6 +1,6 @@
 {
   "name": "nxt",
-  "version": "9.0.0",
+  "version": "10.0.0",
   "description": "Yet another Discord bot. Written in TypeScript.",
   "private": true,
   "main": "init.js",
