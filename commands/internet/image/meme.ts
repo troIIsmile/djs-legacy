@@ -52,4 +52,4 @@ export async function run (this: Bot, message: Message, args: string[]): Promise
 
 }
 export const help = 'make a meme using imgflip - split the text using "|"';
-export const aliases = [];
+export const aliases = ['imgflip'];
