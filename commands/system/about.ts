@@ -10,7 +10,7 @@ export async function run (this: Bot): Promise<MessageOptions> {
 
   delete require.cache[require.resolve('../../package.json')] // Always get the latest package.json
 
-  const owner = this.users.cache.get(process.env.OWNER as string)
+  const owner = this.users.cache.get(process.env.OWNER as string) || await this.users.fetch(process.env.OWNER as string)
 
   if (!(this.user && owner)) return {
     content: 'oops the owner or the bot user does not exist some how'
