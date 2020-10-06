@@ -1,6 +1,6 @@
 import { MessageOptions } from 'discord.js'
 import fetch from 'node-fetch'
-import random from '../../../utils/random'
+import random from '../../utils/random'
 declare module API {
 
   export interface Payload {
