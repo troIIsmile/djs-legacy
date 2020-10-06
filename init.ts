@@ -1,7 +1,7 @@
 /**
  * @file Init
  * This file logs into Discord. It also loads events, the .env file, and the Web server (if it is required)
- * Fun fact: This used to be 14 lines! {@see https://github.com/NXTB0T/node/blob/bfdfd1c6aa5b4e67cc08192f59ac55ac92d40663/index.ts}
+ * Fun fact: This used to be 14 lines! {@see https://github.com/troIIsmile/node/blob/bfdfd1c6aa5b4e67cc08192f59ac55ac92d40663/index.ts}
  * @author Jack <hello@5079.ml> (https://5079.ml)
  */
 import { Client, Collection, Intents } from 'discord.js';
@@ -11,7 +11,7 @@ import {
   readFileSync as readFile,
   readdirSync
 } from 'fs';
-import { IncomingMessage, ServerResponse, createServer, get } from 'http';
+import { IncomingMessage, ServerResponse, createServer } from 'http';
 
 // We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'blahblahblah' > Env:/TOKEN`)
 if (exists('./.env')) {

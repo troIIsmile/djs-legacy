@@ -1,9 +1,9 @@
-# <a href="https://nxtbot.ml"><img src="https://raw.githubusercontent.com/NXTB0T/NXTB0T.github.io/master/icon.svg" title="nxt" alt="nxt"></a>
+# <a href="https://nxtbot.ml"><img src="https://raw.githubusercontent.com/troIIsmile/troIIsmile.github.io/master/icon.svg" title="trollsmile" alt="trollsmile"></a>
 
 > Yet another Discord bot.
 
 
-![Node.js CI](https://github.com/NXTB0T/node/workflows/Node.js%20CI/badge.svg) [![License](https://img.shields.io/:license-isc-blue.svg?style=flat-square)](https://opensource.org/licenses/ISC)
+![Node.js CI](https://github.com/troIIsmile/node/workflows/Node.js%20CI/badge.svg) [![License](https://img.shields.io/:license-isc-blue.svg?style=flat-square)](https://opensource.org/licenses/ISC)
 
 
 <!-- [![INSERT YOUR GRAPHIC HERE](https://i.imgur.com/dt8AUb6.png)]() -->
@@ -26,7 +26,7 @@
 
 ### Clone
 
-- Clone this repo to your local machine using `https://github.com/nxtb0t/node`
+- Clone this repo to your local machine using `https://github.com/troIIsmile/node`
 
 ### Setup
 ```shell
@@ -59,7 +59,7 @@ $ npm install
     - 🍴 Fork this repo!
 
 - **Option 2**
-    - 👯 Clone this repo to your local machine using `https://github.com/nxtb0t/node.git`
+    - 👯 Clone this repo to your local machine using `https://github.com/troIIsmile/node.git`
 
 ### Step 2
 
@@ -84,7 +84,7 @@ $ npm install
 
 ### Step 4
 
-- 🔃 Create a new pull request using <a href="https://github.com/nxtb0t/node/compare/" target="_blank">`https://github.com/nxtb0t/node/compare/`</a>.
+- 🔃 Create a new pull request using <a href="https://github.com/troIIsmile/node/compare/" target="_blank">`https://github.com/troIIsmile/node/compare/`</a>.
 
 ---
 
@@ -110,7 +110,7 @@ $ npm install
 Reach out to me at one of the following places!
 
 - Website at <a href="https://nxtbot.ml" target="_blank">`nxtbot.ml`</a>
-- Twitter at <a href="https://twitter.com/InviteNXT" target="_blank">`@InviteNXT`</a>
+- Twitter at <a href="https://twitter.com/InviteTroll" target="_blank">`@InviteTroll`</a>
 
 ---
 

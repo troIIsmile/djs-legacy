@@ -1,6 +1,6 @@
 export const run = () => ({
   files: [ {
-    attachment: 'https://thisartworkdoesnotexist.com/artwork',
+    attachment: 'https://thisartworkdoesnotexist.com',
     name: 'art.jpeg'
   } ]
 })

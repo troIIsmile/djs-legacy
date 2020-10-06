@@ -11,5 +11,5 @@
   "typescript.format.semicolons": "insert",
   "typescript.preferences.quoteStyle": "double",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "deno.enable": false // this is not nxt-deno
+  "deno.enable": false // this is not trollsmile-deno
 }
