@@ -53,7 +53,9 @@ export async function run (message: Message, args: string[]) {
 
   if (obfuscators[lang]) {
     try {
+      message.channel.startTyping()
       const newFile = await obfuscators[lang](code);
+      message.channel.stopTyping()
       return {
         content: 'Done!',
         files: [{
@@ -62,6 +64,7 @@ export async function run (message: Message, args: string[]) {
         }]
       };
     } catch (err) {
+      message.channel.stopTyping()
       return 'Error: ' + err.toString();
     }
   } else return 'Language not supported!';
