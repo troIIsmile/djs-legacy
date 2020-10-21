@@ -78,7 +78,7 @@ const obfuscators: { [key: string]: (str: string) => Promise<string> | string; }
   get dos () { return this.bat; }
 };
 export async function run (message: Message, args: string[]) {
-  const [{ lang = '', code = '' }] = discordCodeBlock(args.join(' '));
+  const [{ lang = '', code = '' } = {lang: ''}] = discordCodeBlock(args.join(' '));
   if (!lang.trim()) return 'Language not found!';
 
   if (obfuscators[lang]) {
