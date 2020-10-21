@@ -1,5 +1,5 @@
-import { Client, Message, MessageOptions, Collection } from 'discord.js'
-type Return = (MessageOptions | string | void)
+import { Client, Message, Collection, TextChannel } from 'discord.js'
+type Return = Parameters<TextChannel['send']>[0]
 
 interface CommandObj {
   run: (this: Bot, message: Message, args: string[]) => Return | Promise < Return >,

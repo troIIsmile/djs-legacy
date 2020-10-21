@@ -48,7 +48,9 @@ export async function run (message: Message, args: string[]) {
     if (title) {
       await message.channel.send({
         embed: {
-          image: 'https://nintendo.com' + thumbnail,
+          image: {
+            url: 'https://nintendo.com' + thumbnail
+          },
           title,
           description: description.replace(/\*/g, '\\*'),
           timestamp,

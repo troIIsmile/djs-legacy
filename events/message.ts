@@ -36,7 +36,7 @@ export default async function (this: Bot, message: Message) {
           embed: {
             author: {
               name: `${this.user?.username} ran into an error while running your command!`,
-              iconURL: this.user?.avatarURL()
+              // iconURL: this.user?.avatarURL()
             },
             title: err.toString(),
             color: 'RED',

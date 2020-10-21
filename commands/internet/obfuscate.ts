@@ -1,12 +1,12 @@
-import { Message } from 'discord.js'
-export const help = 'fuck up da code...'
-export const aliases = []
+import { Message } from 'discord.js';
+export const help = 'fuck up da code...';
+export const aliases = [];
 function discordCodeBlock (str: string): {
-  start: number
-  end: number
-  lang: string
-  code: string
-  block: string
+  start: number;
+  end: number;
+  lang: string;
+  code: string;
+  block: string;
 }[] {
   var regex = /^(([ \t]*`{3,4})([^\n]*)([\s\S]+?)(^[ \t]*\2))/gm;
   var blocks = [];
@@ -44,13 +44,13 @@ const obfuscators: { [key: string]: (str: string) => Promise<string> | string; }
         }
       }),
       method: "POST"
-    }).then(res => res.json())).script
+    }).then(res => res.json())).script;
   }
 };
 export async function run (message: Message, args: string[]) {
   const [{ lang = '', code = '' }] = discordCodeBlock(args.join(' '));
   if (!lang.trim()) return 'Language not found!';
-  
+
   if (obfuscators[lang]) {
     try {
       const newFile = await obfuscators[lang](code);
