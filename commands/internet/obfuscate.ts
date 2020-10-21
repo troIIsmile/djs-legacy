@@ -1,5 +1,5 @@
 import { Message } from 'discord.js';
-import random from "../../utils/random";
+// import random from "../../utils/random";
 export const help = 'fuck up da code...';
 export const aliases = [];
 function discordCodeBlock (str: string): {
@@ -61,9 +61,9 @@ export async function run (message: Message, args: string[]) {
 
   if (obfuscators[lang]) {
     try {
-      message.channel.startTyping()
+      message.channel.startTyping();
       const newFile = await obfuscators[lang](code);
-      message.channel.stopTyping()
+      message.channel.stopTyping();
       return {
         content: 'Done!',
         files: [{
@@ -72,7 +72,7 @@ export async function run (message: Message, args: string[]) {
         }]
       };
     } catch (err) {
-      message.channel.stopTyping()
+      message.channel.stopTyping();
       return 'Error: ' + err.toString();
     }
   } else return 'Language not supported!';
