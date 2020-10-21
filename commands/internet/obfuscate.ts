@@ -53,7 +53,29 @@ const obfuscators: { [key: string]: (str: string) => Promise<string> | string; }
   //     method: 'POST'
   //   });
   //   return res.text();
-  // }
+  // },
+  bat (code) {
+    var set = "a" + Math.random().toString(36).substring(10); //random set
+    var letters = Array.from("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ").sort(() => Math.random() - 0.5).join('');
+    var setlettre = "Set " + set + "=" + letters;
+
+    var codeobfu = "";
+    var lettertab: { [key: string]: string; } = {};
+    for (var i = 0; i < letters.length; i++) {
+      lettertab[letters[i]] = "%" + set + ":~" + i + ",1%";
+    }
+
+    for (var i = 0; i < code.length; i++) {
+      if (lettertab[code[i]]) {
+        codeobfu += lettertab[code[i]];
+      } else {
+        codeobfu += code[i];
+      }
+    }
+    return '@echo off\n' + setlettre + '\ncls' + '\n' + codeobfu;
+  },
+  get cmd () { return this.bat; },
+  get dos () { return this.bat; }
 };
 export async function run (message: Message, args: string[]) {
   const [{ lang = '', code = '' }] = discordCodeBlock(args.join(' '));
