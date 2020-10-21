@@ -1,4 +1,5 @@
 import { Message } from 'discord.js';
+import random from "../../utils/random";
 export const help = 'fuck up da code...';
 export const aliases = [];
 function discordCodeBlock (str: string): {
@@ -45,7 +46,14 @@ const obfuscators: { [key: string]: (str: string) => Promise<string> | string; }
       }),
       method: "POST"
     }).then(res => res.json())).script;
-  }
+  },
+  // async vbscript (code) {
+  //   const domains = ['helloacm.com', 'happyukgo.com', 'uploadbeta.com', 'steakovercooked.com', 'anothervps.com', 'isvbscriptdead.com']
+  //   const res = await fetch('https://' + random(domains) + '/api/vbscript-obfuscator/?s=' + encodeURIComponent(code), {
+  //     method: 'POST'
+  //   });
+  //   return res.text();
+  // }
 };
 export async function run (message: Message, args: string[]) {
   const [{ lang = '', code = '' }] = discordCodeBlock(args.join(' '));
