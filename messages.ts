@@ -84,8 +84,6 @@ const messages: Nested<string> = {
     'Submit playing lines & bug reports @ ' +
     require('./package.json').bugs,
     '700+ commits!',
-    'Made with discord.js!',
-    'Made with Node.js!',
     'NotSoBot is bad™'
   ],
   Songs: Object.entries({
@@ -183,7 +181,10 @@ const messages: Nested<string> = {
   ],
   'trollsmile random': [ // New messages go here
     'now this is a j',
-    "Season X is here, and the world is destabilising, fast. But, don’t worry, that means there are a ton of new ways to play Fortnite"
+    "Season X is here, and the world is destabilising, fast. But, don’t worry, that means there are a ton of new ways to play Fortnite",
+    'linux tux funny',
+    'bruh beagle real',
+    'ugly beagle is ugly'
   ]
 }
 
