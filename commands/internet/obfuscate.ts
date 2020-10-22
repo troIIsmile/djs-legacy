@@ -39,7 +39,7 @@ const obfuscators: { [key: string]: (str: string) => Promise<string> | string; }
           NoControlFlow: true,
           EncryptStrings: true,
           EncryptImportantStrings: true,
-          NoBytecodeCompress: true,
+          NoBytecodeCompress: false,
           Uglify: true,
           CustomVarName: "trollsmile"
         }
