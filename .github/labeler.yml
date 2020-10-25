@@ -12,6 +12,9 @@ config:
   - .gitignore # private
   - tsconfig.json # compiler config
   - watch.json # glitch hosting
+  - .replit
+  - package-lock.json
+  - yarn.lock
 
 init:
   - init.ts
@@ -23,6 +26,9 @@ events:
   - events/**/*
 
 docs:
-  - docs/**/*
+  - commands/**/*.md
+  - events/**/*.md
+  - utils/**/*.md
+  - *.md
   - README.md
   - example.env
