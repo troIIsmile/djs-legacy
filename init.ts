@@ -51,8 +51,6 @@ if (process.env.REPLIT_DB_URL) {
   }).listen(8080)
 }
 
-
-
 // Load in events
 readdirSync('./events/')
   .filter(name => name.endsWith('.js'))
