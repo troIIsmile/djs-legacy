@@ -11,7 +11,7 @@ import {
   readFileSync as readFile,
   readdirSync
 } from 'fs'
-import { IncomingMessage, ServerResponse, createServer } from 'http'
+import { ServerResponse, createServer } from 'http'
 
 // We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'blahblahblah' > Env:/TOKEN`)
 if (exists('./.env')) {
@@ -39,7 +39,7 @@ client.aliases = new Collection // Init aliases
 
 // replit redirect
 if (process.env.REPLIT_DB_URL) {
-  createServer((_: IncomingMessage, res: ServerResponse) => {
+  createServer((_, res: ServerResponse) => {
     res.writeHead(200, {
       'Content-Type': 'text/html'
     })

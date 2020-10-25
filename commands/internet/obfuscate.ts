@@ -1,4 +1,5 @@
 import { Message } from 'discord.js'
+import { Bot } from "../../utils/types"
 // import random from "../../utils/random";
 export const help = 'fuck up da code...'
 export const aliases = []
@@ -24,8 +25,8 @@ function discordCodeBlock (str: string): {
   }
   return blocks
 }
-const obfuscators: { [key: string]: (str: string) => Promise<string> | string } = {
-  async lua (code) {
+const obfuscators: { [key: string]: (str: string, brand: string) => Promise<string> | string } = {
+  async lua (code, brand) {
     return (await fetch("https://obfuscator.aztupscripts.xyz/api/v1/obfuscate", {
       headers: {
         accept: "application/json, text/plain, */*",
@@ -41,7 +42,7 @@ const obfuscators: { [key: string]: (str: string) => Promise<string> | string } 
           EncryptImportantStrings: true,
           NoBytecodeCompress: true,
           Uglify: true,
-          CustomVarName: "trollsmile"
+          CustomVarName: brand
         }
       }),
       method: "POST"
@@ -77,14 +78,14 @@ const obfuscators: { [key: string]: (str: string) => Promise<string> | string } 
   get cmd () { return this.bat },
   get dos () { return this.bat }
 }
-export async function run (message: Message, args: string[]) {
+export async function run (message: Message, args: string[], bot: Bot) {
   const [{ lang = '', code = '' } = { lang: '' }] = discordCodeBlock(args.join(' '))
   if (!lang.trim()) return 'Language not found!'
 
   if (obfuscators[lang]) {
     try {
       message.channel.startTyping()
-      const newFile = await obfuscators[lang](code)
+      const newFile = await obfuscators[lang](code, bot.user?.username || 'skid')
       message.channel.stopTyping()
       return {
         content: 'Done!',
