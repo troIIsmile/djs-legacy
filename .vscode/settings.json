@@ -8,7 +8,7 @@
   "liveServer.settings.root": "/docs/",
   "liveServer.settings.file": "404.html",
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.format.semicolons": "insert",
+  "typescript.format.semicolons": "remove",
   "typescript.preferences.quoteStyle": "double",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "deno.enable": false // this is not trollsmile-deno

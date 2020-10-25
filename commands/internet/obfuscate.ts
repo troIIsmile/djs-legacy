@@ -1,17 +1,17 @@
-import { Message } from 'discord.js';
+import { Message } from 'discord.js'
 // import random from "../../utils/random";
-export const help = 'fuck up da code...';
-export const aliases = [];
+export const help = 'fuck up da code...'
+export const aliases = []
 function discordCodeBlock (str: string): {
-  start: number;
-  end: number;
-  lang: string;
-  code: string;
-  block: string;
+  start: number
+  end: number
+  lang: string
+  code: string
+  block: string
 }[] {
-  var regex = /^(([ \t]*`{3,4})([^\n]*)([\s\S]+?)(^[ \t]*\2))/gm;
-  var blocks = [];
-  var match = null;
+  var regex = /^(([ \t]*`{3,4})([^\n]*)([\s\S]+?)(^[ \t]*\2))/gm
+  var blocks = []
+  var match = null
 
   while ((match = regex.exec(str))) {
     blocks.push({
@@ -20,11 +20,11 @@ function discordCodeBlock (str: string): {
       lang: match[3],
       code: match[4],
       block: match[1]
-    });
+    })
   }
-  return blocks;
+  return blocks
 }
-const obfuscators: { [key: string]: (str: string) => Promise<string> | string; } = {
+const obfuscators: { [key: string]: (str: string) => Promise<string> | string } = {
   async lua (code) {
     return (await fetch("https://obfuscator.aztupscripts.xyz/api/v1/obfuscate", {
       headers: {
@@ -45,7 +45,7 @@ const obfuscators: { [key: string]: (str: string) => Promise<string> | string; }
         }
       }),
       method: "POST"
-    }).then(res => res.json())).script;
+    }).then(res => res.json())).script
   },
   // async vbscript (code) {
   //   const domains = ['helloacm.com', 'happyukgo.com', 'uploadbeta.com', 'steakovercooked.com', 'anothervps.com', 'isvbscriptdead.com']
@@ -55,47 +55,47 @@ const obfuscators: { [key: string]: (str: string) => Promise<string> | string; }
   //   return res.text();
   // },
   bat (code) {
-    var set = "a" + Math.random().toString(36).substring(10); //random set
-    var letters = Array.from("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ").sort(() => Math.random() - 0.5).join('');
-    var setlettre = "Set " + set + "=" + letters;
+    var set = "a" + Math.random().toString(36).substring(10) //random set
+    var letters = Array.from("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ").sort(() => Math.random() - 0.5).join('')
+    var setlettre = "Set " + set + "=" + letters
 
-    var codeobfu = "";
-    var lettertab: { [key: string]: string; } = {};
+    var codeobfu = ""
+    var lettertab: { [key: string]: string } = {}
     for (var i = 0; i < letters.length; i++) {
-      lettertab[letters[i]] = "%" + set + ":~" + i + ",1%";
+      lettertab[letters[i]] = "%" + set + ":~" + i + ",1%"
     }
 
     for (var i = 0; i < code.length; i++) {
       if (lettertab[code[i]]) {
-        codeobfu += lettertab[code[i]];
+        codeobfu += lettertab[code[i]]
       } else {
-        codeobfu += code[i];
+        codeobfu += code[i]
       }
     }
-    return '@echo off\n' + setlettre + '\ncls' + '\n' + codeobfu;
+    return '@echo off\n' + setlettre + '\ncls' + '\n' + codeobfu
   },
-  get cmd () { return this.bat; },
-  get dos () { return this.bat; }
-};
+  get cmd () { return this.bat },
+  get dos () { return this.bat }
+}
 export async function run (message: Message, args: string[]) {
-  const [{ lang = '', code = '' } = {lang: ''}] = discordCodeBlock(args.join(' '));
-  if (!lang.trim()) return 'Language not found!';
+  const [{ lang = '', code = '' } = { lang: '' }] = discordCodeBlock(args.join(' '))
+  if (!lang.trim()) return 'Language not found!'
 
   if (obfuscators[lang]) {
     try {
-      message.channel.startTyping();
-      const newFile = await obfuscators[lang](code);
-      message.channel.stopTyping();
+      message.channel.startTyping()
+      const newFile = await obfuscators[lang](code)
+      message.channel.stopTyping()
       return {
         content: 'Done!',
         files: [{
           name: 'output.txt',
           attachment: Buffer.from(newFile)
         }]
-      };
+      }
     } catch (err) {
-      message.channel.stopTyping();
-      return 'Error: ' + err.toString();
+      message.channel.stopTyping()
+      return 'Error: ' + err.toString()
     }
-  } else return 'Language not supported!';
+  } else return 'Language not supported!'
 }

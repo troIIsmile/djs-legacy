@@ -9,7 +9,7 @@ export const run = async (_message: Message, args: string[]) => {
           attachment: await tts(
             args.filter(arg => !arg.startsWith('--')).join(' '),
             'en',
-            args.includes('--slow')  ? 0.27 : 1
+            args.includes('--slow') ? 0.27 : 1
           ),
           name: 'sound.mp3'
         }

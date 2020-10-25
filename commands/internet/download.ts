@@ -4,7 +4,7 @@ export const run = async (message: Message, args: string[]): Promise<MessageOpti
   const video = await fetch(`https://projectlounge.pw/ytdl/download?url=${encodeURIComponent(
     args.join(' ')
   )}`).then(res => res.buffer())
-  
+
   return {
     embed: {
       title: 'Click here if the video is not displayed.',

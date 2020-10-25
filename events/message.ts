@@ -1,24 +1,24 @@
-import { Message } from 'discord.js';
-import { Bot } from '../utils/types';
-import prefixes from '../utils/prefixes';
+import { Message } from 'discord.js'
+import { Bot } from '../utils/types'
+import prefixes from '../utils/prefixes'
 
 // Command Handler (This used to be jackbot-discord!)
 export default async function (this: Bot, message: Message) {
   // When a message is sent
-  if (message.author?.bot) return;
+  if (message.author?.bot) return
   // no bots allowed
-  const prefix: string = prefixes[message.guild?.id || ''] || '-';
-  const content = message.content || '';
+  const prefix: string = prefixes[message.guild?.id || ''] || '-'
+  const content = message.content || ''
   const name = [...this.commands.keys(), ...this.aliases.keys()].find(
     cmdname =>
       content.startsWith(`${prefix}${cmdname} `) || // matches any command with a space after
       content === `${prefix}${cmdname}` // matches any command without arguments
-  );
-  if (!name) return;
+  )
+  if (!name) return
   // Run the command!
   const command = this.commands.get(name)?.run // The command if it found it
     || this.commands.get(this.aliases.get(name) || '')?.run // Aliases
-    || (() => { }); // Do nothing otherwise
+    || (() => { }) // Do nothing otherwise
 
   try {
     const output = await command.call(
@@ -28,9 +28,9 @@ export default async function (this: Bot, message: Message) {
       content
         .substring(prefix.length + 1 + name.length) // only the part after the command
         .split(' '), // split with spaces
-    );
+    )
 
-    if (output) message.channel?.send(output);
+    if (output) message.channel?.send(output)
   } catch (err) {
     message.channel?.send({
       embed: {
@@ -44,6 +44,6 @@ export default async function (this: Bot, message: Message) {
           text: `Report this bug @ ${require('../package.json').bugs}`
         }
       }
-    });
+    })
   }
 }

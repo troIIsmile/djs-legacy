@@ -18,12 +18,12 @@ export default async function (this: Bot) {
     files // get the file names of every command in the commands folder
       .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
       .map(async (file): Promise<[string, CommandObj]> => [
-          file.replace('.js', '').replace(/^.*[\\\/]/, ''), // Remove folders from the path and .js, leaving only the command name
-          {
-            help: 'A command without a description', // this will be overwritten by the real description if it is there
-            ...(await import(`../${file}`)), // `run` and `desc`
-            path: require.resolve('../' + file) // for stuff like reload
-          }
+        file.replace('.js', '').replace(/^.*[\\\/]/, ''), // Remove folders from the path and .js, leaving only the command name
+        {
+          help: 'A command without a description', // this will be overwritten by the real description if it is there
+          ...(await import(`../${file}`)), // `run` and `desc`
+          path: require.resolve('../' + file) // for stuff like reload
+        }
       ]) // convert filenames to commands
   ) as [string, CommandObj][]
   entries.forEach(([name, command]: [string, CommandObj]) => {

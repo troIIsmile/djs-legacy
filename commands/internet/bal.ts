@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 
 export const run = async (_: void, args: string[]) => {
   try {
-    const {balance} = await fetch('https://dogechain.info/api/v1/address/balance/' + encodeURIComponent(args.join(' '))).then(res=>res.json())
+    const { balance } = await fetch('https://dogechain.info/api/v1/address/balance/' + encodeURIComponent(args.join(' '))).then(res => res.json())
     return {
       embed: {
         author: {

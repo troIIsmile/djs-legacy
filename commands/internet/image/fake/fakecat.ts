@@ -1,8 +1,8 @@
 export const run = () => ({
-  files: [ {
+  files: [{
     attachment: 'https://thiscatdoesnotexist.com',
     name: 'cat.jpeg'
-  } ]
+  }]
 })
 
 export const help = 'this cat does not exist'

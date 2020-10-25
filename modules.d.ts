@@ -3,5 +3,5 @@ declare module 'google-tts-api' {
     text?: string,
     lang?: string,
     speed?: number
-  ): Promise<string>;
+  ): Promise<string>
 }

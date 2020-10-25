@@ -1,25 +1,25 @@
 import { Message, MessageOptions } from 'discord.js'
 import random from '../../../utils/random'
 
-   interface Meme {
-    id: string
-    name: string
-    url: string
-    width: number
-    height: number
-    box_count: number
-  }
+interface Meme {
+  id: string
+  name: string
+  url: string
+  width: number
+  height: number
+  box_count: number
+}
 
-   interface RootObject {
-    success: boolean
-    data: {
-      memes: Meme[]
-    }
+interface RootObject {
+  success: boolean
+  data: {
+    memes: Meme[]
   }
+}
 
 export async function run (): Promise<MessageOptions> {
   const { data: { memes } }: RootObject = await fetch('https://api.imgflip.com/get_memes').then(res => res.json())
-  const {name: title, url: img_url} = random(memes)
+  const { name: title, url: img_url } = random(memes)
   return {
     embed: {
       author: {

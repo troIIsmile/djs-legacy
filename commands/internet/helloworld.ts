@@ -39,7 +39,7 @@ declare module API {
 
 export async function run (): Promise<MessageOptions> {
   const langs: API.List = await fetch('https://tio.run/languages.json').then(res => res.json())
-  const { name: title, tests: {helloWorld: {request, response}}, link: url } = random(Object.entries(langs))[1]
+  const { name: title, tests: { helloWorld: { request, response } }, link: url } = random(Object.entries(langs))[1]
   return {
     embed: {
       title,

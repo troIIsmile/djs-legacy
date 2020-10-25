@@ -7,7 +7,7 @@ interface Joke {
   id: number
 }
 export async function run (): Promise<MessageOptions> {
-  const [{ setup, punchline }]: Joke[] = await fetch('https://official-joke-api.appspot.com/jokes/programming/random').then(res => res.json()) 
+  const [{ setup, punchline }]: Joke[] = await fetch('https://official-joke-api.appspot.com/jokes/programming/random').then(res => res.json())
   return {
     embed: {
       title: setup,

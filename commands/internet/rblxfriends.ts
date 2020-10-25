@@ -20,7 +20,7 @@ export async function run (message: Message, args: string[]): Promise<MessageOpt
   }
   const { Id: id, IsOnline, errorMessage }: Player = await fetch(
     'https://api.roblox.com/users/get-by-username?username=' +
-      encodeURIComponent(args.join(' '))
+    encodeURIComponent(args.join(' '))
   ).then(res => res.json())
   if (errorMessage) {
     return {
