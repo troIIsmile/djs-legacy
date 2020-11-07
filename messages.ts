@@ -77,8 +77,6 @@ const messages: Nested<string> = {
       'Dr. Mario World'
     ]
   },
-  Emulators: ['Yuzu', 'Dolphin Emulator', 'RetroArch'],
-  Websites: ['Twitter', 'Reddit', 'YouTube'],
   Meta: [
     // References to bots (or this bot)
     'Submit playing lines & bug reports @ ' +
