@@ -120,12 +120,13 @@ const messages: Nested<string> = {
     'Roblox', // I know this is a game engine
     'Minecraft',
     'Skyrim',
-    'SuperTuxKart', // Crashed my laptop when I press Enter or Space while paused.
+    'SuperTuxKart',
     'Sonic 06',
     'Metal Gear Solid 4',
     'Action 52',
     'Animal Crossing: New Horizons',
-    'Meme Run'
+    'Meme Run',
+    'Super Monkey Ball 3'
   ],
   'Fake Games': [
     'Hello Kitty Island Adventure',
