@@ -1,5 +1,4 @@
 import { MessageOptions } from 'discord.js'
-import random from '../../../utils/random'
 import fetch from 'node-fetch'
 
 interface File {
@@ -91,7 +90,7 @@ interface ItemURL {
 }
 export async function run (): Promise<MessageOptions> {
   const { items }: Root = await fetch('https://api.github.com/search/code?q=extension:jpg+repo:AhoyLemon/damn.dog').then(res => res.json())
-  const { url } = random(items)
+  const { url } = items.random()
   const { download_url, name }: ItemURL = await (await fetch(url)).json()
   const title = name.replace('.jpg', '').split('-').map(item => {
     return item.charAt(0).toUpperCase() + item.substring(1)

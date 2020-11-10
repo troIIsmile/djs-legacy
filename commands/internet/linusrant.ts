@@ -1,5 +1,4 @@
 import { MessageOptions } from 'discord.js'
-import random from '../../utils/random'
 import fetch from 'node-fetch'
 interface Rant {
   text: string
@@ -14,7 +13,7 @@ function escapeMarkdown (text: string) {
 
 const rants: Promise<Rant[]> = fetch('https://raw.githubusercontent.com/corollari/linusrants/master/data.json').then(res => res.json())
 export async function run (): Promise<MessageOptions> {
-  const { text, hate } = random(await rants)
+  const { text, hate } = (await rants).random()
   return {
     embed: {
       author: {

@@ -1,6 +1,5 @@
 import { Message, MessageOptions } from 'discord.js'
 import fetch from "node-fetch"
-import random from "../../../utils/random"
 import { Bot } from '../../../utils/types'
 type imgflip<memedata> = {
   success: true,
@@ -26,7 +25,7 @@ export async function run (this: Bot, message: Message, args: string[]): Promise
       url: string
       page_url: string
     }> = await fetch('https://api.imgflip.com/caption_image?' + new URLSearchParams({
-      username: process.env.IMGFLIP_USERNAME || '', password: process.env.IMGFLIP_PASSWORD || '', text0, text1, template_id: random(memes.data.memes).id
+      username: process.env.IMGFLIP_USERNAME || '', password: process.env.IMGFLIP_PASSWORD || '', text0, text1, template_id: memes.data.memes.random().id
     }).toString(), {
       method: 'POST',
     }).then(res => res.json())

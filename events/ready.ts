@@ -1,11 +1,10 @@
 import { Bot, CommandObj } from '../utils/types'
-import random from '../utils/random'
 // Some "Playing" messages from esmBot
 import { all } from '../messages'
 import { rreaddir } from '../utils/rreaddir'
 async function activityChanger (this: Bot) {
   // activityChanger from esmBot, also known as "the gamer code"
-  this.user?.setActivity(random(all))
+  this.user?.setActivity(all.random())
   setTimeout(() => activityChanger.call(this), 900000)
 }
 

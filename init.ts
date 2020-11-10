@@ -13,6 +13,10 @@ import {
 } from 'fs'
 import { ServerResponse, createServer } from 'http'
 
+globalThis.Array.prototype.random = function () {
+  return this[Math.floor(Math.random() * this.length)]
+}
+
 // We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'blahblahblah' > Env:/TOKEN`)
 if (exists('./.env')) {
   // Before anything uses it, we must load the .env file (provided it exists, of course)
