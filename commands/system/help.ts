@@ -1,7 +1,5 @@
 import { Message, MessageOptions } from 'discord.js'
 import { Bot } from '../../utils/types'
-import prefixes from '../../utils/prefixes'
-import random from '../../utils/random'
 
 function chunk (array: any[], size: number = 1): Array<any> {
   let chunk: any[] = []
@@ -34,19 +32,7 @@ export function run (this: Bot, message: Message, args: string[]): MessageOption
       footer: {
         iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/VisualEditor_-_Icon_-_Book.svg/600px-VisualEditor_-_Icon_-_Book.svg.png',
         text: `${page}/${pages.length}`
-      },
-      fields: [
-        {
-          name: 'Prefix',
-          value: prefixes[message?.guild?.id || ''] || '-'
-        },
-        {
-        name: 'Tip',
-        value: random([
-          'Report bugs and feature requests at ' + require('../../package.json').bugs,
-          'This bot was created by ' + this.users.cache.get(process.env.OWNER || '')?.tag || 'someone'
-        ])
-      }]
+      }
     }
   } : {
       embed: {

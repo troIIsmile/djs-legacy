@@ -1,13 +1,12 @@
 import { Message } from 'discord.js'
 import { Bot } from '../utils/types'
-import prefixes from '../utils/prefixes'
 
 // Command Handler (This used to be jackbot-discord!)
 export default async function (this: Bot, message: Message) {
   // When a message is sent
   if (message.author?.bot) return
   // no bots allowed
-  const prefix: string = prefixes[message.guild?.id || ''] || '-'
+  const prefix = '-' // bot prefix
   const content = message.content || ''
   const name = [...this.commands.keys(), ...this.aliases.keys()].find(
     cmdname =>
