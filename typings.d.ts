@@ -5,3 +5,6 @@ declare module 'google-tts-api' {
     speed?: number
   ): Promise<string>
 }
+interface Array<T> {
+  random (): T
+}
