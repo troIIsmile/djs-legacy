@@ -10,7 +10,6 @@
     "newLine": "lf",
     "alwaysStrict": true,
     "inlineSourceMap": true,
-    "incremental": true,
     "experimentalDecorators": true
   },
   "exclude": [

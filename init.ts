@@ -16,16 +16,14 @@ import { ServerResponse, createServer } from 'http'
 // We need to get data from the .env file because OWNER and TOKEN are in there ( unless the user somehow does stuff like `'blahblahblah' > Env:/TOKEN`)
 if (exists('./.env')) {
   // Before anything uses it, we must load the .env file (provided it exists, of course)
-  process.env = {
-    ...process.env, // Preserve existing env
-    ...Object.fromEntries(
+  Object.assign(process.env,
+    Object.fromEntries(
       // Overwrite the env with the .env file
       readFile('./.env', 'utf-8')
         .split('\n') // split the file into lines
         .filter(line => !line.startsWith('#') && line) // remove comments and spacing
         .map(line => line.split('=')) // split the lines into key:value pairs
-    )
-  }
+    ))
 }
 
 const client = new Client({
