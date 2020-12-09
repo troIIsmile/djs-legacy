@@ -1,5 +1,5 @@
 import { Message } from 'discord.js'
-import tts from 'google-tts-api'
+import { getAudioUrl as tts } from 'google-tts-api'
 
 export const run = async (message: Message, args: string[]) => {
   if (!message.member?.voice.channel) {
@@ -9,17 +9,24 @@ export const run = async (message: Message, args: string[]) => {
     const channel = message.member?.voice.channel
     let url: string
     if (args.includes('--slow')) {
-      url = await tts(
+      url = tts(
         args.filter(arg => !arg.startsWith('--')).join(' '),
-        'en',
-        0.27
+        {
+          host: 'https://translate.google.com',
+          slow: true,
+          lang: 'en-US'
+        }
       )
-    } else
-      url = await tts(
+    } else {
+      url = tts(
         args.filter(arg => !arg.startsWith('--')).join(' '),
-        'en',
-        1
+        {
+          host: 'https://translate.google.com',
+          slow: false,
+          lang: 'en-US'
+        }
       )
+    }
     const connection = await channel.join()
     const dispatch = connection.play(url)
     dispatch.on('end', () => {

@@ -1,15 +1,18 @@
 import { Message } from 'discord.js'
-import tts from 'google-tts-api'
+import {getAudioUrl} from 'google-tts-api'
 
 export const run = async (_message: Message, args: string[]) => {
   try {
     return {
       files: [
         {
-          attachment: await tts(
+          attachment: getAudioUrl(
             args.filter(arg => !arg.startsWith('--')).join(' '),
-            'en',
-            args.includes('--slow') ? 0.27 : 1
+            {
+              host: 'https://translate.google.com',
+              slow: args.includes('--slow'),
+              lang: 'en-US'
+            }
           ),
           name: 'sound.mp3'
         }
