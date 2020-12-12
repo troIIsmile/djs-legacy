@@ -21,7 +21,7 @@ export const run = async (_message: Message, args: string[]) => {
   } catch (e) {
     if (e instanceof RangeError) {
       return 'The -tts command only supports up to 200 chars. Blame Google!'
-    } else return 'Error!\nError data:\n' + e
+    } else throw e
   }
 }
 
