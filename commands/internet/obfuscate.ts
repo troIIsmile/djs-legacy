@@ -1,4 +1,5 @@
 import { Message } from 'discord.js'
+import fetch from "node-fetch"
 import { Bot } from "../../utils/types"
 // import random from "../../utils/random";
 export const help = 'fuck up da code...'
@@ -70,16 +71,33 @@ const obfuscators: { [key: string]: (str: string, brand: string) => Promise<stri
     return '@echo off\n' + setlettre + '\ncls' + '\n' + codeobfu
   },
   get cmd () { return this.bat },
-  get dos () { return this.bat }
+  get dos () { return this.bat },
+  async python (source) {
+    const res = await fetch("https://pyob.oxyry.com/obfuscate", {
+      body: JSON.stringify({
+        append_source: false, preserve: "",
+        remove_docstrings: true,
+        rename_default_parameters: false,
+        rename_nondefault_parameters: true, source
+      }),
+      headers: {
+        ['Content-Type']: 'application/json'
+      },
+      "method": "POST",
+    })
+
+    return res.json()
+  },
+  get py () { return this.python },
 }
-export async function run (message: Message, args: string[], bot: Bot) {
+export async function run (this: Bot, message: Message, args: string[]) {
   const [{ lang = '', code = '' } = { lang: '' }] = discordCodeBlock(args.join(' '))
   if (!lang.trim()) return 'Language not found!'
 
   if (obfuscators[lang]) {
     try {
       message.channel.startTyping()
-      const newFile = await obfuscators[lang](code, bot.user?.username || 'skid')
+      const newFile = await obfuscators[lang](code, this.user ? this.user.username : 'skid')
       message.channel.stopTyping()
       return {
         content: 'Done!',
