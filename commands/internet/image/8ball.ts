@@ -1,4 +1,5 @@
 import { MessageOptions } from 'discord.js'
+import fetch from "node-fetch"
 interface APIResult {
   answer: string
   image: string
