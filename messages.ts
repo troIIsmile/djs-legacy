@@ -82,7 +82,8 @@ const messages: Nested<string> = {
     'Submit playing lines & bug reports @ ' +
     require('./package.json').bugs,
     '700+ commits!',
-    'NotSoBot is bad™'
+    'NotSoBot is bad™',
+    'Updates commands without restarting!'
   ],
   Songs: Object.entries({
     'Scatman John': ["Scatman's World"],
