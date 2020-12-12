@@ -1,2 +1,2 @@
-run = "npx node@14 init"
+run = "npx node init"
 language = "nodejs"

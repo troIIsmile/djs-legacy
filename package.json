@@ -26,6 +26,7 @@
     "fs": "^0.0.1-security",
     "google-tts-api": "^2.0.0",
     "nintendo-switch-eshop": "^3.0.2",
+    "node": "^14.15.1",
     "node-fetch": "^2.6.1",
     "tslib": "^2.0.1",
     "ytdl-core": "^4.1.4"
