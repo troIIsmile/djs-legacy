@@ -91,7 +91,7 @@ export async function run (
             icon_url: this.user?.avatarURL() || undefined
           },
           color: 'GREEN',
-          title: `Update complete! Took ${(new Date().getTime() - start.getTime()) / 1000} seconds.`,
+          title: `Update complete! Took ${(new Date().getTime() - start.getTime())}ms`,
           description: 'Restart the bot to reload events and messages.'
         }
       })
