@@ -5,9 +5,9 @@ import { validateURL, getInfo } from 'ytdl-core'
 export const run = async (message: Message, args: string[]): Promise<MessageOptions> => {
   if (validateURL(args.join(' '))) {
     const info = await getInfo(args.join(' '))
-    const vid = info.formats.find(format => {
+    const [vid] = info.formats.filter(format => {
       return format.hasVideo
-    })
+    }).sort((a,b)=>(a.width || 0) - (b.width || 0))
     return vid ? {
       embed: {
         title: info.videoDetails.title,
