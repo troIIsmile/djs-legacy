@@ -1,8 +1,10 @@
 import { exec } from "child_process"
 import { Message } from 'discord.js'
+import { platform } from "os"
 import { basename } from "path"
 import { rreaddir } from "../../utils/rreaddir"
 import { Bot, CommandObj } from '../../utils/types'
+
 const shell = (str: string) => new Promise((resolve, reject) => {
   exec(str, (err, stdout, stderr) => {
     if (err) reject(stderr)
@@ -46,7 +48,7 @@ export async function run (
           title: 'Compiling...'
         }
       })
-      await shell('rm commands/**/*.js')
+      await shell(platform() === 'win32' ? 'PowerShell -Command "rm commands/**/*.js"' : 'rm commands/**/*.js')
       await shell('npx tsc')
       msg.edit({
         embed: {
