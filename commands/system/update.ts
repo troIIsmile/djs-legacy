@@ -16,6 +16,7 @@ export async function run (
   message: Message
 ): Promise<void> {
   if (message.author.id === process.env.OWNER) {
+    const start = new Date
     const brand = `${this.user?.username || 'trollsmile'} update`
     const msg = await message.channel.send({
       embed: {
@@ -90,7 +91,7 @@ export async function run (
             icon_url: this.user?.avatarURL() || undefined
           },
           color: 'GREEN',
-          title: 'Update complete!',
+          title: `Update complete! Took ${(start.getTime() - new Date().getTime()) / 1000} seconds.`,
           description: 'Restart the bot to reload events and messages.'
         }
       })
