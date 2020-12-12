@@ -20,19 +20,11 @@ export async function run (
         author: {
           name: brand
         },
-        title: 'Fetching from Git...'
+        title: 'Downloading latest trollsmile...'
       }
     })
     try {
       await shell('git fetch origin master')
-      msg.edit({
-        embed: {
-          author: {
-            name: brand
-          },
-          title: 'Resetting local changes...'
-        }
-      })
       await shell('git reset --hard origin/master')
       msg.edit({
         embed: {
