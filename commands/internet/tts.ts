@@ -1,5 +1,5 @@
 import { Message } from 'discord.js'
-import {getAudioUrl} from 'google-tts-api'
+import { getAudioUrl } from 'google-tts-api'
 
 export const run = async (_message: Message, args: string[]) => {
   try {
