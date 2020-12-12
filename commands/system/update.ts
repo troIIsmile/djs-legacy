@@ -18,7 +18,8 @@ export async function run (
     const msg = await message.channel.send({
       embed: {
         author: {
-          name: brand
+          name: brand,
+          icon_url: this.user?.avatar || undefined
         },
         title: 'Downloading latest trollsmile...'
       }
@@ -29,7 +30,8 @@ export async function run (
       msg.edit({
         embed: {
           author: {
-            name: brand
+            name: brand,
+            icon_url: this.user?.avatar || undefined
           },
           title: 'Updating dependencies...'
         }
@@ -38,7 +40,8 @@ export async function run (
       msg.edit({
         embed: {
           author: {
-            name: brand
+            name: brand,
+            icon_url: this.user?.avatar || undefined
           },
           title: 'Compiling...'
         }
@@ -48,7 +51,8 @@ export async function run (
       msg.edit({
         embed: {
           author: {
-            name: brand
+            name: brand,
+            icon_url: this.user?.avatar || undefined
           },
           title: 'Reloading all commands...'
         }
@@ -79,6 +83,10 @@ export async function run (
       })
       msg.edit({
         embed: {
+          author: {
+            name: brand,
+            icon_url: this.user?.avatar || undefined
+          },
           color: 'GREEN',
           title: 'Update complete!',
           description: 'Restart the bot to reload events and messages.'
