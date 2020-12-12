@@ -108,4 +108,4 @@ export async function run (
     message.reply('You are not the bot owner.')
   }
 }
-export const help = 'Updates trollsmile.'
+export const help = 'Updates the bot.'
