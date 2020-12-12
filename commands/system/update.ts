@@ -19,7 +19,7 @@ export async function run (
       embed: {
         author: {
           name: brand,
-          icon_url: this.user?.avatar || undefined
+          icon_url: this.user?.avatarURL() || undefined
         },
         title: 'Downloading latest trollsmile...'
       }
@@ -31,7 +31,7 @@ export async function run (
         embed: {
           author: {
             name: brand,
-            icon_url: this.user?.avatar || undefined
+            icon_url: this.user?.avatarURL() || undefined
           },
           title: 'Updating dependencies...'
         }
@@ -41,7 +41,7 @@ export async function run (
         embed: {
           author: {
             name: brand,
-            icon_url: this.user?.avatar || undefined
+            icon_url: this.user?.avatarURL() || undefined
           },
           title: 'Compiling...'
         }
@@ -52,7 +52,7 @@ export async function run (
         embed: {
           author: {
             name: brand,
-            icon_url: this.user?.avatar || undefined
+            icon_url: this.user?.avatarURL() || undefined
           },
           title: 'Reloading all commands...'
         }
@@ -85,7 +85,7 @@ export async function run (
         embed: {
           author: {
             name: brand,
-            icon_url: this.user?.avatar || undefined
+            icon_url: this.user?.avatarURL() || undefined
           },
           color: 'GREEN',
           title: 'Update complete!',
