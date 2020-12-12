@@ -6,7 +6,7 @@ export const run = async (message: Message, args: string[]): Promise<MessageOpti
   if (validateURL(args.join(' '))) {
     const info = await getInfo(args.join(' '))
     const [vid] = info.formats.filter(format => {
-      return format.hasVideo
+      return format.hasVideo && format.videoCodec === 'vp9' || format.videoCodec?.startsWith('mp4')
     }).sort((a, b) => (a.width || 0) - (b.width || 0))
     return vid ? {
       embed: {
