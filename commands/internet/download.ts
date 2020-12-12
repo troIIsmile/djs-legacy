@@ -18,6 +18,13 @@ export const run = async (message: Message, args: string[]): Promise<MessageOpti
         },
         url: vid.url,
         description: 'Click the above link to download.',
+        video: {
+          proxy_url: vid.url,
+          url: vid.url,
+          proxyURL: vid.url,
+          height: vid.height,
+          width: vid.width
+        }
       }
     } : {
         embed: {
