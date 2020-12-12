@@ -17,14 +17,7 @@ export const run = async (message: Message, args: string[]): Promise<MessageOpti
           url: info.videoDetails.ownerProfileUrl
         },
         url: vid.url,
-        description: 'Click the above link to download.',
-        video: {
-          proxy_url: vid.url,
-          url: vid.url,
-          proxyURL: vid.url,
-          height: vid.height,
-          width: vid.width
-        }
+        description: 'Click the above link to download.'
       }
     } : {
         embed: {
