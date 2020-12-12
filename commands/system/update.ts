@@ -51,6 +51,7 @@ export async function run (
           title: 'Compiling...'
         }
       })
+      await shell('rm commands/**/*.js')
       await shell('npx tsc')
       msg.edit({
         embed: {
@@ -87,7 +88,8 @@ export async function run (
       msg.edit({
         embed: {
           color: 'GREEN',
-          title: 'Update complete. restart manually you stupid bitch'
+          title: 'Update complete!',
+          description: 'Restart the bot to reload events and messages.'
         }
       })
     } catch (e) {
