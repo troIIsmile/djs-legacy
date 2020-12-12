@@ -1,10 +1,8 @@
-# <a href="https://nxtbot.ml"><img src="https://raw.githubusercontent.com/troIIsmile/troIIsmile.github.io/master/icon.svg" title="trollsmile" alt="trollsmile"></a>
+# ^_^ trollsmile
 
 > Yet another Discord bot.
 
-
 ![Node.js CI](https://github.com/troIIsmile/node/workflows/Node.js%20CI/badge.svg) [![License](https://img.shields.io/:license-isc-blue.svg?style=flat-square)](https://opensource.org/licenses/ISC)
-
 
 <!-- [![INSERT YOUR GRAPHIC HERE](https://i.imgur.com/dt8AUb6.png)]() -->
 
@@ -29,6 +27,7 @@
 - Clone this repo to your local machine using `https://github.com/troIIsmile/node`
 
 ### Setup
+
 ```shell
 $ cp example.env .env
 $ # fill out the .env file 
@@ -38,6 +37,7 @@ $ # You can also add `SUPPORT=` if you have a support server. You don't need to,
 $ sudo apt install ffmpeg
 $ npm install
 ```
+
 ---
 
 ## Features
@@ -45,10 +45,11 @@ $ npm install
 - A download command
 - Recursive command folder
 - Works in Repl.it
-- 
 
 ## Usage
+
 `npm start`
+
 ---
 
 ## Contributing
@@ -56,10 +57,10 @@ $ npm install
 ### Step 1
 
 - **Option 1**
-    - 🍴 Fork this repo!
+  - 🍴 Fork this repo!
 
 - **Option 2**
-    - 👯 Clone this repo to your local machine using `https://github.com/troIIsmile/node.git`
+  - 👯 Clone this repo to your local machine using `https://github.com/troIIsmile/node.git`
 
 ### Step 2
 
@@ -84,7 +85,7 @@ $ npm install
 
 ### Step 4
 
-- 🔃 Create a new pull request using <a href="https://github.com/troIIsmile/node/compare/" target="_blank">`https://github.com/troIIsmile/node/compare/`</a>.
+- 🔃 Create a new pull request using [`https://github.com/troIIsmile/djs/compare/`](https://github.com/troIIsmile/djs/compare/).
 
 ---
 
@@ -98,19 +99,12 @@ $ npm install
 
 ---
 
-## FAQ
-
-- **How do I (question)?**
-    - I have no idea.
-
----
-
 ## Support
 
 Reach out to me at one of the following places!
 
 - Website at <a href="https://nxtbot.ml" target="_blank">`nxtbot.ml`</a>
-- Twitter at <a href="https://twitter.com/InviteTroll" target="_blank">`@InviteTroll`</a>
+- Twitter at <a href="https://twitter.com/troIIsmile" target="_blank">`@troIIsmile`</a>
 
 ---
 
@@ -119,4 +113,4 @@ Reach out to me at one of the following places!
 [![License](https://img.shields.io/:license-isc-blue.svg?style=flat-square)]()
 
 - **[ISC license](https://opensource.org/licenses/ISC)**
-- Copyright 2020 © <a href="https://5079.ml" target="_blank">Jack</a>.
+- Copyright 2020 © [Jack](https://5079.ml).
