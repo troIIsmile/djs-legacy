@@ -4,11 +4,8 @@ import { Bot } from "../../utils/types"
 export const help = 'fuck up da code...'
 export const aliases = []
 function discordCodeBlock (str: string): {
-  start: number
-  end: number
   lang: string
   code: string
-  block: string
 }[] {
   var regex = /^(([ \t]*`{3,4})([^\n]*)([\s\S]+?)(^[ \t]*\2))/gm
   var blocks = []
@@ -16,11 +13,8 @@ function discordCodeBlock (str: string): {
 
   while ((match = regex.exec(str))) {
     blocks.push({
-      start: match.index,
-      end: match.index + match[1].length,
       lang: match[3],
       code: match[4],
-      block: match[1]
     })
   }
   return blocks
