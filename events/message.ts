@@ -31,6 +31,7 @@ export default async function (this: Bot, message: Message) {
 
     if (output) message.channel?.send(output)
   } catch (err) {
+    message.channel.stopTyping()
     message.channel?.send({
       embed: {
         author: {

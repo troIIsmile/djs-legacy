@@ -95,20 +95,15 @@ export async function run (this: Bot, message: Message, args: string[]) {
   if (!lang.trim()) return 'Language not found!'
 
   if (obfuscators[lang]) {
-    try {
-      message.channel.startTyping()
-      const newFile = await obfuscators[lang](code, this.user ? this.user.username : 'skid')
-      message.channel.stopTyping()
-      return {
-        content: 'Done!',
-        files: [{
-          name: 'output.txt',
-          attachment: Buffer.from(newFile)
-        }]
-      }
-    } catch (err) {
-      message.channel.stopTyping()
-      return 'Error: ' + err.toString()
+    message.channel.startTyping()
+    const newFile = await obfuscators[lang](code, this.user ? this.user.username : 'skid')
+    message.channel.stopTyping()
+    return {
+      content: 'Done!',
+      files: [{
+        name: 'output.txt',
+        attachment: Buffer.from(newFile)
+      }]
     }
   } else return 'Language not supported!'
 }
