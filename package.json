@@ -14,10 +14,10 @@
     "node": ">=12"
   },
   "links": {
-    "repository": "github:troIIsmile/node"
+    "repository": "github:troIIsmile/djs"
   },
-  "repository": "troIIsmile/node",
-  "bugs": "https://github.com/troIIsmile/node/issues/",
+  "repository": "troIIsmile/djs",
+  "bugs": "https://github.com/troIIsmile/djs/issues/",
   "author": "Jack5079",
   "license": "ISC",
   "dependencies": {
