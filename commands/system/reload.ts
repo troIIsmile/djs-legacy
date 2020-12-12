@@ -3,7 +3,7 @@ import { Bot } from '../../utils/types';
 import { MessageOptions } from 'discord.js';
 
 export async function run (this: Bot, message: Message, args: string[],): Promise<MessageOptions> {
-  if (message.author.id === process.env.OWNER) return { content: '❌ This command is for the bot owner only.' }; // if it's not the owner then stop
+  if (message.author.id !== process.env.OWNER) return { content: '❌ This command is for the bot owner only.' }; // if it's not the owner then stop
   const cmdname = (this.commands.get(args.join(' ')) ? args.join(' ') : (this.commands.get(this.aliases.get(args.join(' ')) || '') ? this.aliases.get(args.join(' ')) : '')) || '';
   if (!this.commands.get(cmdname)?.path) return { content: '❌ That command does not exist!' }; // if there's no path then stop
   // Remove the command's aliases
