@@ -71,8 +71,8 @@ export async function run (
             file.replace('.js', '').replace(/^.*[\\\/]/, ''), // Remove folders from the path and .js, leaving only the command name
             {
               help: 'A command without a description', // this will be overwritten by the real description if it is there
-              ...(await import(`../../${file}`)), // `run` and `desc`
-              path: require.resolve('../../' + file) // for stuff like reload
+              ...(await import(`${process.cwd()}/${file}`)), // `run` and `desc`
+              path: require.resolve(`${process.cwd()}/${file}`) // for stuff like reload
             }
           ]) // convert filenames to commands
       ) as [string, CommandObj][]
