@@ -1,3 +1,4 @@
+import fetch from "node-fetch"
 export const run = async () => ({
   files: [(await fetch('https://shibe.online/api/cats?urls=true&httpsUrls=true').then(res => res.json()))[0]]
 })

@@ -12,7 +12,7 @@ import {
   readdirSync
 } from 'fs'
 import { ServerResponse, createServer } from 'http'
-
+globalThis.fetch = require('node-fetch') // shit workaround in case i missed anything
 globalThis.Array.prototype.random = function () {
   return this[Math.floor(Math.random() * this.length)]
 }
