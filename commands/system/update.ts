@@ -14,10 +14,11 @@ export async function run (
   message: Message
 ): Promise<void> {
   if (message.author.id === process.env.OWNER) {
+    const brand = `${this.user?.username || 'trollsmile'} update`
     const msg = await message.channel.send({
       embed: {
         author: {
-          name: 'trollsmile update'
+          name: brand
         },
         title: 'Fetching from Git...'
       }
@@ -27,7 +28,7 @@ export async function run (
       msg.edit({
         embed: {
           author: {
-            name: 'trollsmile update'
+            name: brand
           },
           title: 'Resetting local changes...'
         }
@@ -36,7 +37,7 @@ export async function run (
       msg.edit({
         embed: {
           author: {
-            name: 'trollsmile update'
+            name: brand
           },
           title: 'Updating dependencies...'
         }
@@ -45,7 +46,7 @@ export async function run (
       msg.edit({
         embed: {
           author: {
-            name: 'trollsmile update'
+            name: brand
           },
           title: 'Compiling...'
         }
@@ -54,7 +55,7 @@ export async function run (
       msg.edit({
         embed: {
           author: {
-            name: 'trollsmile update'
+            name: brand
           },
           title: 'Reloading all commands...'
         }
@@ -94,7 +95,7 @@ export async function run (
         msg.edit({
           embed: {
             author: {
-              name: 'trollsmile update',
+              name: brand,
             },
             title: 'Error!',
             description: '```\n' + e + '\n```',
