@@ -83,7 +83,8 @@ const messages: Nested<string> = {
     require('./package.json').bugs,
     '700+ commits!',
     'NotSoBot is bad™',
-    'Updates commands without restarting!'
+    'Updates commands without restarting!',
+    'with 500 MB of RAM and storage'
   ],
   Songs: Object.entries({
     'Scatman John': ["Scatman's World"],
