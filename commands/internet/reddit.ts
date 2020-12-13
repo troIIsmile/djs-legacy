@@ -31,7 +31,6 @@ export async function run (message: Message, args: string[]) {
       }
     }
   }
-  message.channel.startTyping()
   const about = await fetch(
     `https://www.reddit.com/r/${encodeURI(args.join('_'))}/about.json`
   ).then(res => res.json())
@@ -78,7 +77,6 @@ export async function run (message: Message, args: string[]) {
       }
     }
   }
-  message.channel.stopTyping()
   return {
     embed: {
       title: 'Error!',
