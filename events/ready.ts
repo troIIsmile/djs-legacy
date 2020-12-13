@@ -14,7 +14,6 @@ async function activityChanger (this: Bot) {
 export default async function (this: Bot) {
   activityChanger.call(this)
   const files = await rreaddir('./commands/')
-  let count = 0
   const entries: [string, CommandObj][] = await Promise.all(
     files // get the file names of every command in the commands folder
       .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
@@ -30,8 +29,6 @@ export default async function (this: Bot) {
 
   entries.forEach(([name, command]) => {
     this.commands.set(name, command)
-    const dec = ++count / entries.length
-    console.log(`[${'█'.repeat(dec * 10).padEnd(10)}]`, 'Loading commands...', `(${count}/${entries.length} commands loaded)`)
     command.aliases?.forEach(alias => {
       this.aliases.set(alias, name)
     })
