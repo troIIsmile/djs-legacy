@@ -56,7 +56,7 @@ if (process.env.REPLIT_DB_URL) {
 readdirSync('./events/')
   .filter(name => name.endsWith('.js'))
   .map(name => name.replace('.js', ''))
-  .forEach(async (filename: any) => {
+  .forEach(async filename => {
     const ev = (await import('./events/' + filename)).default
     client.on(filename, context => {
       ev.call(client, context)
