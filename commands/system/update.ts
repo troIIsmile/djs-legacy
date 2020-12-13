@@ -49,7 +49,11 @@ export async function run (
           title: 'Compiling...'
         }
       })
-      await shell(platform() === 'win32' ? 'PowerShell -Command "rm commands/**/*.js"' : 'rm commands/**/*.js')
+      await shell(
+        platform() === 'win32'
+          ? 'PowerShell -Command "rm commands/**/*.js"'
+          : 'rm commands/**/*.js'
+      ) // remove previous files because what if i deleted a command
       await shell('npx tsc')
       msg.edit({
         embed: {
