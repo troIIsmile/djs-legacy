@@ -46,8 +46,7 @@ if (process.env.REPLIT_DB_URL) {
       'Content-Type': 'text/html'
     })
     res.write(
-      `<meta http-equiv="refresh" content="0;url=${require('./package.json').homepage
-      }">`
+      `<meta http-equiv="refresh" content="0;url=${require('./package.json').homepage}">`
     )
     res.end()
   }).listen(8080)
