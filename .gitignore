@@ -12,7 +12,4 @@ jspm_packages/
 *.js
 *.tsbuildinfo
 
-# data
-prefixes.json
-
 shrinkwrap.yaml
