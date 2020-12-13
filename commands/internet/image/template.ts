@@ -35,4 +35,4 @@ export async function run (): Promise<MessageOptions> {
   }
 }
 export const help = 'Get a random meme template from imgflip.'
-export const aliases = []
+export const aliases = ['memetemplate']
