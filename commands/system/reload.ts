@@ -1,7 +1,7 @@
 import { Message } from 'discord.js'
-import { Bot } from 'utils/types'
+import { Bot } from '../../utils/types'
 import { MessageOptions } from 'discord.js'
-import { getCommandName } from "utils/parse"
+import { getCommandName } from "../../utils/parse"
 
 export async function run (this: Bot, message: Message, args: string[],): Promise<MessageOptions | string> {
   if (message.author.id !== process.env.OWNER) return '❌ This command is for the bot owner only.'

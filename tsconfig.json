@@ -10,8 +10,7 @@
     "newLine": "lf",
     "alwaysStrict": true,
     "inlineSourceMap": true,
-    "experimentalDecorators": true,
-    "baseUrl": "."
+    "experimentalDecorators": true
   },
   "exclude": [
     "node_modules",
