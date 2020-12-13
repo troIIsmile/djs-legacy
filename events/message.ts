@@ -5,14 +5,14 @@ import { Bot } from '../utils/types'
 // Command Handler (This used to be jackbot-discord!)
 export default async function (this: Bot, message: Message) {
   // When a message is sent
-  if (message.author?.bot) return
+  if (message.author.bot) return
 
   const prefix = '-' // bot prefix
-  const content = message.content || ''
+  
   const name = [...this.commands.keys(), ...this.aliases.keys()].find(
     cmdname =>
-      content.startsWith(`${prefix}${cmdname} `) || // matches any command with a space after
-      content === `${prefix}${cmdname}` // matches any command without arguments
+      message.content.startsWith(`${prefix}${cmdname} `) || // matches any command with a space after
+      message.content === `${prefix}${cmdname}` // matches any command without arguments
   ) || ''
 
   const command = getCommand(this, name)?.run || (() => { })
@@ -20,9 +20,9 @@ export default async function (this: Bot, message: Message) {
   try {
     const output = await command.call(
       this,
-      message as Message, // the message
+      message,
       // The arguments
-      content
+      message.content
         .substring(prefix.length + 1 + name.length) // only the part after the command
         .split(' '), // split with spaces
     )
@@ -30,7 +30,7 @@ export default async function (this: Bot, message: Message) {
     if (output) message.channel?.send(output)
   } catch (err) {
     message.channel.stopTyping()
-    message.channel?.send({
+    message.channel.send({
       embed: {
         author: {
           name: `${this.user?.username} ran into an error while running your command!`,
