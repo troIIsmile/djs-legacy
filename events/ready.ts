@@ -26,8 +26,9 @@ export default async function (this: Bot) {
           path: require.resolve(`${process.cwd()}/${file}`)
         }
       ]) // convert filenames to commands
-  ) as [string, CommandObj][]
-  entries.forEach(([name, command]: [string, CommandObj]) => {
+  )
+
+  entries.forEach(([name, command]) => {
     this.commands.set(name, command)
     const dec = ++count / entries.length
     console.log(`[${'█'.repeat(dec * 10).padEnd(10)}]`, 'Loading commands...', `(${count}/${entries.length} commands loaded)`)
