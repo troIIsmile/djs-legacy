@@ -1,23 +1,21 @@
 import { Message } from 'discord.js'
+import { getCommand } from "../utils/parse"
 import { Bot } from '../utils/types'
 
 // Command Handler (This used to be jackbot-discord!)
 export default async function (this: Bot, message: Message) {
   // When a message is sent
   if (message.author?.bot) return
-  // no bots allowed
+
   const prefix = '-' // bot prefix
   const content = message.content || ''
   const name = [...this.commands.keys(), ...this.aliases.keys()].find(
     cmdname =>
       content.startsWith(`${prefix}${cmdname} `) || // matches any command with a space after
       content === `${prefix}${cmdname}` // matches any command without arguments
-  )
-  if (!name) return
-  // Run the command!
-  const command = this.commands.get(name)?.run // The command if it found it
-    || this.commands.get(this.aliases.get(name) || '')?.run // Aliases
-    || (() => { }) // Do nothing otherwise
+  ) || ''
+
+  const command = getCommand(this, name)?.run || (() => { })
 
   try {
     const output = await command.call(
