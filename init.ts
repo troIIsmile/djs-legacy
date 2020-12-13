@@ -6,6 +6,7 @@ import {
   readdirSync
 } from 'fs'
 import { ServerResponse, createServer } from 'http'
+import {homepage} from './package.json'
 globalThis.fetch = require('node-fetch') // shit workaround in case i missed anything
 globalThis.Array.prototype.random = function () {
   return this[Math.floor(Math.random() * this.length)]
@@ -39,7 +40,7 @@ if (process.env.REPLIT_DB_URL) {
       'Content-Type': 'text/html'
     })
     res.write(
-      `<meta http-equiv="refresh" content="0;url=${require('./package.json').homepage}">`
+      `<meta http-equiv="refresh" content="0;url=${homepage}">`
     )
     res.end()
   }).listen(8080)

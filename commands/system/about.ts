@@ -1,14 +1,12 @@
-import { MessageOptions, version } from 'discord.js'
+import { MessageOptions, version as discordVersion } from 'discord.js'
 import { Bot } from '../../utils/types'
 import fetch from 'node-fetch'
-
+import {homepage as url,version} from '../../package.json'
 export async function run (this: Bot): Promise<MessageOptions> {
   const timestamp = process.uptime()
 
   // hours
   const hours = Math.floor(timestamp / 60 / 60)
-
-  delete require.cache[require.resolve('../../package.json')] // Always get the latest package.json
 
   const owner = this.users.cache.get(process.env.OWNER!) || await this.users.fetch(process.env.OWNER!)
 
@@ -23,9 +21,9 @@ export async function run (this: Bot): Promise<MessageOptions> {
   return {
     embed: {
       author: {
+        url,
         name: `About ${this.user.username}`,
-        iconURL: this.user?.displayAvatarURL(),
-        url: require('../../package.json').homepage
+        iconURL: this.user?.displayAvatarURL()
       },
       title: 'Invite the bot',
       url: (await this.generateInvite(['ADMINISTRATOR'])),
@@ -50,11 +48,11 @@ export async function run (this: Bot): Promise<MessageOptions> {
         inline: true
       }, {
         name: 'ℹ Bot Version',
-        value: require('../../package.json').version,
+        value: version,
         inline: true
       }, {
         name: '📚 Discord.js Version',
-        value: version, inline: true
+        value: discordVersion, inline: true
       }, {
         name: '⏰ Uptime',
         value: [hours, Math.floor(timestamp / 60) - (hours * 60), Math.floor(timestamp % 60)].join(':'),

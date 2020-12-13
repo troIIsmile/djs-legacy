@@ -1,6 +1,7 @@
 import { Message } from 'discord.js'
 import { getCommand } from "../utils/parse"
 import { Bot } from '../utils/types'
+import {bugs} from '../package.json'
 
 // Command Handler (This used to be jackbot-discord!)
 export default async function (this: Bot, message: Message) {
@@ -39,7 +40,7 @@ export default async function (this: Bot, message: Message) {
         title: err.toString(),
         color: 'RED',
         footer: {
-          text: `Report this bug @ ${require('../package.json').bugs}`
+          text: `Report this bug @ ${bugs}`
         }
       }
     })
