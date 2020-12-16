@@ -1,7 +1,7 @@
 import { MessageOptions, version as discordVersion } from 'discord.js'
 import { Bot } from '../../utils/types'
 import fetch from 'node-fetch'
-import {homepage as url,version} from '../../package.json'
+import { homepage as url, version } from '../../package.json'
 export async function run (this: Bot): Promise<MessageOptions> {
   const timestamp = process.uptime()
 
@@ -42,14 +42,13 @@ export async function run (this: Bot): Promise<MessageOptions> {
         name: '💬 Server Count',
         value: this.guilds.cache.size,
         inline: true
-        },{
+      }, {
         name: '🧑🏻 User Count',
         value: this.users.cache.size,
         inline: true
       }, {
         name: 'ℹ Bot Version',
-        value: version,
-        inline: true
+        value: version, inline: true
       }, {
         name: '📚 Discord.js Version',
         value: discordVersion, inline: true
