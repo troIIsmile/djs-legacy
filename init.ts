@@ -39,7 +39,6 @@ const bot = new class extends Trollsmile<Message> {
       }
     })
     this.on('output', ([out, message]) => {
-      console.log('output!')
       message.channel.send(out)
     })
 
