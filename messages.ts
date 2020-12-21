@@ -84,6 +84,8 @@ const messages: Nested<string> = {
     '700+ commits!',
     'NotSoBot is bad™',
     'Updates commands without restarting!',
+    'Minecraft', // trollsmile-minecraft
+    'Roblox', // trollsmile-roblox
     'with 500 MB of RAM and storage'
   ],
   Songs: Object.entries({
@@ -117,8 +119,6 @@ const messages: Nested<string> = {
     'Desert Bus',
     'Shrek Extra Large', // Somehow a real game.
     'Super Bernie World', // Yes this is too
-    'Roblox', // I know this is a game engine
-    'Minecraft',
     'Skyrim',
     'SuperTuxKart',
     'Sonic 06',
