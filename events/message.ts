@@ -1,5 +1,5 @@
 import { Message } from 'discord.js'
-import { commandFromMessage, getCommand } from "../utils/parse"
+import { commandFromMessage, getargs, getCommand } from "../utils/parse"
 import { Bot } from '../utils/types'
 import { bugs } from '../package.json'
 
@@ -11,7 +11,7 @@ export default async function (this: Bot, message: Message) {
   const prefix = '-' // bot prefix
 
   const name = commandFromMessage(this, message.content, prefix)
-  
+
   if (!name) return
 
   const command = getCommand(this, name)?.run || (() => { })
@@ -20,10 +20,7 @@ export default async function (this: Bot, message: Message) {
     const output = await command.call(
       this,
       message,
-      // The arguments
-      message.content
-        .substring(prefix.length + 1 + name.length) // only the part after the command
-        .split(' '), // split with spaces
+      getargs(this, message.content, prefix)
     )
 
     if (output) message.channel?.send(output)

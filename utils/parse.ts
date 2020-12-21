@@ -16,3 +16,11 @@ export function commandFromMessage (bot: Bot, content: string, prefix: string): 
       content === `${prefix}${cmdname}` // matches any command without arguments
   )
 }
+
+export function getargs (bot: Bot, content: string, prefix: string) {
+  const name = commandFromMessage(bot, content, prefix)
+  if (!name) return []
+  return content
+    .substring(prefix.length + 1 + name.length) // only the part after the command
+    .split(' ') // split with spaces
+}
