@@ -1,7 +1,7 @@
 import { Message } from 'discord.js'
-import { getCommand } from "../utils/parse"
+import { commandFromMessage, getCommand } from "../utils/parse"
 import { Bot } from '../utils/types'
-import {bugs} from '../package.json'
+import { bugs } from '../package.json'
 
 // Command Handler (This used to be jackbot-discord!)
 export default async function (this: Bot, message: Message) {
@@ -9,12 +9,10 @@ export default async function (this: Bot, message: Message) {
   if (message.author.bot) return
 
   const prefix = '-' // bot prefix
+
+  const name = commandFromMessage(this, message.content, prefix)
   
-  const name = [...this.commands.keys(), ...this.aliases.keys()].find(
-    cmdname =>
-      message.content.startsWith(`${prefix}${cmdname} `) || // matches any command with a space after
-      message.content === `${prefix}${cmdname}` // matches any command without arguments
-  ) || ''
+  if (!name) return
 
   const command = getCommand(this, name)?.run || (() => { })
 
