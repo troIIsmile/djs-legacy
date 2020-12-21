@@ -6,13 +6,13 @@ export async function run (this: Bot, message: Message): Promise<string | never>
     await message.channel.send({
       embed: {
         author: {
-          name: this.user?.username
+          name: this.client.user?.username
         },
         description: 'Shutting down...',
         color: 'RED'
       }
     })
-    this.destroy()
+    this.client.destroy()
     process.exit(0)
   } else return 'you are not the bot owner'
 }

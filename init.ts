@@ -1,13 +1,15 @@
-import { Client, Collection, Intents } from 'discord.js'
-import { Bot } from './utils/types'
+import { Client, Collection, Intents, Message } from 'discord.js'
 import {
   existsSync as exists,
   readFileSync as readFile,
   readdirSync
 } from 'fs'
 import { ServerResponse, createServer } from 'http'
-import {homepage} from './package.json'
+import { homepage, bugs } from './package.json'
 import { join } from "path"
+import Trollsmile from 'trollsmile-core'
+import { CommandObj } from "./utils/types"
+
 globalThis.fetch = require('node-fetch') // shit workaround in case i missed anything
 globalThis.Array.prototype.random = function () {
   return this[Math.floor(Math.random() * this.length)]
@@ -25,14 +27,43 @@ if (exists('./.env')) {
     ))
 }
 
-const client = new Client({
-  ws: {
-    intents: [Intents.NON_PRIVILEGED]
+const bot = new class extends Trollsmile<Message> {
+  filter = (msg: Message) => !msg.author.bot
+  commands = new Collection() as Map<any, any>
+  client: Client
+  constructor(prefix: string) {
+    super(prefix)
+    this.client = new Client({
+      ws: {
+        intents: [Intents.NON_PRIVILEGED]
+      }
+    })
+    this.on('output', ([out, message]) => {
+      console.log('output!')
+      message.channel.send(out)
+    })
+    this.client.on('message', detail => {
+      this.emit('message', detail)
+    })
+    this.client.login(process.env.TOKEN)
+    this.on('error', ([err, message]) => {
+      message.channel.stopTyping()
+      message.channel.send({
+        embed: {
+          author: {
+            name: `${this.client.user?.username} ran into an error while running your command!`,
+            // iconURL: this.user?.avatarURL()
+          },
+          title: err.toString(),
+          color: 'RED',
+          footer: {
+            text: `Report this bug @ ${bugs}`
+          }
+        }
+      })
+    })
   }
-}) as Bot // Bot is Client but with commands & aliases
-// time to define them:
-client.commands = new Collection // Init commands
-client.aliases = new Collection // Init aliases
+}('-')
 
 // replit redirect
 if (process.env.REPLIT_DB_URL) {
@@ -52,13 +83,10 @@ readdirSync('./events/')
   .filter(name => name.endsWith('.js'))
   .map(name => name.replace('.js', ''))
   .forEach(async filename => {
-    const ev = (await import(join(process.cwd(),'/events/',filename))).default
-    client.on(filename, context => {
-      ev.call(client, context)
+    const ev = (await import(join(process.cwd(), '/events/', filename))).default
+    bot.client.on(filename, context => {
+      ev.call(bot, context)
     })
   })
 
-// Login to Discord
-client.login(process.env.TOKEN)
-
-export default client
+export default bot

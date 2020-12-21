@@ -17,12 +17,12 @@ export async function run (
 ): Promise<void> {
   if (message.author.id === process.env.OWNER) {
     const start = new Date
-    const brand = `${this.user?.username || 'trollsmile'} update`
+    const brand = `${this.client.user?.username || 'trollsmile'} update`
     const msg = await message.channel.send({
       embed: {
         author: {
           name: brand,
-          icon_url: this.user?.avatarURL() || undefined
+          icon_url: this.client.user?.avatarURL() || undefined
         },
         title: 'Downloading latest trollsmile...'
       }
@@ -34,7 +34,7 @@ export async function run (
         embed: {
           author: {
             name: brand,
-            icon_url: this.user?.avatarURL() || undefined
+            icon_url: this.client.user?.avatarURL() || undefined
           },
           title: 'Updating dependencies...'
         }
@@ -44,7 +44,7 @@ export async function run (
         embed: {
           author: {
             name: brand,
-            icon_url: this.user?.avatarURL() || undefined
+            icon_url: this.client.user?.avatarURL() || undefined
           },
           title: 'Compiling...'
         }
@@ -59,7 +59,7 @@ export async function run (
         embed: {
           author: {
             name: brand,
-            icon_url: this.user?.avatarURL() || undefined
+            icon_url: this.client.user?.avatarURL() || undefined
           },
           title: 'Reloading all commands...'
         }
@@ -92,7 +92,7 @@ export async function run (
         embed: {
           author: {
             name: brand,
-            icon_url: this.user?.avatarURL() || undefined
+            icon_url: this.client.user?.avatarURL() || undefined
           },
           color: 'GREEN',
           title: `Update complete! Took ${(new Date().getTime() - start.getTime())}ms`,

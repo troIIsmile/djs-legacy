@@ -27,7 +27,7 @@ export function run (this: Bot, message: Message, args: string[]): MessageOption
   const pages = chunk(commands, 20)
   return pages[page - 1] ? {
     embed: {
-      title: `${this.user?.username || ''} Commands`,
+      title: `${this.client.user?.username || ''} Commands`,
       description: pages[page - 1].map(([name, description]: [string, string]) => `**${name}** - ${description}`).join('\n'),
       footer: {
         iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/VisualEditor_-_Icon_-_Book.svg/600px-VisualEditor_-_Icon_-_Book.svg.png',
@@ -36,7 +36,7 @@ export function run (this: Bot, message: Message, args: string[]): MessageOption
     }
   } : {
       embed: {
-        title: `${this.user?.username || ''} Commands`,
+        title: `${this.client.user?.username || ''} Commands`,
         description: 'That page does not exist.'
       }
     }

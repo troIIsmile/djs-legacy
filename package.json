@@ -1,6 +1,6 @@
 {
   "name": "trollsmile",
-  "version": "10.1.0",
+  "version": "11.0.0",
   "description": "Yet another Discord bot. Written in TypeScript.",
   "private": true,
   "main": "init.js",
@@ -28,6 +28,7 @@
     "nintendo-switch-eshop": "^3.0.2",
     "node": "^14.15.1",
     "node-fetch": "^2.6.1",
+    "trollsmile-core": "^1.0.0",
     "tslib": "^2.0.1",
     "ytdl-core": "^4.1.4"
   },
