@@ -42,9 +42,17 @@ const bot = new class extends Trollsmile<Message> {
       console.log('output!')
       message.channel.send(out)
     })
-    this.client.on('message', detail => {
-      this.emit('message', detail)
-    })
+
+    // Load in events
+    readdirSync('./events/')
+      .filter(name => name.endsWith('.js'))
+      .map(name => name.replace('.js', ''))
+      .forEach(async filename => {
+        const ev = (await import(join(process.cwd(), '/events/', filename))).default
+        this.client.on(filename, context => {
+          ev.call(this, context)
+        })
+      })
     this.client.login(process.env.TOKEN)
     this.on('error', ([err, message]) => {
       message.channel.stopTyping()
@@ -78,15 +86,5 @@ if (process.env.REPLIT_DB_URL) {
   }).listen(8080)
 }
 
-// Load in events
-readdirSync('./events/')
-  .filter(name => name.endsWith('.js'))
-  .map(name => name.replace('.js', ''))
-  .forEach(async filename => {
-    const ev = (await import(join(process.cwd(), '/events/', filename))).default
-    bot.client.on(filename, context => {
-      ev.call(bot, context)
-    })
-  })
 
 export default bot

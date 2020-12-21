@@ -16,7 +16,8 @@ interface CommandObj {
 type Bot = {
   client: Client
   commands: Collection<string, CommandObj>
-  aliases: Map<string,string>
+  aliases: Map<string, string>
+  emit (type: string, data: any): void
 }
 
 export {
