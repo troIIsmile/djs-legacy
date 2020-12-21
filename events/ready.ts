@@ -2,7 +2,7 @@ import { Bot, CommandObj } from '../utils/types'
 // Some "Playing" messages from esmBot
 import { all } from '../messages'
 import { rreaddir } from '../utils/rreaddir'
-import { basename } from "path"
+import { basename, join } from "path"
 
 async function activityChanger (this: Bot) {
   // activityChanger from esmBot, also known as "the gamer code"
@@ -21,8 +21,8 @@ export default async function (this: Bot) {
         basename(file, '.js'), // Remove folders from the path and .js, leaving only the command name
         {
           help: 'A command without a description', // this will be overwritten by the real description if it is there
-          ...(await import(`${process.cwd()}/${file}`)),
-          path: require.resolve(`${process.cwd()}/${file}`)
+          ...(await import(join(process.cwd(),file))),
+          path: require.resolve(join(process.cwd(),file))
         }
       ]) // convert filenames to commands
   )

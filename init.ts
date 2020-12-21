@@ -7,6 +7,7 @@ import {
 } from 'fs'
 import { ServerResponse, createServer } from 'http'
 import {homepage} from './package.json'
+import { join } from "path"
 globalThis.fetch = require('node-fetch') // shit workaround in case i missed anything
 globalThis.Array.prototype.random = function () {
   return this[Math.floor(Math.random() * this.length)]
@@ -51,7 +52,7 @@ readdirSync('./events/')
   .filter(name => name.endsWith('.js'))
   .map(name => name.replace('.js', ''))
   .forEach(async filename => {
-    const ev = (await import('./events/' + filename)).default
+    const ev = (await import(join(process.cwd(),'/events/',filename))).default
     client.on(filename, context => {
       ev.call(client, context)
     })
