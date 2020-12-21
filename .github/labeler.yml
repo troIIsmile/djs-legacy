@@ -29,6 +29,5 @@ docs:
   - commands/**/*.md
   - events/**/*.md
   - utils/**/*.md
-  - *.md
   - README.md
   - example.env
