@@ -1,6 +1,6 @@
 import { Bot } from '../utils/types'
 export function run (this: Bot) {
-  return this.guilds.cache
+  return this.client.guilds.cache
     .map(guild => guild.emojis.cache.array())
     .flat()
     .filter(Boolean).map(emoji => emoji.toString())

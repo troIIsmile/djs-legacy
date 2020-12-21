@@ -6,7 +6,7 @@ import { basename, join } from "path"
 
 async function activityChanger (this: Bot) {
   // activityChanger from esmBot, also known as "the gamer code"
-  this.user?.setActivity(all.random())
+  this.client.user?.setActivity(all.random())
   setTimeout(() => activityChanger.call(this), 900000)
 }
 

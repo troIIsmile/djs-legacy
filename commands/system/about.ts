@@ -8,9 +8,9 @@ export async function run (this: Bot): Promise<MessageOptions> {
   // hours
   const hours = Math.floor(timestamp / 60 / 60)
 
-  const owner = this.users.cache.get(process.env.OWNER!) || await this.users.fetch(process.env.OWNER!)
+  const owner = this.client.users.cache.get(process.env.OWNER!) || await this.client.users.fetch(process.env.OWNER!)
 
-  if (!(this.user && owner)) return {
+  if (!(this.client.user && owner)) return {
     content: 'oops the owner or the bot user does not exist some how'
   }
 
@@ -22,11 +22,9 @@ export async function run (this: Bot): Promise<MessageOptions> {
     embed: {
       author: {
         url,
-        name: `About ${this.user.username}`,
-        iconURL: this.user?.displayAvatarURL()
+        name: `About ${this.client.user.username}`,
+        iconURL: this.client.user?.displayAvatarURL()
       },
-      title: 'Invite the bot',
-      url: (await this.generateInvite(['ADMINISTRATOR'])),
       color: 0x454545,
       footer: {
         text: `Owned by ${owner.tag}`,
@@ -40,11 +38,11 @@ export async function run (this: Bot): Promise<MessageOptions> {
         inline: false
       }, {
         name: '💬 Server Count',
-        value: this.guilds.cache.size,
+        value: this.client.guilds.cache.size,
         inline: true
       }, {
         name: '🧑🏻 User Count',
-        value: this.users.cache.size,
+        value: this.client.users.cache.size,
         inline: true
       }, {
         name: 'ℹ Bot Version',

@@ -90,13 +90,13 @@ const obfuscators: { [key: string]: (str: string, brand: string) => Promise<stri
   },
   get py () { return this.python },
 }
-export async function run (this: Bot, message: Message, args: string[]) {
+export async function run ({client}: Bot, message: Message, args: string[]) {
   const [{ lang = '', code = '' } = { lang: '' }] = discordCodeBlock(args.join(' '))
   if (!lang.trim()) return 'Language not found!'
 
   if (obfuscators[lang]) {
     message.channel.startTyping()
-    const newFile = await obfuscators[lang](code, this.user ? this.user.username : 'skid')
+    const newFile = await obfuscators[lang](code, client.user ? client.user.username : 'skid')
     message.channel.stopTyping()
     return {
       content: 'Done!',
