@@ -2,9 +2,9 @@ import { Message } from 'discord.js'
 import { Bot } from '../../utils/types'
 import { MessageOptions } from 'discord.js'
 
-export async function run (this: Bot, message: Message, args: string[],): Promise<MessageOptions | string> {
+export async function run (this: Bot, message: Message, args: string[]): Promise<MessageOptions | string> {
   if (message.author.id !== process.env.OWNER) return '❌ This command is for the bot owner only.'
-  const cmdname = this.commands.has(args.join(' ')) ? args.join(' ') : this.aliases.get(args.join(' '))
+  const cmdname = this.getCommandName(args.join(' '))
   if (!cmdname) return '❌ That command does not exist!' 
   // Remove cache and aliases
   const path = this.commands.get(cmdname)?.path! // Jesus fucking christ TypeScript I just need the path

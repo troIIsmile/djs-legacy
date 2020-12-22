@@ -12,12 +12,10 @@ interface CommandObj {
 //   commands: Collection<string, CommandObj>
 //   aliases: Collection<string, string>
 // }
-
-type Bot = {
+import Trollsmile from 'trollsmile-core'
+type Bot = Trollsmile<Message, CommandObj> & {
   client: Client
-  commands: Collection<string, CommandObj>
-  aliases: Map<string, string>
-  emit (type: string, data: any): void
+  getCommandName (cmdname: string): string | undefined;
 }
 
 export {

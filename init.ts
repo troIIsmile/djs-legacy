@@ -8,6 +8,7 @@ import { ServerResponse, createServer } from 'http'
 import { homepage, bugs } from './package.json'
 import { join } from "path"
 import Trollsmile from 'trollsmile-core'
+import { CommandObj } from "./utils/types"
 
 globalThis.fetch = require('node-fetch') // shit workaround in case i missed anything
 globalThis.Array.prototype.random = function () {
@@ -26,9 +27,10 @@ if (exists('./.env')) {
     ))
 }
 
-const bot = new class extends Trollsmile<Message> {
+const bot = new class extends Trollsmile<Message, CommandObj> {
   filter = (msg: Message) => !msg.author.bot
-  commands = new Collection() as Map<any, any>
+  commands = new Collection() as Map<string, CommandObj>
+  public getCommandName = super.getCommandName
   client: Client
   constructor(prefix: string) {
     super(prefix)
