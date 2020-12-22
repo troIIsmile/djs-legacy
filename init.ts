@@ -8,7 +8,6 @@ import { ServerResponse, createServer } from 'http'
 import { homepage, bugs } from './package.json'
 import { join } from "path"
 import Trollsmile from 'trollsmile-core'
-import { CommandObj } from "./utils/types"
 
 globalThis.fetch = require('node-fetch') // shit workaround in case i missed anything
 globalThis.Array.prototype.random = function () {
