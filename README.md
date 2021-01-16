@@ -33,7 +33,6 @@ cp example.env .env
 # fill out the .env file 
 # Replace the text after `TOKEN=` with your bot's token
 # Replace the text after `OWNER=` with your Discord ID.
-# You can also add `SUPPORT=` if you have a support server. You don't need to, however.
 sudo apt install ffmpeg
 npm install
 ```

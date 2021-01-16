@@ -59,13 +59,10 @@ export async function run (this: Bot): Promise<MessageOptions> {
         value: process.platform,
         inline: true
       }, {
-        name: '🙋🏻‍♂️ Support',
-        value: process.env.SUPPORT
-      }, {
         name: '>_ Command Count',
         value: this.commands.size,
         inline: true
-      }].filter(field => field.value) // Remove any fields without values (like support if it isn't in env)
+      }]
     }
   }
 }
