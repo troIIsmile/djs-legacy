@@ -2,7 +2,7 @@
 
 > Yet another Discord bot.
 
-![Node.js CI](https://github.com/troIIsmile/node/workflows/Node.js%20CI/badge.svg) [![License](https://img.shields.io/:license-isc-blue.svg?style=flat-square)](https://opensource.org/licenses/ISC)
+![Node.js CI](https://github.com/troIIsmile/djs/workflows/djs.js%20CI/badge.svg) [![License](https://img.shields.io/:license-isc-blue.svg?style=flat-square)](https://opensource.org/licenses/ISC)
 
 <!-- [![INSERT YOUR GRAPHIC HERE](https://i.imgur.com/dt8AUb6.png)]() -->
 
@@ -24,18 +24,18 @@
 
 ### Clone
 
-- Clone this repo to your local machine using `https://github.com/troIIsmile/node`
+- Clone this repo to your local machine using `https://github.com/troIIsmile/djs`
 
 ### Setup
 
 ```shell
-$ cp example.env .env
-$ # fill out the .env file 
-$ # Replace the text after `TOKEN=` with your bot's token
-$ # Replace the text after `OWNER=` with your Discord ID.
-$ # You can also add `SUPPORT=` if you have a support server. You don't need to, however.
-$ sudo apt install ffmpeg
-$ npm install
+cp example.env .env
+# fill out the .env file 
+# Replace the text after `TOKEN=` with your bot's token
+# Replace the text after `OWNER=` with your Discord ID.
+# You can also add `SUPPORT=` if you have a support server. You don't need to, however.
+sudo apt install ffmpeg
+npm install
 ```
 
 ---
@@ -45,6 +45,7 @@ $ npm install
 - A download command
 - Recursive command folder
 - Works in Repl.it
+- Update command that doesn't restart the bot
 
 ## Usage
 
@@ -60,7 +61,7 @@ $ npm install
   - 🍴 Fork this repo!
 
 - **Option 2**
-  - 👯 Clone this repo to your local machine using `https://github.com/troIIsmile/node.git`
+  - 👯 Clone this repo to your local machine using `https://github.com/troIIsmile/djs.git`
 
 ### Step 2
 
@@ -79,23 +80,13 @@ $ npm install
       - argument 1 is the Discord.js message
       - argument 2 is the arguments (`string[]`)
 - If you are using Visual Studio Code you should be able to create a command in a new TypeScript file by typing in "command" and pressing Tab.
-- The command handler is in `events/message.ts`
+- The command handler is in `trollsmile-core`: <https://github.com/troiismile/core>
 - The command loader is in `events/ready.ts`
 - The entry point is `init.ts`
 
 ### Step 4
 
 - 🔃 Create a new pull request using [`https://github.com/troIIsmile/djs/compare/`](https://github.com/troIIsmile/djs/compare/).
-
----
-
-## Team
-
-
-| <a href="https://5079.ml" target="_blank">**Jack5079**</a> | <a href="https://5079.ml" target="_blank">**Jack5079**</a> | <a href="https://5079.ml" target="_blank">**Jack5079**</a> |
-| :---: |:---:| :---:|
-| [![Jack5079](https://avatars1.githubusercontent.com/u/29169102?v=3&s=200)](https://5079.ml)    | [![Jack5079](https://avatars1.githubusercontent.com/u/29169102?v=3&s=200)](https://5079.ml) | [![Jack5079](https://avatars1.githubusercontent.com/u/29169102?v=3&s=200)](https://5079.ml)  |
-| <a href="https://github.com/Jack5079" target="_blank">`github.com/Jack5079`</a> | <a href="https://github.com/Jack5079" target="_blank">`github.com/Jack5079`</a> | <a href="https://github.com/Jack5079" target="_blank">`github.com/Jack5079`</a> |
 
 ---
 
@@ -110,7 +101,7 @@ Reach out to me at one of the following places!
 
 ## License
 
-[![License](https://img.shields.io/:license-isc-blue.svg?style=flat-square)]()
+[![License](https://img.shields.io/:license-isc-blue.svg?style=flat-square)](LICENSE)
 
 - **[ISC license](https://opensource.org/licenses/ISC)**
 - Copyright 2020 © [Jack](https://5079.ml).
