@@ -27,7 +27,7 @@ if (exists('./.env')) {
     ))
 }
 
-const bot = new class extends Trollsmile<Message, CommandObj> {
+class Bot extends Trollsmile<Message, CommandObj> {
   filter = (msg: Message) => !msg.author.bot
   commands = new Collection<string, CommandObj>()
   client: Client
@@ -70,8 +70,10 @@ const bot = new class extends Trollsmile<Message, CommandObj> {
       })
     })
   }
-}('-')
-
+}
+if (require.main === module) {
+  new Bot('-')
+}
 // replit redirect
 if (process.env.REPLIT_DB_URL) {
   createServer((_, res: ServerResponse) => {
@@ -86,4 +88,4 @@ if (process.env.REPLIT_DB_URL) {
 }
 
 
-export default bot
+export default Bot

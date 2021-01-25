@@ -1,5 +1,5 @@
-import { Client, Message, TextChannel } from 'discord.js'
-import Trollsmile from 'trollsmile-core'
+import { Message, TextChannel } from 'discord.js'
+import Bot from '..'
 
 type Return = Parameters<TextChannel['send']>[0]
 
@@ -8,11 +8,6 @@ interface CommandObj {
   help: string,
   path: string,
   aliases?: string[]
-}
-
-
-type Bot = Trollsmile<Message, CommandObj> & {
-  client: Client
 }
 
 
