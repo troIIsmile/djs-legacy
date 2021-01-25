@@ -16,7 +16,7 @@ globalThis.Array.prototype.random = function () {
 }
 
 // dotenv support
-if (exists('./.env')) {
+if (require.main === module && exists('./.env') ) {
   Object.assign(process.env,
     Object.fromEntries(
       // Overwrite the env with the .env file
@@ -31,7 +31,7 @@ class Bot extends Trollsmile<Message, CommandObj> {
   filter = (msg: Message) => !msg.author.bot
   commands = new Collection<string, CommandObj>()
   client: Client
-  constructor(prefix: string) {
+  constructor(prefix: string, token = process.env.TOKEN) {
     super(prefix)
     this.client = new Client({
       ws: {
@@ -52,7 +52,7 @@ class Bot extends Trollsmile<Message, CommandObj> {
           ev.call(this, context)
         })
       })
-    this.client.login(process.env.TOKEN)
+    this.client.login(token)
     this.on('error', ([err, message]) => {
       message.channel.stopTyping()
       message.channel.send({
