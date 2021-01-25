@@ -5,7 +5,7 @@ import { basename } from "path"
 import { rreaddir } from "../../utils/rreaddir"
 import { Bot, CommandObj } from '../../utils/types'
 
-const shell = (str: string) => new Promise((resolve, reject) => {
+const shell = (str: string) => new Promise<string>((resolve, reject) => {
   exec(str, (err, stdout, stderr) => {
     if (err) reject(stderr)
     resolve(stdout)
