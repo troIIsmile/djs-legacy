@@ -13,7 +13,6 @@ interface CommandObj {
 
 type Bot = Trollsmile<Message, CommandObj> & {
   client: Client
-  getCommandName (cmdname: string): string | undefined
 }
 
 
