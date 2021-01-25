@@ -81,15 +81,15 @@ export async function run (
           description: 'Restart the bot to reload events and messages.'
         }
       })
-    } catch (e) {
-      if (typeof e === 'string') {
+    } catch (err) {
+      if (typeof err === 'string') {
         msg.edit({
           embed: {
             author: {
               name: brand,
             },
             title: 'Error!',
-            description: '```\n' + e + '\n```',
+            description: '```\n' + err + '\n```',
             color: 'RED'
           }
         })
