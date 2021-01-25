@@ -1,6 +1,6 @@
-import { Message, TextChannel } from 'discord.js'
-import type Trollsmile from '..'
-type Bot = typeof Trollsmile
+import { Client, Message, TextChannel } from 'discord.js'
+import Trollsmile from 'trollsmile-core'
+
 type Return = Parameters<TextChannel['send']>[0]
 
 interface CommandObj {
@@ -10,10 +10,12 @@ interface CommandObj {
   aliases?: string[]
 }
 
-// interface Bot extends Client {
-//   commands: Collection<string, CommandObj>
-//   aliases: Collection<string, string>
-// }
+
+type Bot = Trollsmile<Message, CommandObj> & {
+  client: Client
+  getCommandName (cmdname: string): string | undefined
+}
+
 
 export {
   Bot, CommandObj
