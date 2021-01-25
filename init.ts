@@ -43,11 +43,11 @@ class Bot extends Trollsmile<Message, CommandObj> {
     })
 
     // Load in events
-    readdirSync('./events/')
+    readdirSync(join(__dirname, '/events/'))
       .filter(name => name.endsWith('.js'))
       .map(name => name.replace('.js', ''))
       .forEach(async filename => {
-        const ev = (await import(join(process.cwd(), '/events/', filename))).default
+        const ev = (await import(join(__dirname, '/events/', filename))).default
         this.client.on(filename, context => {
           ev.call(this, context)
         })
