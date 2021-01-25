@@ -29,7 +29,7 @@ if (exists('./.env')) {
 
 const bot = new class extends Trollsmile<Message, CommandObj> {
   filter = (msg: Message) => !msg.author.bot
-  commands = new Collection() as Map<string, CommandObj>
+  commands = new Collection<string, CommandObj>()
   public getCommandName = super.getCommandName
   client: Client
   constructor(prefix: string) {

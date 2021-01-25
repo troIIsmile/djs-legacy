@@ -1,4 +1,4 @@
-import { Client, Message, Collection, TextChannel } from 'discord.js'
+import { Message, TextChannel } from 'discord.js'
 import type Trollsmile from '..'
 type Bot = typeof Trollsmile
 type Return = Parameters<TextChannel['send']>[0]

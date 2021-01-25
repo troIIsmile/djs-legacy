@@ -11,16 +11,16 @@ async function activityChanger (this: Bot) {
 }
 
 // This function gets all commands in the commands folder and adds them (& their aliases!) to the bot
+
 export default async function (this: Bot) {
   activityChanger.call(this)
   const files = await rreaddir('./commands/')
   const entries: [string, CommandObj][] = await Promise.all(
-    files // get the file names of every command in the commands folder
-      .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
+    files
+      .filter(filename => filename.endsWith('.js')) // only compiled javascript
       .map(async (file): Promise<[string, CommandObj]> => [
-        basename(file, '.js'), // Remove folders from the path and .js, leaving only the command name
+        basename(file, '.js'), // the name of a command is the file's name minus extension
         {
-          help: 'A command without a description', // this will be overwritten by the real description if it is there
           ...(await import(join(process.cwd(),file))),
           path: require.resolve(join(process.cwd(),file))
         }

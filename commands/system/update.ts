@@ -70,7 +70,7 @@ export async function run (
       this.commands.clear()
       this.aliases.clear()
       const files = await rreaddir('./commands/')
-      const entries: [string, CommandObj][] = await Promise.all(
+      const entries = await Promise.all(
         files // get the file names of every command in the commands folder
           .filter(filename => filename.endsWith('.js')) // only ones with `.js` at the end
           .map(async (file): Promise<[string, CommandObj]> => [
@@ -81,8 +81,8 @@ export async function run (
               path: require.resolve(`${process.cwd()}/${file}`)
             }
           ]) // convert filenames to commands
-      ) as [string, CommandObj][]
-      entries.forEach(([name, command]: [string, CommandObj]) => {
+      )
+      entries.forEach(([name, command]) => {
         this.commands.set(name, command)
         command.aliases?.forEach(alias => {
           this.aliases.set(alias, name)
