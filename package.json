@@ -21,7 +21,6 @@
   "author": "Jack5079",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.3.2",
     "discord.js": "^12.3.1",
     "fs": "^0.0.1-security",
     "google-tts-api": "^2.0.0",
