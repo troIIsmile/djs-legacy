@@ -90,7 +90,8 @@ const obfuscators: { [key: string]: (str: string, brand: string) => Promise<stri
   },
   get py () { return this.python },
 }
-export async function run ({client}: Bot, message: Message, args: string[]) {
+export async function run (this: Bot, message: Message, args: string[]) {
+  const { client } = this
   const [{ lang = '', code = '' } = { lang: '' }] = discordCodeBlock(args.join(' '))
   if (!lang.trim()) return 'Language not found!'
 
